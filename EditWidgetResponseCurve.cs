@@ -35,6 +35,14 @@ namespace Curvature
                 args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(-0.2, 1.0), ConvertXYToPoint(1.2, 1.0));
                 args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(1.0, -0.2), ConvertXYToPoint(1.0, 1.2));
 
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(-0.035, 0.25), ConvertXYToPoint(0.035, 0.25));
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(-0.04, 0.5), ConvertXYToPoint(0.04, 0.5));
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(-0.035, 0.75), ConvertXYToPoint(0.035, 0.75));
+
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(0.25, -0.035), ConvertXYToPoint(0.25, 0.035));
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(0.5, -0.04), ConvertXYToPoint(0.5, 0.04));
+                args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(0.75, -0.035), ConvertXYToPoint(0.75, 0.035));
+
                 if (EditCurve == null)
                     return;
 
