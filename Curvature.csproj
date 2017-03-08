@@ -50,11 +50,29 @@
     <Compile Include="Behavior.cs" />
     <Compile Include="BehaviorSet.cs" />
     <Compile Include="Consideration.cs" />
+    <Compile Include="EditWidgetBehavior.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetBehavior.Designer.cs">
+      <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetConsideration.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="EditWidgetConsideration.Designer.cs">
       <DependentUpon>EditWidgetConsideration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWidgetConsiderationInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetConsiderationInput.Designer.cs">
+      <DependentUpon>EditWidgetConsiderationInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWidgetConsiderationScore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetConsiderationScore.Designer.cs">
+      <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
     </Compile>
     <Compile Include="EditWidgetInputAxis.cs">
       <SubType>UserControl</SubType>
@@ -87,8 +105,17 @@
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseCurve.cs" />
+    <EmbeddedResource Include="EditWidgetBehavior.resx">
+      <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetConsideration.resx">
       <DependentUpon>EditWidgetConsideration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetConsiderationInput.resx">
+      <DependentUpon>EditWidgetConsiderationInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetConsiderationScore.resx">
+      <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetInputAxis.resx">
       <DependentUpon>EditWidgetInputAxis.cs</DependentUpon>

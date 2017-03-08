@@ -100,7 +100,7 @@ namespace Curvature
         {
             {
                 var axis = new InputAxis("Distance to target");
-                axis.Parameters.Add(new InputParameter("Range", 0.0f, 1e10f));
+                axis.Parameters.Add(new InputParameter("Range", 0.0f, 1e5f));
                 RegisterInput(axis);
             }
 
