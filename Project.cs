@@ -9,20 +9,23 @@ namespace Curvature
 {
     public class Project : IUserEditable
     {
-        public string ReadableName;
-        public List<Archetype> Archetypes;
-        public List<InputAxis> Inputs;
+        internal string ReadableName;
+        internal KnowledgeBase KB;
+        internal List<Archetype> Archetypes;
+        internal List<InputAxis> Inputs;
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
         public Project()
         {
             ReadableName = "New Project";
+            KB = new KnowledgeBase();
             Archetypes = new List<Archetype>();
             Inputs = new List<InputAxis>();
 
             InputLookupByName = new Dictionary<string, InputAxis>();
 
+            AddDummyKB();
             AddDummyInputs();
             AddDummyArchetypes();
         }
@@ -42,6 +45,9 @@ namespace Curvature
 
             var root = tree.Nodes.Add(ReadableName);
             root.Tag = this;
+
+            var kbNode = root.Nodes.Add("Knowledge Base");
+            kbNode.Tag = KB;
 
             var inputsFolder = root.Nodes.Add("Inputs");
             var archetypesFolder = root.Nodes.Add("Archetypes");
@@ -95,6 +101,11 @@ namespace Curvature
             }
         }
 
+
+        private void AddDummyKB()
+        {
+            KB.Records.Add(new KnowledgeBase.Record("Health", 0.0, 1.0));
+        }
 
         private void AddDummyInputs()
         {

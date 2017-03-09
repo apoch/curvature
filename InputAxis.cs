@@ -26,7 +26,7 @@ namespace Curvature
 
         public Control CreateEditorUI(Project project)
         {
-            return new EditWidgetInputAxis(this);
+            return new EditWidgetInputAxis(project, this);
         }
     }
 }

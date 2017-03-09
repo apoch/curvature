@@ -80,6 +80,12 @@
     <Compile Include="EditWidgetInputAxis.Designer.cs">
       <DependentUpon>EditWidgetInputAxis.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWidgetKnowledgeBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetKnowledgeBase.Designer.cs">
+      <DependentUpon>EditWidgetKnowledgeBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetProject.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,7 @@
     <Compile Include="InputAxis.cs" />
     <Compile Include="InputParameter.cs" />
     <Compile Include="IUserEditable.cs" />
+    <Compile Include="KnowledgeBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
