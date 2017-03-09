@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class ResponseCurve
+    public class ResponseCurve
     {
         public enum CurveType
         {

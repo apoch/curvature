@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class BehaviorSet
+    public class BehaviorSet
     {
         public string ReadableName;
         public List<Behavior> Behaviors;

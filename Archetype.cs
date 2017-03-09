@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class Archetype
+    public class Archetype
     {
         public string ReadableName;
         public List<BehaviorSet> BehaviorSets;

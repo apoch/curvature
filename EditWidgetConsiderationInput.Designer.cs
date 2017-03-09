@@ -41,6 +41,7 @@
             this.InputValueTrackBar.Name = "InputValueTrackBar";
             this.InputValueTrackBar.Size = new System.Drawing.Size(403, 45);
             this.InputValueTrackBar.TabIndex = 0;
+            this.InputValueTrackBar.Scroll += new System.EventHandler(this.InputValueTrackBar_Scroll);
             // 
             // InputCaption
             // 

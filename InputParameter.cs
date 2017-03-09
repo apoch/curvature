@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class InputParameter
+    public class InputParameter
     {
         public string ReadableName;
         public float MinimumValue;

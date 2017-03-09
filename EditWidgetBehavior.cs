@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Curvature
 {
-    public partial class EditWidgetBehavior : UserControl
+    public partial class EditWidgetBehavior : UserControl, IInputBroker
     {
         private Behavior EditBehavior;
 
@@ -27,12 +27,33 @@ namespace Curvature
             {
                 inputs.Add(consideration.Input);
 
-                ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration));
+                ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
             }
 
             foreach (var input in inputs)
             {
-                InputFlowPanel.Controls.Add(new EditWidgetConsiderationInput(input));
+                var widget = new EditWidgetConsiderationInput(input, this);
+                widget.Tag = input;
+                InputFlowPanel.Controls.Add(widget);
+            }
+        }
+
+        public float GetInputValue(InputAxis axis)
+        {
+            foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
+            {
+                if (input.Tag == axis)
+                    return input.GetNormalizedValue();
+            }
+
+            return 0.0f;
+        }
+
+        public void RefreshInputs()
+        {
+            foreach (EditWidgetConsiderationScore score in ScoreLayoutPanel.Controls)
+            {
+                score.Refresh();
             }
         }
     }

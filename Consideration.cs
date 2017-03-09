@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Curvature
 {
-    class Consideration : IUserEditable
+    public class Consideration : IUserEditable
     {
         public string ReadableName;
         public InputAxis Input;

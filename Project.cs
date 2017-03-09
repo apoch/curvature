@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Curvature
 {
-    class Project : IUserEditable
+    public class Project : IUserEditable
     {
         public string ReadableName;
         public List<Archetype> Archetypes;

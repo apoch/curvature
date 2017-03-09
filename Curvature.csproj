@@ -92,6 +92,7 @@
     <Compile Include="EditWidgetResponseCurve.Designer.cs">
       <DependentUpon>EditWidgetResponseCurve.cs</DependentUpon>
     </Compile>
+    <Compile Include="IInputBroker.cs" />
     <Compile Include="InputAxis.cs" />
     <Compile Include="InputParameter.cs" />
     <Compile Include="IUserEditable.cs" />
