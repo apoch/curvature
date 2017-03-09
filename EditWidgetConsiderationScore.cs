@@ -51,6 +51,17 @@ namespace Curvature
             };
         }
 
+        public double GetValue()
+        {
+            double inputX = InputBroker.GetInputValue(EditConsideration.Input);
+            return EditConsideration.Curve.ComputeValue(inputX);
+        }
+
+        public string GetName()
+        {
+            return EditConsideration.ReadableName;
+        }
+
         private Point ConvertXYToPoint(double x, double y)
         {
             var rect = ResponseCurvePictureBox.ClientRectangle;

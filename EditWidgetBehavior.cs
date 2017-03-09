@@ -36,6 +36,8 @@ namespace Curvature
                 widget.Tag = input;
                 InputFlowPanel.Controls.Add(widget);
             }
+
+            RefreshInputs();
         }
 
         public float GetInputValue(InputAxis axis)
@@ -51,10 +53,49 @@ namespace Curvature
 
         public void RefreshInputs()
         {
+            ScoreListView.Items.Clear();
+
+            double finalScore = (double)BehaviorWeightEditBox.Value;
+            var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" });
+            weightItem.Group = ScoreListView.Groups[1];
+
+            ScoreListView.Items.Add(weightItem);
+     
             foreach (EditWidgetConsiderationScore score in ScoreLayoutPanel.Controls)
             {
                 score.Refresh();
+
+                string considerationName = score.GetName();
+                double considerationScore = score.GetValue();
+
+                var item = new ListViewItem(new string[] { $"{considerationScore:f3}", $"{considerationName}" });
+                item.Group = ScoreListView.Groups[0];
+
+                ScoreListView.Items.Add(item);
+                finalScore *= considerationScore;
             }
+
+            if (MomentumBonusCheckBox.Checked)
+            {
+                finalScore *= 1.25;
+
+                var item = new ListViewItem(new string[] { "1.250", "Momentum bonus" });
+                item.Group = ScoreListView.Groups[1];
+
+                ScoreListView.Items.Add(item);
+            }
+
+            FinalScoreLabel.Text = $"Final Score = {finalScore:f3}";
+        }
+
+        private void MomentumBonusCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshInputs();
+        }
+
+        private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshInputs();
         }
     }
 }
