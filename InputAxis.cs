@@ -9,13 +9,23 @@ namespace Curvature
 {
     public class InputAxis : IUserEditable
     {
+        public enum OriginType
+        {
+            PropertyOfSelf,
+            PropertyOfTarget,
+            ComputedValue
+        }
+
         public string ReadableName;
+        public OriginType Origin;
+        public KnowledgeBase.Record KBRecord;
         public List<InputParameter> Parameters;
 
 
-        public InputAxis(string name)
+        public InputAxis(string name, OriginType origin)
         {
             ReadableName = name;
+            Origin = origin;
             Parameters = new List<InputParameter>();
         }
 

@@ -30,6 +30,7 @@
         {
             this.KBDataGrid = new System.Windows.Forms.DataGridView();
             this.DataColumnTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComputedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataColumnMinValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataColumnMaximum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.KBDataGrid)).BeginInit();
@@ -43,17 +44,23 @@
             this.KBDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.KBDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DataColumnTag,
+            this.ComputedColumn,
             this.DataColumnMinValue,
             this.DataColumnMaximum});
             this.KBDataGrid.Location = new System.Drawing.Point(3, 3);
             this.KBDataGrid.Name = "KBDataGrid";
-            this.KBDataGrid.Size = new System.Drawing.Size(372, 196);
+            this.KBDataGrid.Size = new System.Drawing.Size(468, 196);
             this.KBDataGrid.TabIndex = 0;
             // 
             // DataColumnTag
             // 
             this.DataColumnTag.HeaderText = "Tag";
             this.DataColumnTag.Name = "DataColumnTag";
+            // 
+            // ComputedColumn
+            // 
+            this.ComputedColumn.HeaderText = "Computed";
+            this.ComputedColumn.Name = "ComputedColumn";
             // 
             // DataColumnMinValue
             // 
@@ -71,7 +78,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.KBDataGrid);
             this.Name = "EditWidgetKnowledgeBase";
-            this.Size = new System.Drawing.Size(378, 202);
+            this.Size = new System.Drawing.Size(474, 202);
             ((System.ComponentModel.ISupportInitialize)(this.KBDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -81,6 +88,7 @@
 
         private System.Windows.Forms.DataGridView KBDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnTag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ComputedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnMinValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnMaximum;
     }

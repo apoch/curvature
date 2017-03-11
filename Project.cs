@@ -25,7 +25,6 @@ namespace Curvature
 
             InputLookupByName = new Dictionary<string, InputAxis>();
 
-            AddDummyKB();
             AddDummyInputs();
             AddDummyArchetypes();
         }
@@ -102,21 +101,24 @@ namespace Curvature
         }
 
 
-        private void AddDummyKB()
-        {
-            KB.Records.Add(new KnowledgeBase.Record("Health", 0.0, 1.0));
-        }
-
         private void AddDummyInputs()
         {
+            var kbrecHealth = new KnowledgeBase.Record("Health", 0.0, 1.0, false);
+            var kbrecDistance = new KnowledgeBase.Record("Distance to target", 0.0, 1e6, true);
+
+            KB.Records.Add(kbrecDistance);
+            KB.Records.Add(kbrecHealth);
+
             {
-                var axis = new InputAxis("Distance to target");
+                var axis = new InputAxis("Distance to target", InputAxis.OriginType.ComputedValue);
+                axis.KBRecord = kbrecDistance;
                 axis.Parameters.Add(new InputParameter("Range", 0.0f, 1e5f));
                 RegisterInput(axis);
             }
 
             {
-                var axis = new InputAxis("My health");
+                var axis = new InputAxis("My health", InputAxis.OriginType.PropertyOfSelf);
+                axis.KBRecord = kbrecHealth;
                 axis.Parameters.Add(new InputParameter("Limit", 0.0f, 1.0f));
                 RegisterInput(axis);
             }

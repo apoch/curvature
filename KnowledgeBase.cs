@@ -7,20 +7,27 @@ using System.Windows.Forms;
 
 namespace Curvature
 {
-    class KnowledgeBase : IUserEditable
+    public class KnowledgeBase : IUserEditable
     {
 
-        internal class Record
+        public class Record
         {
             public string ReadableName;
             public double MinimumValue;
             public double MaximumValue;
+            public bool Computed;
 
-            public Record(string name, double min, double max)
+            public Record(string name, double min, double max, bool computed)
             {
                 ReadableName = name;
                 MinimumValue = min;
                 MaximumValue = max;
+                Computed = computed;
+            }
+
+            public override string ToString()
+            {
+                return ReadableName;
             }
         }
 

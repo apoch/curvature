@@ -22,6 +22,7 @@ namespace Curvature
             EditedProject = project;
 
             InputAxisNameLabel.Text = "Input Axis: " + axis.ReadableName;
+            InputTypeComboBox.SelectedIndex = (int)axis.Origin;
         }
 
         private void InputTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -32,15 +33,22 @@ namespace Curvature
 
                 foreach (var rec in EditedProject.KB.Records)
                 {
-                    DataSourceComboBox.Items.Add(rec.ReadableName);
+                    if (!rec.Computed)
+                        DataSourceComboBox.Items.Add(rec);
                 }
             }
             else if (InputTypeComboBox.SelectedIndex == 2)
             {
                 DataSourceComboBox.Items.Clear();
 
-                DataSourceComboBox.Items.Add("Distance to target");
+                foreach (var rec in EditedProject.KB.Records)
+                {
+                    if (rec.Computed)
+                        DataSourceComboBox.Items.Add(rec);
+                }
             }
+
+            DataSourceComboBox.SelectedItem = EditedAxis.KBRecord;
         }
     }
 }

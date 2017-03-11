@@ -24,7 +24,7 @@ namespace Curvature
                 var row = new DataGridViewRow();
                 row.CreateCells(KBDataGrid);
                 row.Tag = rec;
-                row.SetValues(rec.ReadableName, $"{rec.MinimumValue:f3}", $"{rec.MaximumValue:f3}");
+                row.SetValues(rec.ReadableName, rec.Computed ? "Yes" : "No", $"{rec.MinimumValue:f3}", $"{rec.MaximumValue:f3}");
 
                 KBDataGrid.Rows.Add(row);
             }
