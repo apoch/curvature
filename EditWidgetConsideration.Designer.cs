@@ -35,10 +35,12 @@
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
             this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
+            this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
             this.HorizontalSplitter.SuspendLayout();
+            this.ParametersGroupBox.SuspendLayout();
             this.ResponseCurveGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +99,7 @@
             this.ParametersGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametersGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParametersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ParametersGroupBox.Name = "ParametersGroupBox";
             this.ParametersGroupBox.Size = new System.Drawing.Size(752, 174);
@@ -127,6 +130,15 @@
             this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 146);
             this.ResponseCurveEditor.TabIndex = 0;
             // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 155);
+            this.ParamFlowPanel.TabIndex = 0;
+            // 
             // EditWidgetConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +153,7 @@
             this.HorizontalSplitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).EndInit();
             this.HorizontalSplitter.ResumeLayout(false);
+            this.ParametersGroupBox.ResumeLayout(false);
             this.ResponseCurveGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,5 +169,6 @@
         private System.Windows.Forms.GroupBox ParametersGroupBox;
         private System.Windows.Forms.GroupBox ResponseCurveGroupBox;
         private EditWidgetResponseCurve ResponseCurveEditor;
+        private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
     }
 }

@@ -12,12 +12,12 @@ namespace Curvature
         public string ReadableName;
         public InputAxis Input;
         public ResponseCurve Curve;
-        public Dictionary<string, float> Parameters;
+        public List<InputParameter> Parameters;
 
         public Consideration(string name)
         {
             ReadableName = name;
-            Parameters = new Dictionary<string, float>();
+            Parameters = new List<InputParameter>();
         }
 
         public Control CreateEditorUI(Project project)

@@ -26,6 +26,11 @@ namespace Curvature
                 InputAxisDropdown.Items.Add(axis);
             }
 
+            foreach (InputParameter param in EditConsideration.Parameters)
+            {
+                ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
+            }
+
             InputAxisDropdown.SelectedItem = EditConsideration.Input;
             ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
         }

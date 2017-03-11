@@ -33,6 +33,8 @@
             this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
             this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
+            this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             this.ParameterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParameterGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParameterGroupBox.Location = new System.Drawing.Point(7, 110);
             this.ParameterGroupBox.Name = "ParameterGroupBox";
             this.ParameterGroupBox.Size = new System.Drawing.Size(390, 91);
@@ -95,6 +98,14 @@
             this.DataSourceComboBox.Sorted = true;
             this.DataSourceComboBox.TabIndex = 1;
             // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(384, 72);
+            this.ParamFlowPanel.TabIndex = 0;
+            // 
             // EditWidgetInputAxis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +115,7 @@
             this.Controls.Add(this.InputAxisNameLabel);
             this.Name = "EditWidgetInputAxis";
             this.Size = new System.Drawing.Size(400, 204);
+            this.ParameterGroupBox.ResumeLayout(false);
             this.PropertiesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,5 +129,6 @@
         private System.Windows.Forms.GroupBox PropertiesGroupBox;
         private System.Windows.Forms.ComboBox InputTypeComboBox;
         private System.Windows.Forms.ComboBox DataSourceComboBox;
+        private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
     }
 }

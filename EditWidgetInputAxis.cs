@@ -23,6 +23,11 @@ namespace Curvature
 
             InputAxisNameLabel.Text = "Input Axis: " + axis.ReadableName;
             InputTypeComboBox.SelectedIndex = (int)axis.Origin;
+
+            foreach (InputParameter param in EditedAxis.Parameters)
+            {
+                ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
+            }
         }
 
         private void InputTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)

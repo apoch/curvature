@@ -143,12 +143,14 @@ namespace Curvature
                 var c = new Consideration("As long as healthy");
                 c.Input = InputLookupByName["My health"];
                 c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 0.0, 0.0, 0.0);
+                c.Parameters.AddRange(c.Input.Parameters);
                 attackBehavior.Considerations.Add(c);
             }
             {
                 var c = new Consideration("Prioritize closer targets");
                 c.Input = InputLookupByName["Distance to target"];
                 c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, -1.0, 0.0, 0.0, 1.0);
+                c.Parameters.AddRange(c.Input.Parameters);
                 attackBehavior.Considerations.Add(c);
             }
 

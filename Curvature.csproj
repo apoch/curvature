@@ -92,6 +92,12 @@
     <Compile Include="EditWidgetKnowledgeBase.Designer.cs">
       <DependentUpon>EditWidgetKnowledgeBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWidgetParameter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetParameter.Designer.cs">
+      <DependentUpon>EditWidgetParameter.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetProject.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetKnowledgeBase.resx">
       <DependentUpon>EditWidgetKnowledgeBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetParameter.resx">
+      <DependentUpon>EditWidgetParameter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetProject.resx">
       <DependentUpon>EditWidgetProject.cs</DependentUpon>
