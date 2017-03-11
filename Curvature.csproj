@@ -56,6 +56,12 @@
     <Compile Include="EditWidgetBehavior.Designer.cs">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWidgetBehaviorSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetBehaviorSet.Designer.cs">
+      <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetConsideration.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <Compile Include="ResponseCurve.cs" />
     <EmbeddedResource Include="EditWidgetBehavior.resx">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetBehaviorSet.resx">
+      <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetConsideration.resx">
       <DependentUpon>EditWidgetConsideration.cs</DependentUpon>

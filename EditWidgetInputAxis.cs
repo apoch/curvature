@@ -27,10 +27,10 @@ namespace Curvature
 
         private void InputTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataSourceComboBox.Items.Clear();
+
             if (InputTypeComboBox.SelectedIndex == 0 || InputTypeComboBox.SelectedIndex == 1)
             {
-                DataSourceComboBox.Items.Clear();
-
                 foreach (var rec in EditedProject.KB.Records)
                 {
                     if (!rec.Computed)
@@ -39,8 +39,6 @@ namespace Curvature
             }
             else if (InputTypeComboBox.SelectedIndex == 2)
             {
-                DataSourceComboBox.Items.Clear();
-
                 foreach (var rec in EditedProject.KB.Records)
                 {
                     if (rec.Computed)

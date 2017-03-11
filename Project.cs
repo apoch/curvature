@@ -12,6 +12,8 @@ namespace Curvature
         internal string ReadableName;
         internal KnowledgeBase KB;
         internal List<Archetype> Archetypes;
+        internal List<Behavior> Behaviors;
+        internal List<BehaviorSet> BehaviorSets;
         internal List<InputAxis> Inputs;
 
         private Dictionary<string, InputAxis> InputLookupByName;
@@ -22,11 +24,14 @@ namespace Curvature
             KB = new KnowledgeBase();
             Archetypes = new List<Archetype>();
             Inputs = new List<InputAxis>();
+            Behaviors = new List<Behavior>();
+            BehaviorSets = new List<BehaviorSet>();
 
             InputLookupByName = new Dictionary<string, InputAxis>();
 
             AddDummyInputs();
             AddDummyArchetypes();
+            AddDummyBehaviors();
         }
 
 
@@ -50,13 +55,13 @@ namespace Curvature
 
             var inputsFolder = root.Nodes.Add("Inputs");
             var archetypesFolder = root.Nodes.Add("Archetypes");
+            var behaviorsFolder = root.Nodes.Add("Behaviors");
+            var behaviorSetsFolder = root.Nodes.Add("Behavior Sets");
 
             foreach (Archetype archetype in Archetypes)
             {
                 var node = archetypesFolder.Nodes.Add(archetype.ReadableName);
                 node.Tag = archetype;
-
-                PopulateUIForArchetype(node, archetype);
             }
 
             foreach (InputAxis axis in Inputs)
@@ -65,9 +70,29 @@ namespace Curvature
                 node.Tag = axis;
             }
 
+            foreach (Behavior behavior in Behaviors)
+            {
+                var node = behaviorsFolder.Nodes.Add(behavior.ReadableName);
+                node.Tag = behavior;
+
+                foreach (Consideration consideration in behavior.Considerations)
+                {
+                    var cnode = node.Nodes.Add(consideration.ReadableName);
+                    cnode.Tag = consideration;
+                }
+            }
+
+            foreach (BehaviorSet set in BehaviorSets)
+            {
+                var node = behaviorSetsFolder.Nodes.Add(set.ReadableName);
+                node.Tag = set;
+            }
+
             root.Expand();
             inputsFolder.Expand();
             archetypesFolder.Expand();
+            behaviorsFolder.Expand();
+            behaviorSetsFolder.Expand();
 
             tree.EndUpdate();
         }
@@ -76,28 +101,6 @@ namespace Curvature
         public Control CreateEditorUI(Project project)
         {
             return new EditWidgetProject(this);
-        }
-
-
-        private void PopulateUIForArchetype(TreeNode node, Archetype archetype)
-        {
-            foreach (BehaviorSet set in archetype.BehaviorSets)
-            {
-                var setnode = node.Nodes.Add(set.ReadableName);
-                setnode.Tag = set;
-
-                foreach (Behavior b in set.Behaviors)
-                {
-                    var bnode = setnode.Nodes.Add(b.ReadableName);
-                    bnode.Tag = b;
-
-                    foreach (Consideration c in b.Considerations)
-                    {
-                        var cnode = bnode.Nodes.Add(c.ReadableName);
-                        cnode.Tag = c;
-                    }
-                }
-            }
         }
 
 
@@ -128,30 +131,33 @@ namespace Curvature
         {
             {
                 var archetype = new Archetype("Tank");
-                var behaviors = new BehaviorSet("Combat");
-
-                {
-                    var b = new Behavior("Attack");
-
-                    {
-                        var c = new Consideration("As long as healthy");
-                        c.Input = InputLookupByName["My health"];
-                        c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 0.0, 0.0, 0.0);
-                        b.Considerations.Add(c);
-                    }
-                    {
-                        var c = new Consideration("Prioritize closer targets");
-                        c.Input = InputLookupByName["Distance to target"];
-                        c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, -1.0, 0.0, 0.0, 1.0);
-                        b.Considerations.Add(c);
-                    }
-
-                    behaviors.Behaviors.Add(b);
-                }
-
-                archetype.BehaviorSets.Add(behaviors);
-
                 Archetypes.Add(archetype);
+           }
+        }
+
+        private void AddDummyBehaviors()
+        {
+            var attackBehavior = new Behavior("Attack");
+
+            {
+                var c = new Consideration("As long as healthy");
+                c.Input = InputLookupByName["My health"];
+                c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 0.0, 0.0, 0.0);
+                attackBehavior.Considerations.Add(c);
+            }
+            {
+                var c = new Consideration("Prioritize closer targets");
+                c.Input = InputLookupByName["Distance to target"];
+                c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, -1.0, 0.0, 0.0, 1.0);
+                attackBehavior.Considerations.Add(c);
+            }
+
+            Behaviors.Add(attackBehavior);
+
+            {
+                var s = new BehaviorSet("Combat");
+                s.EnabledBehaviors.Add(attackBehavior);
+                BehaviorSets.Add(s);
             }
         }
     }

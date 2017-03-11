@@ -22,5 +22,10 @@ namespace Curvature
         {
             return new EditWidgetBehavior(this);
         }
+
+        public override string ToString()
+        {
+            return ReadableName;
+        }
     }
 }
