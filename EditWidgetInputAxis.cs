@@ -27,23 +27,22 @@ namespace Curvature
 
         private void InputTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            bool selectComputedProperties = false;
             DataSourceComboBox.Items.Clear();
 
             if (InputTypeComboBox.SelectedIndex == 0 || InputTypeComboBox.SelectedIndex == 1)
             {
-                foreach (var rec in EditedProject.KB.Records)
-                {
-                    if (!rec.Computed)
-                        DataSourceComboBox.Items.Add(rec);
-                }
+                selectComputedProperties = false;
             }
             else if (InputTypeComboBox.SelectedIndex == 2)
             {
-                foreach (var rec in EditedProject.KB.Records)
-                {
-                    if (rec.Computed)
-                        DataSourceComboBox.Items.Add(rec);
-                }
+                selectComputedProperties = true;
+            }
+
+            foreach (var rec in EditedProject.KB.Records)
+            {
+                if (rec.Computed == selectComputedProperties)
+                    DataSourceComboBox.Items.Add(rec);
             }
 
             DataSourceComboBox.SelectedItem = EditedAxis.KBRecord;
