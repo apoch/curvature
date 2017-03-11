@@ -18,6 +18,16 @@ namespace Curvature
         {
             InitializeComponent();
             MyKB = kb;
+
+            foreach (var rec in MyKB.Records)
+            {
+                var row = new DataGridViewRow();
+                row.CreateCells(KBDataGrid);
+                row.Tag = rec;
+                row.SetValues(rec.ReadableName, $"{rec.MinimumValue:f3}", $"{rec.MaximumValue:f3}");
+
+                KBDataGrid.Rows.Add(row);
+            }
         }
     }
 }
