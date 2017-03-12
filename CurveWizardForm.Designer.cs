@@ -41,9 +41,11 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelWizardButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
+            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
+            this.ResponseCurveTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // WizardTabs
@@ -139,6 +141,7 @@
             // 
             // ResponseCurveTab
             // 
+            this.ResponseCurveTab.Controls.Add(this.ResponseCurveEditor);
             this.ResponseCurveTab.Location = new System.Drawing.Point(4, 22);
             this.ResponseCurveTab.Name = "ResponseCurveTab";
             this.ResponseCurveTab.Size = new System.Drawing.Size(557, 278);
@@ -178,6 +181,16 @@
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click_1);
             // 
+            // ResponseCurveEditor
+            // 
+            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCurveEditor.Location = new System.Drawing.Point(221, 3);
+            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
+            this.ResponseCurveEditor.Size = new System.Drawing.Size(335, 230);
+            this.ResponseCurveEditor.TabIndex = 0;
+            // 
             // CurveWizardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +209,7 @@
             this.GettingStartedTab.ResumeLayout(false);
             this.GettingStartedTab.PerformLayout();
             this.SelectInputTab.ResumeLayout(false);
+            this.ResponseCurveTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -214,5 +228,6 @@
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.ComboBox InputComboBox;
         private System.Windows.Forms.Label InputDescriptionLabel;
+        private EditWidgetResponseCurve ResponseCurveEditor;
     }
 }

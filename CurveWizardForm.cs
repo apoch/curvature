@@ -12,17 +12,21 @@ namespace Curvature
 {
     public partial class CurveWizardForm : Form
     {
+        private Consideration EditConsideration;
         private Project EditProject;
         
-        public CurveWizardForm(Project project)
+        public CurveWizardForm(Project project, Consideration consideration)
         {
             InitializeComponent();
+            EditConsideration = consideration;
             EditProject = project;
 
             foreach (InputAxis axis in EditProject.Inputs)
             {
                 InputComboBox.Items.Add(axis);
             }
+
+            ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
         }
 
         private void NextButton_Click_1(object sender, EventArgs e)

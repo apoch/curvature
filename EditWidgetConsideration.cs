@@ -39,7 +39,7 @@ namespace Curvature
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
         {
-            (new CurveWizardForm(EditProject)).ShowDialog();
+            (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
         }
     }
 }
