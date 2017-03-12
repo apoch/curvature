@@ -34,6 +34,8 @@
             this.WizardDescriptionLabel = new System.Windows.Forms.Label();
             this.WizardTitleLabel = new System.Windows.Forms.Label();
             this.SelectInputTab = new System.Windows.Forms.TabPage();
+            this.InputDescriptionLabel = new System.Windows.Forms.Label();
+            this.InputComboBox = new System.Windows.Forms.ComboBox();
             this.ConfigureParametersTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveTab = new System.Windows.Forms.TabPage();
             this.OKButton = new System.Windows.Forms.Button();
@@ -41,6 +43,7 @@
             this.NextButton = new System.Windows.Forms.Button();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
+            this.SelectInputTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // WizardTabs
@@ -92,6 +95,8 @@
             // 
             // SelectInputTab
             // 
+            this.SelectInputTab.Controls.Add(this.InputDescriptionLabel);
+            this.SelectInputTab.Controls.Add(this.InputComboBox);
             this.SelectInputTab.Location = new System.Drawing.Point(4, 22);
             this.SelectInputTab.Name = "SelectInputTab";
             this.SelectInputTab.Padding = new System.Windows.Forms.Padding(3);
@@ -99,6 +104,28 @@
             this.SelectInputTab.TabIndex = 0;
             this.SelectInputTab.Text = "Select Input";
             this.SelectInputTab.UseVisualStyleBackColor = true;
+            // 
+            // InputDescriptionLabel
+            // 
+            this.InputDescriptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputDescriptionLabel.Location = new System.Drawing.Point(6, 3);
+            this.InputDescriptionLabel.Name = "InputDescriptionLabel";
+            this.InputDescriptionLabel.Size = new System.Drawing.Size(545, 136);
+            this.InputDescriptionLabel.TabIndex = 1;
+            this.InputDescriptionLabel.Text = resources.GetString("InputDescriptionLabel.Text");
+            // 
+            // InputComboBox
+            // 
+            this.InputComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InputComboBox.FormattingEnabled = true;
+            this.InputComboBox.Location = new System.Drawing.Point(6, 158);
+            this.InputComboBox.Name = "InputComboBox";
+            this.InputComboBox.Size = new System.Drawing.Size(545, 21);
+            this.InputComboBox.TabIndex = 0;
             // 
             // ConfigureParametersTab
             // 
@@ -168,6 +195,7 @@
             this.WizardTabs.ResumeLayout(false);
             this.GettingStartedTab.ResumeLayout(false);
             this.GettingStartedTab.PerformLayout();
+            this.SelectInputTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -184,5 +212,7 @@
         private System.Windows.Forms.Label WizardTitleLabel;
         private System.Windows.Forms.Label WizardDescriptionLabel;
         private System.Windows.Forms.Button NextButton;
+        private System.Windows.Forms.ComboBox InputComboBox;
+        private System.Windows.Forms.Label InputDescriptionLabel;
     }
 }

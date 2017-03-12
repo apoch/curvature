@@ -12,9 +12,17 @@ namespace Curvature
 {
     public partial class CurveWizardForm : Form
     {
-        public CurveWizardForm()
+        private Project EditProject;
+        
+        public CurveWizardForm(Project project)
         {
             InitializeComponent();
+            EditProject = project;
+
+            foreach (InputAxis axis in EditProject.Inputs)
+            {
+                InputComboBox.Items.Add(axis);
+            }
         }
 
         private void NextButton_Click_1(object sender, EventArgs e)

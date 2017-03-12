@@ -13,11 +13,13 @@ namespace Curvature
     public partial class EditWidgetConsideration : UserControl
     {
         private Consideration EditConsideration;
+        private Project EditProject;
 
         internal EditWidgetConsideration(Project project, Consideration editConsideration)
         {
             InitializeComponent();
             EditConsideration = editConsideration;
+            EditProject = project;
 
             ConsiderationNameLabel.Text = "Consideration: " + EditConsideration.ReadableName;
 
@@ -37,7 +39,7 @@ namespace Curvature
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
         {
-            (new CurveWizardForm()).ShowDialog();
+            (new CurveWizardForm(EditProject)).ShowDialog();
         }
     }
 }

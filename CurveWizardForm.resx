@@ -126,4 +126,13 @@ Once input values are obtained, a consideration uses a response curve to calcula
 
 This wizard will guide you through building a consideration and its associated response curve, step by step.</value>
   </data>
+  <data name="InputDescriptionLabel.Text" xml:space="preserve">
+    <value>The first step in building a consideration is to choose an input. Inputs are data points about the world, other agents, or even the "thinking" AI agent itself.
+
+Choosing an input signifies that the associated data point has some relevance to the AI decision-making process. The nature of that relevance will be configured in subsequent steps of this wizard.
+
+Available inputs are drawn from the Knowledge Base in the main Curvature Studio window.
+
+Keep in mind that multiple factors can be accounted for when scoring a behavior; one consideration should be created per factor.</value>
+  </data>
 </root>
