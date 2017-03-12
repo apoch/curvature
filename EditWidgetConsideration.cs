@@ -34,5 +34,10 @@ namespace Curvature
             InputAxisDropdown.SelectedItem = EditConsideration.Input;
             ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
         }
+
+        private void CurveWizardButton_Click(object sender, EventArgs e)
+        {
+            (new CurveWizardForm()).ShowDialog();
+        }
     }
 }

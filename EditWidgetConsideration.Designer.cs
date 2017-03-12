@@ -34,8 +34,9 @@
             this.HorizontalSplitter = new System.Windows.Forms.SplitContainer();
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
             this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
-            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.CurveWizardButton = new System.Windows.Forms.Button();
+            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
@@ -62,7 +63,7 @@
             this.InputAxisDropdown.FormattingEnabled = true;
             this.InputAxisDropdown.Location = new System.Drawing.Point(43, 23);
             this.InputAxisDropdown.Name = "InputAxisDropdown";
-            this.InputAxisDropdown.Size = new System.Drawing.Size(722, 21);
+            this.InputAxisDropdown.Size = new System.Drawing.Size(613, 21);
             this.InputAxisDropdown.TabIndex = 1;
             // 
             // InputAxisLabel
@@ -120,6 +121,26 @@
             this.ResponseCurveGroupBox.TabStop = false;
             this.ResponseCurveGroupBox.Text = "Response Curve";
             // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 155);
+            this.ParamFlowPanel.TabIndex = 0;
+            // 
+            // CurveWizardButton
+            // 
+            this.CurveWizardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CurveWizardButton.Location = new System.Drawing.Point(662, 22);
+            this.CurveWizardButton.Name = "CurveWizardButton";
+            this.CurveWizardButton.Size = new System.Drawing.Size(103, 23);
+            this.CurveWizardButton.TabIndex = 5;
+            this.CurveWizardButton.Text = "Wizard...";
+            this.CurveWizardButton.UseVisualStyleBackColor = true;
+            this.CurveWizardButton.Click += new System.EventHandler(this.CurveWizardButton_Click);
+            // 
             // ResponseCurveEditor
             // 
             this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -130,19 +151,11 @@
             this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 146);
             this.ResponseCurveEditor.TabIndex = 0;
             // 
-            // ParamFlowPanel
-            // 
-            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
-            this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 155);
-            this.ParamFlowPanel.TabIndex = 0;
-            // 
             // EditWidgetConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CurveWizardButton);
             this.Controls.Add(this.HorizontalSplitter);
             this.Controls.Add(this.InputAxisLabel);
             this.Controls.Add(this.InputAxisDropdown);
@@ -170,5 +183,6 @@
         private System.Windows.Forms.GroupBox ResponseCurveGroupBox;
         private EditWidgetResponseCurve ResponseCurveEditor;
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
+        private System.Windows.Forms.Button CurveWizardButton;
     }
 }
