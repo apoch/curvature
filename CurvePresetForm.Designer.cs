@@ -39,6 +39,7 @@
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.PreviewLabel = new System.Windows.Forms.Label();
             this.PresetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CurveTypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             "fluctuates"});
             this.IncreasingDecreasingComboBox.Location = new System.Drawing.Point(272, 12);
             this.IncreasingDecreasingComboBox.Name = "IncreasingDecreasingComboBox";
-            this.IncreasingDecreasingComboBox.Size = new System.Drawing.Size(176, 21);
+            this.IncreasingDecreasingComboBox.Size = new System.Drawing.Size(304, 21);
             this.IncreasingDecreasingComboBox.TabIndex = 0;
             this.IncreasingDecreasingComboBox.SelectedIndexChanged += new System.EventHandler(this.IncreasingDecreasingComboBox_SelectedIndexChanged);
             // 
@@ -71,10 +72,11 @@
             this.SuggestedPresetList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.SuggestedPresetList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.PresetNameColumn});
+            this.PresetNameColumn,
+            this.CurveTypeColumn});
             this.SuggestedPresetList.Location = new System.Drawing.Point(15, 98);
             this.SuggestedPresetList.Name = "SuggestedPresetList";
-            this.SuggestedPresetList.Size = new System.Drawing.Size(251, 176);
+            this.SuggestedPresetList.Size = new System.Drawing.Size(378, 176);
             this.SuggestedPresetList.TabIndex = 2;
             this.SuggestedPresetList.UseCompatibleStateImageBehavior = false;
             this.SuggestedPresetList.View = System.Windows.Forms.View.Details;
@@ -92,7 +94,7 @@
             // 
             this.CancelPresetsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelPresetsButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelPresetsButton.Location = new System.Drawing.Point(374, 280);
+            this.CancelPresetsButton.Location = new System.Drawing.Point(501, 280);
             this.CancelPresetsButton.Name = "CancelPresetsButton";
             this.CancelPresetsButton.Size = new System.Drawing.Size(75, 23);
             this.CancelPresetsButton.TabIndex = 4;
@@ -103,7 +105,7 @@
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Location = new System.Drawing.Point(293, 280);
+            this.OKButton.Location = new System.Drawing.Point(420, 280);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 5;
@@ -118,10 +120,12 @@
             "constant/linear",
             "slow at first, fast later",
             "fast at first, slow later",
-            "more dynamic"});
+            "more dynamic",
+            "slow at either end, fast in the middle",
+            "fast at either end, slow in the middle"});
             this.AccelerationComboBox.Location = new System.Drawing.Point(272, 39);
             this.AccelerationComboBox.Name = "AccelerationComboBox";
-            this.AccelerationComboBox.Size = new System.Drawing.Size(176, 21);
+            this.AccelerationComboBox.Size = new System.Drawing.Size(304, 21);
             this.AccelerationComboBox.TabIndex = 8;
             this.AccelerationComboBox.SelectedIndexChanged += new System.EventHandler(this.AccelerationComboBox_SelectedIndexChanged);
             // 
@@ -136,9 +140,10 @@
             // 
             // PreviewBox
             // 
+            this.PreviewBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PreviewBox.BackColor = System.Drawing.Color.White;
             this.PreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PreviewBox.Location = new System.Drawing.Point(272, 98);
+            this.PreviewBox.Location = new System.Drawing.Point(399, 98);
             this.PreviewBox.Name = "PreviewBox";
             this.PreviewBox.Size = new System.Drawing.Size(176, 176);
             this.PreviewBox.TabIndex = 10;
@@ -147,7 +152,7 @@
             // PreviewLabel
             // 
             this.PreviewLabel.AutoSize = true;
-            this.PreviewLabel.Location = new System.Drawing.Point(269, 78);
+            this.PreviewLabel.Location = new System.Drawing.Point(396, 82);
             this.PreviewLabel.Name = "PreviewLabel";
             this.PreviewLabel.Size = new System.Drawing.Size(48, 13);
             this.PreviewLabel.TabIndex = 11;
@@ -158,11 +163,16 @@
             this.PresetNameColumn.Text = "Preset Name";
             this.PresetNameColumn.Width = 230;
             // 
+            // CurveTypeColumn
+            // 
+            this.CurveTypeColumn.Text = "Curve Type";
+            this.CurveTypeColumn.Width = 100;
+            // 
             // CurvePresetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 315);
+            this.ClientSize = new System.Drawing.Size(588, 315);
             this.Controls.Add(this.PreviewLabel);
             this.Controls.Add(this.PreviewBox);
             this.Controls.Add(this.AccelerationLabel);
@@ -198,5 +208,6 @@
         private System.Windows.Forms.PictureBox PreviewBox;
         private System.Windows.Forms.Label PreviewLabel;
         private System.Windows.Forms.ColumnHeader PresetNameColumn;
+        private System.Windows.Forms.ColumnHeader CurveTypeColumn;
     }
 }

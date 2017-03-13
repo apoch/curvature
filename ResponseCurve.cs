@@ -41,16 +41,16 @@ namespace Curvature
             switch (Type)
             {
                 case CurveType.Linear:
-                    return (Slope * (x - XShift)) + YShift;
+                    return Sanitize((Slope * (x - XShift)) + YShift);
 
                 case CurveType.Polynomial:
-                    return (Slope * Math.Pow(x - XShift, Exponent)) + YShift;
+                    return Sanitize((Slope * Math.Pow(x - XShift, Exponent)) + YShift);
 
                 case CurveType.Logistic:
-                    break;
+                    return Sanitize((Slope / (1 + Math.Exp(-10.0 * Exponent * (x - 0.5 - XShift)))) + YShift);
 
                 case CurveType.Logit:
-                    break;
+                    return Sanitize(Math.Log(Slope * (x - XShift) / (1.0 - (x - XShift))) / 5.0 + 0.5 + YShift);
 
                 case CurveType.Normal:
                     break;
@@ -60,6 +60,17 @@ namespace Curvature
             }
 
             return 0.0;
+        }
+
+        private double Sanitize(double y)
+        {
+            if (double.IsInfinity(y))
+                return 0.0;
+
+            if (double.IsNaN(y))
+                return 0.0;
+
+            return y;
         }
     }
 }
