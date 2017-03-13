@@ -79,6 +79,14 @@ namespace Curvature
                 SuggestBasicQuadricLowerRight();
                 SuggestBasicQuadricUpperLeft();
                 SuggestBasicQuadricUpperRight();
+                SuggestBasicLogistic();
+                SuggestInverseLogistic();
+                SuggestBasicLogit();
+                SuggestInverseLogit();
+                SuggestBasicNormal();
+                SuggestInverseNormal();
+                SuggestBasicSine();
+                SuggestInverseSine();
             }
             else if (IncreasingDecreasingComboBox.SelectedIndex == 0)
             {
@@ -103,6 +111,16 @@ namespace Curvature
                 else if (AccelerationComboBox.SelectedIndex == 3)
                 {
                     // Dynamic
+                }
+                else if (AccelerationComboBox.SelectedIndex == 4)
+                {
+                    // Slow edges, fast middle
+                    SuggestBasicLogistic();
+                }
+                else if (AccelerationComboBox.SelectedIndex == 5)
+                {
+                    // Fast edges, slow middle
+                    SuggestBasicLogit();
                 }
             }
             else if (IncreasingDecreasingComboBox.SelectedIndex == 1)
@@ -129,6 +147,16 @@ namespace Curvature
                 {
                     // Dynamic
                 }
+                else if (AccelerationComboBox.SelectedIndex == 4)
+                {
+                    // Slow edges, fast middle
+                    SuggestInverseLogistic();
+                }
+                else if (AccelerationComboBox.SelectedIndex == 5)
+                {
+                    // Fast edges, slow middle
+                    SuggestInverseLogit();
+                }
             }
             else if (IncreasingDecreasingComboBox.SelectedIndex == 2)
             {
@@ -151,6 +179,14 @@ namespace Curvature
                 {
                     // Dynamic
                 }
+                else if (AccelerationComboBox.SelectedIndex == 4)
+                {
+                    // Slow edges, fast middle
+                }
+                else if (AccelerationComboBox.SelectedIndex == 5)
+                {
+                    // Fast edges, slow middle
+                }
             }
             else if (IncreasingDecreasingComboBox.SelectedIndex == 3)
             {
@@ -171,10 +207,27 @@ namespace Curvature
                 else if (AccelerationComboBox.SelectedIndex == 3)
                 {
                     // Dynamic
+                    SuggestBasicSine();
+                    SuggestInverseSine();
+                }
+                else if (AccelerationComboBox.SelectedIndex == 4)
+                {
+                    // Slow edges, fast middle
+                    SuggestBasicNormal();
+                    SuggestInverseNormal();
+                }
+                else if (AccelerationComboBox.SelectedIndex == 5)
+                {
+                    // Fast edges, slow middle
+                    SuggestBasicLogit();
+                    SuggestInverseLogit();
                 }
             }
 
-            if(SuggestedPresetList.Items.Count > 0)
+            foreach (ListViewItem item in SuggestedPresetList.Items)
+                item.SubItems.Add((item.Tag as ResponseCurve).Type.ToString());
+
+            if (SuggestedPresetList.Items.Count > 0)
                 SuggestedPresetList.SelectedIndices.Add(0);
         }
 
@@ -221,6 +274,46 @@ namespace Curvature
         private void SuggestRuntime()
         {
             SuggestedPresetList.Items.Add("Standard runtime").Tag = new ResponseCurve(ResponseCurve.CurveType.Polynomial, -1.0, 6.0, 0.0, 1.0);
+        }
+
+        private void SuggestBasicLogistic()
+        {
+            SuggestedPresetList.Items.Add("Basic logistic").Tag = new ResponseCurve(ResponseCurve.CurveType.Logistic, 1.0, 1.0, 0.0, 0.0);
+        }
+
+        private void SuggestInverseLogistic()
+        {
+            SuggestedPresetList.Items.Add("Inverse logistic").Tag = new ResponseCurve(ResponseCurve.CurveType.Logistic, -1.0, 1.0, 0.0, 1.0);
+        }
+
+        private void SuggestBasicLogit()
+        {
+            SuggestedPresetList.Items.Add("Basic logit").Tag = new ResponseCurve(ResponseCurve.CurveType.Logit, 1.0, 1.0, 0.0, 0.0);
+        }
+
+        private void SuggestInverseLogit()
+        {
+            SuggestedPresetList.Items.Add("Inverse logit").Tag = new ResponseCurve(ResponseCurve.CurveType.Logit, -1.0, 1.0, 0.0, 0.0);
+        }
+
+        private void SuggestBasicNormal()
+        {
+            SuggestedPresetList.Items.Add("Basic bell curve").Tag = new ResponseCurve(ResponseCurve.CurveType.Normal, 1.0, 1.0, 0.0, 0.0);
+        }
+
+        private void SuggestInverseNormal()
+        {
+            SuggestedPresetList.Items.Add("Inverse bell curve").Tag = new ResponseCurve(ResponseCurve.CurveType.Normal, -1.0, 1.0, 0.0, 1.0);
+        }
+
+        private void SuggestBasicSine()
+        {
+            SuggestedPresetList.Items.Add("Basic sine wave").Tag = new ResponseCurve(ResponseCurve.CurveType.Sine, 1.0, 1.0, 0.0, 0.0);
+        }
+
+        private void SuggestInverseSine()
+        {
+            SuggestedPresetList.Items.Add("Inverse sine wave").Tag = new ResponseCurve(ResponseCurve.CurveType.Sine, -1.0, 1.0, 0.0, 0.0);
         }
 
         private Point ConvertXYToPoint(double x, double y)

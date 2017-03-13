@@ -50,13 +50,13 @@ namespace Curvature
                     return Sanitize((Slope / (1 + Math.Exp(-10.0 * Exponent * (x - 0.5 - XShift)))) + YShift);
 
                 case CurveType.Logit:
-                    return Sanitize(Math.Log(Slope * (x - XShift) / (1.0 - (x - XShift))) / 5.0 + 0.5 + YShift);
+                    return Sanitize(Slope * Math.Log((x - XShift) / (1.0 - (x - XShift))) / 5.0 + 0.5 + YShift);
 
                 case CurveType.Normal:
-                    break;
+                    return Sanitize(Slope * Math.Exp(-30.0 * Exponent * (x - XShift - 0.5) * (x - XShift - 0.5)) + YShift);
 
                 case CurveType.Sine:
-                    break;
+                    return Sanitize(0.5 * Slope * Math.Sin(2.0 * Math.PI * (x - XShift)) + 0.5 + YShift);
             }
 
             return 0.0;
