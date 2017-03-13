@@ -140,5 +140,10 @@ namespace Curvature
             EditCurve.Type = (ResponseCurve.CurveType)CurveTypeDropdown.SelectedIndex;
             CurvePictureBox.Refresh();
         }
+
+        private void PresetButton_Click(object sender, EventArgs e)
+        {
+            (new CurvePresetForm()).ShowDialog();
+        }
     }
 }

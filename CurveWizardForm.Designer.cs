@@ -42,6 +42,8 @@
             this.CancelWizardButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
+            this.NameConsiderationTab = new System.Windows.Forms.TabPage();
+            this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
@@ -57,6 +59,7 @@
             this.WizardTabs.Controls.Add(this.SelectInputTab);
             this.WizardTabs.Controls.Add(this.ConfigureParametersTab);
             this.WizardTabs.Controls.Add(this.ResponseCurveTab);
+            this.WizardTabs.Controls.Add(this.NameConsiderationTab);
             this.WizardTabs.Location = new System.Drawing.Point(12, 12);
             this.WizardTabs.Name = "WizardTabs";
             this.WizardTabs.SelectedIndex = 0;
@@ -141,6 +144,7 @@
             // 
             // ResponseCurveTab
             // 
+            this.ResponseCurveTab.Controls.Add(this.ResponseCurveDescriptionLabel);
             this.ResponseCurveTab.Controls.Add(this.ResponseCurveEditor);
             this.ResponseCurveTab.Location = new System.Drawing.Point(4, 22);
             this.ResponseCurveTab.Name = "ResponseCurveTab";
@@ -155,7 +159,7 @@
             this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OKButton.Location = new System.Drawing.Point(415, 322);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(76, 31);
+            this.OKButton.Size = new System.Drawing.Size(76, 30);
             this.OKButton.TabIndex = 1;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
@@ -190,6 +194,23 @@
             this.ResponseCurveEditor.Name = "ResponseCurveEditor";
             this.ResponseCurveEditor.Size = new System.Drawing.Size(335, 230);
             this.ResponseCurveEditor.TabIndex = 0;
+            // 
+            // NameConsiderationTab
+            // 
+            this.NameConsiderationTab.Location = new System.Drawing.Point(4, 22);
+            this.NameConsiderationTab.Name = "NameConsiderationTab";
+            this.NameConsiderationTab.Size = new System.Drawing.Size(557, 278);
+            this.NameConsiderationTab.TabIndex = 4;
+            this.NameConsiderationTab.Text = "Name Consideration";
+            this.NameConsiderationTab.UseVisualStyleBackColor = true;
+            // 
+            // ResponseCurveDescriptionLabel
+            // 
+            this.ResponseCurveDescriptionLabel.Location = new System.Drawing.Point(3, 3);
+            this.ResponseCurveDescriptionLabel.Name = "ResponseCurveDescriptionLabel";
+            this.ResponseCurveDescriptionLabel.Size = new System.Drawing.Size(212, 230);
+            this.ResponseCurveDescriptionLabel.TabIndex = 1;
+            this.ResponseCurveDescriptionLabel.Text = resources.GetString("ResponseCurveDescriptionLabel.Text");
             // 
             // CurveWizardForm
             // 
@@ -229,5 +250,7 @@
         private System.Windows.Forms.ComboBox InputComboBox;
         private System.Windows.Forms.Label InputDescriptionLabel;
         private EditWidgetResponseCurve ResponseCurveEditor;
+        private System.Windows.Forms.TabPage NameConsiderationTab;
+        private System.Windows.Forms.Label ResponseCurveDescriptionLabel;
     }
 }

@@ -117,31 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResponseCurveDescriptionLabel.Text" xml:space="preserve">
-    <value>Response curves control the relationship between input values and the actual score of a consideration.
-
-Here you can set up the response curve for your consideration based on the input ranges specified.
-
-A consideration score (Y-axis) of 0 means that a behavior is invalid in the current circumstances. A score of 1 indicates that (as far as a single consideration goes) the behavior may be optimal.
-
-Keep in mind that all considerations for a behavior are multiplied together to obtain the behavior's final score.</value>
-  </data>
-  <data name="WizardDescriptionLabel.Text" xml:space="preserve">
-    <value>Considerations rate the attractiveness of a specific behavior from 0 to 1, based on a particular single input factor. Multiple considerations can be attached to a behavior in order to reflect the importance of different input factors. Consideration scores are multiplied together to yield the final score of a behavior; see the Behavior editor in the main Curvature Studio.
-
-Input values are normalized to 0-1 using parameters. Parameters are like "bookends" for specifying the minimum and maximum significant values of an input number. Any input value below the minimum will translate to an input of 0, and any input above the maximum will translate to 1. Input values between the minimum and maximum will vary linearly from 0 to 1.
-
-Once input values are obtained, a consideration uses a response curve to calculate its score. This curve transforms an input value into the final "attractiveness" of the consideration. Since inputs are normalized, the response curve is simple to model and compute. Many common shapes are available to choose from, or you can build a custom curve.
-
-This wizard will guide you through building a consideration and its associated response curve, step by step.</value>
-  </data>
-  <data name="InputDescriptionLabel.Text" xml:space="preserve">
-    <value>The first step in building a consideration is to choose an input. Inputs are data points about the world, other agents, or even the "thinking" AI agent itself.
-
-Choosing an input signifies that the associated data point has some relevance to the AI decision-making process. The nature of that relevance will be configured in subsequent steps of this wizard.
-
-Available inputs are drawn from the Knowledge Base in the main Curvature Studio window.
-
-Keep in mind that multiple factors can be accounted for when scoring a behavior; one consideration should be created per factor.</value>
-  </data>
 </root>

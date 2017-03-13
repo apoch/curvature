@@ -38,6 +38,7 @@
             this.ExponentEditBox = new System.Windows.Forms.NumericUpDown();
             this.HorizontalShiftEditBox = new System.Windows.Forms.NumericUpDown();
             this.VerticalShiftEditBox = new System.Windows.Forms.NumericUpDown();
+            this.PresetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CurvePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlopeEditBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExponentEditBox)).BeginInit();
@@ -109,7 +110,7 @@
             this.CurvePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.CurvePictureBox.Location = new System.Drawing.Point(138, 3);
             this.CurvePictureBox.Name = "CurvePictureBox";
-            this.CurvePictureBox.Size = new System.Drawing.Size(147, 129);
+            this.CurvePictureBox.Size = new System.Drawing.Size(220, 199);
             this.CurvePictureBox.TabIndex = 9;
             this.CurvePictureBox.TabStop = false;
             // 
@@ -190,10 +191,22 @@
             this.VerticalShiftEditBox.Size = new System.Drawing.Size(69, 20);
             this.VerticalShiftEditBox.TabIndex = 13;
             // 
+            // PresetButton
+            // 
+            this.PresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PresetButton.Location = new System.Drawing.Point(5, 170);
+            this.PresetButton.Name = "PresetButton";
+            this.PresetButton.Size = new System.Drawing.Size(126, 31);
+            this.PresetButton.TabIndex = 14;
+            this.PresetButton.Text = "Preset...";
+            this.PresetButton.UseVisualStyleBackColor = true;
+            this.PresetButton.Click += new System.EventHandler(this.PresetButton_Click);
+            // 
             // EditWidgetResponseCurve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PresetButton);
             this.Controls.Add(this.VerticalShiftEditBox);
             this.Controls.Add(this.HorizontalShiftEditBox);
             this.Controls.Add(this.ExponentEditBox);
@@ -205,7 +218,7 @@
             this.Controls.Add(this.ExponentLabel);
             this.Controls.Add(this.SlopeLabel);
             this.Name = "EditWidgetResponseCurve";
-            this.Size = new System.Drawing.Size(288, 139);
+            this.Size = new System.Drawing.Size(361, 209);
             ((System.ComponentModel.ISupportInitialize)(this.CurvePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlopeEditBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExponentEditBox)).EndInit();
@@ -227,5 +240,6 @@
         private System.Windows.Forms.NumericUpDown ExponentEditBox;
         private System.Windows.Forms.NumericUpDown HorizontalShiftEditBox;
         private System.Windows.Forms.NumericUpDown VerticalShiftEditBox;
+        private System.Windows.Forms.Button PresetButton;
     }
 }
