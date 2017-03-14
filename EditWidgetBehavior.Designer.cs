@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.BehaviorNameLabel = new System.Windows.Forms.Label();
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
             this.BehaviorSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -38,14 +38,14 @@
             this.ConsiderationScoreGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoreLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.BreakdownGroupBox = new System.Windows.Forms.GroupBox();
+            this.FinalScoreLabel = new System.Windows.Forms.Label();
+            this.ScoreListView = new System.Windows.Forms.ListView();
+            this.ScoreColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DescriptionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MomentumBonusCheckBox = new System.Windows.Forms.CheckBox();
             this.CompensationCheckBox = new System.Windows.Forms.CheckBox();
             this.WeightLabel = new System.Windows.Forms.Label();
             this.BehaviorWeightEditBox = new System.Windows.Forms.NumericUpDown();
-            this.ScoreListView = new System.Windows.Forms.ListView();
-            this.ScoreColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DescriptionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FinalScoreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalSplit)).BeginInit();
             this.VerticalSplit.Panel1.SuspendLayout();
             this.VerticalSplit.Panel2.SuspendLayout();
@@ -152,6 +152,7 @@
             this.ScoreLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScoreLayoutPanel.AutoScroll = true;
             this.ScoreLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ScoreLayoutPanel.Location = new System.Drawing.Point(6, 19);
             this.ScoreLayoutPanel.Name = "ScoreLayoutPanel";
@@ -175,6 +176,49 @@
             this.BreakdownGroupBox.TabIndex = 0;
             this.BreakdownGroupBox.TabStop = false;
             this.BreakdownGroupBox.Text = "Scoring Breakdown";
+            // 
+            // FinalScoreLabel
+            // 
+            this.FinalScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FinalScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 350);
+            this.FinalScoreLabel.Name = "FinalScoreLabel";
+            this.FinalScoreLabel.Size = new System.Drawing.Size(224, 30);
+            this.FinalScoreLabel.TabIndex = 5;
+            this.FinalScoreLabel.Text = "Final Score = 0.0";
+            this.FinalScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ScoreListView
+            // 
+            this.ScoreListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScoreListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ScoreColumnHeader,
+            this.DescriptionColumnHeader});
+            listViewGroup1.Header = "Considerations";
+            listViewGroup1.Name = "ConsiderationGroup";
+            listViewGroup2.Header = "Bonuses";
+            listViewGroup2.Name = "BonusGroup";
+            this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2});
+            this.ScoreListView.Location = new System.Drawing.Point(6, 91);
+            this.ScoreListView.Name = "ScoreListView";
+            this.ScoreListView.Size = new System.Drawing.Size(227, 252);
+            this.ScoreListView.TabIndex = 4;
+            this.ScoreListView.UseCompatibleStateImageBehavior = false;
+            this.ScoreListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ScoreColumnHeader
+            // 
+            this.ScoreColumnHeader.Text = "Score";
+            // 
+            // DescriptionColumnHeader
+            // 
+            this.DescriptionColumnHeader.Text = "Description";
+            this.DescriptionColumnHeader.Width = 120;
             // 
             // MomentumBonusCheckBox
             // 
@@ -223,49 +267,6 @@
             0,
             0});
             this.BehaviorWeightEditBox.ValueChanged += new System.EventHandler(this.BehaviorWeightEditBox_ValueChanged);
-            // 
-            // ScoreListView
-            // 
-            this.ScoreListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScoreListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ScoreColumnHeader,
-            this.DescriptionColumnHeader});
-            listViewGroup5.Header = "Considerations";
-            listViewGroup5.Name = "ConsiderationGroup";
-            listViewGroup6.Header = "Bonuses";
-            listViewGroup6.Name = "BonusGroup";
-            this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
-            this.ScoreListView.Location = new System.Drawing.Point(6, 91);
-            this.ScoreListView.Name = "ScoreListView";
-            this.ScoreListView.Size = new System.Drawing.Size(227, 252);
-            this.ScoreListView.TabIndex = 4;
-            this.ScoreListView.UseCompatibleStateImageBehavior = false;
-            this.ScoreListView.View = System.Windows.Forms.View.Details;
-            // 
-            // ScoreColumnHeader
-            // 
-            this.ScoreColumnHeader.Text = "Score";
-            // 
-            // DescriptionColumnHeader
-            // 
-            this.DescriptionColumnHeader.Text = "Description";
-            this.DescriptionColumnHeader.Width = 120;
-            // 
-            // FinalScoreLabel
-            // 
-            this.FinalScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FinalScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 350);
-            this.FinalScoreLabel.Name = "FinalScoreLabel";
-            this.FinalScoreLabel.Size = new System.Drawing.Size(224, 30);
-            this.FinalScoreLabel.TabIndex = 5;
-            this.FinalScoreLabel.Text = "Final Score = 0.0";
-            this.FinalScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditWidgetBehavior
             // 
