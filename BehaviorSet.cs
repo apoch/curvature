@@ -30,7 +30,7 @@ namespace Curvature
 
         public Control CreateEditorUI(Project project)
         {
-            return new EditWidgetBehaviorSet(project, this);
+            return new EditWidgetBehaviorSet(project, ReadableName, EnabledBehaviors);
         }
     }
 }

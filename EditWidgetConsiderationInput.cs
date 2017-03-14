@@ -33,9 +33,9 @@ namespace Curvature
             InputValueTrackBar_Scroll(null, null);
         }
 
-        public float GetNormalizedValue()
+        public double GetNormalizedValue()
         {
-            return ((float)InputValueTrackBar.Value) / ((float)InputValueTrackBar.Maximum - (float)InputValueTrackBar.Minimum);
+            return ((double)InputValueTrackBar.Value) / ((double)InputValueTrackBar.Maximum - (double)InputValueTrackBar.Minimum);
         }
 
         private void InputValueTrackBar_Scroll(object sender, EventArgs e)

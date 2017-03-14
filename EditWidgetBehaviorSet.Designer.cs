@@ -28,8 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BehaviorSetNameLabel = new System.Windows.Forms.Label();
             this.EnabledBehaviorsListBox = new System.Windows.Forms.CheckedListBox();
+            this.InputOutputSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.InputGroupBox = new System.Windows.Forms.GroupBox();
+            this.InputFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.BehaviorScoresListView = new System.Windows.Forms.ListView();
+            this.BehaviorNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ScoreColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            ((System.ComponentModel.ISupportInitialize)(this.InputOutputSplitContainer)).BeginInit();
+            this.InputOutputSplitContainer.Panel1.SuspendLayout();
+            this.InputOutputSplitContainer.Panel2.SuspendLayout();
+            this.InputOutputSplitContainer.SuspendLayout();
+            this.InputGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // BehaviorSetNameLabel
@@ -44,24 +57,99 @@
             // 
             // EnabledBehaviorsListBox
             // 
-            this.EnabledBehaviorsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnabledBehaviorsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.EnabledBehaviorsListBox.FormattingEnabled = true;
             this.EnabledBehaviorsListBox.IntegralHeight = false;
             this.EnabledBehaviorsListBox.Location = new System.Drawing.Point(7, 23);
             this.EnabledBehaviorsListBox.Name = "EnabledBehaviorsListBox";
-            this.EnabledBehaviorsListBox.Size = new System.Drawing.Size(447, 229);
+            this.EnabledBehaviorsListBox.Size = new System.Drawing.Size(222, 229);
             this.EnabledBehaviorsListBox.TabIndex = 1;
+            // 
+            // InputOutputSplitContainer
+            // 
+            this.InputOutputSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputOutputSplitContainer.Location = new System.Drawing.Point(235, 23);
+            this.InputOutputSplitContainer.Name = "InputOutputSplitContainer";
+            this.InputOutputSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // InputOutputSplitContainer.Panel1
+            // 
+            this.InputOutputSplitContainer.Panel1.Controls.Add(this.InputGroupBox);
+            // 
+            // InputOutputSplitContainer.Panel2
+            // 
+            this.InputOutputSplitContainer.Panel2.Controls.Add(this.BehaviorScoresListView);
+            this.InputOutputSplitContainer.Size = new System.Drawing.Size(268, 229);
+            this.InputOutputSplitContainer.SplitterDistance = 89;
+            this.InputOutputSplitContainer.TabIndex = 2;
+            // 
+            // InputGroupBox
+            // 
+            this.InputGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputGroupBox.Controls.Add(this.InputFlowPanel);
+            this.InputGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.InputGroupBox.Name = "InputGroupBox";
+            this.InputGroupBox.Size = new System.Drawing.Size(265, 86);
+            this.InputGroupBox.TabIndex = 3;
+            this.InputGroupBox.TabStop = false;
+            this.InputGroupBox.Text = "Inputs";
+            // 
+            // InputFlowPanel
+            // 
+            this.InputFlowPanel.AutoScroll = true;
+            this.InputFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.InputFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.InputFlowPanel.Name = "InputFlowPanel";
+            this.InputFlowPanel.Size = new System.Drawing.Size(259, 67);
+            this.InputFlowPanel.TabIndex = 0;
+            // 
+            // RefreshTimer
+            // 
+            this.RefreshTimer.Interval = 250;
+            this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
+            // 
+            // BehaviorScoresListView
+            // 
+            this.BehaviorScoresListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BehaviorNameColumnHeader,
+            this.ScoreColumnHeader});
+            this.BehaviorScoresListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BehaviorScoresListView.Location = new System.Drawing.Point(0, 0);
+            this.BehaviorScoresListView.Name = "BehaviorScoresListView";
+            this.BehaviorScoresListView.Size = new System.Drawing.Size(268, 136);
+            this.BehaviorScoresListView.TabIndex = 0;
+            this.BehaviorScoresListView.UseCompatibleStateImageBehavior = false;
+            this.BehaviorScoresListView.View = System.Windows.Forms.View.Details;
+            // 
+            // BehaviorNameColumnHeader
+            // 
+            this.BehaviorNameColumnHeader.Text = "Behavior Name";
+            this.BehaviorNameColumnHeader.Width = 180;
+            // 
+            // ScoreColumnHeader
+            // 
+            this.ScoreColumnHeader.Text = "Score";
             // 
             // EditWidgetBehaviorSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.InputOutputSplitContainer);
             this.Controls.Add(this.EnabledBehaviorsListBox);
             this.Controls.Add(this.BehaviorSetNameLabel);
             this.Name = "EditWidgetBehaviorSet";
-            this.Size = new System.Drawing.Size(457, 256);
+            this.Size = new System.Drawing.Size(506, 256);
+            this.InputOutputSplitContainer.Panel1.ResumeLayout(false);
+            this.InputOutputSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.InputOutputSplitContainer)).EndInit();
+            this.InputOutputSplitContainer.ResumeLayout(false);
+            this.InputGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,5 +159,12 @@
 
         private System.Windows.Forms.Label BehaviorSetNameLabel;
         private System.Windows.Forms.CheckedListBox EnabledBehaviorsListBox;
+        private System.Windows.Forms.SplitContainer InputOutputSplitContainer;
+        private System.Windows.Forms.GroupBox InputGroupBox;
+        private System.Windows.Forms.FlowLayoutPanel InputFlowPanel;
+        private System.Windows.Forms.Timer RefreshTimer;
+        private System.Windows.Forms.ListView BehaviorScoresListView;
+        private System.Windows.Forms.ColumnHeader BehaviorNameColumnHeader;
+        private System.Windows.Forms.ColumnHeader ScoreColumnHeader;
     }
 }

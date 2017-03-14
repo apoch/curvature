@@ -40,7 +40,7 @@ namespace Curvature
             RefreshInputs();
         }
 
-        public float GetInputValue(InputAxis axis)
+        public double GetInputValue(InputAxis axis)
         {
             foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
             {
@@ -48,7 +48,7 @@ namespace Curvature
                     return input.GetNormalizedValue();
             }
 
-            return 0.0f;
+            return 0.0;
         }
 
         public void RefreshInputs()

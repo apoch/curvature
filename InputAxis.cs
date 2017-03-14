@@ -51,5 +51,35 @@ namespace Curvature
         {
             return new EditWidgetInputAxis(project, this);
         }
+
+        public InputAxis Union(InputAxis other)
+        {
+            if (other == null)
+                return this;
+
+            if (other.ReadableName.CompareTo(ReadableName) != 0)
+                throw new ArgumentException("Cannot union unrelated inputs");
+
+            if (Parameters.Count != other.Parameters.Count)
+                throw new ArgumentException("Cannot union inputs with disjoint parameters");
+
+            var ret = new InputAxis(ReadableName, Origin);
+            ret.KBRecord = KBRecord;
+            ret.ReadableName = ReadableName;
+
+            for (int i = 0; i < Parameters.Count; ++i)
+            {
+                if (other.Parameters[i].ReadableName.CompareTo(Parameters[i].ReadableName) != 0)
+                    throw new ArgumentException("Cannot union inputs with disjoint parameters");
+
+                float newmin = Math.Min(Parameters[i].MinimumValue, other.Parameters[i].MinimumValue);
+                float newmax = Math.Max(Parameters[i].MaximumValue, other.Parameters[i].MaximumValue);
+
+                var param = new InputParameter(Parameters[i].ReadableName, newmin, newmax);
+                ret.Parameters.Add(param);
+            }
+
+            return ret;
+        }
     }
 }

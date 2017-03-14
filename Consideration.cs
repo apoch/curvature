@@ -38,5 +38,10 @@ namespace Curvature
         {
             return new EditWidgetConsideration(project, this);
         }
+
+        internal double Score(IInputBroker broker)
+        {
+            return Curve.ComputeValue(broker.GetInputValue(Input));
+        }
     }
 }

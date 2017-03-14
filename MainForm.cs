@@ -44,8 +44,20 @@ namespace Curvature
             foreach (Control c in EditorPanel.Controls)
                 c.Dispose();
 
-            if (e.Node == null || e.Node.Tag == null)
+            if (e.Node == null)
                 return;
+
+            if (e.Node.Tag == null)
+            {
+                if (e.Node.Text == "Behaviors")
+                {
+                    var behaviorCtl = new EditWidgetBehaviorSet(EditingProject, "(All Behaviors)", new HashSet<Behavior>());
+                    EditorPanel.Controls.Add(behaviorCtl);
+                    behaviorCtl.Dock = DockStyle.Fill;
+                }
+
+                return;
+            }
 
             var editable = e.Node.Tag as IUserEditable;
             if (editable == null)

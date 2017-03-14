@@ -8,7 +8,7 @@ namespace Curvature
 {
     interface IInputBroker
     {
-        float GetInputValue(InputAxis axis);
+        double GetInputValue(InputAxis axis);
         void RefreshInputs();
     }
 }

@@ -17,6 +17,9 @@ namespace Curvature
         [DataMember]
         public List<Consideration> Considerations;
 
+        [DataMember]
+        public double Weight;
+
 
         internal Behavior()
         {
@@ -26,6 +29,7 @@ namespace Curvature
         {
             ReadableName = name;
             Considerations = new List<Consideration>();
+            Weight = 1.0;
         }
 
         public Control CreateEditorUI(Project project)
@@ -36,6 +40,17 @@ namespace Curvature
         public override string ToString()
         {
             return ReadableName;
+        }
+
+        internal double Score(IInputBroker broker)
+        {
+            double result = Weight;
+            foreach (Consideration c in Considerations)
+            {
+                result *= c.Score(broker);
+            }
+
+            return result;
         }
     }
 }
