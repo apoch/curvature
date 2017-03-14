@@ -31,6 +31,7 @@ namespace Curvature
         {
             ReadableName = name;
             Parameters = new List<InputParameter>();
+            Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 1.0, 0.0, 0.0);
         }
 
         public Control CreateEditorUI(Project project)

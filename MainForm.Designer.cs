@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ContentTree = new System.Windows.Forms.TreeView();
             this.EditorPanel = new System.Windows.Forms.Panel();
             this.PrimaryMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -40,7 +41,11 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveFileDialogBox = new System.Windows.Forms.SaveFileDialog();
+            this.ContextMenuBehavior = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createNewConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
+            this.ContextMenuBehavior.SuspendLayout();
             this.SuspendLayout();
             // 
             // ContentTree
@@ -134,6 +139,28 @@
             this.SaveFileDialogBox.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
             this.SaveFileDialogBox.Title = "Save Curvature Project";
             // 
+            // ContextMenuBehavior
+            // 
+            this.ContextMenuBehavior.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewConsiderationToolStripMenuItem,
+            this.deleteBehaviorToolStripMenuItem});
+            this.ContextMenuBehavior.Name = "ContextMenuBehavior";
+            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 70);
+            this.ContextMenuBehavior.Text = "ContextMenuBehavior";
+            // 
+            // createNewConsiderationToolStripMenuItem
+            // 
+            this.createNewConsiderationToolStripMenuItem.Name = "createNewConsiderationToolStripMenuItem";
+            this.createNewConsiderationToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.createNewConsiderationToolStripMenuItem.Text = "Create new consideration...";
+            this.createNewConsiderationToolStripMenuItem.Click += new System.EventHandler(this.createNewConsiderationToolStripMenuItem_Click);
+            // 
+            // deleteBehaviorToolStripMenuItem
+            // 
+            this.deleteBehaviorToolStripMenuItem.Name = "deleteBehaviorToolStripMenuItem";
+            this.deleteBehaviorToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.deleteBehaviorToolStripMenuItem.Text = "Delete behavior";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,6 +174,7 @@
             this.Text = "Curvature Studio";
             this.PrimaryMenuStrip.ResumeLayout(false);
             this.PrimaryMenuStrip.PerformLayout();
+            this.ContextMenuBehavior.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,6 +194,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog SaveFileDialogBox;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuBehavior;
+        private System.Windows.Forms.ToolStripMenuItem createNewConsiderationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteBehaviorToolStripMenuItem;
     }
 }
 

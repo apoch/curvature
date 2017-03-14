@@ -20,6 +20,20 @@ namespace Curvature
 
             EditingProject = new Project();
             EditingProject.PopulateUI(ContentTree);
+
+            ContentTree.NodeMouseClick += (e, args) =>
+            {
+                if (args.Node == null || args.Node.Tag == null)
+                    return;
+
+                if (args.Button == MouseButtons.Right)
+                {
+                    if (args.Node.Tag.GetType() == typeof(Behavior))
+                    {
+                        ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
+                    }
+                }
+            };
         }
 
         private void ContentTree_AfterSelect(object sender, TreeViewEventArgs e)
@@ -45,6 +59,12 @@ namespace Curvature
             {
                 EditingProject.SaveToFile(SaveFileDialogBox.FileName);
             }
+        }
+
+        private void createNewConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var consideration = new Consideration("New consideration");
+            (new CurveWizardForm(EditingProject, consideration)).ShowDialog();
         }
     }
 }
