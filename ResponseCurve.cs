@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class ResponseCurve
     {
         public enum CurveType
@@ -18,11 +20,19 @@ namespace Curvature
             Sine
         }
 
-
+        [DataMember]
         public CurveType Type;
+
+        [DataMember]
         public double Slope;
+
+        [DataMember]
         public double Exponent;
+
+        [DataMember]
         public double XShift;
+
+        [DataMember]
         public double YShift;
 
 

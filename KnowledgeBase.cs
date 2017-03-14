@@ -1,21 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class KnowledgeBase : IUserEditable
     {
 
+        [DataContract(Namespace = "")]
         public class Record
         {
+            [DataMember]
             public string ReadableName;
+
+            [DataMember]
             public double MinimumValue;
+
+            [DataMember]
             public double MaximumValue;
+
+            [DataMember]
             public bool Computed;
+
+
+            internal Record()
+            {
+            }
 
             public Record(string name, double min, double max, bool computed)
             {
@@ -31,6 +46,7 @@ namespace Curvature
             }
         }
 
+        [DataMember]
         internal List<Record> Records;
 
 

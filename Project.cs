@@ -2,21 +2,36 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class Project : IUserEditable
     {
+        [DataMember]
         public string ReadableName;
+
+        [DataMember]
         public KnowledgeBase KB;
+
+        [DataMember]
         public List<Archetype> Archetypes;
+
+        [DataMember]
         public List<Behavior> Behaviors;
+
+        [DataMember]
         public List<BehaviorSet> BehaviorSets;
+
+        [DataMember]
         public List<InputAxis> Inputs;
+
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
@@ -108,10 +123,17 @@ namespace Curvature
 
         public void SaveToFile(string filename)
         {
-            var serializer = new XmlSerializer(typeof(Project));
-            var file = new StreamWriter(filename);
+            var settings = new DataContractSerializerSettings();
+            settings.PreserveObjectReferences = true;
 
-            serializer.Serialize(file, this);
+            var serializer = new DataContractSerializer(typeof(Project), settings);
+
+            var xmlSettings = new XmlWriterSettings();
+            xmlSettings.Indent = true;
+
+            var file = XmlWriter.Create(new FileStream(filename, FileMode.Create), xmlSettings);
+
+            serializer.WriteObject(file, this);
             file.Close();
         }
 

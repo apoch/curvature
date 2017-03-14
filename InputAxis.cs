@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class InputAxis : IUserEditable
     {
         public enum OriginType
@@ -17,11 +18,16 @@ namespace Curvature
             ComputedValue
         }
 
+        [DataMember]
         public string ReadableName;
+
+        [DataMember]
         public OriginType Origin;
+
+        [DataMember]
         public List<InputParameter> Parameters;
 
-        [XmlIgnore]
+        [DataMember]
         public KnowledgeBase.Record KBRecord;
 
 
