@@ -12,6 +12,10 @@ namespace Curvature
         public float MinimumValue;
         public float MaximumValue;
 
+        internal InputParameter()
+        {
+        }
+
         public InputParameter(string name, float min, float max)
         {
             ReadableName = name;

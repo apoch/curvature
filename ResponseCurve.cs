@@ -26,6 +26,10 @@ namespace Curvature
         public double YShift;
 
 
+        internal ResponseCurve()
+        {
+        }
+
         public ResponseCurve(CurveType type, double slope, double exponent, double xshift, double yshift)
         {
             Type = type;

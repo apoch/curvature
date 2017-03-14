@@ -38,5 +38,13 @@ namespace Curvature
             EditorPanel.Controls.Add(ctl);
             ctl.Dock = DockStyle.Fill;
         }
+
+        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SaveFileDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                EditingProject.SaveToFile(SaveFileDialogBox.FileName);
+            }
+        }
     }
 }

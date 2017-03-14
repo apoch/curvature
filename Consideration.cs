@@ -14,6 +14,10 @@ namespace Curvature
         public ResponseCurve Curve;
         public List<InputParameter> Parameters;
 
+        internal Consideration()
+        {
+        }
+
         public Consideration(string name)
         {
             ReadableName = name;

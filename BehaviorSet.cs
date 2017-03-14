@@ -12,6 +12,10 @@ namespace Curvature
         public string ReadableName;
         public HashSet<Behavior> EnabledBehaviors;
 
+        internal BehaviorSet()
+        {
+        }
+
         public BehaviorSet(string name)
         {
             ReadableName = name;

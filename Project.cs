@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Curvature
 {
     public class Project : IUserEditable
     {
-        internal string ReadableName;
-        internal KnowledgeBase KB;
-        internal List<Archetype> Archetypes;
-        internal List<Behavior> Behaviors;
-        internal List<BehaviorSet> BehaviorSets;
-        internal List<InputAxis> Inputs;
+        public string ReadableName;
+        public KnowledgeBase KB;
+        public List<Archetype> Archetypes;
+        public List<Behavior> Behaviors;
+        public List<BehaviorSet> BehaviorSets;
+        public List<InputAxis> Inputs;
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
@@ -101,6 +103,16 @@ namespace Curvature
         public Control CreateEditorUI(Project project)
         {
             return new EditWidgetProject(this);
+        }
+
+
+        public void SaveToFile(string filename)
+        {
+            var serializer = new XmlSerializer(typeof(Project));
+            var file = new StreamWriter(filename);
+
+            serializer.Serialize(file, this);
+            file.Close();
         }
 
 

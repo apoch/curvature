@@ -12,6 +12,10 @@ namespace Curvature
         public string ReadableName;
         public List<Consideration> Considerations;
 
+        internal Behavior()
+        {
+        }
+
         public Behavior(string name)
         {
             ReadableName = name;

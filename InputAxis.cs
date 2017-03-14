@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Curvature
 {
@@ -18,9 +19,15 @@ namespace Curvature
 
         public string ReadableName;
         public OriginType Origin;
-        public KnowledgeBase.Record KBRecord;
         public List<InputParameter> Parameters;
 
+        [XmlIgnore]
+        public KnowledgeBase.Record KBRecord;
+
+
+        internal InputAxis()
+        {
+        }
 
         public InputAxis(string name, OriginType origin)
         {

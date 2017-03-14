@@ -10,6 +10,11 @@ namespace Curvature
     {
         public string ReadableName;
 
+        internal Archetype()
+        {
+
+        }
+
         public Archetype(string name)
         {
             ReadableName = name;
