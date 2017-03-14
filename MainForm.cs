@@ -13,6 +13,7 @@ namespace Curvature
     public partial class MainForm : Form
     {
         private Project EditingProject;
+        private object RightClickedNodeTag;
 
         public MainForm()
         {
@@ -26,9 +27,11 @@ namespace Curvature
                 if (args.Node == null || args.Node.Tag == null)
                     return;
 
+                RightClickedNodeTag = args.Node.Tag;
+
                 if (args.Button == MouseButtons.Right)
                 {
-                    if (args.Node.Tag.GetType() == typeof(Behavior))
+                    if (RightClickedNodeTag.GetType() == typeof(Behavior))
                     {
                         ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
                     }
@@ -64,7 +67,13 @@ namespace Curvature
         private void createNewConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var consideration = new Consideration("New consideration");
-            (new CurveWizardForm(EditingProject, consideration)).ShowDialog();
+            if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
+            {
+                var behavior = RightClickedNodeTag as Behavior;
+                behavior.Considerations.Add(consideration);
+
+                EditingProject.PopulateUI(ContentTree);
+            }
         }
     }
 }
