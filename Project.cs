@@ -33,6 +33,15 @@ namespace Curvature
         public List<InputAxis> Inputs;
 
 
+        internal class ProjectEventArgs : EventArgs
+        {
+            internal IUserEditable Editable;
+        }
+
+        internal delegate void NavigationEventHandler(object sender, ProjectEventArgs args);
+        internal event NavigationEventHandler Navigate;
+
+
         private Dictionary<string, InputAxis> InputLookupByName;
 
         public Project()
@@ -51,6 +60,11 @@ namespace Curvature
             AddDummyBehaviors();
         }
 
+
+        internal void NavigateTo(IUserEditable editable)
+        {
+            Navigate(this, new ProjectEventArgs() { Editable = editable });
+        }
 
         public void RegisterInput(InputAxis axis)
         {

@@ -21,6 +21,18 @@ namespace Curvature
 
             EditingProject = new Project();
             EditingProject.PopulateUI(ContentTree);
+            EditingProject.Navigate += (e, args) =>
+            {
+                foreach (Control c in EditorPanel.Controls)
+                    c.Dispose();
+
+                if (args.Editable == null)
+                    return;
+
+                var ctl = args.Editable.CreateEditorUI(EditingProject);
+                EditorPanel.Controls.Add(ctl);
+                ctl.Dock = DockStyle.Fill;
+            };
 
             ContentTree.NodeMouseClick += (e, args) =>
             {

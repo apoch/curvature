@@ -12,11 +12,13 @@ namespace Curvature
 {
     public partial class EditWidgetBehaviorSet : UserControl, IInputBroker
     {
+        private Project EditProject;
         private HashSet<Behavior> EditBehaviors;
 
         public EditWidgetBehaviorSet(Project project, string setname, HashSet<Behavior> behaviors)
         {
             InitializeComponent();
+            EditProject = project;
             EditBehaviors = behaviors;
 
             EnabledBehaviorsListBox.ItemCheck += (e, args) =>
@@ -32,6 +34,15 @@ namespace Curvature
             }
 
             RefreshInputControls();
+
+            BehaviorScoresListView.MouseDoubleClick += (e, args) =>
+            {
+                var item = BehaviorScoresListView.GetItemAt(args.Location.X, args.Location.Y);
+                if (item == null)
+                    return;
+
+                EditProject.NavigateTo(item.Tag as Behavior);
+            };
         }
 
         public double GetInputValue(InputAxis axis)
@@ -47,13 +58,31 @@ namespace Curvature
 
         public void RefreshInputs()
         {
+            double winscore = 0.0;
+            Behavior winbehavior = null;
+
             BehaviorScoresListView.Items.Clear();
             foreach (Behavior b in EnabledBehaviorsListBox.CheckedItems)
             {
                 double score = b.Score(this);
+                if (score > winscore)
+                {
+                    winscore = score;
+                    winbehavior = b;
+                }
 
-                var item = new ListViewItem(new string[] { b.ReadableName, $"{score:f3}" });
+                var item = new ListViewItem(new string[] { b.ReadableName, $"{b.Weight:f3}", $"{score:f3}" });
+                item.Tag = b;
                 BehaviorScoresListView.Items.Add(item);
+            }
+
+            if (winbehavior != null)
+            {
+                WinningBehaviorLabel.Text = $"Winner: {winbehavior.ReadableName} ({winscore:f3})";
+            }
+            else
+            {
+                WinningBehaviorLabel.Text = "";
             }
         }
 
