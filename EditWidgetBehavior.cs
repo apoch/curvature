@@ -21,6 +21,7 @@ namespace Curvature
             EditBehavior = behavior;
 
             BehaviorNameLabel.Text = "Behavior: " + EditBehavior.ReadableName;
+            BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
 
             var inputs = new HashSet<InputAxis>();
             foreach (var consideration in EditBehavior.Considerations)
@@ -95,6 +96,9 @@ namespace Curvature
 
         private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
         {
+            if (EditBehavior != null)
+                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
+
             RefreshInputs();
         }
     }
