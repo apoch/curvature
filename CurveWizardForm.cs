@@ -26,13 +26,20 @@ namespace Curvature
                 InputComboBox.Items.Add(axis);
             }
 
+            ConsiderationNameEditBox.Text = EditConsideration.ReadableName;
+
             ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
         }
 
-        private void NextButton_Click_1(object sender, EventArgs e)
+        private void NextButton_Click(object sender, EventArgs e)
         {
             if (WizardTabs.SelectedIndex < WizardTabs.TabCount - 1)
                 WizardTabs.SelectedIndex++;
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
     }
 }

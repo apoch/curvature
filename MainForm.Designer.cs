@@ -44,6 +44,7 @@
             this.ContextMenuBehavior = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createNewConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenFileDialogBox = new System.Windows.Forms.OpenFileDialog();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +122,7 @@
             this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
             this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.openProjectToolStripMenuItem.Text = "&Open Project...";
+            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -145,7 +147,7 @@
             this.createNewConsiderationToolStripMenuItem,
             this.deleteBehaviorToolStripMenuItem});
             this.ContextMenuBehavior.Name = "ContextMenuBehavior";
-            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 70);
+            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 48);
             this.ContextMenuBehavior.Text = "ContextMenuBehavior";
             // 
             // createNewConsiderationToolStripMenuItem
@@ -160,6 +162,10 @@
             this.deleteBehaviorToolStripMenuItem.Name = "deleteBehaviorToolStripMenuItem";
             this.deleteBehaviorToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.deleteBehaviorToolStripMenuItem.Text = "Delete behavior";
+            // 
+            // OpenFileDialogBox
+            // 
+            this.OpenFileDialogBox.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
             // 
             // MainForm
             // 
@@ -197,6 +203,7 @@
         private System.Windows.Forms.ContextMenuStrip ContextMenuBehavior;
         private System.Windows.Forms.ToolStripMenuItem createNewConsiderationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteBehaviorToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog OpenFileDialogBox;
     }
 }
 

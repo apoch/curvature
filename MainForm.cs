@@ -20,19 +20,7 @@ namespace Curvature
             InitializeComponent();
 
             EditingProject = new Project();
-            EditingProject.PopulateUI(ContentTree);
-            EditingProject.Navigate += (e, args) =>
-            {
-                foreach (Control c in EditorPanel.Controls)
-                    c.Dispose();
-
-                if (args.Editable == null)
-                    return;
-
-                var ctl = args.Editable.CreateEditorUI(EditingProject);
-                EditorPanel.Controls.Add(ctl);
-                ctl.Dock = DockStyle.Fill;
-            };
+            SetUpProject();
 
             ContentTree.NodeMouseClick += (e, args) =>
             {
@@ -98,6 +86,36 @@ namespace Curvature
 
                 EditingProject.PopulateUI(ContentTree);
             }
+        }
+
+        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (OpenFileDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                var project = Project.Deserialize(OpenFileDialogBox.FileName);
+                if (project != null)
+                {
+                    EditingProject = project;
+                    SetUpProject();
+                }
+            }
+        }
+
+        private void SetUpProject()
+        {
+            EditingProject.PopulateUI(ContentTree);
+            EditingProject.Navigate += (e, args) =>
+            {
+                foreach (Control c in EditorPanel.Controls)
+                    c.Dispose();
+
+                if (args.Editable == null)
+                    return;
+
+                var ctl = args.Editable.CreateEditorUI(EditingProject);
+                EditorPanel.Controls.Add(ctl);
+                ctl.Dock = DockStyle.Fill;
+            };
         }
     }
 }

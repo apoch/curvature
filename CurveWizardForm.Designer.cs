@@ -44,10 +44,13 @@
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.NameConsiderationTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.ConsiderationNameEditBox = new System.Windows.Forms.TextBox();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
             this.ResponseCurveTab.SuspendLayout();
+            this.NameConsiderationTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // WizardTabs
@@ -183,7 +186,7 @@
             this.NextButton.TabIndex = 4;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
-            this.NextButton.Click += new System.EventHandler(this.NextButton_Click_1);
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // ResponseCurveEditor
             // 
@@ -197,6 +200,8 @@
             // 
             // NameConsiderationTab
             // 
+            this.NameConsiderationTab.Controls.Add(this.ConsiderationNameEditBox);
+            this.NameConsiderationTab.Controls.Add(this.NameLabel);
             this.NameConsiderationTab.Location = new System.Drawing.Point(4, 22);
             this.NameConsiderationTab.Name = "NameConsiderationTab";
             this.NameConsiderationTab.Size = new System.Drawing.Size(557, 278);
@@ -211,6 +216,25 @@
             this.ResponseCurveDescriptionLabel.Size = new System.Drawing.Size(212, 230);
             this.ResponseCurveDescriptionLabel.TabIndex = 1;
             this.ResponseCurveDescriptionLabel.Text = resources.GetString("ResponseCurveDescriptionLabel.Text");
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(3, 3);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(319, 39);
+            this.NameLabel.TabIndex = 0;
+            this.NameLabel.Text = "Almost done! Your consideration just needs a name.\r\n\r\nInsert generic prose about " +
+    "how to name considerations effectively.";
+            // 
+            // ConsiderationNameEditBox
+            // 
+            this.ConsiderationNameEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 67);
+            this.ConsiderationNameEditBox.Name = "ConsiderationNameEditBox";
+            this.ConsiderationNameEditBox.Size = new System.Drawing.Size(551, 20);
+            this.ConsiderationNameEditBox.TabIndex = 1;
             // 
             // CurveWizardForm
             // 
@@ -231,6 +255,8 @@
             this.GettingStartedTab.PerformLayout();
             this.SelectInputTab.ResumeLayout(false);
             this.ResponseCurveTab.ResumeLayout(false);
+            this.NameConsiderationTab.ResumeLayout(false);
+            this.NameConsiderationTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -252,5 +278,7 @@
         private EditWidgetResponseCurve ResponseCurveEditor;
         private System.Windows.Forms.TabPage NameConsiderationTab;
         private System.Windows.Forms.Label ResponseCurveDescriptionLabel;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.TextBox ConsiderationNameEditBox;
     }
 }

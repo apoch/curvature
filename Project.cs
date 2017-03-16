@@ -151,6 +151,21 @@ namespace Curvature
             file.Close();
         }
 
+        public static Project Deserialize(string filename)
+        {
+            var settings = new DataContractSerializerSettings();
+            settings.PreserveObjectReferences = true;
+
+            var deserializer = new DataContractSerializer(typeof(Project), settings);
+
+            var file = new FileStream(filename, FileMode.Open);
+            var ret = deserializer.ReadObject(file) as Project;
+
+            file.Close();
+
+            return ret;
+        }
+
 
         private void AddDummyInputs()
         {
