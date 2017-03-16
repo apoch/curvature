@@ -13,6 +13,7 @@ namespace Curvature
     public partial class MainForm : Form
     {
         private Project EditingProject;
+        private string EditingFileName;
         private object RightClickedNodeTag;
 
         public MainForm()
@@ -73,6 +74,9 @@ namespace Curvature
             if (SaveFileDialogBox.ShowDialog() == DialogResult.OK)
             {
                 EditingProject.SaveToFile(SaveFileDialogBox.FileName);
+                EditingFileName = SaveFileDialogBox.FileName;
+
+                SetUpProject();
             }
         }
 
@@ -96,6 +100,7 @@ namespace Curvature
                 if (project != null)
                 {
                     EditingProject = project;
+                    EditingFileName = OpenFileDialogBox.FileName;
                     SetUpProject();
                 }
             }
@@ -116,6 +121,32 @@ namespace Curvature
                 EditorPanel.Controls.Add(ctl);
                 ctl.Dock = DockStyle.Fill;
             };
+
+            if (!string.IsNullOrEmpty(EditingFileName))
+                Text = $"Curvature Studio - [{EditingFileName}]";
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(EditingFileName))
+            {
+                saveProjectAsToolStripMenuItem_Click(null, null);
+                return;
+            }
+
+            EditingProject.SaveToFile(EditingFileName);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditingProject = new Project();
+            SetUpProject();
+            ContentTree.SelectedNode = ContentTree.Nodes[0];
         }
     }
 }
