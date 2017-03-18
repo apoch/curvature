@@ -14,7 +14,7 @@ namespace Curvature
     {
         private Project EditingProject;
         private string EditingFileName;
-        private object RightClickedNodeTag;
+        private TreeNode RightClickedNode;
 
         public MainForm()
         {
@@ -28,13 +28,17 @@ namespace Curvature
                 if (args.Node == null || args.Node.Tag == null)
                     return;
 
-                RightClickedNodeTag = args.Node.Tag;
+                RightClickedNode = args.Node;
 
                 if (args.Button == MouseButtons.Right)
                 {
-                    if (RightClickedNodeTag.GetType() == typeof(Behavior))
+                    if (RightClickedNode.Tag.GetType() == typeof(Behavior))
                     {
                         ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
+                    }
+                    else if (RightClickedNode.Tag.GetType() == typeof(Consideration))
+                    {
+                        ContextMenuConsideration.Show(ContentTree.PointToScreen(args.Location));
                     }
                 }
             };
@@ -78,7 +82,7 @@ namespace Curvature
             var consideration = new Consideration("New consideration");
             if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
             {
-                var behavior = RightClickedNodeTag as Behavior;
+                var behavior = RightClickedNode.Tag as Behavior;
                 behavior.Considerations.Add(consideration);
 
                 EditingProject.PopulateUI(ContentTree);
@@ -149,6 +153,39 @@ namespace Curvature
         {
             EditorPanel.Controls.Add(c);
             c.Dock = DockStyle.Fill;
+        }
+
+        private void runWizardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var consideration = RightClickedNode.Tag as Consideration;
+            (new CurveWizardForm(EditingProject, consideration)).ShowDialog();
+        }
+
+        private void deleteConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var consideration = RightClickedNode.Tag as Consideration;
+            var promptText = $"Are you sure you wish to delete this consideration?\r\n\r\n{consideration.ReadableName}";
+            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.Yes)
+            {
+                var behavior = RightClickedNode.Parent.Tag as Behavior;
+                behavior.Considerations.Remove(consideration);
+
+                SetUpProject();
+            }
+        }
+
+        private void deleteBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var behavior = RightClickedNode.Tag as Behavior;
+            var promptText = $"Are you sure you wish to delete this behavior?\r\n\r\n{behavior.ReadableName}";
+            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.Yes)
+            {
+                EditingProject.Behaviors.Remove(behavior);
+
+                SetUpProject();
+            }
         }
     }
 }
