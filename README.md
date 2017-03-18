@@ -9,10 +9,8 @@ Curvature is fully data-driven and supports the creation of a complete AI pipeli
 Curvature is still in early development. Check back frequently for new features and enhancements.
 
 Some things I'm hoping to add:
- * Load and save projects
+ * Richer knowledge-base implementation
  * Better parameterization of input axes
- * Canned "sets" of behaviors that can be selectively enabled on agents
- * Experimentation UI for behavior sets
  * Experimentation UI for agent archetypes
  * World "scenarios" for setting up test scenes
  * Multi-agent experimentation mode (part of scenarios)
