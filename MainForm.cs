@@ -42,8 +42,7 @@ namespace Curvature
 
         private void ContentTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            foreach (Control c in EditorPanel.Controls)
-                c.Dispose();
+            ClearEditorPanel();
 
             if (e.Node == null)
                 return;
@@ -51,11 +50,7 @@ namespace Curvature
             if (e.Node.Tag == null)
             {
                 if (e.Node.Text == "Behaviors")
-                {
-                    var behaviorCtl = new EditWidgetBehaviorSet(EditingProject, "(All Behaviors)", new HashSet<Behavior>());
-                    EditorPanel.Controls.Add(behaviorCtl);
-                    behaviorCtl.Dock = DockStyle.Fill;
-                }
+                    SetEditorPanel(new EditWidgetBehaviorSet(EditingProject, "(All Behaviors)", new HashSet<Behavior>()));
 
                 return;
             }
@@ -64,9 +59,7 @@ namespace Curvature
             if (editable == null)
                 return;
 
-            var ctl = editable.CreateEditorUI(EditingProject);
-            EditorPanel.Controls.Add(ctl);
-            ctl.Dock = DockStyle.Fill;
+            SetEditorPanel(editable.CreateEditorUI(EditingProject));
         }
 
         private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,15 +104,12 @@ namespace Curvature
             EditingProject.PopulateUI(ContentTree);
             EditingProject.Navigate += (e, args) =>
             {
-                foreach (Control c in EditorPanel.Controls)
-                    c.Dispose();
+                ClearEditorPanel();
 
                 if (args.Editable == null)
                     return;
 
-                var ctl = args.Editable.CreateEditorUI(EditingProject);
-                EditorPanel.Controls.Add(ctl);
-                ctl.Dock = DockStyle.Fill;
+                SetEditorPanel(args.Editable.CreateEditorUI(EditingProject));
             };
 
             if (!string.IsNullOrEmpty(EditingFileName))
@@ -147,6 +137,18 @@ namespace Curvature
             EditingProject = new Project();
             SetUpProject();
             ContentTree.SelectedNode = ContentTree.Nodes[0];
+        }
+
+        private void ClearEditorPanel()
+        {
+            foreach (Control c in EditorPanel.Controls)
+                c.Dispose();
+        }
+
+        private void SetEditorPanel(Control c)
+        {
+            EditorPanel.Controls.Add(c);
+            c.Dock = DockStyle.Fill;
         }
     }
 }
