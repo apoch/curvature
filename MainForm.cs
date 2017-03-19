@@ -37,6 +37,7 @@ namespace Curvature
                 {
                     if (args.Node.Text == "Behaviors")
                     {
+                        deleteBehaviorSetToolStripMenuItem.Enabled = false;
                         ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                     }
                     else if (args.Node.Text == "Inputs")
@@ -57,6 +58,7 @@ namespace Curvature
                 }
                 else if (RightClickedNode.Tag.GetType() == typeof(BehaviorSet))
                 {
+                    deleteBehaviorSetToolStripMenuItem.Enabled = true;
                     ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                 }
             };
@@ -222,6 +224,17 @@ namespace Curvature
         {
             var axis = new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf);
             EditingProject.RegisterInput(axis);
+
+            SetUpProject();
+        }
+
+        private void deleteBehaviorSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var behaviorSet = RightClickedNode.Tag as BehaviorSet;
+            if (behaviorSet == null)
+                return;
+
+            EditingProject.BehaviorSets.Remove(behaviorSet);
 
             SetUpProject();
         }

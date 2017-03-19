@@ -54,6 +54,8 @@
             this.createNewBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuInputs = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createNewInputAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.ContextMenuConsideration.SuspendLayout();
@@ -220,9 +222,11 @@
             // ContextMenuBehaviorSet
             // 
             this.ContextMenuBehaviorSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewBehaviorToolStripMenuItem});
+            this.createNewBehaviorToolStripMenuItem,
+            this.toolStripMenuItem5,
+            this.deleteBehaviorSetToolStripMenuItem});
             this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(183, 48);
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(183, 76);
             // 
             // createNewBehaviorToolStripMenuItem
             // 
@@ -244,6 +248,18 @@
             this.createNewInputAxisToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.createNewInputAxisToolStripMenuItem.Text = "Create new input axis";
             this.createNewInputAxisToolStripMenuItem.Click += new System.EventHandler(this.createNewInputAxisToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(179, 6);
+            // 
+            // deleteBehaviorSetToolStripMenuItem
+            // 
+            this.deleteBehaviorSetToolStripMenuItem.Name = "deleteBehaviorSetToolStripMenuItem";
+            this.deleteBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.deleteBehaviorSetToolStripMenuItem.Text = "Delete behavior set";
+            this.deleteBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.deleteBehaviorSetToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -294,6 +310,8 @@
         private System.Windows.Forms.ToolStripMenuItem createNewBehaviorToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip ContextMenuInputs;
         private System.Windows.Forms.ToolStripMenuItem createNewInputAxisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem deleteBehaviorSetToolStripMenuItem;
     }
 }
 
