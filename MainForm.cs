@@ -234,9 +234,14 @@ namespace Curvature
             if (behaviorSet == null)
                 return;
 
-            EditingProject.BehaviorSets.Remove(behaviorSet);
+            var promptText = $"Are you sure you wish to delete this behavior set?\r\n\r\n{behaviorSet.ReadableName}";
+            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.Yes)
+            {
+                EditingProject.BehaviorSets.Remove(behaviorSet);
 
-            SetUpProject();
+                SetUpProject();
+            }
         }
     }
 }
