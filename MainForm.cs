@@ -25,21 +25,35 @@ namespace Curvature
 
             ContentTree.NodeMouseClick += (e, args) =>
             {
-                if (args.Node == null || args.Node.Tag == null)
+                if (args.Node == null)
                     return;
 
                 RightClickedNode = args.Node;
 
-                if (args.Button == MouseButtons.Right)
+                if (args.Button != MouseButtons.Right)
+                    return;
+
+                if (args.Node.Tag == null)
                 {
-                    if (RightClickedNode.Tag.GetType() == typeof(Behavior))
+                    if (args.Node.Text == "Behaviors")
                     {
-                        ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
+                        ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                     }
-                    else if (RightClickedNode.Tag.GetType() == typeof(Consideration))
-                    {
-                        ContextMenuConsideration.Show(ContentTree.PointToScreen(args.Location));
-                    }
+
+                    return;
+                }
+
+                if (RightClickedNode.Tag.GetType() == typeof(Behavior))
+                {
+                    ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
+                }
+                else if (RightClickedNode.Tag.GetType() == typeof(Consideration))
+                {
+                    ContextMenuConsideration.Show(ContentTree.PointToScreen(args.Location));
+                }
+                else if (RightClickedNode.Tag.GetType() == typeof(BehaviorSet))
+                {
+                    ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                 }
             };
         }
@@ -186,6 +200,18 @@ namespace Curvature
 
                 SetUpProject();
             }
+        }
+
+        private void createNewBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var behavior = new Behavior("New behavior");
+            EditingProject.Behaviors.Add(behavior);
+
+            var behaviorSet = RightClickedNode.Tag as BehaviorSet;
+            if (behaviorSet != null)
+                behaviorSet.EnabledBehaviors.Add(behavior);
+
+            SetUpProject();
         }
     }
 }

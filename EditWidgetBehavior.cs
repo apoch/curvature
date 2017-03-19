@@ -26,9 +26,11 @@ namespace Curvature
             var inputs = new HashSet<InputAxis>();
             foreach (var consideration in EditBehavior.Considerations)
             {
-                inputs.Add(consideration.Input);
-
-                ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
+                if (consideration.Input != null)
+                {
+                    inputs.Add(consideration.Input);
+                    ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
+                }
             }
 
             foreach (var input in inputs)

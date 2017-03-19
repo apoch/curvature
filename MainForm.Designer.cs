@@ -50,9 +50,12 @@
             this.runWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuBehaviorSet = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createNewBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.ContextMenuConsideration.SuspendLayout();
+            this.ContextMenuBehaviorSet.SuspendLayout();
             this.SuspendLayout();
             // 
             // ContentTree
@@ -157,7 +160,7 @@
             this.toolStripMenuItem4,
             this.deleteBehaviorToolStripMenuItem});
             this.ContextMenuBehavior.Name = "ContextMenuBehavior";
-            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 76);
+            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 54);
             this.ContextMenuBehavior.Text = "ContextMenuBehavior";
             // 
             // createNewConsiderationToolStripMenuItem
@@ -211,6 +214,20 @@
             this.deleteConsiderationToolStripMenuItem.Text = "Delete consideration";
             this.deleteConsiderationToolStripMenuItem.Click += new System.EventHandler(this.deleteConsiderationToolStripMenuItem_Click);
             // 
+            // ContextMenuBehaviorSet
+            // 
+            this.ContextMenuBehaviorSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewBehaviorToolStripMenuItem});
+            this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(192, 48);
+            // 
+            // createNewBehaviorToolStripMenuItem
+            // 
+            this.createNewBehaviorToolStripMenuItem.Name = "createNewBehaviorToolStripMenuItem";
+            this.createNewBehaviorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.createNewBehaviorToolStripMenuItem.Text = "Create new behavior...";
+            this.createNewBehaviorToolStripMenuItem.Click += new System.EventHandler(this.createNewBehaviorToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +243,7 @@
             this.PrimaryMenuStrip.PerformLayout();
             this.ContextMenuBehavior.ResumeLayout(false);
             this.ContextMenuConsideration.ResumeLayout(false);
+            this.ContextMenuBehaviorSet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,6 +272,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem deleteConsiderationToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuBehaviorSet;
+        private System.Windows.Forms.ToolStripMenuItem createNewBehaviorToolStripMenuItem;
     }
 }
 
