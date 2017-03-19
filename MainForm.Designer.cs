@@ -52,10 +52,13 @@
             this.deleteConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuBehaviorSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createNewBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuInputs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createNewInputAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.ContextMenuConsideration.SuspendLayout();
             this.ContextMenuBehaviorSet.SuspendLayout();
+            this.ContextMenuInputs.SuspendLayout();
             this.SuspendLayout();
             // 
             // ContentTree
@@ -219,14 +222,28 @@
             this.ContextMenuBehaviorSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewBehaviorToolStripMenuItem});
             this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(192, 48);
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(183, 48);
             // 
             // createNewBehaviorToolStripMenuItem
             // 
             this.createNewBehaviorToolStripMenuItem.Name = "createNewBehaviorToolStripMenuItem";
-            this.createNewBehaviorToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.createNewBehaviorToolStripMenuItem.Text = "Create new behavior...";
+            this.createNewBehaviorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.createNewBehaviorToolStripMenuItem.Text = "Create new behavior";
             this.createNewBehaviorToolStripMenuItem.Click += new System.EventHandler(this.createNewBehaviorToolStripMenuItem_Click);
+            // 
+            // ContextMenuInputs
+            // 
+            this.ContextMenuInputs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createNewInputAxisToolStripMenuItem});
+            this.ContextMenuInputs.Name = "ContextMenuInputs";
+            this.ContextMenuInputs.Size = new System.Drawing.Size(187, 26);
+            // 
+            // createNewInputAxisToolStripMenuItem
+            // 
+            this.createNewInputAxisToolStripMenuItem.Name = "createNewInputAxisToolStripMenuItem";
+            this.createNewInputAxisToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.createNewInputAxisToolStripMenuItem.Text = "Create new input axis";
+            this.createNewInputAxisToolStripMenuItem.Click += new System.EventHandler(this.createNewInputAxisToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -244,6 +261,7 @@
             this.ContextMenuBehavior.ResumeLayout(false);
             this.ContextMenuConsideration.ResumeLayout(false);
             this.ContextMenuBehaviorSet.ResumeLayout(false);
+            this.ContextMenuInputs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +292,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ContextMenuStrip ContextMenuBehaviorSet;
         private System.Windows.Forms.ToolStripMenuItem createNewBehaviorToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuInputs;
+        private System.Windows.Forms.ToolStripMenuItem createNewInputAxisToolStripMenuItem;
     }
 }
 

@@ -39,6 +39,10 @@ namespace Curvature
                     {
                         ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                     }
+                    else if (args.Node.Text == "Inputs")
+                    {
+                        ContextMenuInputs.Show(ContentTree.PointToScreen(args.Location));
+                    }
 
                     return;
                 }
@@ -210,6 +214,14 @@ namespace Curvature
             var behaviorSet = RightClickedNode.Tag as BehaviorSet;
             if (behaviorSet != null)
                 behaviorSet.EnabledBehaviors.Add(behavior);
+
+            SetUpProject();
+        }
+
+        private void createNewInputAxisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var axis = new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf);
+            EditingProject.RegisterInput(axis);
 
             SetUpProject();
         }
