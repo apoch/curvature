@@ -39,6 +39,10 @@
             this.HorizontalShiftEditBox = new System.Windows.Forms.NumericUpDown();
             this.VerticalShiftEditBox = new System.Windows.Forms.NumericUpDown();
             this.PresetButton = new System.Windows.Forms.Button();
+            this.ShiftLeftButton = new System.Windows.Forms.Button();
+            this.ShiftRightButton = new System.Windows.Forms.Button();
+            this.ShiftUpButton = new System.Windows.Forms.Button();
+            this.ShiftDownButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CurvePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlopeEditBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExponentEditBox)).BeginInit();
@@ -202,10 +206,66 @@
             this.PresetButton.UseVisualStyleBackColor = true;
             this.PresetButton.Click += new System.EventHandler(this.PresetButton_Click);
             // 
+            // ShiftLeftButton
+            // 
+            this.ShiftLeftButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShiftLeftButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.ShiftLeftButton.Location = new System.Drawing.Point(140, 25);
+            this.ShiftLeftButton.Name = "ShiftLeftButton";
+            this.ShiftLeftButton.Size = new System.Drawing.Size(20, 157);
+            this.ShiftLeftButton.TabIndex = 15;
+            this.ShiftLeftButton.Text = "×";
+            this.ShiftLeftButton.UseVisualStyleBackColor = true;
+            this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
+            // 
+            // ShiftRightButton
+            // 
+            this.ShiftRightButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShiftRightButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.ShiftRightButton.Location = new System.Drawing.Point(335, 25);
+            this.ShiftRightButton.Name = "ShiftRightButton";
+            this.ShiftRightButton.Size = new System.Drawing.Size(20, 157);
+            this.ShiftRightButton.TabIndex = 16;
+            this.ShiftRightButton.Text = "Ø";
+            this.ShiftRightButton.UseVisualStyleBackColor = true;
+            this.ShiftRightButton.Click += new System.EventHandler(this.ShiftRightButton_Click);
+            // 
+            // ShiftUpButton
+            // 
+            this.ShiftUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShiftUpButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.ShiftUpButton.Location = new System.Drawing.Point(159, 5);
+            this.ShiftUpButton.Name = "ShiftUpButton";
+            this.ShiftUpButton.Size = new System.Drawing.Size(177, 20);
+            this.ShiftUpButton.TabIndex = 17;
+            this.ShiftUpButton.Text = "Ù";
+            this.ShiftUpButton.UseVisualStyleBackColor = true;
+            this.ShiftUpButton.Click += new System.EventHandler(this.ShiftUpButton_Click);
+            // 
+            // ShiftDownButton
+            // 
+            this.ShiftDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShiftDownButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.ShiftDownButton.Location = new System.Drawing.Point(159, 181);
+            this.ShiftDownButton.Name = "ShiftDownButton";
+            this.ShiftDownButton.Size = new System.Drawing.Size(177, 20);
+            this.ShiftDownButton.TabIndex = 18;
+            this.ShiftDownButton.Text = "Ú";
+            this.ShiftDownButton.UseVisualStyleBackColor = true;
+            this.ShiftDownButton.Click += new System.EventHandler(this.ShiftDownButton_Click);
+            // 
             // EditWidgetResponseCurve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ShiftDownButton);
+            this.Controls.Add(this.ShiftUpButton);
+            this.Controls.Add(this.ShiftRightButton);
+            this.Controls.Add(this.ShiftLeftButton);
             this.Controls.Add(this.PresetButton);
             this.Controls.Add(this.VerticalShiftEditBox);
             this.Controls.Add(this.HorizontalShiftEditBox);
@@ -241,5 +301,9 @@
         private System.Windows.Forms.NumericUpDown HorizontalShiftEditBox;
         private System.Windows.Forms.NumericUpDown VerticalShiftEditBox;
         private System.Windows.Forms.Button PresetButton;
+        private System.Windows.Forms.Button ShiftLeftButton;
+        private System.Windows.Forms.Button ShiftRightButton;
+        private System.Windows.Forms.Button ShiftUpButton;
+        private System.Windows.Forms.Button ShiftDownButton;
     }
 }

@@ -145,5 +145,25 @@ namespace Curvature
         {
             (new CurvePresetForm()).ShowDialog();
         }
+
+        private void ShiftLeftButton_Click(object sender, EventArgs e)
+        {
+            HorizontalShiftEditBox.Value -= HorizontalShiftEditBox.Increment;
+        }
+
+        private void ShiftRightButton_Click(object sender, EventArgs e)
+        {
+            HorizontalShiftEditBox.Value += HorizontalShiftEditBox.Increment;
+        }
+
+        private void ShiftUpButton_Click(object sender, EventArgs e)
+        {
+            VerticalShiftEditBox.Value += VerticalShiftEditBox.Increment;
+        }
+
+        private void ShiftDownButton_Click(object sender, EventArgs e)
+        {
+            VerticalShiftEditBox.Value -= VerticalShiftEditBox.Increment;
+        }
     }
 }

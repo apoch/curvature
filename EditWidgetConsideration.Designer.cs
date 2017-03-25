@@ -33,10 +33,10 @@
             this.InputAxisLabel = new System.Windows.Forms.Label();
             this.HorizontalSplitter = new System.Windows.Forms.SplitContainer();
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
-            this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CurveWizardButton = new System.Windows.Forms.Button();
+            this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
+            this.CurveWizardButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
@@ -91,8 +91,8 @@
             // HorizontalSplitter.Panel2
             // 
             this.HorizontalSplitter.Panel2.Controls.Add(this.ResponseCurveGroupBox);
-            this.HorizontalSplitter.Size = new System.Drawing.Size(758, 361);
-            this.HorizontalSplitter.SplitterDistance = 180;
+            this.HorizontalSplitter.Size = new System.Drawing.Size(758, 432);
+            this.HorizontalSplitter.SplitterDistance = 215;
             this.HorizontalSplitter.TabIndex = 4;
             // 
             // ParametersGroupBox
@@ -103,10 +103,19 @@
             this.ParametersGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParametersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ParametersGroupBox.Name = "ParametersGroupBox";
-            this.ParametersGroupBox.Size = new System.Drawing.Size(752, 174);
+            this.ParametersGroupBox.Size = new System.Drawing.Size(752, 209);
             this.ParametersGroupBox.TabIndex = 4;
             this.ParametersGroupBox.TabStop = false;
             this.ParametersGroupBox.Text = "Parameters";
+            // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 190);
+            this.ParamFlowPanel.TabIndex = 0;
             // 
             // ResponseCurveGroupBox
             // 
@@ -116,19 +125,20 @@
             this.ResponseCurveGroupBox.Controls.Add(this.ResponseCurveEditor);
             this.ResponseCurveGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ResponseCurveGroupBox.Name = "ResponseCurveGroupBox";
-            this.ResponseCurveGroupBox.Size = new System.Drawing.Size(752, 171);
+            this.ResponseCurveGroupBox.Size = new System.Drawing.Size(752, 207);
             this.ResponseCurveGroupBox.TabIndex = 0;
             this.ResponseCurveGroupBox.TabStop = false;
             this.ResponseCurveGroupBox.Text = "Response Curve";
             // 
-            // ParamFlowPanel
+            // ResponseCurveEditor
             // 
-            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
-            this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 155);
-            this.ParamFlowPanel.TabIndex = 0;
+            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
+            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
+            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 182);
+            this.ResponseCurveEditor.TabIndex = 0;
             // 
             // CurveWizardButton
             // 
@@ -141,16 +151,6 @@
             this.CurveWizardButton.UseVisualStyleBackColor = true;
             this.CurveWizardButton.Click += new System.EventHandler(this.CurveWizardButton_Click);
             // 
-            // ResponseCurveEditor
-            // 
-            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
-            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
-            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 146);
-            this.ResponseCurveEditor.TabIndex = 0;
-            // 
             // EditWidgetConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,7 +161,7 @@
             this.Controls.Add(this.InputAxisDropdown);
             this.Controls.Add(this.ConsiderationNameLabel);
             this.Name = "EditWidgetConsideration";
-            this.Size = new System.Drawing.Size(768, 414);
+            this.Size = new System.Drawing.Size(768, 485);
             this.HorizontalSplitter.Panel1.ResumeLayout(false);
             this.HorizontalSplitter.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).EndInit();
