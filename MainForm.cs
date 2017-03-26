@@ -271,5 +271,21 @@ namespace Curvature
 
             ContentTree.SelectedNode.BeginEdit();
         }
+
+        private void renameConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ContentTree.SelectedNode == null)
+                return;
+
+            ContentTree.SelectedNode.BeginEdit();
+        }
+
+        private void renameBehaviorSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ContentTree.SelectedNode == null)
+                return;
+
+            ContentTree.SelectedNode.BeginEdit();
+        }
     }
 }

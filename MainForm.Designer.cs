@@ -233,7 +233,7 @@
             this.renameBehaviorSetToolStripMenuItem,
             this.deleteBehaviorSetToolStripMenuItem});
             this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 76);
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 98);
             // 
             // createNewBehaviorToolStripMenuItem
             // 
@@ -280,12 +280,14 @@
             this.renameConsiderationToolStripMenuItem.Name = "renameConsiderationToolStripMenuItem";
             this.renameConsiderationToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.renameConsiderationToolStripMenuItem.Text = "Rename consideration";
+            this.renameConsiderationToolStripMenuItem.Click += new System.EventHandler(this.renameConsiderationToolStripMenuItem_Click);
             // 
             // renameBehaviorSetToolStripMenuItem
             // 
             this.renameBehaviorSetToolStripMenuItem.Name = "renameBehaviorSetToolStripMenuItem";
             this.renameBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.renameBehaviorSetToolStripMenuItem.Text = "Rename behavior set";
+            this.renameBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.renameBehaviorSetToolStripMenuItem_Click);
             // 
             // MainForm
             // 
