@@ -38,6 +38,7 @@ namespace Curvature
                     if (args.Node.Text == "Behaviors")
                     {
                         deleteBehaviorSetToolStripMenuItem.Enabled = false;
+                        renameBehaviorSetToolStripMenuItem.Enabled = false;
                         ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                     }
                     else if (args.Node.Text == "Inputs")
@@ -59,6 +60,7 @@ namespace Curvature
                 else if (RightClickedNode.Tag.GetType() == typeof(BehaviorSet))
                 {
                     deleteBehaviorSetToolStripMenuItem.Enabled = true;
+                    renameBehaviorSetToolStripMenuItem.Enabled = true;
                     ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                 }
             };
