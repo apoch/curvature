@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Consideration : IUserEditable
+    public class Consideration : IUserEditable, INameable
     {
         [DataMember]
         public string ReadableName;
@@ -42,6 +42,11 @@ namespace Curvature
         internal double Score(IInputBroker broker)
         {
             return Curve.ComputeValue(broker.GetInputValue(Input));
+        }
+
+        public void Rename(string newname)
+        {
+            ReadableName = newname;
         }
     }
 }

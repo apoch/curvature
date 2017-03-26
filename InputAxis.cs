@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class InputAxis : IUserEditable
+    public class InputAxis : IUserEditable, INameable
     {
         public enum OriginType
         {
@@ -80,6 +80,11 @@ namespace Curvature
             }
 
             return ret;
+        }
+
+        public void Rename(string newname)
+        {
+            ReadableName = newname;
         }
     }
 }

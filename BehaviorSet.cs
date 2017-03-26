@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class BehaviorSet : IUserEditable
+    public class BehaviorSet : IUserEditable, INameable
     {
         [DataMember]
         public string ReadableName;
@@ -31,6 +31,11 @@ namespace Curvature
         public Control CreateEditorUI(Project project)
         {
             return new EditWidgetBehaviorSet(project, ReadableName, EnabledBehaviors);
+        }
+
+        public void Rename(string newname)
+        {
+            ReadableName = newname;
         }
     }
 }

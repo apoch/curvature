@@ -52,10 +52,13 @@
             this.deleteConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuBehaviorSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createNewBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuInputs = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.createNewInputAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuInputs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createNewInputAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.ContextMenuConsideration.SuspendLayout();
@@ -67,6 +70,7 @@
             // 
             this.ContentTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.ContentTree.LabelEdit = true;
             this.ContentTree.Location = new System.Drawing.Point(13, 27);
             this.ContentTree.Name = "ContentTree";
             this.ContentTree.Size = new System.Drawing.Size(272, 507);
@@ -163,9 +167,10 @@
             this.ContextMenuBehavior.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewConsiderationToolStripMenuItem,
             this.toolStripMenuItem4,
+            this.renameBehaviorToolStripMenuItem,
             this.deleteBehaviorToolStripMenuItem});
             this.ContextMenuBehavior.Name = "ContextMenuBehavior";
-            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 54);
+            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 76);
             this.ContextMenuBehavior.Text = "ContextMenuBehavior";
             // 
             // createNewConsiderationToolStripMenuItem
@@ -196,9 +201,10 @@
             this.ContextMenuConsideration.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runWizardToolStripMenuItem,
             this.toolStripMenuItem3,
+            this.renameConsiderationToolStripMenuItem,
             this.deleteConsiderationToolStripMenuItem});
             this.ContextMenuConsideration.Name = "ContextMenuConsideration";
-            this.ContextMenuConsideration.Size = new System.Drawing.Size(183, 54);
+            this.ContextMenuConsideration.Size = new System.Drawing.Size(193, 76);
             // 
             // runWizardToolStripMenuItem
             // 
@@ -224,9 +230,10 @@
             this.ContextMenuBehaviorSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewBehaviorToolStripMenuItem,
             this.toolStripMenuItem5,
+            this.renameBehaviorSetToolStripMenuItem,
             this.deleteBehaviorSetToolStripMenuItem});
             this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(183, 76);
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 76);
             // 
             // createNewBehaviorToolStripMenuItem
             // 
@@ -234,6 +241,18 @@
             this.createNewBehaviorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.createNewBehaviorToolStripMenuItem.Text = "Create new behavior";
             this.createNewBehaviorToolStripMenuItem.Click += new System.EventHandler(this.createNewBehaviorToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(179, 6);
+            // 
+            // deleteBehaviorSetToolStripMenuItem
+            // 
+            this.deleteBehaviorSetToolStripMenuItem.Name = "deleteBehaviorSetToolStripMenuItem";
+            this.deleteBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.deleteBehaviorSetToolStripMenuItem.Text = "Delete behavior set";
+            this.deleteBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.deleteBehaviorSetToolStripMenuItem_Click);
             // 
             // ContextMenuInputs
             // 
@@ -249,17 +268,24 @@
             this.createNewInputAxisToolStripMenuItem.Text = "Create new input axis";
             this.createNewInputAxisToolStripMenuItem.Click += new System.EventHandler(this.createNewInputAxisToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem5
+            // renameBehaviorToolStripMenuItem
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(179, 6);
+            this.renameBehaviorToolStripMenuItem.Name = "renameBehaviorToolStripMenuItem";
+            this.renameBehaviorToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.renameBehaviorToolStripMenuItem.Text = "Rename behavior";
+            this.renameBehaviorToolStripMenuItem.Click += new System.EventHandler(this.renameBehaviorToolStripMenuItem_Click);
             // 
-            // deleteBehaviorSetToolStripMenuItem
+            // renameConsiderationToolStripMenuItem
             // 
-            this.deleteBehaviorSetToolStripMenuItem.Name = "deleteBehaviorSetToolStripMenuItem";
-            this.deleteBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.deleteBehaviorSetToolStripMenuItem.Text = "Delete behavior set";
-            this.deleteBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.deleteBehaviorSetToolStripMenuItem_Click);
+            this.renameConsiderationToolStripMenuItem.Name = "renameConsiderationToolStripMenuItem";
+            this.renameConsiderationToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.renameConsiderationToolStripMenuItem.Text = "Rename consideration";
+            // 
+            // renameBehaviorSetToolStripMenuItem
+            // 
+            this.renameBehaviorSetToolStripMenuItem.Name = "renameBehaviorSetToolStripMenuItem";
+            this.renameBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.renameBehaviorSetToolStripMenuItem.Text = "Rename behavior set";
             // 
             // MainForm
             // 
@@ -312,6 +338,9 @@
         private System.Windows.Forms.ToolStripMenuItem createNewInputAxisToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem deleteBehaviorSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameBehaviorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameConsiderationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameBehaviorSetToolStripMenuItem;
     }
 }
 

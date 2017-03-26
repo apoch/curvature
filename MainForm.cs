@@ -62,6 +62,26 @@ namespace Curvature
                     ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
                 }
             };
+
+            ContentTree.BeforeLabelEdit += (e, args) =>
+            {
+                if (args.Node.Tag == null || !(args.Node.Tag is INameable))
+                {
+                    args.CancelEdit = true;
+                }
+            };
+
+            ContentTree.AfterLabelEdit += (e, args) =>
+            {
+                if (args.Node.Tag == null)
+                    return;
+
+                if (args.Node.Tag is INameable)
+                {
+                    var nameable = args.Node.Tag as INameable;
+                    nameable.Rename(args.Label);
+                }
+            };
         }
 
         private void ContentTree_AfterSelect(object sender, TreeViewEventArgs e)
@@ -242,6 +262,14 @@ namespace Curvature
 
                 SetUpProject();
             }
+        }
+
+        private void renameBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ContentTree.SelectedNode == null)
+                return;
+
+            ContentTree.SelectedNode.BeginEdit();
         }
     }
 }
