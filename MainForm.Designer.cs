@@ -59,6 +59,7 @@
             this.renameBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.curvePresetSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.ContextMenuBehavior.SuspendLayout();
             this.ContextMenuConsideration.SuspendLayout();
@@ -200,11 +201,12 @@
             // 
             this.ContextMenuConsideration.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runWizardToolStripMenuItem,
+            this.curvePresetSelectorToolStripMenuItem,
             this.toolStripMenuItem3,
             this.renameConsiderationToolStripMenuItem,
             this.deleteConsiderationToolStripMenuItem});
             this.ContextMenuConsideration.Name = "ContextMenuConsideration";
-            this.ContextMenuConsideration.Size = new System.Drawing.Size(193, 76);
+            this.ContextMenuConsideration.Size = new System.Drawing.Size(194, 120);
             // 
             // runWizardToolStripMenuItem
             // 
@@ -233,7 +235,7 @@
             this.renameBehaviorSetToolStripMenuItem,
             this.deleteBehaviorSetToolStripMenuItem});
             this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 98);
+            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 76);
             // 
             // createNewBehaviorToolStripMenuItem
             // 
@@ -289,6 +291,13 @@
             this.renameBehaviorSetToolStripMenuItem.Text = "Rename behavior set";
             this.renameBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.renameBehaviorSetToolStripMenuItem_Click);
             // 
+            // curvePresetSelectorToolStripMenuItem
+            // 
+            this.curvePresetSelectorToolStripMenuItem.Name = "curvePresetSelectorToolStripMenuItem";
+            this.curvePresetSelectorToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.curvePresetSelectorToolStripMenuItem.Text = "Curve preset selector...";
+            this.curvePresetSelectorToolStripMenuItem.Click += new System.EventHandler(this.curvePresetSelectorToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,6 +352,7 @@
         private System.Windows.Forms.ToolStripMenuItem renameBehaviorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameConsiderationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameBehaviorSetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem curvePresetSelectorToolStripMenuItem;
     }
 }
 

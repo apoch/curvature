@@ -31,6 +31,8 @@
             this.IncreasingDecreasingComboBox = new System.Windows.Forms.ComboBox();
             this.IncreasingDecreasingLabel = new System.Windows.Forms.Label();
             this.SuggestedPresetList = new System.Windows.Forms.ListView();
+            this.PresetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CurveTypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuggestionsLabel = new System.Windows.Forms.Label();
             this.CancelPresetsButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
@@ -38,8 +40,6 @@
             this.AccelerationLabel = new System.Windows.Forms.Label();
             this.PreviewBox = new System.Windows.Forms.PictureBox();
             this.PreviewLabel = new System.Windows.Forms.Label();
-            this.PresetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CurveTypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.PreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,12 +74,23 @@
             this.SuggestedPresetList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.PresetNameColumn,
             this.CurveTypeColumn});
+            this.SuggestedPresetList.FullRowSelect = true;
             this.SuggestedPresetList.Location = new System.Drawing.Point(15, 98);
             this.SuggestedPresetList.Name = "SuggestedPresetList";
             this.SuggestedPresetList.Size = new System.Drawing.Size(378, 176);
             this.SuggestedPresetList.TabIndex = 2;
             this.SuggestedPresetList.UseCompatibleStateImageBehavior = false;
             this.SuggestedPresetList.View = System.Windows.Forms.View.Details;
+            // 
+            // PresetNameColumn
+            // 
+            this.PresetNameColumn.Text = "Preset Name";
+            this.PresetNameColumn.Width = 230;
+            // 
+            // CurveTypeColumn
+            // 
+            this.CurveTypeColumn.Text = "Curve Type";
+            this.CurveTypeColumn.Width = 100;
             // 
             // SuggestionsLabel
             // 
@@ -111,6 +122,7 @@
             this.OKButton.TabIndex = 5;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // AccelerationComboBox
             // 
@@ -157,16 +169,6 @@
             this.PreviewLabel.Size = new System.Drawing.Size(48, 13);
             this.PreviewLabel.TabIndex = 11;
             this.PreviewLabel.Text = "Preview:";
-            // 
-            // PresetNameColumn
-            // 
-            this.PresetNameColumn.Text = "Preset Name";
-            this.PresetNameColumn.Width = 230;
-            // 
-            // CurveTypeColumn
-            // 
-            this.CurveTypeColumn.Text = "Curve Type";
-            this.CurveTypeColumn.Width = 100;
             // 
             // CurvePresetForm
             // 

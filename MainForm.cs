@@ -289,5 +289,17 @@ namespace Curvature
 
             ContentTree.SelectedNode.BeginEdit();
         }
+
+        private void curvePresetSelectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var consideration = RightClickedNode.Tag as Consideration;
+            (new CurvePresetForm(consideration.Curve)).ShowDialog();
+
+            if (RightClickedNode.IsSelected)
+            {
+                ClearEditorPanel();
+                SetEditorPanel(consideration.CreateEditorUI(EditingProject));
+            }
+        }
     }
 }

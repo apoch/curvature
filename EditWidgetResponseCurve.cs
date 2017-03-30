@@ -143,7 +143,8 @@ namespace Curvature
 
         private void PresetButton_Click(object sender, EventArgs e)
         {
-            (new CurvePresetForm()).ShowDialog();
+            (new CurvePresetForm(EditCurve)).ShowDialog();
+            AttachCurve(EditCurve);
         }
 
         private void ShiftLeftButton_Click(object sender, EventArgs e)

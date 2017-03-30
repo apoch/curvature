@@ -12,9 +12,13 @@ namespace Curvature
 {
     public partial class CurvePresetForm : Form
     {
-        public CurvePresetForm()
+        private ResponseCurve EditingCurve;
+
+
+        public CurvePresetForm(ResponseCurve editcurve)
         {
             InitializeComponent();
+            EditingCurve = editcurve;
 
             SuggestedPresetList.SelectedIndexChanged += (e, args) =>
             {
@@ -334,6 +338,21 @@ namespace Curvature
             double pixelY = (1.0 - y) * height + marginY;
 
             return new Point((int)pixelX, (int)pixelY);
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            if (SuggestedPresetList.Items.Count <= 0 || SuggestedPresetList.SelectedItems.Count <= 0)
+                return;
+
+            var curve = SuggestedPresetList.SelectedItems[0].Tag as ResponseCurve;
+            EditingCurve.Type = curve.Type;
+            EditingCurve.Exponent = curve.Exponent;
+            EditingCurve.Slope = curve.Slope;
+            EditingCurve.XShift = curve.XShift;
+            EditingCurve.YShift = curve.YShift;
+
+            Close();
         }
     }
 }
