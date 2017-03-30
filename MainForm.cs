@@ -158,7 +158,9 @@ namespace Curvature
                 SetEditorPanel(args.Editable.CreateEditorUI(EditingProject));
             };
 
-            if (!string.IsNullOrEmpty(EditingFileName))
+            if (string.IsNullOrEmpty(EditingFileName))
+                Text = "Curvature Studio";
+            else
                 Text = $"Curvature Studio - [{EditingFileName}]";
         }
 
@@ -181,6 +183,7 @@ namespace Curvature
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditingProject = new Project();
+            EditingFileName = null;
             SetUpProject();
             ContentTree.SelectedNode = ContentTree.Nodes[0];
         }

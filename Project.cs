@@ -54,10 +54,6 @@ namespace Curvature
             BehaviorSets = new List<BehaviorSet>();
 
             InputLookupByName = new Dictionary<string, InputAxis>();
-
-            AddDummyInputs();
-            AddDummyArchetypes();
-            AddDummyBehaviors();
         }
 
 
@@ -164,66 +160,6 @@ namespace Curvature
             file.Close();
 
             return ret;
-        }
-
-
-        private void AddDummyInputs()
-        {
-            var kbrecHealth = new KnowledgeBase.Record("Health", 0.0, 1.0, false);
-            var kbrecDistance = new KnowledgeBase.Record("Distance to target", 0.0, 1e6, true);
-
-            KB.Records.Add(kbrecDistance);
-            KB.Records.Add(kbrecHealth);
-
-            {
-                var axis = new InputAxis("Distance to target", InputAxis.OriginType.ComputedValue);
-                axis.KBRecord = kbrecDistance;
-                axis.Parameters.Add(new InputParameter("Range", 0.0f, 1e5f));
-                RegisterInput(axis);
-            }
-
-            {
-                var axis = new InputAxis("My health", InputAxis.OriginType.PropertyOfSelf);
-                axis.KBRecord = kbrecHealth;
-                axis.Parameters.Add(new InputParameter("Limit", 0.0f, 1.0f));
-                RegisterInput(axis);
-            }
-        }
-
-        private void AddDummyArchetypes()
-        {
-            {
-                var archetype = new Archetype("Tank");
-                Archetypes.Add(archetype);
-           }
-        }
-
-        private void AddDummyBehaviors()
-        {
-            var attackBehavior = new Behavior("Attack");
-
-            {
-                var c = new Consideration("As long as healthy");
-                c.Input = InputLookupByName["My health"];
-                c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 0.0, 0.0, 0.0);
-                c.Parameters.AddRange(c.Input.Parameters);
-                attackBehavior.Considerations.Add(c);
-            }
-            {
-                var c = new Consideration("Prioritize closer targets");
-                c.Input = InputLookupByName["Distance to target"];
-                c.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, -1.0, 0.0, 0.0, 1.0);
-                c.Parameters.AddRange(c.Input.Parameters);
-                attackBehavior.Considerations.Add(c);
-            }
-
-            Behaviors.Add(attackBehavior);
-
-            {
-                var s = new BehaviorSet("Combat");
-                s.EnabledBehaviors.Add(attackBehavior);
-                BehaviorSets.Add(s);
-            }
         }
     }
 }
