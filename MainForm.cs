@@ -49,15 +49,15 @@ namespace Curvature
                     return;
                 }
 
-                if (RightClickedNode.Tag.GetType() == typeof(Behavior))
+                if (RightClickedNode.Tag is Behavior)
                 {
                     ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
                 }
-                else if (RightClickedNode.Tag.GetType() == typeof(Consideration))
+                else if (RightClickedNode.Tag is Consideration)
                 {
                     ContextMenuConsideration.Show(ContentTree.PointToScreen(args.Location));
                 }
-                else if (RightClickedNode.Tag.GetType() == typeof(BehaviorSet))
+                else if (RightClickedNode.Tag is BehaviorSet)
                 {
                     deleteBehaviorSetToolStripMenuItem.Enabled = true;
                     renameBehaviorSetToolStripMenuItem.Enabled = true;
@@ -75,7 +75,7 @@ namespace Curvature
 
             ContentTree.AfterLabelEdit += (e, args) =>
             {
-                if (args.Node.Tag == null)
+                if (args.Node.Tag == null || string.IsNullOrEmpty(args.Label))
                     return;
 
                 if (args.Node.Tag is INameable)

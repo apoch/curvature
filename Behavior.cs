@@ -39,6 +39,9 @@ namespace Curvature
 
         public override string ToString()
         {
+            if (string.IsNullOrEmpty(ReadableName))
+                return "(Untitled)";
+
             return ReadableName;
         }
 
