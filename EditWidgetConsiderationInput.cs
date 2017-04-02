@@ -21,8 +21,16 @@ namespace Curvature
             EditInputAxis = axis;
             InputBroker = broker;
 
-            InputValueTrackBar.Minimum = (int)(EditInputAxis.Parameters[0].MinimumValue * 100.0f);
-            InputValueTrackBar.Maximum = (int)(EditInputAxis.Parameters[0].MaximumValue * 100.0f);
+            if ((EditInputAxis != null) && (EditInputAxis.Parameters.Count > 0))
+            {
+                InputValueTrackBar.Minimum = (int)(EditInputAxis.Parameters[0].MinimumValue * 100.0f);
+                InputValueTrackBar.Maximum = (int)(EditInputAxis.Parameters[0].MaximumValue * 100.0f);
+            }
+            else
+            {
+                InputValueTrackBar.Minimum = 0;
+                InputValueTrackBar.Maximum = 100;
+            }
 
             int range = InputValueTrackBar.Maximum - InputValueTrackBar.Minimum;
             InputValueTrackBar.SmallChange = range / 10;

@@ -28,68 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.KBDataGrid = new System.Windows.Forms.DataGridView();
-            this.DataColumnTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComputedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataColumnMinValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataColumnMaximum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.KBDataGrid)).BeginInit();
+            this.KnowledgeBaseFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // KBDataGrid
+            // KnowledgeBaseFlowPanel
             // 
-            this.KBDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.KBDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.KBDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DataColumnTag,
-            this.ComputedColumn,
-            this.DataColumnMinValue,
-            this.DataColumnMaximum});
-            this.KBDataGrid.Location = new System.Drawing.Point(3, 3);
-            this.KBDataGrid.Name = "KBDataGrid";
-            this.KBDataGrid.Size = new System.Drawing.Size(468, 196);
-            this.KBDataGrid.TabIndex = 0;
-            // 
-            // DataColumnTag
-            // 
-            this.DataColumnTag.HeaderText = "Tag";
-            this.DataColumnTag.Name = "DataColumnTag";
-            // 
-            // ComputedColumn
-            // 
-            this.ComputedColumn.HeaderText = "Computed";
-            this.ComputedColumn.Name = "ComputedColumn";
-            // 
-            // DataColumnMinValue
-            // 
-            this.DataColumnMinValue.HeaderText = "Minimum";
-            this.DataColumnMinValue.Name = "DataColumnMinValue";
-            // 
-            // DataColumnMaximum
-            // 
-            this.DataColumnMaximum.HeaderText = "Maximum";
-            this.DataColumnMaximum.Name = "DataColumnMaximum";
+            this.KnowledgeBaseFlowPanel.AutoScroll = true;
+            this.KnowledgeBaseFlowPanel.AutoSize = true;
+            this.KnowledgeBaseFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.KnowledgeBaseFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KnowledgeBaseFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.KnowledgeBaseFlowPanel.Location = new System.Drawing.Point(0, 0);
+            this.KnowledgeBaseFlowPanel.Name = "KnowledgeBaseFlowPanel";
+            this.KnowledgeBaseFlowPanel.Size = new System.Drawing.Size(474, 202);
+            this.KnowledgeBaseFlowPanel.TabIndex = 0;
             // 
             // EditWidgetKnowledgeBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.KBDataGrid);
+            this.Controls.Add(this.KnowledgeBaseFlowPanel);
             this.Name = "EditWidgetKnowledgeBase";
             this.Size = new System.Drawing.Size(474, 202);
-            ((System.ComponentModel.ISupportInitialize)(this.KBDataGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView KBDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnTag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComputedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnMinValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataColumnMaximum;
+        private System.Windows.Forms.FlowLayoutPanel KnowledgeBaseFlowPanel;
     }
 }

@@ -35,8 +35,8 @@
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
-            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.CurveWizardButton = new System.Windows.Forms.Button();
+            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
@@ -65,6 +65,7 @@
             this.InputAxisDropdown.Name = "InputAxisDropdown";
             this.InputAxisDropdown.Size = new System.Drawing.Size(613, 21);
             this.InputAxisDropdown.TabIndex = 1;
+            this.InputAxisDropdown.SelectedIndexChanged += new System.EventHandler(this.InputAxisDropdown_SelectedIndexChanged);
             // 
             // InputAxisLabel
             // 
@@ -130,16 +131,6 @@
             this.ResponseCurveGroupBox.TabStop = false;
             this.ResponseCurveGroupBox.Text = "Response Curve";
             // 
-            // ResponseCurveEditor
-            // 
-            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
-            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
-            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 182);
-            this.ResponseCurveEditor.TabIndex = 0;
-            // 
             // CurveWizardButton
             // 
             this.CurveWizardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,6 +141,16 @@
             this.CurveWizardButton.Text = "Wizard...";
             this.CurveWizardButton.UseVisualStyleBackColor = true;
             this.CurveWizardButton.Click += new System.EventHandler(this.CurveWizardButton_Click);
+            // 
+            // ResponseCurveEditor
+            // 
+            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
+            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
+            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 182);
+            this.ResponseCurveEditor.TabIndex = 0;
             // 
             // EditWidgetConsideration
             // 

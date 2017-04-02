@@ -37,9 +37,23 @@ namespace Curvature
                 WizardTabs.SelectedIndex++;
             else
             {
+                CopyControlsToConsideration();
+
                 DialogResult = DialogResult.OK;
                 Close();
             }
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            CopyControlsToConsideration();
+            Close();
+        }
+
+        private void CopyControlsToConsideration()
+        {
+            EditConsideration.Rename(ConsiderationNameEditBox.Text);
+            EditConsideration.Input = InputComboBox.SelectedItem as InputAxis;
         }
     }
 }

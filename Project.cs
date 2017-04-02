@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Project : IUserEditable
+    public class Project : IUserEditable, INameable
     {
         [DataMember]
         public string ReadableName;
@@ -68,6 +68,19 @@ namespace Curvature
             InputLookupByName.Add(axis.ReadableName, axis);
         }
 
+        public string GenerateNewInputAxisName()
+        {
+            string newname = "New input";
+
+            int counter = 2;
+            while (InputLookupByName.ContainsKey(newname))
+            {
+                newname = $"New input {counter}";
+                ++counter;
+            }
+
+            return newname;
+        }
 
         public void PopulateUI(TreeView tree)
         {
@@ -128,6 +141,11 @@ namespace Curvature
         public Control CreateEditorUI(Project project)
         {
             return new EditWidgetProject(this);
+        }
+
+        public void Rename(string name)
+        {
+            ReadableName = name;
         }
 
 

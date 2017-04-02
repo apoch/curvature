@@ -115,8 +115,8 @@ namespace Curvature
         private Point ConvertXYToPoint(double x, double y)
         {
             var rect = CurvePictureBox.ClientRectangle;
-            double height = (double)rect.Height * 0.65;
-            double width = (double)rect.Width * 0.65;
+            double height = (double)rect.Height * 0.5;
+            double width = (double)rect.Width * 0.5;
 
             if (height >= width)
                 height = width;

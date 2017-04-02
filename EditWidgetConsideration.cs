@@ -41,5 +41,10 @@ namespace Curvature
         {
             (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
         }
+
+        private void InputAxisDropdown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditConsideration.Input = InputAxisDropdown.SelectedItem as InputAxis;
+        }
     }
 }

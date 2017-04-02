@@ -38,14 +38,14 @@
             this.InputComboBox = new System.Windows.Forms.ComboBox();
             this.ConfigureParametersTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveTab = new System.Windows.Forms.TabPage();
+            this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
+            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
+            this.NameConsiderationTab = new System.Windows.Forms.TabPage();
+            this.ConsiderationNameEditBox = new System.Windows.Forms.TextBox();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelWizardButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
-            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
-            this.NameConsiderationTab = new System.Windows.Forms.TabPage();
-            this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.ConsiderationNameEditBox = new System.Windows.Forms.TextBox();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
@@ -156,37 +156,13 @@
             this.ResponseCurveTab.Text = "Apply Response Curve";
             this.ResponseCurveTab.UseVisualStyleBackColor = true;
             // 
-            // OKButton
+            // ResponseCurveDescriptionLabel
             // 
-            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Location = new System.Drawing.Point(415, 322);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(76, 30);
-            this.OKButton.TabIndex = 1;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            // 
-            // CancelWizardButton
-            // 
-            this.CancelWizardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelWizardButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelWizardButton.Location = new System.Drawing.Point(497, 322);
-            this.CancelWizardButton.Name = "CancelWizardButton";
-            this.CancelWizardButton.Size = new System.Drawing.Size(76, 30);
-            this.CancelWizardButton.TabIndex = 2;
-            this.CancelWizardButton.Text = "Cancel";
-            this.CancelWizardButton.UseVisualStyleBackColor = true;
-            // 
-            // NextButton
-            // 
-            this.NextButton.Location = new System.Drawing.Point(237, 277);
-            this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(115, 31);
-            this.NextButton.TabIndex = 4;
-            this.NextButton.Text = "Next";
-            this.NextButton.UseVisualStyleBackColor = true;
-            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
+            this.ResponseCurveDescriptionLabel.Location = new System.Drawing.Point(3, 3);
+            this.ResponseCurveDescriptionLabel.Name = "ResponseCurveDescriptionLabel";
+            this.ResponseCurveDescriptionLabel.Size = new System.Drawing.Size(212, 230);
+            this.ResponseCurveDescriptionLabel.TabIndex = 1;
+            this.ResponseCurveDescriptionLabel.Text = resources.GetString("ResponseCurveDescriptionLabel.Text");
             // 
             // ResponseCurveEditor
             // 
@@ -209,13 +185,14 @@
             this.NameConsiderationTab.Text = "Name Consideration";
             this.NameConsiderationTab.UseVisualStyleBackColor = true;
             // 
-            // ResponseCurveDescriptionLabel
+            // ConsiderationNameEditBox
             // 
-            this.ResponseCurveDescriptionLabel.Location = new System.Drawing.Point(3, 3);
-            this.ResponseCurveDescriptionLabel.Name = "ResponseCurveDescriptionLabel";
-            this.ResponseCurveDescriptionLabel.Size = new System.Drawing.Size(212, 230);
-            this.ResponseCurveDescriptionLabel.TabIndex = 1;
-            this.ResponseCurveDescriptionLabel.Text = resources.GetString("ResponseCurveDescriptionLabel.Text");
+            this.ConsiderationNameEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 67);
+            this.ConsiderationNameEditBox.Name = "ConsiderationNameEditBox";
+            this.ConsiderationNameEditBox.Size = new System.Drawing.Size(551, 20);
+            this.ConsiderationNameEditBox.TabIndex = 1;
             // 
             // NameLabel
             // 
@@ -227,14 +204,38 @@
             this.NameLabel.Text = "Almost done! Your consideration just needs a name.\r\n\r\nInsert generic prose about " +
     "how to name considerations effectively.";
             // 
-            // ConsiderationNameEditBox
+            // OKButton
             // 
-            this.ConsiderationNameEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 67);
-            this.ConsiderationNameEditBox.Name = "ConsiderationNameEditBox";
-            this.ConsiderationNameEditBox.Size = new System.Drawing.Size(551, 20);
-            this.ConsiderationNameEditBox.TabIndex = 1;
+            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OKButton.Location = new System.Drawing.Point(415, 322);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(76, 30);
+            this.OKButton.TabIndex = 1;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // CancelWizardButton
+            // 
+            this.CancelWizardButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelWizardButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelWizardButton.Location = new System.Drawing.Point(497, 322);
+            this.CancelWizardButton.Name = "CancelWizardButton";
+            this.CancelWizardButton.Size = new System.Drawing.Size(76, 30);
+            this.CancelWizardButton.TabIndex = 2;
+            this.CancelWizardButton.Text = "Cancel";
+            this.CancelWizardButton.UseVisualStyleBackColor = true;
+            // 
+            // NextButton
+            // 
+            this.NextButton.Location = new System.Drawing.Point(237, 277);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(115, 31);
+            this.NextButton.TabIndex = 4;
+            this.NextButton.Text = "Next";
+            this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // CurveWizardForm
             // 

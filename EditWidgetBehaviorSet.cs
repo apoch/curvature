@@ -100,7 +100,7 @@ namespace Curvature
             {
                 foreach (Consideration c in b.Considerations)
                 {
-                    if (c.Input == null)
+                    if (c.Input == null || c.Input.KBRecord == null)
                         continue;
 
                     if (inputs.ContainsKey(c.Input.KBRecord.ReadableName))

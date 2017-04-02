@@ -19,15 +19,34 @@ namespace Curvature
             InitializeComponent();
             MyKB = kb;
 
+            RefreshKBControls();
+        }
+
+
+        private void RefreshKBControls()
+        {
+            foreach (Control c in KnowledgeBaseFlowPanel.Controls)
+                c.Dispose();
+
+            KnowledgeBaseFlowPanel.Controls.Clear();
+
+
             foreach (var rec in MyKB.Records)
             {
-                var row = new DataGridViewRow();
-                row.CreateCells(KBDataGrid);
-                row.Tag = rec;
-                row.SetValues(rec.ReadableName, rec.Computed ? "Yes" : "No", $"{rec.MinimumValue:f3}", $"{rec.MaximumValue:f3}");
-
-                KBDataGrid.Rows.Add(row);
+                KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec));
             }
+
+            var newRecordButton = new Button();
+            newRecordButton.Text = "Add New Knowledge";
+            newRecordButton.AutoSize = true;
+            newRecordButton.Click += (e, args) =>
+            {
+                MyKB.Records.Add(new KnowledgeBase.Record("New knowledge", 0.0, 1.0, false));
+                RefreshKBControls();
+            };
+
+            KnowledgeBaseFlowPanel.Controls.Add(newRecordButton);
+            KnowledgeBaseFlowPanel.ScrollControlIntoView(newRecordButton);
         }
     }
 }

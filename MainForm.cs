@@ -247,7 +247,7 @@ namespace Curvature
 
         private void createNewInputAxisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var axis = new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf);
+            var axis = new InputAxis(EditingProject.GenerateNewInputAxisName(), InputAxis.OriginType.PropertyOfSelf);
             EditingProject.RegisterInput(axis);
 
             SetUpProject();
