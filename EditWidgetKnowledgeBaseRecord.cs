@@ -18,6 +18,36 @@ namespace Curvature
         {
             InitializeComponent();
             EditRec = rec;
+
+            RecordTagEditBox.Text = EditRec.ReadableName;
+
+            if (EditRec.Computed)
+                FormulaModeRadioButton.Checked = true;
+            else
+                PropertyModeRadioButton.Checked = true;
+        }
+
+        private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
+        {
+            EditRec.ReadableName = RecordTagEditBox.Text;
+        }
+
+        private void PropertyModeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateComputedMode();
+        }
+
+        private void FormulaModeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateComputedMode();
+        }
+
+        private void UpdateComputedMode()
+        {
+            if (FormulaModeRadioButton.Checked)
+                EditRec.Computed = true;
+            else
+                EditRec.Computed = false;
         }
     }
 }

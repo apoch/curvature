@@ -40,6 +40,7 @@
             this.RecordTagEditBox.Name = "RecordTagEditBox";
             this.RecordTagEditBox.Size = new System.Drawing.Size(217, 20);
             this.RecordTagEditBox.TabIndex = 0;
+            this.RecordTagEditBox.TextChanged += new System.EventHandler(this.RecordTagEditBox_TextChanged);
             // 
             // TagLabel
             // 
@@ -60,6 +61,7 @@
             this.PropertyModeRadioButton.TabStop = true;
             this.PropertyModeRadioButton.Text = "Stored as a property on each agent";
             this.PropertyModeRadioButton.UseVisualStyleBackColor = true;
+            this.PropertyModeRadioButton.CheckedChanged += new System.EventHandler(this.PropertyModeRadioButton_CheckedChanged);
             // 
             // FormulaModeRadioButton
             // 
@@ -71,6 +73,7 @@
             this.FormulaModeRadioButton.TabStop = true;
             this.FormulaModeRadioButton.Text = "Computed via a known formula";
             this.FormulaModeRadioButton.UseVisualStyleBackColor = true;
+            this.FormulaModeRadioButton.CheckedChanged += new System.EventHandler(this.FormulaModeRadioButton_CheckedChanged);
             // 
             // EditWidgetKnowledgeBaseRecord
             // 
