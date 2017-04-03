@@ -30,10 +30,10 @@
         {
             this.InputAxisNameLabel = new System.Windows.Forms.Label();
             this.ParameterGroupBox = new System.Windows.Forms.GroupBox();
-            this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
-            this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
+            this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
+            this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
             this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,14 @@
             this.ParameterGroupBox.TabStop = false;
             this.ParameterGroupBox.Text = "Parameters";
             // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(384, 72);
+            this.ParamFlowPanel.TabIndex = 0;
+            // 
             // PropertiesGroupBox
             // 
             this.PropertiesGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -73,6 +81,17 @@
             this.PropertiesGroupBox.TabIndex = 2;
             this.PropertiesGroupBox.TabStop = false;
             this.PropertiesGroupBox.Text = "Properties";
+            // 
+            // DataSourceComboBox
+            // 
+            this.DataSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DataSourceComboBox.FormattingEnabled = true;
+            this.DataSourceComboBox.Location = new System.Drawing.Point(6, 46);
+            this.DataSourceComboBox.Name = "DataSourceComboBox";
+            this.DataSourceComboBox.Size = new System.Drawing.Size(333, 21);
+            this.DataSourceComboBox.Sorted = true;
+            this.DataSourceComboBox.TabIndex = 1;
+            this.DataSourceComboBox.SelectedIndexChanged += new System.EventHandler(this.DataSourceComboBox_SelectedIndexChanged);
             // 
             // InputTypeComboBox
             // 
@@ -87,24 +106,6 @@
             this.InputTypeComboBox.Size = new System.Drawing.Size(333, 21);
             this.InputTypeComboBox.TabIndex = 0;
             this.InputTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.InputTypeComboBox_SelectedIndexChanged);
-            // 
-            // DataSourceComboBox
-            // 
-            this.DataSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DataSourceComboBox.FormattingEnabled = true;
-            this.DataSourceComboBox.Location = new System.Drawing.Point(6, 46);
-            this.DataSourceComboBox.Name = "DataSourceComboBox";
-            this.DataSourceComboBox.Size = new System.Drawing.Size(333, 21);
-            this.DataSourceComboBox.Sorted = true;
-            this.DataSourceComboBox.TabIndex = 1;
-            // 
-            // ParamFlowPanel
-            // 
-            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
-            this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(384, 72);
-            this.ParamFlowPanel.TabIndex = 0;
             // 
             // EditWidgetInputAxis
             // 

@@ -51,6 +51,12 @@ namespace Curvature
             }
 
             DataSourceComboBox.SelectedItem = EditedAxis.KBRecord;
+            EditedAxis.Origin = (InputAxis.OriginType)InputTypeComboBox.SelectedIndex;
+        }
+
+        private void DataSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditedAxis.KBRecord = DataSourceComboBox.SelectedItem as KnowledgeBase.Record;
         }
     }
 }
