@@ -59,6 +59,8 @@ namespace Curvature
             ScoreListView.Items.Clear();
 
             double finalScore = (double)BehaviorWeightEditBox.Value;
+            double compensationFactor = 1.0 - (1.0 / (double)ScoreLayoutPanel.Controls.Count);
+
             var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" });
             weightItem.Group = ScoreListView.Groups[1];
 
@@ -70,6 +72,10 @@ namespace Curvature
 
                 string considerationName = score.GetName();
                 double considerationScore = score.GetValue();
+                double modification = (1.0 - considerationScore) * compensationFactor;
+
+                if (CompensationCheckBox.Checked)
+                    considerationScore = considerationScore + (modification * considerationScore);
 
                 var item = new ListViewItem(new string[] { $"{considerationScore:f3}", $"{considerationName}" });
                 item.Group = ScoreListView.Groups[0];
@@ -101,6 +107,11 @@ namespace Curvature
             if (EditBehavior != null)
                 EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
 
+            RefreshInputs();
+        }
+
+        private void CompensationCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
             RefreshInputs();
         }
     }

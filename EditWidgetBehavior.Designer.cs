@@ -242,6 +242,7 @@
             this.CompensationCheckBox.TabIndex = 2;
             this.CompensationCheckBox.Text = "Use compensation formula";
             this.CompensationCheckBox.UseVisualStyleBackColor = true;
+            this.CompensationCheckBox.CheckedChanged += new System.EventHandler(this.CompensationCheckBox_CheckedChanged);
             // 
             // WeightLabel
             // 

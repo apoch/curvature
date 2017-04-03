@@ -47,10 +47,15 @@ namespace Curvature
 
         internal double Score(IInputBroker broker)
         {
+            double compensationFactor = 1.0 - (1.0 / (double)Considerations.Count);
             double result = Weight;
             foreach (Consideration c in Considerations)
             {
-                result *= c.Score(broker);
+                double considerationScore = c.Score(broker);
+                double modification = (1.0 - considerationScore) * compensationFactor;
+                considerationScore = considerationScore + (modification * considerationScore);
+
+                result *= considerationScore;
             }
 
             return result;
