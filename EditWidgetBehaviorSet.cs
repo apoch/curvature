@@ -94,7 +94,7 @@ namespace Curvature
             InputFlowPanel.Controls.Clear();
 
 
-            var inputs = new Dictionary<string, InputAxis>();
+            var inputs = new HashSet<InputAxis>();
 
             foreach (Behavior b in EnabledBehaviorsListBox.CheckedItems)
             {
@@ -103,17 +103,15 @@ namespace Curvature
                     if (c.Input == null || c.Input.KBRecord == null)
                         continue;
 
-                    if (inputs.ContainsKey(c.Input.KBRecord.ReadableName))
-                        inputs.Add(c.Input.KBRecord.ReadableName, c.Input.Union(inputs[c.Input.KBRecord.ReadableName]));
-                    else
-                        inputs.Add(c.Input.KBRecord.ReadableName, c.Input);
+                    if (!inputs.Contains(c.Input))
+                        inputs.Add(c.Input);
                 }
             }
 
             foreach (var rec in inputs)
             {
-                var ctl = new EditWidgetConsiderationInput(rec.Value, this);
-                ctl.Tag = rec.Value;
+                var ctl = new EditWidgetConsiderationInput(rec, this);
+                ctl.Tag = rec;
                 InputFlowPanel.Controls.Add(ctl);
             }
 
