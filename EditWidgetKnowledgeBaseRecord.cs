@@ -22,9 +22,9 @@ namespace Curvature
             RecordTagEditBox.Text = EditRec.ReadableName;
 
             if (EditRec.Computed)
-                FormulaModeRadioButton.Checked = true;
+                OriginComboBox.SelectedIndex = 1;
             else
-                PropertyModeRadioButton.Checked = true;
+                OriginComboBox.SelectedIndex = 0;
         }
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
@@ -32,22 +32,17 @@ namespace Curvature
             EditRec.ReadableName = RecordTagEditBox.Text;
         }
 
-        private void PropertyModeRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComputedMode();
-        }
-
-        private void FormulaModeRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateComputedMode();
-        }
-
         private void UpdateComputedMode()
         {
-            if (FormulaModeRadioButton.Checked)
+            if (OriginComboBox.SelectedIndex == 1)
                 EditRec.Computed = true;
             else
                 EditRec.Computed = false;
+        }
+
+        private void OriginComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateComputedMode();
         }
     }
 }

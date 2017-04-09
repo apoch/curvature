@@ -30,8 +30,7 @@
         {
             this.RecordTagEditBox = new System.Windows.Forms.TextBox();
             this.TagLabel = new System.Windows.Forms.Label();
-            this.PropertyModeRadioButton = new System.Windows.Forms.RadioButton();
-            this.FormulaModeRadioButton = new System.Windows.Forms.RadioButton();
+            this.OriginComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // RecordTagEditBox
@@ -51,40 +50,28 @@
             this.TagLabel.TabIndex = 1;
             this.TagLabel.Text = "Title:";
             // 
-            // PropertyModeRadioButton
+            // OriginComboBox
             // 
-            this.PropertyModeRadioButton.AutoSize = true;
-            this.PropertyModeRadioButton.Location = new System.Drawing.Point(47, 29);
-            this.PropertyModeRadioButton.Name = "PropertyModeRadioButton";
-            this.PropertyModeRadioButton.Size = new System.Drawing.Size(192, 17);
-            this.PropertyModeRadioButton.TabIndex = 2;
-            this.PropertyModeRadioButton.TabStop = true;
-            this.PropertyModeRadioButton.Text = "Stored as a property on each agent";
-            this.PropertyModeRadioButton.UseVisualStyleBackColor = true;
-            this.PropertyModeRadioButton.CheckedChanged += new System.EventHandler(this.PropertyModeRadioButton_CheckedChanged);
-            // 
-            // FormulaModeRadioButton
-            // 
-            this.FormulaModeRadioButton.AutoSize = true;
-            this.FormulaModeRadioButton.Location = new System.Drawing.Point(47, 52);
-            this.FormulaModeRadioButton.Name = "FormulaModeRadioButton";
-            this.FormulaModeRadioButton.Size = new System.Drawing.Size(171, 17);
-            this.FormulaModeRadioButton.TabIndex = 3;
-            this.FormulaModeRadioButton.TabStop = true;
-            this.FormulaModeRadioButton.Text = "Computed via a known formula";
-            this.FormulaModeRadioButton.UseVisualStyleBackColor = true;
-            this.FormulaModeRadioButton.CheckedChanged += new System.EventHandler(this.FormulaModeRadioButton_CheckedChanged);
+            this.OriginComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OriginComboBox.FormattingEnabled = true;
+            this.OriginComboBox.Items.AddRange(new object[] {
+            "Stored as a property on an agent",
+            "Computed using a known equation"});
+            this.OriginComboBox.Location = new System.Drawing.Point(270, 3);
+            this.OriginComboBox.Name = "OriginComboBox";
+            this.OriginComboBox.Size = new System.Drawing.Size(244, 21);
+            this.OriginComboBox.TabIndex = 2;
+            this.OriginComboBox.SelectedIndexChanged += new System.EventHandler(this.OriginComboBox_SelectedIndexChanged);
             // 
             // EditWidgetKnowledgeBaseRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.FormulaModeRadioButton);
-            this.Controls.Add(this.PropertyModeRadioButton);
+            this.Controls.Add(this.OriginComboBox);
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(289, 84);
+            this.Size = new System.Drawing.Size(517, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,7 +81,6 @@
 
         private System.Windows.Forms.TextBox RecordTagEditBox;
         private System.Windows.Forms.Label TagLabel;
-        private System.Windows.Forms.RadioButton PropertyModeRadioButton;
-        private System.Windows.Forms.RadioButton FormulaModeRadioButton;
+        private System.Windows.Forms.ComboBox OriginComboBox;
     }
 }
