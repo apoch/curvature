@@ -14,11 +14,14 @@ namespace Curvature
     {
         private KnowledgeBase MyKB;
 
-        internal EditWidgetKnowledgeBase(KnowledgeBase kb)
+        public EditWidgetKnowledgeBase()
         {
             InitializeComponent();
-            MyKB = kb;
+        }
 
+        internal void Attach(KnowledgeBase kb)
+        {
+            MyKB = kb;
             RefreshKBControls();
         }
 

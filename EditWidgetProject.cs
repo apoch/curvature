@@ -15,11 +15,15 @@ namespace Curvature
         private Project EditedProject;
 
 
-        internal EditWidgetProject(Project editedProject)
+        public EditWidgetProject()
         {
             InitializeComponent();
-            EditedProject = editedProject;
+        }
 
+
+        internal void Attach(Project editedProject)
+        {
+            EditedProject = editedProject;
             ProjectNameLabel.Text = EditedProject.ReadableName;
         }
     }

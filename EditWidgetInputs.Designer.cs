@@ -1,6 +1,6 @@
 ﻿namespace Curvature
 {
-    partial class EditWidgetProject
+    partial class EditWidgetInputs
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,34 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ProjectNameLabel = new System.Windows.Forms.Label();
+            this.InputsFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // ProjectNameLabel
+            // InputsFlowPanel
             // 
-            this.ProjectNameLabel.AutoSize = true;
-            this.ProjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.ProjectNameLabel.Name = "ProjectNameLabel";
-            this.ProjectNameLabel.Size = new System.Drawing.Size(150, 24);
-            this.ProjectNameLabel.TabIndex = 0;
-            this.ProjectNameLabel.Text = "(Project Name)";
+            this.InputsFlowPanel.AutoScroll = true;
+            this.InputsFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputsFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.InputsFlowPanel.Location = new System.Drawing.Point(0, 0);
+            this.InputsFlowPanel.Name = "InputsFlowPanel";
+            this.InputsFlowPanel.Size = new System.Drawing.Size(426, 255);
+            this.InputsFlowPanel.TabIndex = 0;
             // 
-            // EditWidgetProject
+            // EditWidgetInputs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.ProjectNameLabel);
-            this.Name = "EditWidgetProject";
-            this.Size = new System.Drawing.Size(610, 355);
+            this.Controls.Add(this.InputsFlowPanel);
+            this.Name = "EditWidgetInputs";
+            this.Size = new System.Drawing.Size(426, 255);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label ProjectNameLabel;
+        private System.Windows.Forms.FlowLayoutPanel InputsFlowPanel;
     }
 }

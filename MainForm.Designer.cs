@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.ContentTree = new System.Windows.Forms.TreeView();
-            this.EditorPanel = new System.Windows.Forms.Panel();
             this.PrimaryMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,52 +38,29 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveFileDialogBox = new System.Windows.Forms.SaveFileDialog();
-            this.ContextMenuBehavior = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.createNewConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFileDialogBox = new System.Windows.Forms.OpenFileDialog();
-            this.ContextMenuConsideration = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.runWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuBehaviorSet = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.createNewBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuInputs = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.createNewInputAxisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameBehaviorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameConsiderationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renameBehaviorSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.curvePresetSelectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainTabs = new System.Windows.Forms.TabControl();
+            this.ProjectTab = new System.Windows.Forms.TabPage();
+            this.KnowledgeTab = new System.Windows.Forms.TabPage();
+            this.InputsTab = new System.Windows.Forms.TabPage();
+            this.BehaviorsTab = new System.Windows.Forms.TabPage();
+            this.CreateBehaviorButton = new System.Windows.Forms.Button();
+            this.BehaviorsListView = new System.Windows.Forms.ListView();
+            this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
+            this.ArchetypesTab = new System.Windows.Forms.TabPage();
+            this.ScenariosTab = new System.Windows.Forms.TabPage();
+            this.ProjectEditWidget = new Curvature.EditWidgetProject();
+            this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
+            this.InputsEditWidget = new Curvature.EditWidgetInputs();
+            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
+            this.BehaviorNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PrimaryMenuStrip.SuspendLayout();
-            this.ContextMenuBehavior.SuspendLayout();
-            this.ContextMenuConsideration.SuspendLayout();
-            this.ContextMenuBehaviorSet.SuspendLayout();
-            this.ContextMenuInputs.SuspendLayout();
+            this.MainTabs.SuspendLayout();
+            this.ProjectTab.SuspendLayout();
+            this.KnowledgeTab.SuspendLayout();
+            this.InputsTab.SuspendLayout();
+            this.BehaviorsTab.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ContentTree
-            // 
-            this.ContentTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ContentTree.LabelEdit = true;
-            this.ContentTree.Location = new System.Drawing.Point(13, 27);
-            this.ContentTree.Name = "ContentTree";
-            this.ContentTree.Size = new System.Drawing.Size(272, 507);
-            this.ContentTree.TabIndex = 0;
-            this.ContentTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ContentTree_AfterSelect);
-            // 
-            // EditorPanel
-            // 
-            this.EditorPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditorPanel.Location = new System.Drawing.Point(291, 27);
-            this.EditorPanel.Name = "EditorPanel";
-            this.EditorPanel.Size = new System.Drawing.Size(684, 507);
-            this.EditorPanel.TabIndex = 1;
             // 
             // PrimaryMenuStrip
             // 
@@ -163,167 +137,186 @@
             this.SaveFileDialogBox.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
             this.SaveFileDialogBox.Title = "Save Curvature Project";
             // 
-            // ContextMenuBehavior
-            // 
-            this.ContextMenuBehavior.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewConsiderationToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.renameBehaviorToolStripMenuItem,
-            this.deleteBehaviorToolStripMenuItem});
-            this.ContextMenuBehavior.Name = "ContextMenuBehavior";
-            this.ContextMenuBehavior.Size = new System.Drawing.Size(218, 76);
-            this.ContextMenuBehavior.Text = "ContextMenuBehavior";
-            // 
-            // createNewConsiderationToolStripMenuItem
-            // 
-            this.createNewConsiderationToolStripMenuItem.Name = "createNewConsiderationToolStripMenuItem";
-            this.createNewConsiderationToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.createNewConsiderationToolStripMenuItem.Text = "Create new consideration...";
-            this.createNewConsiderationToolStripMenuItem.Click += new System.EventHandler(this.createNewConsiderationToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(214, 6);
-            // 
-            // deleteBehaviorToolStripMenuItem
-            // 
-            this.deleteBehaviorToolStripMenuItem.Name = "deleteBehaviorToolStripMenuItem";
-            this.deleteBehaviorToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.deleteBehaviorToolStripMenuItem.Text = "Delete behavior";
-            this.deleteBehaviorToolStripMenuItem.Click += new System.EventHandler(this.deleteBehaviorToolStripMenuItem_Click);
-            // 
             // OpenFileDialogBox
             // 
             this.OpenFileDialogBox.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
             // 
-            // ContextMenuConsideration
+            // MainTabs
             // 
-            this.ContextMenuConsideration.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.runWizardToolStripMenuItem,
-            this.curvePresetSelectorToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.renameConsiderationToolStripMenuItem,
-            this.deleteConsiderationToolStripMenuItem});
-            this.ContextMenuConsideration.Name = "ContextMenuConsideration";
-            this.ContextMenuConsideration.Size = new System.Drawing.Size(194, 120);
+            this.MainTabs.Controls.Add(this.ProjectTab);
+            this.MainTabs.Controls.Add(this.KnowledgeTab);
+            this.MainTabs.Controls.Add(this.InputsTab);
+            this.MainTabs.Controls.Add(this.BehaviorsTab);
+            this.MainTabs.Controls.Add(this.BehaviorSetsTab);
+            this.MainTabs.Controls.Add(this.ArchetypesTab);
+            this.MainTabs.Controls.Add(this.ScenariosTab);
+            this.MainTabs.Location = new System.Drawing.Point(12, 27);
+            this.MainTabs.Name = "MainTabs";
+            this.MainTabs.SelectedIndex = 0;
+            this.MainTabs.Size = new System.Drawing.Size(963, 507);
+            this.MainTabs.TabIndex = 4;
             // 
-            // runWizardToolStripMenuItem
+            // ProjectTab
             // 
-            this.runWizardToolStripMenuItem.Name = "runWizardToolStripMenuItem";
-            this.runWizardToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.runWizardToolStripMenuItem.Text = "Run wizard...";
-            this.runWizardToolStripMenuItem.Click += new System.EventHandler(this.runWizardToolStripMenuItem_Click);
+            this.ProjectTab.Controls.Add(this.ProjectEditWidget);
+            this.ProjectTab.Location = new System.Drawing.Point(4, 22);
+            this.ProjectTab.Name = "ProjectTab";
+            this.ProjectTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ProjectTab.Size = new System.Drawing.Size(955, 481);
+            this.ProjectTab.TabIndex = 0;
+            this.ProjectTab.Text = "Project";
+            this.ProjectTab.UseVisualStyleBackColor = true;
             // 
-            // toolStripMenuItem3
+            // KnowledgeTab
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 6);
+            this.KnowledgeTab.Controls.Add(this.KnowledgeBaseEditWidget);
+            this.KnowledgeTab.Location = new System.Drawing.Point(4, 22);
+            this.KnowledgeTab.Name = "KnowledgeTab";
+            this.KnowledgeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.KnowledgeTab.Size = new System.Drawing.Size(955, 481);
+            this.KnowledgeTab.TabIndex = 1;
+            this.KnowledgeTab.Text = "Knowledge Base";
+            this.KnowledgeTab.UseVisualStyleBackColor = true;
             // 
-            // deleteConsiderationToolStripMenuItem
+            // InputsTab
             // 
-            this.deleteConsiderationToolStripMenuItem.Name = "deleteConsiderationToolStripMenuItem";
-            this.deleteConsiderationToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.deleteConsiderationToolStripMenuItem.Text = "Delete consideration";
-            this.deleteConsiderationToolStripMenuItem.Click += new System.EventHandler(this.deleteConsiderationToolStripMenuItem_Click);
+            this.InputsTab.Controls.Add(this.InputsEditWidget);
+            this.InputsTab.Location = new System.Drawing.Point(4, 22);
+            this.InputsTab.Name = "InputsTab";
+            this.InputsTab.Size = new System.Drawing.Size(955, 481);
+            this.InputsTab.TabIndex = 2;
+            this.InputsTab.Text = "Inputs";
+            this.InputsTab.UseVisualStyleBackColor = true;
             // 
-            // ContextMenuBehaviorSet
+            // BehaviorsTab
             // 
-            this.ContextMenuBehaviorSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewBehaviorToolStripMenuItem,
-            this.toolStripMenuItem5,
-            this.renameBehaviorSetToolStripMenuItem,
-            this.deleteBehaviorSetToolStripMenuItem});
-            this.ContextMenuBehaviorSet.Name = "ContextMenuBehaviorSet";
-            this.ContextMenuBehaviorSet.Size = new System.Drawing.Size(185, 76);
+            this.BehaviorsTab.Controls.Add(this.BehaviorEditWidget);
+            this.BehaviorsTab.Controls.Add(this.CreateBehaviorButton);
+            this.BehaviorsTab.Controls.Add(this.BehaviorsListView);
+            this.BehaviorsTab.Location = new System.Drawing.Point(4, 22);
+            this.BehaviorsTab.Name = "BehaviorsTab";
+            this.BehaviorsTab.Size = new System.Drawing.Size(955, 481);
+            this.BehaviorsTab.TabIndex = 3;
+            this.BehaviorsTab.Text = "Behaviors";
+            this.BehaviorsTab.UseVisualStyleBackColor = true;
             // 
-            // createNewBehaviorToolStripMenuItem
+            // CreateBehaviorButton
             // 
-            this.createNewBehaviorToolStripMenuItem.Name = "createNewBehaviorToolStripMenuItem";
-            this.createNewBehaviorToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.createNewBehaviorToolStripMenuItem.Text = "Create new behavior";
-            this.createNewBehaviorToolStripMenuItem.Click += new System.EventHandler(this.createNewBehaviorToolStripMenuItem_Click);
+            this.CreateBehaviorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateBehaviorButton.Location = new System.Drawing.Point(3, 455);
+            this.CreateBehaviorButton.Name = "CreateBehaviorButton";
+            this.CreateBehaviorButton.Size = new System.Drawing.Size(244, 23);
+            this.CreateBehaviorButton.TabIndex = 1;
+            this.CreateBehaviorButton.Text = "Add New Behavior";
+            this.CreateBehaviorButton.UseVisualStyleBackColor = true;
+            this.CreateBehaviorButton.Click += new System.EventHandler(this.CreateBehaviorButton_Click);
             // 
-            // toolStripMenuItem5
+            // BehaviorsListView
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(179, 6);
+            this.BehaviorsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BehaviorsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BehaviorNameColumn});
+            this.BehaviorsListView.FullRowSelect = true;
+            this.BehaviorsListView.Location = new System.Drawing.Point(3, 3);
+            this.BehaviorsListView.Name = "BehaviorsListView";
+            this.BehaviorsListView.Size = new System.Drawing.Size(244, 448);
+            this.BehaviorsListView.TabIndex = 0;
+            this.BehaviorsListView.UseCompatibleStateImageBehavior = false;
+            this.BehaviorsListView.View = System.Windows.Forms.View.Details;
+            this.BehaviorsListView.SelectedIndexChanged += new System.EventHandler(this.BehaviorsListView_SelectedIndexChanged);
             // 
-            // deleteBehaviorSetToolStripMenuItem
+            // BehaviorSetsTab
             // 
-            this.deleteBehaviorSetToolStripMenuItem.Name = "deleteBehaviorSetToolStripMenuItem";
-            this.deleteBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.deleteBehaviorSetToolStripMenuItem.Text = "Delete behavior set";
-            this.deleteBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.deleteBehaviorSetToolStripMenuItem_Click);
+            this.BehaviorSetsTab.Location = new System.Drawing.Point(4, 22);
+            this.BehaviorSetsTab.Name = "BehaviorSetsTab";
+            this.BehaviorSetsTab.Size = new System.Drawing.Size(955, 481);
+            this.BehaviorSetsTab.TabIndex = 4;
+            this.BehaviorSetsTab.Text = "Behavior Sets";
+            this.BehaviorSetsTab.UseVisualStyleBackColor = true;
             // 
-            // ContextMenuInputs
+            // ArchetypesTab
             // 
-            this.ContextMenuInputs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createNewInputAxisToolStripMenuItem});
-            this.ContextMenuInputs.Name = "ContextMenuInputs";
-            this.ContextMenuInputs.Size = new System.Drawing.Size(187, 26);
+            this.ArchetypesTab.Location = new System.Drawing.Point(4, 22);
+            this.ArchetypesTab.Name = "ArchetypesTab";
+            this.ArchetypesTab.Size = new System.Drawing.Size(955, 481);
+            this.ArchetypesTab.TabIndex = 5;
+            this.ArchetypesTab.Text = "Archetypes";
+            this.ArchetypesTab.UseVisualStyleBackColor = true;
             // 
-            // createNewInputAxisToolStripMenuItem
+            // ScenariosTab
             // 
-            this.createNewInputAxisToolStripMenuItem.Name = "createNewInputAxisToolStripMenuItem";
-            this.createNewInputAxisToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.createNewInputAxisToolStripMenuItem.Text = "Create new input axis";
-            this.createNewInputAxisToolStripMenuItem.Click += new System.EventHandler(this.createNewInputAxisToolStripMenuItem_Click);
+            this.ScenariosTab.Location = new System.Drawing.Point(4, 22);
+            this.ScenariosTab.Name = "ScenariosTab";
+            this.ScenariosTab.Size = new System.Drawing.Size(955, 481);
+            this.ScenariosTab.TabIndex = 6;
+            this.ScenariosTab.Text = "Scenarios";
+            this.ScenariosTab.UseVisualStyleBackColor = true;
             // 
-            // renameBehaviorToolStripMenuItem
+            // ProjectEditWidget
             // 
-            this.renameBehaviorToolStripMenuItem.Name = "renameBehaviorToolStripMenuItem";
-            this.renameBehaviorToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.renameBehaviorToolStripMenuItem.Text = "Rename behavior";
-            this.renameBehaviorToolStripMenuItem.Click += new System.EventHandler(this.renameBehaviorToolStripMenuItem_Click);
+            this.ProjectEditWidget.BackColor = System.Drawing.SystemColors.Window;
+            this.ProjectEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProjectEditWidget.Location = new System.Drawing.Point(3, 3);
+            this.ProjectEditWidget.Name = "ProjectEditWidget";
+            this.ProjectEditWidget.Size = new System.Drawing.Size(949, 475);
+            this.ProjectEditWidget.TabIndex = 0;
             // 
-            // renameConsiderationToolStripMenuItem
+            // KnowledgeBaseEditWidget
             // 
-            this.renameConsiderationToolStripMenuItem.Name = "renameConsiderationToolStripMenuItem";
-            this.renameConsiderationToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.renameConsiderationToolStripMenuItem.Text = "Rename consideration";
-            this.renameConsiderationToolStripMenuItem.Click += new System.EventHandler(this.renameConsiderationToolStripMenuItem_Click);
+            this.KnowledgeBaseEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KnowledgeBaseEditWidget.Location = new System.Drawing.Point(3, 3);
+            this.KnowledgeBaseEditWidget.Name = "KnowledgeBaseEditWidget";
+            this.KnowledgeBaseEditWidget.Size = new System.Drawing.Size(949, 475);
+            this.KnowledgeBaseEditWidget.TabIndex = 0;
             // 
-            // renameBehaviorSetToolStripMenuItem
+            // InputsEditWidget
             // 
-            this.renameBehaviorSetToolStripMenuItem.Name = "renameBehaviorSetToolStripMenuItem";
-            this.renameBehaviorSetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.renameBehaviorSetToolStripMenuItem.Text = "Rename behavior set";
-            this.renameBehaviorSetToolStripMenuItem.Click += new System.EventHandler(this.renameBehaviorSetToolStripMenuItem_Click);
+            this.InputsEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputsEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.InputsEditWidget.Name = "InputsEditWidget";
+            this.InputsEditWidget.Size = new System.Drawing.Size(955, 481);
+            this.InputsEditWidget.TabIndex = 0;
             // 
-            // curvePresetSelectorToolStripMenuItem
+            // BehaviorEditWidget
             // 
-            this.curvePresetSelectorToolStripMenuItem.Name = "curvePresetSelectorToolStripMenuItem";
-            this.curvePresetSelectorToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.curvePresetSelectorToolStripMenuItem.Text = "Curve preset selector...";
-            this.curvePresetSelectorToolStripMenuItem.Click += new System.EventHandler(this.curvePresetSelectorToolStripMenuItem_Click);
+            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
+            this.BehaviorEditWidget.Size = new System.Drawing.Size(699, 475);
+            this.BehaviorEditWidget.TabIndex = 2;
+            this.BehaviorEditWidget.Visible = false;
+            // 
+            // BehaviorNameColumn
+            // 
+            this.BehaviorNameColumn.Text = "Behavior Name";
+            this.BehaviorNameColumn.Width = 200;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 546);
-            this.Controls.Add(this.EditorPanel);
-            this.Controls.Add(this.ContentTree);
+            this.Controls.Add(this.MainTabs);
             this.Controls.Add(this.PrimaryMenuStrip);
             this.MainMenuStrip = this.PrimaryMenuStrip;
             this.Name = "MainForm";
             this.Text = "Curvature Studio";
             this.PrimaryMenuStrip.ResumeLayout(false);
             this.PrimaryMenuStrip.PerformLayout();
-            this.ContextMenuBehavior.ResumeLayout(false);
-            this.ContextMenuConsideration.ResumeLayout(false);
-            this.ContextMenuBehaviorSet.ResumeLayout(false);
-            this.ContextMenuInputs.ResumeLayout(false);
+            this.MainTabs.ResumeLayout(false);
+            this.ProjectTab.ResumeLayout(false);
+            this.KnowledgeTab.ResumeLayout(false);
+            this.InputsTab.ResumeLayout(false);
+            this.BehaviorsTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TreeView ContentTree;
-        private System.Windows.Forms.Panel EditorPanel;
         private System.Windows.Forms.MenuStrip PrimaryMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
@@ -334,25 +327,22 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog SaveFileDialogBox;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuBehavior;
-        private System.Windows.Forms.ToolStripMenuItem createNewConsiderationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteBehaviorToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog OpenFileDialogBox;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuConsideration;
-        private System.Windows.Forms.ToolStripMenuItem runWizardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem deleteConsiderationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuBehaviorSet;
-        private System.Windows.Forms.ToolStripMenuItem createNewBehaviorToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuInputs;
-        private System.Windows.Forms.ToolStripMenuItem createNewInputAxisToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem deleteBehaviorSetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameBehaviorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameConsiderationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameBehaviorSetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem curvePresetSelectorToolStripMenuItem;
+        private System.Windows.Forms.TabControl MainTabs;
+        private System.Windows.Forms.TabPage ProjectTab;
+        private System.Windows.Forms.TabPage KnowledgeTab;
+        private System.Windows.Forms.TabPage InputsTab;
+        private System.Windows.Forms.TabPage BehaviorsTab;
+        private System.Windows.Forms.TabPage BehaviorSetsTab;
+        private System.Windows.Forms.TabPage ArchetypesTab;
+        private System.Windows.Forms.TabPage ScenariosTab;
+        private EditWidgetProject ProjectEditWidget;
+        private EditWidgetKnowledgeBase KnowledgeBaseEditWidget;
+        private EditWidgetInputs InputsEditWidget;
+        private System.Windows.Forms.ListView BehaviorsListView;
+        private System.Windows.Forms.Button CreateBehaviorButton;
+        private EditWidgetBehavior BehaviorEditWidget;
+        private System.Windows.Forms.ColumnHeader BehaviorNameColumn;
     }
 }
 

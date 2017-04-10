@@ -15,9 +15,13 @@ namespace Curvature
         private Behavior EditBehavior;
 
 
-        internal EditWidgetBehavior(Behavior behavior)
+        public EditWidgetBehavior()
         {
             InitializeComponent();
+        }
+
+        internal void Attach(Behavior behavior)
+        {
             EditBehavior = behavior;
 
             BehaviorNameLabel.Text = "Behavior: " + EditBehavior.ReadableName;

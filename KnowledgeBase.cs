@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class KnowledgeBase : IUserEditable
+    public class KnowledgeBase
     {
 
         [DataContract(Namespace = "")]
@@ -53,12 +53,6 @@ namespace Curvature
         public KnowledgeBase()
         {
             Records = new List<Record>();
-        }
-
-
-        public Control CreateEditorUI(Project project)
-        {
-            return new EditWidgetKnowledgeBase(this);
         }
     }
 }

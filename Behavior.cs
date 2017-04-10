@@ -34,7 +34,7 @@ namespace Curvature
 
         public Control CreateEditorUI(Project project)
         {
-            return new EditWidgetBehavior(this);
+            return null;
         }
 
         public override string ToString()

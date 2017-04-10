@@ -14,7 +14,6 @@ namespace Curvature
     {
         private Project EditingProject;
         private string EditingFileName;
-        private TreeNode RightClickedNode;
 
         public MainForm()
         {
@@ -22,91 +21,8 @@ namespace Curvature
 
             EditingProject = new Project();
             SetUpProject();
-
-            ContentTree.NodeMouseClick += (e, args) =>
-            {
-                if (args.Node == null)
-                    return;
-
-                RightClickedNode = args.Node;
-
-                if (args.Button != MouseButtons.Right)
-                    return;
-
-                if (args.Node.Tag == null)
-                {
-                    if (args.Node.Text == "Behaviors")
-                    {
-                        deleteBehaviorSetToolStripMenuItem.Enabled = false;
-                        renameBehaviorSetToolStripMenuItem.Enabled = false;
-                        ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
-                    }
-                    else if (args.Node.Text == "Inputs")
-                    {
-                        ContextMenuInputs.Show(ContentTree.PointToScreen(args.Location));
-                    }
-
-                    return;
-                }
-
-                if (RightClickedNode.Tag is Behavior)
-                {
-                    ContextMenuBehavior.Show(ContentTree.PointToScreen(args.Location));
-                }
-                else if (RightClickedNode.Tag is Consideration)
-                {
-                    ContextMenuConsideration.Show(ContentTree.PointToScreen(args.Location));
-                }
-                else if (RightClickedNode.Tag is BehaviorSet)
-                {
-                    deleteBehaviorSetToolStripMenuItem.Enabled = true;
-                    renameBehaviorSetToolStripMenuItem.Enabled = true;
-                    ContextMenuBehaviorSet.Show(ContentTree.PointToScreen(args.Location));
-                }
-            };
-
-            ContentTree.BeforeLabelEdit += (e, args) =>
-            {
-                if (args.Node.Tag == null || !(args.Node.Tag is INameable))
-                {
-                    args.CancelEdit = true;
-                }
-            };
-
-            ContentTree.AfterLabelEdit += (e, args) =>
-            {
-                if (args.Node.Tag == null || string.IsNullOrEmpty(args.Label))
-                    return;
-
-                if (args.Node.Tag is INameable)
-                {
-                    var nameable = args.Node.Tag as INameable;
-                    nameable.Rename(args.Label);
-                }
-            };
         }
 
-        private void ContentTree_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            ClearEditorPanel();
-
-            if (e.Node == null)
-                return;
-
-            if (e.Node.Tag == null)
-            {
-                if (e.Node.Text == "Behaviors")
-                    SetEditorPanel(new EditWidgetBehaviorSet(EditingProject, "(All Behaviors)", new HashSet<Behavior>()));
-
-                return;
-            }
-
-            var editable = e.Node.Tag as IUserEditable;
-            if (editable == null)
-                return;
-
-            SetEditorPanel(editable.CreateEditorUI(EditingProject));
-        }
 
         private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,10 +40,7 @@ namespace Curvature
             var consideration = new Consideration("New consideration");
             if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
             {
-                var behavior = RightClickedNode.Tag as Behavior;
-                behavior.Considerations.Add(consideration);
-
-                EditingProject.PopulateUI(ContentTree);
+                // TODO
             }
         }
 
@@ -147,15 +60,16 @@ namespace Curvature
 
         private void SetUpProject()
         {
-            EditingProject.PopulateUI(ContentTree);
+            ProjectEditWidget.Attach(EditingProject);
+            KnowledgeBaseEditWidget.Attach(EditingProject.KB);
+            InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
+
             EditingProject.Navigate += (e, args) =>
             {
-                ClearEditorPanel();
-
                 if (args.Editable == null)
                     return;
-
-                SetEditorPanel(args.Editable.CreateEditorUI(EditingProject));
+                
+                // TODO
             };
 
             if (string.IsNullOrEmpty(EditingFileName))
@@ -185,124 +99,36 @@ namespace Curvature
             EditingProject = new Project();
             EditingFileName = null;
             SetUpProject();
-            ContentTree.SelectedNode = ContentTree.Nodes[0];
         }
 
-        private void ClearEditorPanel()
+        private void CreateBehaviorButton_Click(object sender, EventArgs e)
         {
-            foreach (Control c in EditorPanel.Controls)
-                c.Dispose();
+            EditingProject.Behaviors.Add(new Behavior("New behavior"));
+            RefreshBehaviorControls();
         }
 
-        private void SetEditorPanel(Control c)
+        private void RefreshBehaviorControls()
         {
-            EditorPanel.Controls.Add(c);
-            c.Dock = DockStyle.Fill;
-        }
+            BehaviorsListView.Items.Clear();
 
-        private void runWizardToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var consideration = RightClickedNode.Tag as Consideration;
-            (new CurveWizardForm(EditingProject, consideration)).ShowDialog();
-        }
-
-        private void deleteConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var consideration = RightClickedNode.Tag as Consideration;
-            var promptText = $"Are you sure you wish to delete this consideration?\r\n\r\n{consideration.ReadableName}";
-            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (promptResult == DialogResult.Yes)
+            foreach (var behavior in EditingProject.Behaviors)
             {
-                var behavior = RightClickedNode.Parent.Tag as Behavior;
-                behavior.Considerations.Remove(consideration);
-
-                SetUpProject();
+                var item = new ListViewItem(behavior.ReadableName);
+                item.Tag = behavior;
+                BehaviorsListView.Items.Add(item);
             }
         }
 
-        private void deleteBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var behavior = RightClickedNode.Tag as Behavior;
-            var promptText = $"Are you sure you wish to delete this behavior?\r\n\r\n{behavior.ReadableName}";
-            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (promptResult == DialogResult.Yes)
+            if (BehaviorsListView.SelectedItems.Count <= 0)
             {
-                EditingProject.Behaviors.Remove(behavior);
-
-                SetUpProject();
+                BehaviorEditWidget.Visible = false;
+                return;
             }
-        }
 
-        private void createNewBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var behavior = new Behavior("New behavior");
-            EditingProject.Behaviors.Add(behavior);
-
-            var behaviorSet = RightClickedNode.Tag as BehaviorSet;
-            if (behaviorSet != null)
-                behaviorSet.EnabledBehaviors.Add(behavior);
-
-            SetUpProject();
-        }
-
-        private void createNewInputAxisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var axis = new InputAxis(EditingProject.GenerateNewInputAxisName(), InputAxis.OriginType.PropertyOfSelf);
-            EditingProject.RegisterInput(axis);
-
-            SetUpProject();
-        }
-
-        private void deleteBehaviorSetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var behaviorSet = RightClickedNode.Tag as BehaviorSet;
-            if (behaviorSet == null)
-                return;
-
-            var promptText = $"Are you sure you wish to delete this behavior set?\r\n\r\n{behaviorSet.ReadableName}";
-            var promptResult = MessageBox.Show(promptText, "Curvature Studio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (promptResult == DialogResult.Yes)
-            {
-                EditingProject.BehaviorSets.Remove(behaviorSet);
-
-                SetUpProject();
-            }
-        }
-
-        private void renameBehaviorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ContentTree.SelectedNode == null)
-                return;
-
-            ContentTree.SelectedNode.BeginEdit();
-        }
-
-        private void renameConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ContentTree.SelectedNode == null)
-                return;
-
-            ContentTree.SelectedNode.BeginEdit();
-        }
-
-        private void renameBehaviorSetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ContentTree.SelectedNode == null)
-                return;
-
-            ContentTree.SelectedNode.BeginEdit();
-        }
-
-        private void curvePresetSelectorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var consideration = RightClickedNode.Tag as Consideration;
-            (new CurvePresetForm(consideration.Curve)).ShowDialog();
-
-            if (RightClickedNode.IsSelected)
-            {
-                ClearEditorPanel();
-                SetEditorPanel(consideration.CreateEditorUI(EditingProject));
-            }
+            BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
+            BehaviorEditWidget.Visible = true;
         }
     }
 }

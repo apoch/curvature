@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Project : IUserEditable, INameable
+    public class Project : INameable
     {
         [DataMember]
         public string ReadableName;
@@ -80,67 +80,6 @@ namespace Curvature
             }
 
             return newname;
-        }
-
-        public void PopulateUI(TreeView tree)
-        {
-            tree.BeginUpdate();
-            tree.Nodes.Clear();
-
-            var root = tree.Nodes.Add(ReadableName);
-            root.Tag = this;
-
-            var kbNode = root.Nodes.Add("Knowledge Base");
-            kbNode.Tag = KB;
-
-            var inputsFolder = root.Nodes.Add("Inputs");
-            var archetypesFolder = root.Nodes.Add("Archetypes");
-            var behaviorsFolder = root.Nodes.Add("Behaviors");
-            var behaviorSetsFolder = root.Nodes.Add("Behavior Sets");
-
-            foreach (Archetype archetype in Archetypes)
-            {
-                var node = archetypesFolder.Nodes.Add(archetype.ReadableName);
-                node.Tag = archetype;
-            }
-
-            foreach (InputAxis axis in Inputs)
-            {
-                var node = inputsFolder.Nodes.Add(axis.ReadableName);
-                node.Tag = axis;
-            }
-
-            foreach (Behavior behavior in Behaviors)
-            {
-                var node = behaviorsFolder.Nodes.Add(behavior.ReadableName);
-                node.Tag = behavior;
-
-                foreach (Consideration consideration in behavior.Considerations)
-                {
-                    var cnode = node.Nodes.Add(consideration.ReadableName);
-                    cnode.Tag = consideration;
-                }
-            }
-
-            foreach (BehaviorSet set in BehaviorSets)
-            {
-                var node = behaviorSetsFolder.Nodes.Add(set.ReadableName);
-                node.Tag = set;
-            }
-
-            root.Expand();
-            inputsFolder.Expand();
-            archetypesFolder.Expand();
-            behaviorsFolder.Expand();
-            behaviorSetsFolder.Expand();
-
-            tree.EndUpdate();
-        }
-
-
-        public Control CreateEditorUI(Project project)
-        {
-            return new EditWidgetProject(this);
         }
 
         public void Rename(string name)
