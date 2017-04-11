@@ -119,6 +119,22 @@ namespace Curvature
             }
         }
 
+        private void RefreshConsiderationControls()
+        {
+            ConsiderationsListView.Items.Clear();
+
+            if (BehaviorsListView.SelectedItems.Count <= 0)
+                return;
+
+            var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
+            foreach (var consideration in behavior.Considerations)
+            {
+                var item = new ListViewItem(consideration.ReadableName);
+                item.Tag = consideration;
+                ConsiderationsListView.Items.Add(item);
+            }
+        }
+
         private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (BehaviorsListView.SelectedItems.Count <= 0)
@@ -129,6 +145,31 @@ namespace Curvature
 
             BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
             BehaviorEditWidget.Visible = true;
+        }
+
+        private void AddConsiderationButton_Click(object sender, EventArgs e)
+        {
+            if (BehaviorsListView.SelectedItems.Count <= 0)
+                return;
+
+            var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
+            var consideration = new Consideration("New consideration");
+            if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
+                behavior.Considerations.Add(consideration);
+
+            RefreshConsiderationControls();
+        }
+
+        private void ConsiderationsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ConsiderationsListView.SelectedItems.Count <= 0)
+            {
+                ConsiderationEditWidget.Visible = false;
+                return;
+            }
+
+            ConsiderationEditWidget.Attach(EditingProject, ConsiderationsListView.SelectedItems[0].Tag as Consideration);
+            ConsiderationEditWidget.Visible = true;
         }
     }
 }

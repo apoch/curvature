@@ -15,18 +15,28 @@ namespace Curvature
         private Consideration EditConsideration;
         private Project EditProject;
 
-        internal EditWidgetConsideration(Project project, Consideration editConsideration)
+        public EditWidgetConsideration()
         {
             InitializeComponent();
+        }
+
+        internal void Attach(Project project, Consideration editConsideration)
+        {
             EditConsideration = editConsideration;
             EditProject = project;
 
             ConsiderationNameLabel.Text = "Consideration: " + EditConsideration.ReadableName;
 
+            InputAxisDropdown.Items.Clear();
             foreach (InputAxis axis in project.Inputs)
             {
                 InputAxisDropdown.Items.Add(axis);
             }
+
+            foreach (Control c in ParamFlowPanel.Controls)
+                c.Dispose();
+
+            ParamFlowPanel.Controls.Clear();
 
             foreach (InputParameter param in EditConsideration.Parameters)
             {

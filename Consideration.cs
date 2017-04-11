@@ -36,7 +36,7 @@ namespace Curvature
 
         public Control CreateEditorUI(Project project)
         {
-            return new EditWidgetConsideration(project, this);
+            return null;
         }
 
         internal double Score(IInputBroker broker)
