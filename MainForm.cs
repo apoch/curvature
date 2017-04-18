@@ -35,15 +35,6 @@ namespace Curvature
             }
         }
 
-        private void createNewConsiderationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var consideration = new Consideration("New consideration");
-            if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
-            {
-                // TODO
-            }
-        }
-
         private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (OpenFileDialogBox.ShowDialog() == DialogResult.OK)
