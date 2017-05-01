@@ -34,8 +34,6 @@
             // KnowledgeBaseFlowPanel
             // 
             this.KnowledgeBaseFlowPanel.AutoScroll = true;
-            this.KnowledgeBaseFlowPanel.AutoSize = true;
-            this.KnowledgeBaseFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.KnowledgeBaseFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KnowledgeBaseFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.KnowledgeBaseFlowPanel.Location = new System.Drawing.Point(0, 0);
@@ -51,7 +49,6 @@
             this.Name = "EditWidgetKnowledgeBase";
             this.Size = new System.Drawing.Size(474, 202);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
