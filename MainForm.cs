@@ -55,6 +55,8 @@ namespace Curvature
             KnowledgeBaseEditWidget.Attach(EditingProject.KB);
             InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
 
+            RefreshBehaviorControls();
+
             EditingProject.Navigate += (e, args) =>
             {
                 if (args.Editable == null)
@@ -136,6 +138,8 @@ namespace Curvature
 
             BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
             BehaviorEditWidget.Visible = true;
+
+            RefreshConsiderationControls();
         }
 
         private void AddConsiderationButton_Click(object sender, EventArgs e)
