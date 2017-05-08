@@ -41,17 +41,12 @@
             this.OpenFileDialogBox = new System.Windows.Forms.OpenFileDialog();
             this.MainTabs = new System.Windows.Forms.TabControl();
             this.ProjectTab = new System.Windows.Forms.TabPage();
-            this.ProjectEditWidget = new Curvature.EditWidgetProject();
             this.KnowledgeTab = new System.Windows.Forms.TabPage();
-            this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
             this.InputsTab = new System.Windows.Forms.TabPage();
-            this.InputsEditWidget = new Curvature.EditWidgetInputs();
             this.BehaviorsTab = new System.Windows.Forms.TabPage();
             this.BehaviorTabs = new System.Windows.Forms.TabControl();
             this.BehaviorOverviewTab = new System.Windows.Forms.TabPage();
-            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.BehaviorConsiderationsTab = new System.Windows.Forms.TabPage();
-            this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.AddConsiderationButton = new System.Windows.Forms.Button();
             this.ConsiderationsListView = new System.Windows.Forms.ListView();
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,6 +56,13 @@
             this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
             this.ArchetypesTab = new System.Windows.Forms.TabPage();
             this.ScenariosTab = new System.Windows.Forms.TabPage();
+            this.ScenarioPanel = new System.Windows.Forms.Panel();
+            this.CreateScenarioButton = new System.Windows.Forms.Button();
+            this.ProjectEditWidget = new Curvature.EditWidgetProject();
+            this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
+            this.InputsEditWidget = new Curvature.EditWidgetInputs();
+            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
+            this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -70,6 +72,7 @@
             this.BehaviorTabs.SuspendLayout();
             this.BehaviorOverviewTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
+            this.ScenariosTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrimaryMenuStrip
@@ -180,15 +183,6 @@
             this.ProjectTab.Text = "Project";
             this.ProjectTab.UseVisualStyleBackColor = true;
             // 
-            // ProjectEditWidget
-            // 
-            this.ProjectEditWidget.BackColor = System.Drawing.SystemColors.Window;
-            this.ProjectEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectEditWidget.Location = new System.Drawing.Point(3, 3);
-            this.ProjectEditWidget.Name = "ProjectEditWidget";
-            this.ProjectEditWidget.Size = new System.Drawing.Size(949, 591);
-            this.ProjectEditWidget.TabIndex = 0;
-            // 
             // KnowledgeTab
             // 
             this.KnowledgeTab.Controls.Add(this.KnowledgeBaseEditWidget);
@@ -199,14 +193,6 @@
             this.KnowledgeTab.Text = "Knowledge Base";
             this.KnowledgeTab.UseVisualStyleBackColor = true;
             // 
-            // KnowledgeBaseEditWidget
-            // 
-            this.KnowledgeBaseEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KnowledgeBaseEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.KnowledgeBaseEditWidget.Name = "KnowledgeBaseEditWidget";
-            this.KnowledgeBaseEditWidget.Size = new System.Drawing.Size(955, 597);
-            this.KnowledgeBaseEditWidget.TabIndex = 0;
-            // 
             // InputsTab
             // 
             this.InputsTab.Controls.Add(this.InputsEditWidget);
@@ -216,14 +202,6 @@
             this.InputsTab.TabIndex = 2;
             this.InputsTab.Text = "Inputs";
             this.InputsTab.UseVisualStyleBackColor = true;
-            // 
-            // InputsEditWidget
-            // 
-            this.InputsEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InputsEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.InputsEditWidget.Name = "InputsEditWidget";
-            this.InputsEditWidget.Size = new System.Drawing.Size(955, 597);
-            this.InputsEditWidget.TabIndex = 0;
             // 
             // BehaviorsTab
             // 
@@ -261,17 +239,6 @@
             this.BehaviorOverviewTab.Text = "Scoring Overview";
             this.BehaviorOverviewTab.UseVisualStyleBackColor = true;
             // 
-            // BehaviorEditWidget
-            // 
-            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
-            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
-            this.BehaviorEditWidget.Size = new System.Drawing.Size(679, 553);
-            this.BehaviorEditWidget.TabIndex = 3;
-            this.BehaviorEditWidget.Visible = false;
-            // 
             // BehaviorConsiderationsTab
             // 
             this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationEditWidget);
@@ -284,17 +251,6 @@
             this.BehaviorConsiderationsTab.TabIndex = 1;
             this.BehaviorConsiderationsTab.Text = "Edit Considerations";
             this.BehaviorConsiderationsTab.UseVisualStyleBackColor = true;
-            // 
-            // ConsiderationEditWidget
-            // 
-            this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationEditWidget.Location = new System.Drawing.Point(173, 6);
-            this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
-            this.ConsiderationEditWidget.Size = new System.Drawing.Size(512, 559);
-            this.ConsiderationEditWidget.TabIndex = 2;
-            this.ConsiderationEditWidget.Visible = false;
             // 
             // AddConsiderationButton
             // 
@@ -380,12 +336,81 @@
             // 
             // ScenariosTab
             // 
+            this.ScenariosTab.Controls.Add(this.CreateScenarioButton);
+            this.ScenariosTab.Controls.Add(this.ScenarioPanel);
             this.ScenariosTab.Location = new System.Drawing.Point(4, 22);
             this.ScenariosTab.Name = "ScenariosTab";
             this.ScenariosTab.Size = new System.Drawing.Size(955, 597);
             this.ScenariosTab.TabIndex = 6;
             this.ScenariosTab.Text = "Scenarios";
             this.ScenariosTab.UseVisualStyleBackColor = true;
+            // 
+            // ScenarioPanel
+            // 
+            this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScenarioPanel.Location = new System.Drawing.Point(300, 3);
+            this.ScenarioPanel.Name = "ScenarioPanel";
+            this.ScenarioPanel.Size = new System.Drawing.Size(652, 591);
+            this.ScenarioPanel.TabIndex = 0;
+            // 
+            // CreateScenarioButton
+            // 
+            this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateScenarioButton.Location = new System.Drawing.Point(3, 560);
+            this.CreateScenarioButton.Name = "CreateScenarioButton";
+            this.CreateScenarioButton.Size = new System.Drawing.Size(155, 34);
+            this.CreateScenarioButton.TabIndex = 1;
+            this.CreateScenarioButton.Text = "New Scenario";
+            this.CreateScenarioButton.UseVisualStyleBackColor = true;
+            this.CreateScenarioButton.Click += new System.EventHandler(this.CreateScenarioButton_Click);
+            // 
+            // ProjectEditWidget
+            // 
+            this.ProjectEditWidget.BackColor = System.Drawing.SystemColors.Window;
+            this.ProjectEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProjectEditWidget.Location = new System.Drawing.Point(3, 3);
+            this.ProjectEditWidget.Name = "ProjectEditWidget";
+            this.ProjectEditWidget.Size = new System.Drawing.Size(949, 591);
+            this.ProjectEditWidget.TabIndex = 0;
+            // 
+            // KnowledgeBaseEditWidget
+            // 
+            this.KnowledgeBaseEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KnowledgeBaseEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.KnowledgeBaseEditWidget.Name = "KnowledgeBaseEditWidget";
+            this.KnowledgeBaseEditWidget.Size = new System.Drawing.Size(955, 597);
+            this.KnowledgeBaseEditWidget.TabIndex = 0;
+            // 
+            // InputsEditWidget
+            // 
+            this.InputsEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputsEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.InputsEditWidget.Name = "InputsEditWidget";
+            this.InputsEditWidget.Size = new System.Drawing.Size(955, 597);
+            this.InputsEditWidget.TabIndex = 0;
+            // 
+            // BehaviorEditWidget
+            // 
+            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
+            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
+            this.BehaviorEditWidget.Size = new System.Drawing.Size(679, 553);
+            this.BehaviorEditWidget.TabIndex = 3;
+            this.BehaviorEditWidget.Visible = false;
+            // 
+            // ConsiderationEditWidget
+            // 
+            this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsiderationEditWidget.Location = new System.Drawing.Point(173, 6);
+            this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
+            this.ConsiderationEditWidget.Size = new System.Drawing.Size(512, 559);
+            this.ConsiderationEditWidget.TabIndex = 2;
+            this.ConsiderationEditWidget.Visible = false;
             // 
             // MainForm
             // 
@@ -407,6 +432,7 @@
             this.BehaviorTabs.ResumeLayout(false);
             this.BehaviorOverviewTab.ResumeLayout(false);
             this.BehaviorConsiderationsTab.ResumeLayout(false);
+            this.ScenariosTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,6 +472,8 @@
         private System.Windows.Forms.ColumnHeader ConsiderationNameHeader;
         private System.Windows.Forms.Button AddConsiderationButton;
         private EditWidgetConsideration ConsiderationEditWidget;
+        private System.Windows.Forms.Button CreateScenarioButton;
+        private System.Windows.Forms.Panel ScenarioPanel;
     }
 }
 

@@ -166,5 +166,21 @@ namespace Curvature
             ConsiderationEditWidget.Attach(EditingProject, ConsiderationsListView.SelectedItems[0].Tag as Consideration);
             ConsiderationEditWidget.Visible = true;
         }
+
+        private void CreateScenarioButton_Click(object sender, EventArgs e)
+        {
+            // TODO - stash all existing scenarios
+
+            foreach (Control c in ScenarioPanel.Controls)
+                c.Dispose();
+
+            ScenarioPanel.Controls.Clear();
+
+
+            var widget = new EditWidgetScenario();
+            widget.Attach(new Scenario("Untitled Scenario"));
+            widget.Dock = DockStyle.Fill;
+            ScenarioPanel.Controls.Add(widget);
+        }
     }
 }
