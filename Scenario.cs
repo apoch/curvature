@@ -97,6 +97,8 @@ namespace Curvature
                 var context = agent.ChooseBehavior(this, targets);
                 if (context != null)
                     ExecuteBehaviorOnAgent(context, dt);
+                else
+                    SignalStallOnAgent(agent);
             }
         }
 
@@ -145,6 +147,9 @@ namespace Curvature
                 var displayRect = AgentToDisplayRect(agent, rect);
                 graphics.FillEllipse(Brushes.Black, displayRect);
 
+                if (agent.Stalled)
+                    graphics.DrawRectangle(Pens.Red, displayRect);
+
                 int pad = 20;
                 var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
                 graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Red, textRect, stringFormat);
@@ -170,8 +175,14 @@ namespace Curvature
         private void ExecuteBehaviorOnAgent(Context context, float dt)
         {
             // TODO - real implementation
+            context.ThinkingAgent.Stalled = false;
             context.ThinkingAgent.Position.X += dt * 0.5f;
             context.ThinkingAgent.Position.Y += dt * 0.5f;
+        }
+
+        private void SignalStallOnAgent(ScenarioAgent agent)
+        {
+            agent.Stalled = true;
         }
 
 

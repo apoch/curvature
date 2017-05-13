@@ -18,6 +18,8 @@ namespace Curvature
 
         public Archetype AgentArchetype;
 
+        public bool Stalled = false;
+
 
         public ScenarioAgent(string name, Archetype archetype)
         {
