@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class Scenario : IInputBroker
+    public class Scenario : IInputBroker
     {
         public interface IScenarioMember
         {
@@ -52,9 +52,21 @@ namespace Curvature
         private void PopulateWithDummyData()
         {
             {
+                var dummyconsideration = new Consideration("Dummy");
+                dummyconsideration.Input = new InputAxis("Constant", InputAxis.OriginType.ComputedValue);
+                dummyconsideration.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 0.0, 1.0, 0.0, 0.5);
+
+                var movebehavior = new Behavior("Move");
+                movebehavior.Considerations.Add(dummyconsideration);
+
+                var behaviorset = new BehaviorSet("TestBehaviors");
+                behaviorset.EnabledBehaviors.Add(movebehavior);
+
                 var agent = new ScenarioAgent("Test", null);
                 agent.Position = new PointF(-0.5f, -0.25f);
                 agent.Radius = 0.1f;
+                agent.AgentArchetype = new Archetype("TestArchetype");
+                agent.AgentArchetype.BehaviorSets.Add(behaviorset);
                 Agents.Add(agent);
             }
 
@@ -83,7 +95,8 @@ namespace Curvature
             foreach (var agent in Agents)
             {
                 var context = agent.ChooseBehavior(this, targets);
-                ExecuteBehaviorOnAgent(context, dt);
+                if (context != null)
+                    ExecuteBehaviorOnAgent(context, dt);
             }
         }
 
@@ -144,6 +157,11 @@ namespace Curvature
 
         public double GetInputValue(InputAxis axis)
         {
+            return 0.0;
+        }
+
+        public double GetInputValue(InputAxis axis, Context context)
+        {
             // TODO
             return 0.0;
         }
@@ -151,7 +169,9 @@ namespace Curvature
 
         private void ExecuteBehaviorOnAgent(Context context, float dt)
         {
-            // TODO
+            // TODO - real implementation
+            context.ThinkingAgent.Position.X += dt * 0.5f;
+            context.ThinkingAgent.Position.Y += dt * 0.5f;
         }
 
 

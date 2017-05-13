@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class ScenarioAgent : Scenario.IScenarioMember
+    public class ScenarioAgent : Scenario.IScenarioMember
     {
         public string Name;
         public PointF Position;
@@ -45,6 +45,9 @@ namespace Curvature
 
         public Scenario.Context ChooseBehavior(IInputBroker broker, List<Scenario.IScenarioMember> targets)
         {
+            if (AgentArchetype == null)
+                return null;
+
             List<Scenario.Context> scoreSet = new List<Scenario.Context>();
 
             foreach (var set in AgentArchetype.BehaviorSets)

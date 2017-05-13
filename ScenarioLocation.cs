@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    class ScenarioLocation : Scenario.IScenarioMember
+    public class ScenarioLocation : Scenario.IScenarioMember
     {
         public string Name;
         public PointF Position;

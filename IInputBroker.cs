@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Curvature
 {
-    interface IInputBroker
+    public interface IInputBroker
     {
         double GetInputValue(InputAxis axis);
+        double GetInputValue(InputAxis axis, Scenario.Context context);
         void RefreshInputs();
     }
 }

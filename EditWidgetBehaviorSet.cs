@@ -56,6 +56,11 @@ namespace Curvature
             return 0.0;
         }
 
+        public double GetInputValue(InputAxis axis, Scenario.Context context)
+        {
+            return 0.0;
+        }
+
         public void RefreshInputs()
         {
             double winscore = 0.0;
