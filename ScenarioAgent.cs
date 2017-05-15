@@ -56,14 +56,23 @@ namespace Curvature
             {
                 foreach (var behavior in set.EnabledBehaviors)
                 {
-                    foreach (var scenarioTarget in targets)
+                    if (behavior.CanTargetOthers || behavior.CanTargetSelf)
                     {
-                        var context = new Scenario.Context();
-                        context.ChosenBehavior = behavior;
-                        context.Target = scenarioTarget;
-                        context.ThinkingAgent = this;
+                        foreach (var scenarioTarget in targets)
+                        {
+                            if (!behavior.CanTargetOthers && (scenarioTarget != this))
+                                continue;
 
-                        scoreSet.Add(context);
+                            if (!behavior.CanTargetSelf && (scenarioTarget == this))
+                                continue;
+
+                            var context = new Scenario.Context();
+                            context.ChosenBehavior = behavior;
+                            context.Target = scenarioTarget;
+                            context.ThinkingAgent = this;
+
+                            scoreSet.Add(context);
+                        }
                     }
                 }
             }
@@ -72,6 +81,11 @@ namespace Curvature
             var topBehavior = scoredBehaviors.First();
 
             return topBehavior.ctx;
+        }
+
+        public double GetProperty(string name)
+        {
+            return Properties[name];
         }
     }
 }

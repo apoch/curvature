@@ -18,6 +18,13 @@ namespace Curvature
         public EditWidgetBehavior()
         {
             InitializeComponent();
+
+            foreach (var e in Enum.GetValues(typeof(Behavior.ActionType)))
+            {
+                ActionComboBox.Items.Add(e);
+            }
+
+            ActionComboBox.SelectedIndex = 0;
         }
 
         internal void Attach(Behavior behavior)
@@ -26,6 +33,10 @@ namespace Curvature
 
             BehaviorNameLabel.Text = "Behavior: " + EditBehavior.ReadableName;
             BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
+
+            ActionComboBox.SelectedIndex = (int)EditBehavior.Action;
+            CanTargetSelfCheckBox.Checked = EditBehavior.CanTargetSelf;
+            CanTargetOthersCheckBox.Checked = EditBehavior.CanTargetOthers;
 
             var inputs = new HashSet<InputAxis>();
             foreach (var consideration in EditBehavior.Considerations)
@@ -122,6 +133,24 @@ namespace Curvature
         private void CompensationCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             RefreshInputs();
+        }
+
+        private void ActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+                EditBehavior.Action = (Behavior.ActionType)ActionComboBox.SelectedIndex;
+        }
+
+        private void CanTargetSelfCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+                EditBehavior.CanTargetSelf = CanTargetSelfCheckBox.Checked;
+        }
+
+        private void CanTargetOthersCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+                EditBehavior.CanTargetOthers = CanTargetOthersCheckBox.Checked;
         }
     }
 }

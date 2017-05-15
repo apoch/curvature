@@ -20,9 +20,31 @@ namespace Curvature
         [DataMember]
         public double Weight;
 
+        [DataMember]
+        public ActionType Action;
+
+        [DataMember]
+        public bool CanTargetSelf;
+
+        [DataMember]
+        public bool CanTargetOthers;
+
+
+        public enum ActionType
+        {
+            Idle,
+            MoveToTarget,
+            MoveAwayFromTarget,
+            Talk,
+            Custom
+        }
+
 
         internal Behavior()
         {
+            Action = ActionType.Idle;
+            CanTargetSelf = false;
+            CanTargetOthers = true;
         }
 
         public Behavior(string name)
@@ -30,11 +52,16 @@ namespace Curvature
             ReadableName = name;
             Considerations = new List<Consideration>();
             Weight = 1.0;
+            Action = ActionType.Idle;
+            CanTargetSelf = false;
+            CanTargetOthers = true;
         }
 
         public Control CreateEditorUI(Project project)
         {
-            return null;
+            var control = new EditWidgetBehavior();
+            control.Attach(this);
+            return control;
         }
 
         public override string ToString()

@@ -13,6 +13,7 @@ namespace Curvature
         {
             string GetName();
             PointF GetPosition();
+            double GetProperty(string name);
         }
 
         public class Context
@@ -57,6 +58,7 @@ namespace Curvature
                 dummyconsideration.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 0.0, 1.0, 0.0, 0.5);
 
                 var movebehavior = new Behavior("Move");
+                movebehavior.Action = Behavior.ActionType.MoveToTarget;
                 movebehavior.Considerations.Add(dummyconsideration);
 
                 var behaviorset = new BehaviorSet("TestBehaviors");
@@ -167,17 +169,70 @@ namespace Curvature
 
         public double GetInputValue(InputAxis axis, Context context)
         {
-            // TODO
-            return 0.0;
+            double raw = 0.0;
+
+            switch (axis.Origin)
+            {
+                case InputAxis.OriginType.ComputedValue:
+                    // TODO - compute requested value
+                    break;
+
+                case InputAxis.OriginType.PropertyOfSelf:
+                    raw = context.ThinkingAgent.GetProperty(axis.KBRecord.ReadableName);
+                    break;
+
+                case InputAxis.OriginType.PropertyOfTarget:
+                    raw = context.Target.GetProperty(axis.KBRecord.ReadableName);
+                    break;
+            }
+
+            if (raw < axis.KBRecord.MinimumValue)
+                raw = axis.KBRecord.MinimumValue;
+
+            if (raw > axis.KBRecord.MaximumValue)
+                raw = axis.KBRecord.MaximumValue;
+
+            return raw;
         }
 
 
         private void ExecuteBehaviorOnAgent(Context context, float dt)
         {
-            // TODO - real implementation
+            const float speed = 0.4f;
+
             context.ThinkingAgent.Stalled = false;
-            context.ThinkingAgent.Position.X += dt * 0.5f;
-            context.ThinkingAgent.Position.Y += dt * 0.5f;
+
+            switch (context.ChosenBehavior.Action)
+            {
+                case Behavior.ActionType.Idle:
+                    break;
+
+                case Behavior.ActionType.MoveAwayFromTarget:
+                    if (context.Target != null)
+                    {
+                        var pos = context.ThinkingAgent.Position;
+                        var vec = ComputeVectorTowardsTarget(context);
+                        context.ThinkingAgent.Position.X = ClampToArrival(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
+                        context.ThinkingAgent.Position.Y = ClampToArrival(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
+                    }
+                    break;
+
+                case Behavior.ActionType.MoveToTarget:
+                    if (context.Target != null)
+                    {
+                        var pos = context.ThinkingAgent.Position;
+                        var vec = ComputeVectorTowardsTarget(context);
+                        context.ThinkingAgent.Position.X = ClampToArrival(pos.X, context.Target.GetPosition().X, pos.X + (speed * dt * vec.X));
+                        context.ThinkingAgent.Position.Y = ClampToArrival(pos.Y, context.Target.GetPosition().Y, pos.Y + (speed * dt * vec.Y));
+                    }
+                    break;
+
+                case Behavior.ActionType.Talk:
+                    break;
+
+                case Behavior.ActionType.Custom:
+                    break;
+            }
         }
 
         private void SignalStallOnAgent(ScenarioAgent agent)
@@ -206,6 +261,44 @@ namespace Curvature
             int height = (int)((float)rect.Height * agent.Radius / (VerticalUnitsVisible));
 
             return new Rectangle(centerRender.X - (width / 2), centerRender.Y - (height / 2), width, height);
+        }
+
+        private PointF ComputeVectorTowardsTarget(Context context)
+        {
+            PointF targetPoint = context.Target.GetPosition();
+            float dx = targetPoint.X - context.ThinkingAgent.Position.X;
+            float dy = targetPoint.Y - context.ThinkingAgent.Position.Y;
+
+            var normal = Normalize(new PointF(dx, dy));
+            return normal;
+        }
+
+        private PointF Normalize(PointF input)
+        {
+            float length = (float)Math.Sqrt(input.X * input.X + input.Y * input.Y);
+            if (length < 0.001f)
+                return new PointF(0.0f, 0.0f);
+
+            float invlength = 1.0f / length;
+            return new PointF(input.X * invlength, input.Y * invlength);
+        }
+
+        private float ClampToArrival(float start, float limit, float desired)
+        {
+            if (start <= limit)
+            {
+                if (desired > limit)
+                    return limit;
+
+                return desired;
+            }
+            else
+            {
+                if (desired < limit)
+                    return limit;
+
+                return desired;
+            }
         }
     }
 }

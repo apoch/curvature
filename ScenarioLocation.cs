@@ -36,5 +36,10 @@ namespace Curvature
         {
             return Position;
         }
+
+        public double GetProperty(string name)
+        {
+            return 0.0;
+        }
     }
 }
