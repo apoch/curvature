@@ -114,12 +114,12 @@ namespace Curvature
             foreach (var agent in Agents)
             {
                 var minpos = agent.GetPosition();
-                minpos.X -= agent.Radius;
-                minpos.Y -= agent.Radius;
+                minpos.X -= (agent.Radius * 2.5f);
+                minpos.Y -= (agent.Radius * 2.5f);
 
                 var maxpos = agent.GetPosition();
-                maxpos.X += agent.Radius;
-                maxpos.Y += agent.Radius;
+                maxpos.X += (agent.Radius * 2.5f);
+                maxpos.Y += (agent.Radius * 2.5f);
 
                 minCoordinate.X = Math.Min(minCoordinate.X, minpos.X);
                 minCoordinate.Y = Math.Min(minCoordinate.Y, minpos.Y);
