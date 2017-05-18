@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class Scenario : IInputBroker
     {
         public interface IScenarioMember
@@ -23,9 +25,13 @@ namespace Curvature
             public Behavior ChosenBehavior;
         }
 
-
+        [DataMember]
         public string ReadableName;
+
+        [DataMember]
         public List<ScenarioAgent> Agents;
+
+        [DataMember]
         public List<ScenarioLocation> Locations;
 
         private Pen RenderPenDottedBlack;
@@ -34,6 +40,7 @@ namespace Curvature
 
         private float HorizontalUnitsOffset = 0.5f;
         private float VerticalUnitsOffset = 0.5f;
+
 
         public Scenario(string name)
         {
@@ -44,49 +51,7 @@ namespace Curvature
 
             RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
             RenderPenDottedBlack.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-
-
-            PopulateWithDummyData();
         }
-
-
-        private void PopulateWithDummyData()
-        {
-            {
-                var dummyconsideration = new Consideration("Dummy");
-                dummyconsideration.Input = new InputAxis("Constant", InputAxis.OriginType.ComputedValue);
-                dummyconsideration.Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 0.0, 1.0, 0.0, 0.5);
-
-                var movebehavior = new Behavior("Move");
-                movebehavior.Action = Behavior.ActionType.MoveToTarget;
-                movebehavior.Considerations.Add(dummyconsideration);
-
-                var behaviorset = new BehaviorSet("TestBehaviors");
-                behaviorset.EnabledBehaviors.Add(movebehavior);
-
-                var agent = new ScenarioAgent("Test", null);
-                agent.Position = new PointF(-0.5f, -0.25f);
-                agent.Radius = 0.1f;
-                agent.AgentArchetype = new Archetype("TestArchetype");
-                agent.AgentArchetype.BehaviorSets.Add(behaviorset);
-                Agents.Add(agent);
-            }
-
-            {
-                var agent = new ScenarioAgent("Test Origin", null);
-                agent.Position = new PointF(0.0f, 0.0f);
-                agent.Radius = 0.05f;
-                Agents.Add(agent);
-            }
-
-            {
-                var agent = new ScenarioAgent("Distant", null);
-                agent.Position = new PointF(2.0f, 0.0f);
-                agent.Radius = 0.025f;
-                Agents.Add(agent);
-            }
-        }
-
 
         public void Advance(float dt)
         {
@@ -174,7 +139,8 @@ namespace Curvature
             switch (axis.Origin)
             {
                 case InputAxis.OriginType.ComputedValue:
-                    // TODO - compute requested value
+                    // TODO - compute stuff that isn't distance
+                    raw = Distance(context.ThinkingAgent.GetPosition(), context.Target.GetPosition());
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
@@ -299,6 +265,13 @@ namespace Curvature
 
                 return desired;
             }
+        }
+
+        private float Distance(PointF a, PointF b)
+        {
+            float dx = b.X - a.X;
+            float dy = b.Y - a.Y;
+            return (float)Math.Sqrt(dx * dx + dy * dy);
         }
     }
 }

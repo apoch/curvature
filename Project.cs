@@ -32,6 +32,9 @@ namespace Curvature
         [DataMember]
         public List<InputAxis> Inputs;
 
+        [DataMember]
+        public List<Scenario> Scenarios;
+
 
         internal class ProjectEventArgs : EventArgs
         {

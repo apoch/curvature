@@ -34,12 +34,12 @@
             this.InputOutputSplitContainer = new System.Windows.Forms.SplitContainer();
             this.InputGroupBox = new System.Windows.Forms.GroupBox();
             this.InputFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.WinningBehaviorLabel = new System.Windows.Forms.Label();
             this.BehaviorScoresListView = new System.Windows.Forms.ListView();
             this.BehaviorNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ScoreColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.WinningBehaviorLabel = new System.Windows.Forms.Label();
             this.WeightColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ScoreColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.InputOutputSplitContainer)).BeginInit();
             this.InputOutputSplitContainer.Panel1.SuspendLayout();
             this.InputOutputSplitContainer.Panel2.SuspendLayout();
@@ -112,36 +112,6 @@
             this.InputFlowPanel.Size = new System.Drawing.Size(259, 67);
             this.InputFlowPanel.TabIndex = 0;
             // 
-            // RefreshTimer
-            // 
-            this.RefreshTimer.Interval = 250;
-            this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
-            // 
-            // BehaviorScoresListView
-            // 
-            this.BehaviorScoresListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorScoresListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.BehaviorNameColumnHeader,
-            this.WeightColumnHeader,
-            this.ScoreColumnHeader});
-            this.BehaviorScoresListView.Location = new System.Drawing.Point(3, 3);
-            this.BehaviorScoresListView.Name = "BehaviorScoresListView";
-            this.BehaviorScoresListView.Size = new System.Drawing.Size(262, 96);
-            this.BehaviorScoresListView.TabIndex = 0;
-            this.BehaviorScoresListView.UseCompatibleStateImageBehavior = false;
-            this.BehaviorScoresListView.View = System.Windows.Forms.View.Details;
-            // 
-            // BehaviorNameColumnHeader
-            // 
-            this.BehaviorNameColumnHeader.Text = "Behavior Name";
-            this.BehaviorNameColumnHeader.Width = 180;
-            // 
-            // ScoreColumnHeader
-            // 
-            this.ScoreColumnHeader.Text = "Score";
-            // 
             // WinningBehaviorLabel
             // 
             this.WinningBehaviorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -154,9 +124,40 @@
             this.WinningBehaviorLabel.Text = "Winner: (Behavior)";
             this.WinningBehaviorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BehaviorScoresListView
+            // 
+            this.BehaviorScoresListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorScoresListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BehaviorNameColumnHeader,
+            this.WeightColumnHeader,
+            this.ScoreColumnHeader});
+            this.BehaviorScoresListView.FullRowSelect = true;
+            this.BehaviorScoresListView.Location = new System.Drawing.Point(3, 3);
+            this.BehaviorScoresListView.Name = "BehaviorScoresListView";
+            this.BehaviorScoresListView.Size = new System.Drawing.Size(262, 96);
+            this.BehaviorScoresListView.TabIndex = 0;
+            this.BehaviorScoresListView.UseCompatibleStateImageBehavior = false;
+            this.BehaviorScoresListView.View = System.Windows.Forms.View.Details;
+            // 
+            // BehaviorNameColumnHeader
+            // 
+            this.BehaviorNameColumnHeader.Text = "Behavior Name";
+            this.BehaviorNameColumnHeader.Width = 180;
+            // 
             // WeightColumnHeader
             // 
             this.WeightColumnHeader.Text = "Weight";
+            // 
+            // ScoreColumnHeader
+            // 
+            this.ScoreColumnHeader.Text = "Score";
+            // 
+            // RefreshTimer
+            // 
+            this.RefreshTimer.Interval = 250;
+            this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
             // 
             // EditWidgetBehaviorSet
             // 

@@ -56,6 +56,7 @@ namespace Curvature
             InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
 
             RefreshBehaviorControls();
+            RefreshBehaviorSetControls();
 
             EditingProject.Navigate += (e, args) =>
             {
@@ -109,6 +110,18 @@ namespace Curvature
                 var item = new ListViewItem(behavior.ReadableName);
                 item.Tag = behavior;
                 BehaviorsListView.Items.Add(item);
+            }
+        }
+
+        private void RefreshBehaviorSetControls()
+        {
+            BehaviorSetsListView.Items.Clear();
+
+            foreach (var behaviorSet in EditingProject.BehaviorSets)
+            {
+                var item = new ListViewItem(behaviorSet.ReadableName);
+                item.Tag = behaviorSet;
+                BehaviorSetsListView.Items.Add(item);
             }
         }
 
@@ -181,6 +194,18 @@ namespace Curvature
             widget.Attach(new Scenario("Untitled Scenario"));
             widget.Dock = DockStyle.Fill;
             ScenarioPanel.Controls.Add(widget);
+        }
+
+        private void BehaviorSetsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BehaviorSetsListView.SelectedItems.Count <= 0)
+            {
+                BehaviorSetEditWidget.Visible = false;
+                return;
+            }
+
+            BehaviorSetEditWidget.Attach(BehaviorSetsListView.SelectedItems[0].Tag as BehaviorSet, EditingProject);
+            BehaviorSetEditWidget.Visible = true;
         }
     }
 }

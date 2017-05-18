@@ -56,13 +56,16 @@
             this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
             this.ArchetypesTab = new System.Windows.Forms.TabPage();
             this.ScenariosTab = new System.Windows.Forms.TabPage();
-            this.ScenarioPanel = new System.Windows.Forms.Panel();
             this.CreateScenarioButton = new System.Windows.Forms.Button();
+            this.ScenarioPanel = new System.Windows.Forms.Panel();
+            this.BehaviorSetsListView = new System.Windows.Forms.ListView();
+            this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProjectEditWidget = new Curvature.EditWidgetProject();
             this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
             this.InputsEditWidget = new Curvature.EditWidgetInputs();
             this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
+            this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -72,6 +75,7 @@
             this.BehaviorTabs.SuspendLayout();
             this.BehaviorOverviewTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
+            this.BehaviorSetsTab.SuspendLayout();
             this.ScenariosTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -318,6 +322,8 @@
             // 
             // BehaviorSetsTab
             // 
+            this.BehaviorSetsTab.Controls.Add(this.BehaviorSetEditWidget);
+            this.BehaviorSetsTab.Controls.Add(this.BehaviorSetsListView);
             this.BehaviorSetsTab.Location = new System.Drawing.Point(4, 22);
             this.BehaviorSetsTab.Name = "BehaviorSetsTab";
             this.BehaviorSetsTab.Size = new System.Drawing.Size(955, 597);
@@ -345,16 +351,6 @@
             this.ScenariosTab.Text = "Scenarios";
             this.ScenariosTab.UseVisualStyleBackColor = true;
             // 
-            // ScenarioPanel
-            // 
-            this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScenarioPanel.Location = new System.Drawing.Point(300, 3);
-            this.ScenarioPanel.Name = "ScenarioPanel";
-            this.ScenarioPanel.Size = new System.Drawing.Size(652, 591);
-            this.ScenarioPanel.TabIndex = 0;
-            // 
             // CreateScenarioButton
             // 
             this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -365,6 +361,36 @@
             this.CreateScenarioButton.Text = "New Scenario";
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
             this.CreateScenarioButton.Click += new System.EventHandler(this.CreateScenarioButton_Click);
+            // 
+            // ScenarioPanel
+            // 
+            this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScenarioPanel.Location = new System.Drawing.Point(300, 3);
+            this.ScenarioPanel.Name = "ScenarioPanel";
+            this.ScenarioPanel.Size = new System.Drawing.Size(652, 591);
+            this.ScenarioPanel.TabIndex = 0;
+            // 
+            // BehaviorSetsListView
+            // 
+            this.BehaviorSetsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BehaviorSetsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.BehaviorSetNameColumn});
+            this.BehaviorSetsListView.FullRowSelect = true;
+            this.BehaviorSetsListView.Location = new System.Drawing.Point(3, 3);
+            this.BehaviorSetsListView.Name = "BehaviorSetsListView";
+            this.BehaviorSetsListView.Size = new System.Drawing.Size(244, 591);
+            this.BehaviorSetsListView.TabIndex = 0;
+            this.BehaviorSetsListView.UseCompatibleStateImageBehavior = false;
+            this.BehaviorSetsListView.View = System.Windows.Forms.View.Details;
+            this.BehaviorSetsListView.SelectedIndexChanged += new System.EventHandler(this.BehaviorSetsListView_SelectedIndexChanged);
+            // 
+            // BehaviorSetNameColumn
+            // 
+            this.BehaviorSetNameColumn.Text = "Behavior Set Name";
+            this.BehaviorSetNameColumn.Width = 220;
             // 
             // ProjectEditWidget
             // 
@@ -413,6 +439,17 @@
             this.ConsiderationEditWidget.TabIndex = 2;
             this.ConsiderationEditWidget.Visible = false;
             // 
+            // BehaviorSetEditWidget
+            // 
+            this.BehaviorSetEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorSetEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.BehaviorSetEditWidget.Name = "BehaviorSetEditWidget";
+            this.BehaviorSetEditWidget.Size = new System.Drawing.Size(699, 591);
+            this.BehaviorSetEditWidget.TabIndex = 1;
+            this.BehaviorSetEditWidget.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,6 +470,7 @@
             this.BehaviorTabs.ResumeLayout(false);
             this.BehaviorOverviewTab.ResumeLayout(false);
             this.BehaviorConsiderationsTab.ResumeLayout(false);
+            this.BehaviorSetsTab.ResumeLayout(false);
             this.ScenariosTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -475,6 +513,9 @@
         private EditWidgetConsideration ConsiderationEditWidget;
         private System.Windows.Forms.Button CreateScenarioButton;
         private System.Windows.Forms.Panel ScenarioPanel;
+        private System.Windows.Forms.ListView BehaviorSetsListView;
+        private System.Windows.Forms.ColumnHeader BehaviorSetNameColumn;
+        private EditWidgetBehaviorSet BehaviorSetEditWidget;
     }
 }
 

@@ -12,25 +12,27 @@ namespace Curvature
 {
     public partial class EditWidgetBehaviorSet : UserControl, IInputBroker
     {
-        private Project EditProject;
-        private HashSet<Behavior> EditBehaviors;
+        private BehaviorSet EditSet;
 
-        public EditWidgetBehaviorSet(Project project, string setname, HashSet<Behavior> behaviors)
+        public EditWidgetBehaviorSet()
         {
             InitializeComponent();
-            EditProject = project;
-            EditBehaviors = behaviors;
+        }
+
+        public void Attach(BehaviorSet set, Project project)
+        {
+            EditSet = set;
 
             EnabledBehaviorsListBox.ItemCheck += (e, args) =>
             {
                 RefreshTimer.Enabled = true;
             };
 
-            BehaviorSetNameLabel.Text = $"Behavior Set: {setname}";
+            BehaviorSetNameLabel.Text = $"Behavior Set: {EditSet.ReadableName}";
 
             foreach (Behavior b in project.Behaviors)
             {
-                EnabledBehaviorsListBox.Items.Add(b, EditBehaviors.Contains(b));
+                EnabledBehaviorsListBox.Items.Add(b, EditSet.EnabledBehaviors.Contains(b));
             }
 
             RefreshInputControls();
@@ -41,7 +43,7 @@ namespace Curvature
                 if (item == null)
                     return;
 
-                EditProject.NavigateTo(item.Tag as Behavior);
+                project.NavigateTo(item.Tag as Behavior);
             };
         }
 
