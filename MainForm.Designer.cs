@@ -60,6 +60,11 @@
             this.ScenarioPanel = new System.Windows.Forms.Panel();
             this.BehaviorSetsListView = new System.Windows.Forms.ListView();
             this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ArchetypesListView = new System.Windows.Forms.ListView();
+            this.ArchetypeNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AddArchetypeButton = new System.Windows.Forms.Button();
+            this.ScenariosListView = new System.Windows.Forms.ListView();
+            this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProjectEditWidget = new Curvature.EditWidgetProject();
             this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
             this.InputsEditWidget = new Curvature.EditWidgetInputs();
@@ -76,6 +81,7 @@
             this.BehaviorOverviewTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
             this.BehaviorSetsTab.SuspendLayout();
+            this.ArchetypesTab.SuspendLayout();
             this.ScenariosTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -333,6 +339,8 @@
             // 
             // ArchetypesTab
             // 
+            this.ArchetypesTab.Controls.Add(this.AddArchetypeButton);
+            this.ArchetypesTab.Controls.Add(this.ArchetypesListView);
             this.ArchetypesTab.Location = new System.Drawing.Point(4, 22);
             this.ArchetypesTab.Name = "ArchetypesTab";
             this.ArchetypesTab.Size = new System.Drawing.Size(955, 597);
@@ -342,6 +350,7 @@
             // 
             // ScenariosTab
             // 
+            this.ScenariosTab.Controls.Add(this.ScenariosListView);
             this.ScenariosTab.Controls.Add(this.CreateScenarioButton);
             this.ScenariosTab.Controls.Add(this.ScenarioPanel);
             this.ScenariosTab.Location = new System.Drawing.Point(4, 22);
@@ -354,9 +363,9 @@
             // CreateScenarioButton
             // 
             this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateScenarioButton.Location = new System.Drawing.Point(3, 560);
+            this.CreateScenarioButton.Location = new System.Drawing.Point(0, 573);
             this.CreateScenarioButton.Name = "CreateScenarioButton";
-            this.CreateScenarioButton.Size = new System.Drawing.Size(155, 34);
+            this.CreateScenarioButton.Size = new System.Drawing.Size(247, 24);
             this.CreateScenarioButton.TabIndex = 1;
             this.CreateScenarioButton.Text = "New Scenario";
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
@@ -367,9 +376,9 @@
             this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScenarioPanel.Location = new System.Drawing.Point(300, 3);
+            this.ScenarioPanel.Location = new System.Drawing.Point(253, 3);
             this.ScenarioPanel.Name = "ScenarioPanel";
-            this.ScenarioPanel.Size = new System.Drawing.Size(652, 591);
+            this.ScenarioPanel.Size = new System.Drawing.Size(699, 591);
             this.ScenarioPanel.TabIndex = 0;
             // 
             // BehaviorSetsListView
@@ -391,6 +400,50 @@
             // 
             this.BehaviorSetNameColumn.Text = "Behavior Set Name";
             this.BehaviorSetNameColumn.Width = 220;
+            // 
+            // ArchetypesListView
+            // 
+            this.ArchetypesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ArchetypeNameColumn});
+            this.ArchetypesListView.Location = new System.Drawing.Point(3, 3);
+            this.ArchetypesListView.Name = "ArchetypesListView";
+            this.ArchetypesListView.Size = new System.Drawing.Size(244, 564);
+            this.ArchetypesListView.TabIndex = 0;
+            this.ArchetypesListView.UseCompatibleStateImageBehavior = false;
+            this.ArchetypesListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ArchetypeNameColumn
+            // 
+            this.ArchetypeNameColumn.Text = "Archetype Name";
+            this.ArchetypeNameColumn.Width = 220;
+            // 
+            // AddArchetypeButton
+            // 
+            this.AddArchetypeButton.Location = new System.Drawing.Point(0, 573);
+            this.AddArchetypeButton.Name = "AddArchetypeButton";
+            this.AddArchetypeButton.Size = new System.Drawing.Size(247, 24);
+            this.AddArchetypeButton.TabIndex = 1;
+            this.AddArchetypeButton.Text = "Add Archetype";
+            this.AddArchetypeButton.UseVisualStyleBackColor = true;
+            // 
+            // ScenariosListView
+            // 
+            this.ScenariosListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ScenarioNameColumn});
+            this.ScenariosListView.FullRowSelect = true;
+            this.ScenariosListView.HideSelection = false;
+            this.ScenariosListView.Location = new System.Drawing.Point(3, 3);
+            this.ScenariosListView.Name = "ScenariosListView";
+            this.ScenariosListView.Size = new System.Drawing.Size(244, 564);
+            this.ScenariosListView.TabIndex = 2;
+            this.ScenariosListView.UseCompatibleStateImageBehavior = false;
+            this.ScenariosListView.View = System.Windows.Forms.View.Details;
+            this.ScenariosListView.SelectedIndexChanged += new System.EventHandler(this.ScenariosListView_SelectedIndexChanged);
+            // 
+            // ScenarioNameColumn
+            // 
+            this.ScenarioNameColumn.Text = "Scenario Name";
+            this.ScenarioNameColumn.Width = 220;
             // 
             // ProjectEditWidget
             // 
@@ -471,6 +524,7 @@
             this.BehaviorOverviewTab.ResumeLayout(false);
             this.BehaviorConsiderationsTab.ResumeLayout(false);
             this.BehaviorSetsTab.ResumeLayout(false);
+            this.ArchetypesTab.ResumeLayout(false);
             this.ScenariosTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -516,6 +570,11 @@
         private System.Windows.Forms.ListView BehaviorSetsListView;
         private System.Windows.Forms.ColumnHeader BehaviorSetNameColumn;
         private EditWidgetBehaviorSet BehaviorSetEditWidget;
+        private System.Windows.Forms.ListView ArchetypesListView;
+        private System.Windows.Forms.ColumnHeader ArchetypeNameColumn;
+        private System.Windows.Forms.Button AddArchetypeButton;
+        private System.Windows.Forms.ListView ScenariosListView;
+        private System.Windows.Forms.ColumnHeader ScenarioNameColumn;
     }
 }
 

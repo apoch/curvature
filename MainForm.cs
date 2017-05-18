@@ -125,6 +125,18 @@ namespace Curvature
             }
         }
 
+        private void RefreshScenarioControls()
+        {
+            ScenariosListView.Items.Clear();
+
+            foreach (var scenario in EditingProject.Scenarios)
+            {
+                var item = new ListViewItem(scenario.ReadableName);
+                item.Tag = scenario;
+                ScenariosListView.Items.Add(item);
+            }
+        }
+
         private void RefreshConsiderationControls()
         {
             ConsiderationsListView.Items.Clear();
@@ -182,18 +194,9 @@ namespace Curvature
 
         private void CreateScenarioButton_Click(object sender, EventArgs e)
         {
-            // TODO - stash all existing scenarios
+            EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
 
-            foreach (Control c in ScenarioPanel.Controls)
-                c.Dispose();
-
-            ScenarioPanel.Controls.Clear();
-
-
-            var widget = new EditWidgetScenario();
-            widget.Attach(new Scenario("Untitled Scenario"));
-            widget.Dock = DockStyle.Fill;
-            ScenarioPanel.Controls.Add(widget);
+            RefreshScenarioControls();
         }
 
         private void BehaviorSetsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -206,6 +209,22 @@ namespace Curvature
 
             BehaviorSetEditWidget.Attach(BehaviorSetsListView.SelectedItems[0].Tag as BehaviorSet, EditingProject);
             BehaviorSetEditWidget.Visible = true;
+        }
+
+        private void ScenariosListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Control ctl in ScenarioPanel.Controls)
+                ctl.Dispose();
+
+            ScenarioPanel.Controls.Clear();
+
+            if (ScenariosListView.SelectedItems.Count <= 0)
+                return;
+
+            var widget = new EditWidgetScenario();
+            widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario);
+            widget.Dock = DockStyle.Fill;
+            ScenarioPanel.Controls.Add(widget);
         }
     }
 }

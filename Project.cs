@@ -55,6 +55,7 @@ namespace Curvature
             Inputs = new List<InputAxis>();
             Behaviors = new List<Behavior>();
             BehaviorSets = new List<BehaviorSet>();
+            Scenarios = new List<Scenario>();
 
             InputLookupByName = new Dictionary<string, InputAxis>();
         }
