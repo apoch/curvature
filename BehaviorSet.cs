@@ -28,6 +28,11 @@ namespace Curvature
             EnabledBehaviors = new HashSet<Behavior>();
         }
 
+        public override string ToString()
+        {
+            return ReadableName;
+        }
+
         public Control CreateEditorUI(Project project)
         {
             var widget = new EditWidgetBehaviorSet();

@@ -13,11 +13,9 @@ namespace Curvature
         [DataMember]
         public string ReadableName;
 
+        [DataMember]
         public List<BehaviorSet> BehaviorSets;
 
-        internal Archetype()
-        {
-        }
 
         public Archetype(string name)
         {

@@ -63,6 +63,12 @@
     <Compile Include="CurveWizardForm.Designer.cs">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWidgetArchetype.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetArchetype.Designer.cs">
+      <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetBehavior.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CurveWizardForm.resx">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetArchetype.resx">
+      <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetBehavior.resx">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>

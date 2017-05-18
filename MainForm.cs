@@ -57,6 +57,7 @@ namespace Curvature
 
             RefreshBehaviorControls();
             RefreshBehaviorSetControls();
+            RefreshArchetypeControls();
 
             EditingProject.Navigate += (e, args) =>
             {
@@ -153,16 +154,28 @@ namespace Curvature
             }
         }
 
+        private void RefreshArchetypeControls()
+        {
+            ArchetypesListView.Items.Clear();
+
+            foreach (var archetype in EditingProject.Archetypes)
+            {
+                var item = new ListViewItem(archetype.ReadableName);
+                item.Tag = archetype;
+                ArchetypesListView.Items.Add(item);
+            }
+        }
+
         private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (BehaviorsListView.SelectedItems.Count <= 0)
             {
-                BehaviorEditWidget.Visible = false;
+                BehaviorTabs.Visible = false;
                 return;
             }
 
             BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
-            BehaviorEditWidget.Visible = true;
+            BehaviorTabs.Visible = true;
 
             RefreshConsiderationControls();
         }
@@ -225,6 +238,24 @@ namespace Curvature
             widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario);
             widget.Dock = DockStyle.Fill;
             ScenarioPanel.Controls.Add(widget);
+        }
+
+        private void ArchetypesListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ArchetypesListView.SelectedItems.Count <= 0)
+            {
+                ArchetypeEditWidget.Visible = false;
+                return;
+            }
+
+            ArchetypeEditWidget.Attach(ArchetypesListView.SelectedItems[0].Tag as Archetype, EditingProject);
+            ArchetypeEditWidget.Visible = true;
+        }
+
+        private void AddArchetypeButton_Click(object sender, EventArgs e)
+        {
+            EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
+            RefreshArchetypeControls();
         }
     }
 }
