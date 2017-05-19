@@ -34,13 +34,67 @@ namespace Curvature
         {
             Simulation = scenario;
 
-            ScenarioNameLabel.Text = Simulation.ReadableName;
+            ScenarioNameLabel.Text = $"Scenario: {Simulation.ReadableName}";
+
+            RefreshAgentTab();
+            RefreshLocationTab();
         }
 
         private void Advance100msButton_Click(object sender, EventArgs e)
         {
             Simulation.Advance(0.1f);
             ScenarioRenderingBox.Refresh();
+        }
+
+
+        private void RefreshAgentTab()
+        {
+            AgentsListView.Items.Clear();
+            if (Simulation == null)
+                return;
+
+            foreach (var agent in Simulation.Agents)
+            {
+                string archetypename = "(unassigned)";
+                if (agent.AgentArchetype != null)
+                    archetypename = agent.AgentArchetype.ReadableName;
+
+                var item = new ListViewItem(new string[] { agent.GetName(), agent.GetPosition().ToString(), archetypename });
+                item.Tag = agent;
+                AgentsListView.Items.Add(item);
+            }
+        }
+
+        private void RefreshLocationTab()
+        {
+            LocationsListView.Items.Clear();
+            if (Simulation == null)
+                return;
+
+            foreach (var loc in Simulation.Locations)
+            {
+                var item = new ListViewItem(new string[] { loc.GetName(), loc.GetPosition().ToString() + $" R={loc.Radius}" });
+                item.Tag = loc;
+                LocationsListView.Items.Add(item);
+            }
+        }
+
+        private void AddAgentButton_Click(object sender, EventArgs e)
+        {
+            if (Simulation == null)
+                return;
+
+            Simulation.Agents.Add(new ScenarioAgent("Untitled Agent", null));
+            RefreshAgentTab();
+        }
+
+        private void AddLocationButton_Click(object sender, EventArgs e)
+        {
+            if (Simulation == null)
+                return;
+
+            Simulation.Locations.Add(new ScenarioLocation("Untitled Location"));
+            RefreshLocationTab();
         }
     }
 }

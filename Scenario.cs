@@ -16,6 +16,7 @@ namespace Curvature
             string GetName();
             PointF GetPosition();
             double GetProperty(string name);
+            float GetRadius();
         }
 
         public class Context
@@ -71,6 +72,11 @@ namespace Curvature
 
         public void Render(Graphics graphics, Rectangle rect)
         {
+            var stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center;
+
+
             // Set up scaling
             PointF minCoordinate;
             PointF maxCoordinate;
@@ -96,6 +102,23 @@ namespace Curvature
                     maxCoordinate.X = Math.Max(maxCoordinate.X, maxpos.X);
                     maxCoordinate.Y = Math.Max(maxCoordinate.Y, maxpos.Y);
                 }
+
+                foreach (var loc in Locations)
+                {
+                    var minpos = loc.GetPosition();
+                    minpos.X -= (loc.Radius * 1.5f);
+                    minpos.Y -= (loc.Radius * 1.5f);
+
+                    var maxpos = loc.GetPosition();
+                    maxpos.X += (loc.Radius * 1.5f);
+                    maxpos.Y += (loc.Radius * 1.5f);
+
+                    minCoordinate.X = Math.Min(minCoordinate.X, minpos.X);
+                    minCoordinate.Y = Math.Min(minCoordinate.Y, minpos.Y);
+
+                    maxCoordinate.X = Math.Max(maxCoordinate.X, maxpos.X);
+                    maxCoordinate.Y = Math.Max(maxCoordinate.Y, maxpos.Y);
+                }
             }
             else
             {
@@ -114,14 +137,21 @@ namespace Curvature
             graphics.DrawLine(RenderPenDottedBlack, CoordinatesToDisplayPoint(minCoordinate.X, 0.0f, rect), CoordinatesToDisplayPoint(maxCoordinate.X, 0.0f, rect));
             graphics.DrawLine(RenderPenDottedBlack, CoordinatesToDisplayPoint(0.0f, minCoordinate.Y, rect), CoordinatesToDisplayPoint(0.0f, maxCoordinate.Y, rect));
 
-            // Agents
-            var stringFormat = new StringFormat();
-            stringFormat.Alignment = StringAlignment.Center;
-            stringFormat.LineAlignment = StringAlignment.Center;
+            // Locations
+            foreach (var loc in Locations)
+            {
+                var displayRect = ToDisplayRect(loc, rect);
+                graphics.FillEllipse(Brushes.Gray, displayRect);
 
+                int pad = 20;
+                var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top + displayRect.Height + 5, displayRect.Width + pad * 2, pad + 5);
+                graphics.DrawString(loc.GetName(), SystemFonts.IconTitleFont, Brushes.DarkGreen, textRect, stringFormat);
+            }
+
+            // Agents
             foreach (var agent in Agents)
             {
-                var displayRect = AgentToDisplayRect(agent, rect);
+                var displayRect = ToDisplayRect(agent, rect);
                 graphics.FillEllipse(Brushes.Black, displayRect);
 
                 if (agent.Stalled)
@@ -228,13 +258,13 @@ namespace Curvature
             return new Point((int)(x * (float)rect.Width), (int)(y * (float)rect.Height));
         }
 
-        private Rectangle AgentToDisplayRect(ScenarioAgent agent, Rectangle rect)
+        private Rectangle ToDisplayRect(IScenarioMember obj, Rectangle rect)
         {
-            PointF center = agent.GetPosition();
+            PointF center = obj.GetPosition();
             Point centerRender = CoordinatesToDisplayPoint(center.X, center.Y, rect);
 
-            int width = (int)((float)rect.Width * agent.Radius / (HorizontalUnitsVisible));
-            int height = (int)((float)rect.Height * agent.Radius / (VerticalUnitsVisible));
+            int width = (int)((float)rect.Width * obj.GetRadius() / (HorizontalUnitsVisible));
+            int height = (int)((float)rect.Height * obj.GetRadius() / (VerticalUnitsVisible));
 
             return new Rectangle(centerRender.X - (width / 2), centerRender.Y - (height / 2), width, height);
         }

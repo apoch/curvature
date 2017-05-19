@@ -2,21 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Curvature
 {
+    [DataContract(Namespace = "")]
     public class ScenarioAgent : Scenario.IScenarioMember
     {
+        [DataMember]
         public string Name;
+
+        [DataMember]
         public PointF Position;
+
+        [DataMember]
+        public PointF StartPosition;
+
+        [DataMember]
         public float Radius;
 
+        [DataMember]
         public Dictionary<string, double> Properties;
+
+        [DataMember]
         public HashSet<string> Tags;
 
+        [DataMember]
         public Archetype AgentArchetype;
+
 
         public bool Stalled = false;
 
@@ -33,6 +48,12 @@ namespace Curvature
             Tags = new HashSet<string>();
         }
 
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            Stalled = false;
+        }
+
 
         public string GetName()
         {
@@ -42,6 +63,11 @@ namespace Curvature
         public PointF GetPosition()
         {
             return Position;
+        }
+
+        public float GetRadius()
+        {
+            return Radius;
         }
 
 
