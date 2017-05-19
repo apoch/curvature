@@ -34,7 +34,7 @@
             this.SimulationTab = new System.Windows.Forms.TabPage();
             this.Advance100msButton = new System.Windows.Forms.Button();
             this.ScenarioRenderingBox = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ScenarioNameLabel = new System.Windows.Forms.Label();
             this.ScenarioEditorTabs.SuspendLayout();
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
@@ -109,21 +109,21 @@
             this.ScenarioRenderingBox.TabIndex = 0;
             this.ScenarioRenderingBox.TabStop = false;
             // 
-            // label1
+            // ScenarioNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "(Scenario Name)";
+            this.ScenarioNameLabel.AutoSize = true;
+            this.ScenarioNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScenarioNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.ScenarioNameLabel.Name = "ScenarioNameLabel";
+            this.ScenarioNameLabel.Size = new System.Drawing.Size(143, 20);
+            this.ScenarioNameLabel.TabIndex = 1;
+            this.ScenarioNameLabel.Text = "(Scenario Name)";
             // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ScenarioNameLabel);
             this.Controls.Add(this.ScenarioEditorTabs);
             this.Name = "EditWidgetScenario";
             this.Size = new System.Drawing.Size(752, 495);
@@ -141,7 +141,7 @@
         private System.Windows.Forms.TabPage AgentsTab;
         private System.Windows.Forms.TabPage LocationsTab;
         private System.Windows.Forms.TabPage SimulationTab;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ScenarioNameLabel;
         private System.Windows.Forms.PictureBox ScenarioRenderingBox;
         private System.Windows.Forms.Button Advance100msButton;
     }

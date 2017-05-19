@@ -49,8 +49,7 @@ namespace Curvature
             Agents = new List<ScenarioAgent>();
             Locations = new List<ScenarioLocation>();
 
-            RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
-            RenderPenDottedBlack.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            InitializeDrawingResources();
         }
 
         public void Advance(float dt)
@@ -73,24 +72,35 @@ namespace Curvature
         public void Render(Graphics graphics, Rectangle rect)
         {
             // Set up scaling
-            var minCoordinate = new PointF(1e6f, 1e6f);
-            var maxCoordinate = new PointF(-1e6f, -1e6f);
+            PointF minCoordinate;
+            PointF maxCoordinate;
 
-            foreach (var agent in Agents)
+            if (Agents.Count > 0)
             {
-                var minpos = agent.GetPosition();
-                minpos.X -= (agent.Radius * 2.5f);
-                minpos.Y -= (agent.Radius * 2.5f);
+                minCoordinate = new PointF(1e6f, 1e6f);
+                maxCoordinate = new PointF(-1e6f, -1e6f);
 
-                var maxpos = agent.GetPosition();
-                maxpos.X += (agent.Radius * 2.5f);
-                maxpos.Y += (agent.Radius * 2.5f);
+                foreach (var agent in Agents)
+                {
+                    var minpos = agent.GetPosition();
+                    minpos.X -= (agent.Radius * 2.5f);
+                    minpos.Y -= (agent.Radius * 2.5f);
 
-                minCoordinate.X = Math.Min(minCoordinate.X, minpos.X);
-                minCoordinate.Y = Math.Min(minCoordinate.Y, minpos.Y);
+                    var maxpos = agent.GetPosition();
+                    maxpos.X += (agent.Radius * 2.5f);
+                    maxpos.Y += (agent.Radius * 2.5f);
 
-                maxCoordinate.X = Math.Max(maxCoordinate.X, maxpos.X);
-                maxCoordinate.Y = Math.Max(maxCoordinate.Y, maxpos.Y);
+                    minCoordinate.X = Math.Min(minCoordinate.X, minpos.X);
+                    minCoordinate.Y = Math.Min(minCoordinate.Y, minpos.Y);
+
+                    maxCoordinate.X = Math.Max(maxCoordinate.X, maxpos.X);
+                    maxCoordinate.Y = Math.Max(maxCoordinate.Y, maxpos.Y);
+                }
+            }
+            else
+            {
+                 minCoordinate = new PointF(1.0f, 1.0f);
+                 maxCoordinate = new PointF(-1.0f, -1.0f);
             }
 
             HorizontalUnitsVisible = Math.Max(2.0f, (maxCoordinate.X - minCoordinate.X));
@@ -272,6 +282,19 @@ namespace Curvature
             float dx = b.X - a.X;
             float dy = b.Y - a.Y;
             return (float)Math.Sqrt(dx * dx + dy * dy);
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            InitializeDrawingResources();
+        }
+
+
+        private void InitializeDrawingResources()
+        {
+            RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
+            RenderPenDottedBlack.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
         }
     }
 }

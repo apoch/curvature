@@ -72,6 +72,7 @@
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
+            this.AddBehaviorSetButton = new System.Windows.Forms.Button();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -330,6 +331,7 @@
             // 
             // BehaviorSetsTab
             // 
+            this.BehaviorSetsTab.Controls.Add(this.AddBehaviorSetButton);
             this.BehaviorSetsTab.Controls.Add(this.BehaviorSetEditWidget);
             this.BehaviorSetsTab.Controls.Add(this.BehaviorSetsListView);
             this.BehaviorSetsTab.Location = new System.Drawing.Point(4, 22);
@@ -348,7 +350,7 @@
             this.BehaviorSetsListView.FullRowSelect = true;
             this.BehaviorSetsListView.Location = new System.Drawing.Point(3, 3);
             this.BehaviorSetsListView.Name = "BehaviorSetsListView";
-            this.BehaviorSetsListView.Size = new System.Drawing.Size(244, 591);
+            this.BehaviorSetsListView.Size = new System.Drawing.Size(244, 564);
             this.BehaviorSetsListView.TabIndex = 0;
             this.BehaviorSetsListView.UseCompatibleStateImageBehavior = false;
             this.BehaviorSetsListView.View = System.Windows.Forms.View.Details;
@@ -517,6 +519,17 @@
             this.ArchetypeEditWidget.TabIndex = 2;
             this.ArchetypeEditWidget.Visible = false;
             // 
+            // AddBehaviorSetButton
+            // 
+            this.AddBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddBehaviorSetButton.Location = new System.Drawing.Point(0, 573);
+            this.AddBehaviorSetButton.Name = "AddBehaviorSetButton";
+            this.AddBehaviorSetButton.Size = new System.Drawing.Size(247, 24);
+            this.AddBehaviorSetButton.TabIndex = 2;
+            this.AddBehaviorSetButton.Text = "Add Behavior Set";
+            this.AddBehaviorSetButton.UseVisualStyleBackColor = true;
+            this.AddBehaviorSetButton.Click += new System.EventHandler(this.AddBehaviorSetButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +603,7 @@
         private System.Windows.Forms.ListView ScenariosListView;
         private System.Windows.Forms.ColumnHeader ScenarioNameColumn;
         private EditWidgetArchetype ArchetypeEditWidget;
+        private System.Windows.Forms.Button AddBehaviorSetButton;
     }
 }
 

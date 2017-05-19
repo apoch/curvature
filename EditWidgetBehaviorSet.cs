@@ -17,19 +17,29 @@ namespace Curvature
         public EditWidgetBehaviorSet()
         {
             InitializeComponent();
+
+            EnabledBehaviorsListBox.ItemCheck += (e, args) =>
+            {
+                RefreshTimer.Enabled = true;
+                if (EditSet != null)
+                {
+                    var behavior = EnabledBehaviorsListBox.Items[args.Index] as Behavior;
+
+                    if (args.NewValue == CheckState.Checked)
+                        EditSet.EnabledBehaviors.Add(behavior);
+                    else
+                        EditSet.EnabledBehaviors.Remove(behavior);
+                }
+            };
         }
 
         public void Attach(BehaviorSet set, Project project)
         {
             EditSet = set;
 
-            EnabledBehaviorsListBox.ItemCheck += (e, args) =>
-            {
-                RefreshTimer.Enabled = true;
-            };
-
             BehaviorSetNameLabel.Text = $"Behavior Set: {EditSet.ReadableName}";
 
+            EnabledBehaviorsListBox.Items.Clear();
             foreach (Behavior b in project.Behaviors)
             {
                 EnabledBehaviorsListBox.Items.Add(b, EditSet.EnabledBehaviors.Contains(b));

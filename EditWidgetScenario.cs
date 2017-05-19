@@ -33,6 +33,8 @@ namespace Curvature
         internal void Attach(Scenario scenario)
         {
             Simulation = scenario;
+
+            ScenarioNameLabel.Text = Simulation.ReadableName;
         }
 
         private void Advance100msButton_Click(object sender, EventArgs e)

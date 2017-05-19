@@ -58,6 +58,7 @@ namespace Curvature
             RefreshBehaviorControls();
             RefreshBehaviorSetControls();
             RefreshArchetypeControls();
+            RefreshScenarioControls();
 
             EditingProject.Navigate += (e, args) =>
             {
@@ -208,7 +209,6 @@ namespace Curvature
         private void CreateScenarioButton_Click(object sender, EventArgs e)
         {
             EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
-
             RefreshScenarioControls();
         }
 
@@ -256,6 +256,12 @@ namespace Curvature
         {
             EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
             RefreshArchetypeControls();
+        }
+
+        private void AddBehaviorSetButton_Click(object sender, EventArgs e)
+        {
+            EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
+            RefreshBehaviorSetControls();
         }
     }
 }
