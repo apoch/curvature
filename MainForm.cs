@@ -235,7 +235,7 @@ namespace Curvature
                 return;
 
             var widget = new EditWidgetScenario();
-            widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario);
+            widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario, EditingProject);
             widget.Dock = DockStyle.Fill;
             ScenarioPanel.Controls.Add(widget);
         }

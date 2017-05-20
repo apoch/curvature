@@ -44,11 +44,22 @@
             this.LocationCoordinatesColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.ScenarioAgentArchetypeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AgentXLabel = new System.Windows.Forms.Label();
+            this.AgentXUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AgentYUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AgentYLabel = new System.Windows.Forms.Label();
+            this.AgentRadiusUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AgentRadiusLabel = new System.Windows.Forms.Label();
+            this.AgentArchetypeComboBox = new System.Windows.Forms.ComboBox();
+            this.AgentArchetypeLabel = new System.Windows.Forms.Label();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             this.LocationsTab.SuspendLayout();
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentXUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentYUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -68,6 +79,14 @@
             // 
             // AgentsTab
             // 
+            this.AgentsTab.Controls.Add(this.AgentArchetypeLabel);
+            this.AgentsTab.Controls.Add(this.AgentArchetypeComboBox);
+            this.AgentsTab.Controls.Add(this.AgentRadiusLabel);
+            this.AgentsTab.Controls.Add(this.AgentRadiusUpDown);
+            this.AgentsTab.Controls.Add(this.AgentYLabel);
+            this.AgentsTab.Controls.Add(this.AgentYUpDown);
+            this.AgentsTab.Controls.Add(this.AgentXUpDown);
+            this.AgentsTab.Controls.Add(this.AgentXLabel);
             this.AgentsTab.Controls.Add(this.AddAgentButton);
             this.AgentsTab.Controls.Add(this.AgentsListView);
             this.AgentsTab.Location = new System.Drawing.Point(4, 4);
@@ -105,6 +124,7 @@
             this.AgentsListView.TabIndex = 0;
             this.AgentsListView.UseCompatibleStateImageBehavior = false;
             this.AgentsListView.View = System.Windows.Forms.View.Details;
+            this.AgentsListView.SelectedIndexChanged += new System.EventHandler(this.AgentsListView_SelectedIndexChanged);
             // 
             // ScenarioAgentNameColumnHeader
             // 
@@ -214,6 +234,124 @@
             this.ScenarioAgentArchetypeColumnHeader.Text = "Archetype";
             this.ScenarioAgentArchetypeColumnHeader.Width = 100;
             // 
+            // AgentXLabel
+            // 
+            this.AgentXLabel.AutoSize = true;
+            this.AgentXLabel.Location = new System.Drawing.Point(3, 225);
+            this.AgentXLabel.Name = "AgentXLabel";
+            this.AgentXLabel.Size = new System.Drawing.Size(17, 13);
+            this.AgentXLabel.TabIndex = 2;
+            this.AgentXLabel.Text = "X:";
+            // 
+            // AgentXUpDown
+            // 
+            this.AgentXUpDown.DecimalPlaces = 3;
+            this.AgentXUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AgentXUpDown.Location = new System.Drawing.Point(6, 241);
+            this.AgentXUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AgentXUpDown.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.AgentXUpDown.Name = "AgentXUpDown";
+            this.AgentXUpDown.Size = new System.Drawing.Size(80, 20);
+            this.AgentXUpDown.TabIndex = 3;
+            this.AgentXUpDown.ValueChanged += new System.EventHandler(this.AgentXUpDown_ValueChanged);
+            // 
+            // AgentYUpDown
+            // 
+            this.AgentYUpDown.DecimalPlaces = 3;
+            this.AgentYUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AgentYUpDown.Location = new System.Drawing.Point(92, 241);
+            this.AgentYUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AgentYUpDown.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.AgentYUpDown.Name = "AgentYUpDown";
+            this.AgentYUpDown.Size = new System.Drawing.Size(81, 20);
+            this.AgentYUpDown.TabIndex = 4;
+            this.AgentYUpDown.ValueChanged += new System.EventHandler(this.AgentYUpDown_ValueChanged);
+            // 
+            // AgentYLabel
+            // 
+            this.AgentYLabel.AutoSize = true;
+            this.AgentYLabel.Location = new System.Drawing.Point(89, 225);
+            this.AgentYLabel.Name = "AgentYLabel";
+            this.AgentYLabel.Size = new System.Drawing.Size(17, 13);
+            this.AgentYLabel.TabIndex = 5;
+            this.AgentYLabel.Text = "Y:";
+            // 
+            // AgentRadiusUpDown
+            // 
+            this.AgentRadiusUpDown.DecimalPlaces = 3;
+            this.AgentRadiusUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AgentRadiusUpDown.Location = new System.Drawing.Point(179, 241);
+            this.AgentRadiusUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.AgentRadiusUpDown.Name = "AgentRadiusUpDown";
+            this.AgentRadiusUpDown.Size = new System.Drawing.Size(81, 20);
+            this.AgentRadiusUpDown.TabIndex = 6;
+            this.AgentRadiusUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AgentRadiusUpDown.ValueChanged += new System.EventHandler(this.AgentRadiusUpDown_ValueChanged);
+            // 
+            // AgentRadiusLabel
+            // 
+            this.AgentRadiusLabel.AutoSize = true;
+            this.AgentRadiusLabel.Location = new System.Drawing.Point(176, 225);
+            this.AgentRadiusLabel.Name = "AgentRadiusLabel";
+            this.AgentRadiusLabel.Size = new System.Drawing.Size(43, 13);
+            this.AgentRadiusLabel.TabIndex = 7;
+            this.AgentRadiusLabel.Text = "Radius:";
+            // 
+            // AgentArchetypeComboBox
+            // 
+            this.AgentArchetypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AgentArchetypeComboBox.FormattingEnabled = true;
+            this.AgentArchetypeComboBox.Location = new System.Drawing.Point(266, 240);
+            this.AgentArchetypeComboBox.Name = "AgentArchetypeComboBox";
+            this.AgentArchetypeComboBox.Size = new System.Drawing.Size(181, 21);
+            this.AgentArchetypeComboBox.TabIndex = 8;
+            this.AgentArchetypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AgentArchetypeComboBox_SelectedIndexChanged);
+            // 
+            // AgentArchetypeLabel
+            // 
+            this.AgentArchetypeLabel.AutoSize = true;
+            this.AgentArchetypeLabel.Location = new System.Drawing.Point(266, 225);
+            this.AgentArchetypeLabel.Name = "AgentArchetypeLabel";
+            this.AgentArchetypeLabel.Size = new System.Drawing.Size(58, 13);
+            this.AgentArchetypeLabel.TabIndex = 9;
+            this.AgentArchetypeLabel.Text = "Archetype:";
+            // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,9 +362,13 @@
             this.Size = new System.Drawing.Size(752, 495);
             this.ScenarioEditorTabs.ResumeLayout(false);
             this.AgentsTab.ResumeLayout(false);
+            this.AgentsTab.PerformLayout();
             this.LocationsTab.ResumeLayout(false);
             this.SimulationTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentXUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentYUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +392,13 @@
         private System.Windows.Forms.ColumnHeader LocationCoordinatesColumnHeader;
         private System.Windows.Forms.Button AddLocationButton;
         private System.Windows.Forms.ColumnHeader ScenarioAgentArchetypeColumnHeader;
+        private System.Windows.Forms.Label AgentXLabel;
+        private System.Windows.Forms.NumericUpDown AgentXUpDown;
+        private System.Windows.Forms.NumericUpDown AgentYUpDown;
+        private System.Windows.Forms.Label AgentYLabel;
+        private System.Windows.Forms.NumericUpDown AgentRadiusUpDown;
+        private System.Windows.Forms.Label AgentRadiusLabel;
+        private System.Windows.Forms.ComboBox AgentArchetypeComboBox;
+        private System.Windows.Forms.Label AgentArchetypeLabel;
     }
 }

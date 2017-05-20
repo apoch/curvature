@@ -22,5 +22,10 @@ namespace Curvature
             ReadableName = name;
             BehaviorSets = new List<BehaviorSet>();
         }
+
+        public override string ToString()
+        {
+            return ReadableName;
+        }
     }
 }

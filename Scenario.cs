@@ -43,6 +43,15 @@ namespace Curvature
         private float VerticalUnitsOffset = 0.5f;
 
 
+        internal class ScenarioEventArgs : EventArgs
+        {
+            internal float DeltaTime;
+        }
+
+        internal delegate void ScenarioEventHandler(object sender, ScenarioEventArgs args);
+        internal event ScenarioEventHandler SimulationAdvance;
+
+
         public Scenario(string name)
         {
             ReadableName = name;
@@ -67,6 +76,8 @@ namespace Curvature
                 else
                     SignalStallOnAgent(agent);
             }
+
+            SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt });
         }
 
 
@@ -255,7 +266,7 @@ namespace Curvature
             x /= HorizontalUnitsVisible;
             y /= VerticalUnitsVisible;
 
-            return new Point((int)(x * (float)rect.Width), (int)(y * (float)rect.Height));
+            return new Point((int)(x * (float)rect.Width), rect.Height - (int)(y * (float)rect.Height));
         }
 
         private Rectangle ToDisplayRect(IScenarioMember obj, Rectangle rect)
