@@ -147,11 +147,7 @@ namespace Curvature
                 return;
 
             var agent = (AgentsListView.SelectedItems[0].Tag as ScenarioAgent);
-
-            AgentXUpDown.Value = (decimal)(agent.Position.X);
-            AgentYUpDown.Value = (decimal)(agent.Position.Y);
-            AgentRadiusUpDown.Value = (decimal)(agent.Radius);
-            AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
+            PopulateAgentTab(agent);
         }
 
         private void AgentArchetypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,6 +161,52 @@ namespace Curvature
                 agent.AgentArchetype = archetype;
                 lvi.SubItems[2].Text = agent.AgentArchetype.ReadableName;
             }
+        }
+
+        private void AgentResetButton_Click(object sender, EventArgs e)
+        {
+            AgentXUpDown.Value = AgentStartXUpDown.Value;
+            AgentYUpDown.Value = AgentStartYUpDown.Value;
+        }
+
+        private void AgentStartXUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var item in AgentsListView.SelectedItems)
+            {
+                var agent = (item as ListViewItem).Tag as ScenarioAgent;
+                agent.StartPosition.X = (float)AgentStartXUpDown.Value;
+            }
+        }
+
+        private void AgentStartYUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var item in AgentsListView.SelectedItems)
+            {
+                var agent = (item as ListViewItem).Tag as ScenarioAgent;
+                agent.StartPosition.Y = (float)AgentStartYUpDown.Value;
+            }
+        }
+
+        private void CopyCurrentAgentPositionButton_Click(object sender, EventArgs e)
+        {
+            foreach (var item in AgentsListView.SelectedItems)
+            {
+                var agent = (item as ListViewItem).Tag as ScenarioAgent;
+                agent.StartPosition = agent.Position;
+            }
+
+            if (AgentsListView.SelectedItems.Count == 1)
+                PopulateAgentTab((AgentsListView.SelectedItems[0] as ListViewItem).Tag as ScenarioAgent);
+        }
+
+        private void PopulateAgentTab(ScenarioAgent agent)
+        {
+            AgentXUpDown.Value = (decimal)(agent.Position.X);
+            AgentYUpDown.Value = (decimal)(agent.Position.Y);
+            AgentStartXUpDown.Value = (decimal)(agent.StartPosition.X);
+            AgentStartYUpDown.Value = (decimal)(agent.StartPosition.Y);
+            AgentRadiusUpDown.Value = (decimal)(agent.Radius);
+            AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
         }
     }
 }

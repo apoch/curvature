@@ -215,7 +215,7 @@ namespace Curvature
 
         private void ExecuteBehaviorOnAgent(Context context, float dt)
         {
-            const float speed = 0.4f;
+            const float speed = 1.0f;
 
             context.ThinkingAgent.Stalled = false;
 
