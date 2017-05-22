@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ScenarioEditorTabs = new System.Windows.Forms.TabControl();
             this.AgentsTab = new System.Windows.Forms.TabPage();
             this.AgentArchetypeLabel = new System.Windows.Forms.Label();
@@ -58,6 +59,9 @@
             this.AgentStartYLabel = new System.Windows.Forms.Label();
             this.AgentResetButton = new System.Windows.Forms.Button();
             this.CopyCurrentAgentPositionButton = new System.Windows.Forms.Button();
+            this.AutoAdvanceButton = new System.Windows.Forms.Button();
+            this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
+            this.ResetSimulationButton = new System.Windows.Forms.Button();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).BeginInit();
@@ -324,6 +328,8 @@
             // 
             // SimulationTab
             // 
+            this.SimulationTab.Controls.Add(this.ResetSimulationButton);
+            this.SimulationTab.Controls.Add(this.AutoAdvanceButton);
             this.SimulationTab.Controls.Add(this.Advance100msButton);
             this.SimulationTab.Controls.Add(this.ScenarioRenderingBox);
             this.SimulationTab.Location = new System.Drawing.Point(4, 4);
@@ -452,6 +458,32 @@
             this.CopyCurrentAgentPositionButton.UseVisualStyleBackColor = true;
             this.CopyCurrentAgentPositionButton.Click += new System.EventHandler(this.CopyCurrentAgentPositionButton_Click);
             // 
+            // AutoAdvanceButton
+            // 
+            this.AutoAdvanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AutoAdvanceButton.Location = new System.Drawing.Point(122, 411);
+            this.AutoAdvanceButton.Name = "AutoAdvanceButton";
+            this.AutoAdvanceButton.Size = new System.Drawing.Size(113, 29);
+            this.AutoAdvanceButton.TabIndex = 2;
+            this.AutoAdvanceButton.Text = "Auto Advance";
+            this.AutoAdvanceButton.UseVisualStyleBackColor = true;
+            this.AutoAdvanceButton.Click += new System.EventHandler(this.AutoAdvanceButton_Click);
+            // 
+            // AutoAdvanceTimer
+            // 
+            this.AutoAdvanceTimer.Tick += new System.EventHandler(this.AutoAdvanceTimer_Tick);
+            // 
+            // ResetSimulationButton
+            // 
+            this.ResetSimulationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ResetSimulationButton.Location = new System.Drawing.Point(241, 411);
+            this.ResetSimulationButton.Name = "ResetSimulationButton";
+            this.ResetSimulationButton.Size = new System.Drawing.Size(113, 29);
+            this.ResetSimulationButton.TabIndex = 3;
+            this.ResetSimulationButton.Text = "Reset to Start";
+            this.ResetSimulationButton.UseVisualStyleBackColor = true;
+            this.ResetSimulationButton.Click += new System.EventHandler(this.ResetSimulationButton_Click);
+            // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,5 +540,8 @@
         private System.Windows.Forms.Label AgentStartYLabel;
         private System.Windows.Forms.Button AgentResetButton;
         private System.Windows.Forms.Button CopyCurrentAgentPositionButton;
+        private System.Windows.Forms.Button AutoAdvanceButton;
+        private System.Windows.Forms.Timer AutoAdvanceTimer;
+        private System.Windows.Forms.Button ResetSimulationButton;
     }
 }

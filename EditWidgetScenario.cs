@@ -208,5 +208,25 @@ namespace Curvature
             AgentRadiusUpDown.Value = (decimal)(agent.Radius);
             AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
         }
+
+        private void AutoAdvanceButton_Click(object sender, EventArgs e)
+        {
+            AutoAdvanceTimer.Enabled = !AutoAdvanceTimer.Enabled;
+        }
+
+        private void AutoAdvanceTimer_Tick(object sender, EventArgs e)
+        {
+            Simulation.Advance((float)AutoAdvanceTimer.Interval / 1000.0f);
+            ScenarioRenderingBox.Refresh();
+        }
+
+        private void ResetSimulationButton_Click(object sender, EventArgs e)
+        {
+            if (Simulation == null)
+                return;
+
+            foreach (var agent in Simulation.Agents)
+                agent.Position = agent.StartPosition;
+        }
     }
 }
