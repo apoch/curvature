@@ -42,7 +42,7 @@ namespace Curvature
         internal void Attach(Archetype archetype, Project project)
         {
             EditArchetype = archetype;
-            ArchetypeNameLabel.Text = $"Archetype: {EditArchetype.ReadableName}";
+            NameEditWidget.Attach("Archetype", EditArchetype);
 
             EnabledBehaviorSetsListBox.Items.Clear();
             foreach (var behaviorSet in project.BehaviorSets)

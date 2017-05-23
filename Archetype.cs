@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Archetype
+    public class Archetype : INameable
     {
         [DataMember]
         public string ReadableName;
@@ -26,6 +26,16 @@ namespace Curvature
         public override string ToString()
         {
             return ReadableName;
+        }
+
+        public string GetName()
+        {
+            return ReadableName;
+        }
+
+        public void Rename(string newname)
+        {
+            ReadableName = newname;
         }
     }
 }

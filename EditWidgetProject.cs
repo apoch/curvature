@@ -24,7 +24,7 @@ namespace Curvature
         internal void Attach(Project editedProject)
         {
             EditedProject = editedProject;
-            ProjectNameLabel.Text = EditedProject.ReadableName;
+            NameEditWidget.Attach("Project", EditedProject);
         }
     }
 }

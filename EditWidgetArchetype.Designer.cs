@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ArchetypeNameLabel = new System.Windows.Forms.Label();
             this.EnabledBehaviorSetsListBox = new System.Windows.Forms.CheckedListBox();
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.SuspendLayout();
-            // 
-            // ArchetypeNameLabel
-            // 
-            this.ArchetypeNameLabel.AutoSize = true;
-            this.ArchetypeNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArchetypeNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.ArchetypeNameLabel.Name = "ArchetypeNameLabel";
-            this.ArchetypeNameLabel.Size = new System.Drawing.Size(244, 20);
-            this.ArchetypeNameLabel.TabIndex = 0;
-            this.ArchetypeNameLabel.Text = "Archetype: (Archetype Name)";
             // 
             // EnabledBehaviorSetsListBox
             // 
@@ -48,27 +38,33 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EnabledBehaviorSetsListBox.FormattingEnabled = true;
-            this.EnabledBehaviorSetsListBox.Location = new System.Drawing.Point(7, 23);
+            this.EnabledBehaviorSetsListBox.Location = new System.Drawing.Point(7, 38);
             this.EnabledBehaviorSetsListBox.Name = "EnabledBehaviorSetsListBox";
-            this.EnabledBehaviorSetsListBox.Size = new System.Drawing.Size(429, 319);
+            this.EnabledBehaviorSetsListBox.Size = new System.Drawing.Size(429, 304);
             this.EnabledBehaviorSetsListBox.TabIndex = 1;
+            // 
+            // NameEditWidget
+            // 
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(439, 27);
+            this.NameEditWidget.TabIndex = 2;
             // 
             // EditWidgetArchetype
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.EnabledBehaviorSetsListBox);
-            this.Controls.Add(this.ArchetypeNameLabel);
             this.Name = "EditWidgetArchetype";
             this.Size = new System.Drawing.Size(439, 350);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label ArchetypeNameLabel;
         private System.Windows.Forms.CheckedListBox EnabledBehaviorSetsListBox;
+        private EditWidgetName NameEditWidget;
     }
 }

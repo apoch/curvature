@@ -28,34 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ProjectNameLabel = new System.Windows.Forms.Label();
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.SuspendLayout();
             // 
-            // ProjectNameLabel
+            // NameEditWidget
             // 
-            this.ProjectNameLabel.AutoSize = true;
-            this.ProjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.ProjectNameLabel.Name = "ProjectNameLabel";
-            this.ProjectNameLabel.Size = new System.Drawing.Size(150, 24);
-            this.ProjectNameLabel.TabIndex = 0;
-            this.ProjectNameLabel.Text = "(Project Name)";
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(610, 27);
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.ProjectNameLabel);
+            this.Controls.Add(this.NameEditWidget);
             this.Name = "EditWidgetProject";
             this.Size = new System.Drawing.Size(610, 355);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label ProjectNameLabel;
+        private EditWidgetName NameEditWidget;
     }
 }

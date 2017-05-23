@@ -48,5 +48,10 @@ namespace Curvature
         {
             ReadableName = newname;
         }
+
+        public string GetName()
+        {
+            return ReadableName;
+        }
     }
 }

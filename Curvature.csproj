@@ -123,6 +123,12 @@
     <Compile Include="EditWidgetKnowledgeBaseRecord.Designer.cs">
       <DependentUpon>EditWidgetKnowledgeBaseRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditWidgetName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditWidgetName.Designer.cs">
+      <DependentUpon>EditWidgetName.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditWidgetParameter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     <EmbeddedResource Include="EditWidgetKnowledgeBaseRecord.resx">
       <DependentUpon>EditWidgetKnowledgeBaseRecord.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditWidgetName.resx">
+      <DependentUpon>EditWidgetName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditWidgetParameter.resx">
       <DependentUpon>EditWidgetParameter.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +234,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -238,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\00ffff-pencil-32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

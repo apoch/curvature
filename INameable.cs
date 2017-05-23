@@ -8,6 +8,7 @@ namespace Curvature
 {
     interface INameable
     {
+        string GetName();
         void Rename(string newname);
     }
 }

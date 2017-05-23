@@ -91,6 +91,11 @@ namespace Curvature
             ReadableName = name;
         }
 
+        public string GetName()
+        {
+            return ReadableName;
+        }
+
 
         public void SaveToFile(string filename)
         {
