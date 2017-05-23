@@ -48,7 +48,7 @@
             this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
-            this.NameEditWidget.Size = new System.Drawing.Size(439, 27);
+            this.NameEditWidget.Size = new System.Drawing.Size(439, 30);
             this.NameEditWidget.TabIndex = 2;
             // 
             // EditWidgetArchetype

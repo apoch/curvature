@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
-            this.BehaviorNameLabel = new System.Windows.Forms.Label();
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
+            this.CanTargetOthersCheckBox = new System.Windows.Forms.CheckBox();
+            this.CanTargetSelfCheckBox = new System.Windows.Forms.CheckBox();
+            this.ActionComboBox = new System.Windows.Forms.ComboBox();
             this.BreakdownGroupBox = new System.Windows.Forms.GroupBox();
             this.FinalScoreLabel = new System.Windows.Forms.Label();
             this.ScoreListView = new System.Windows.Forms.ListView();
@@ -46,9 +48,7 @@
             this.InputFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsiderationScoreGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoreLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ActionComboBox = new System.Windows.Forms.ComboBox();
-            this.CanTargetSelfCheckBox = new System.Windows.Forms.CheckBox();
-            this.CanTargetOthersCheckBox = new System.Windows.Forms.CheckBox();
+            this.NameEditWidget = new Curvature.EditWidgetName();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalSplit)).BeginInit();
             this.VerticalSplit.Panel1.SuspendLayout();
             this.VerticalSplit.Panel2.SuspendLayout();
@@ -63,22 +63,12 @@
             this.ConsiderationScoreGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // BehaviorNameLabel
-            // 
-            this.BehaviorNameLabel.AutoSize = true;
-            this.BehaviorNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BehaviorNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.BehaviorNameLabel.Name = "BehaviorNameLabel";
-            this.BehaviorNameLabel.Size = new System.Drawing.Size(147, 20);
-            this.BehaviorNameLabel.TabIndex = 0;
-            this.BehaviorNameLabel.Text = "Behavior: (Name)";
-            // 
             // VerticalSplit
             // 
             this.VerticalSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.VerticalSplit.Location = new System.Drawing.Point(3, 23);
+            this.VerticalSplit.Location = new System.Drawing.Point(3, 36);
             this.VerticalSplit.Name = "VerticalSplit";
             // 
             // VerticalSplit.Panel1
@@ -91,9 +81,43 @@
             // VerticalSplit.Panel2
             // 
             this.VerticalSplit.Panel2.Controls.Add(this.BehaviorSplitContainer);
-            this.VerticalSplit.Size = new System.Drawing.Size(719, 392);
+            this.VerticalSplit.Size = new System.Drawing.Size(719, 379);
             this.VerticalSplit.SplitterDistance = 300;
             this.VerticalSplit.TabIndex = 1;
+            // 
+            // CanTargetOthersCheckBox
+            // 
+            this.CanTargetOthersCheckBox.AutoSize = true;
+            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(107, 27);
+            this.CanTargetOthersCheckBox.Name = "CanTargetOthersCheckBox";
+            this.CanTargetOthersCheckBox.Size = new System.Drawing.Size(113, 17);
+            this.CanTargetOthersCheckBox.TabIndex = 4;
+            this.CanTargetOthersCheckBox.Text = "Can Target Others";
+            this.CanTargetOthersCheckBox.UseVisualStyleBackColor = true;
+            this.CanTargetOthersCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetOthersCheckBox_CheckedChanged);
+            // 
+            // CanTargetSelfCheckBox
+            // 
+            this.CanTargetSelfCheckBox.AutoSize = true;
+            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(1, 27);
+            this.CanTargetSelfCheckBox.Name = "CanTargetSelfCheckBox";
+            this.CanTargetSelfCheckBox.Size = new System.Drawing.Size(100, 17);
+            this.CanTargetSelfCheckBox.TabIndex = 3;
+            this.CanTargetSelfCheckBox.Text = "Can Target Self";
+            this.CanTargetSelfCheckBox.UseVisualStyleBackColor = true;
+            this.CanTargetSelfCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetSelfCheckBox_CheckedChanged);
+            // 
+            // ActionComboBox
+            // 
+            this.ActionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ActionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ActionComboBox.FormattingEnabled = true;
+            this.ActionComboBox.Location = new System.Drawing.Point(1, 0);
+            this.ActionComboBox.Name = "ActionComboBox";
+            this.ActionComboBox.Size = new System.Drawing.Size(296, 21);
+            this.ActionComboBox.TabIndex = 2;
+            this.ActionComboBox.SelectedIndexChanged += new System.EventHandler(this.ActionComboBox_SelectedIndexChanged);
             // 
             // BreakdownGroupBox
             // 
@@ -108,7 +132,7 @@
             this.BreakdownGroupBox.Controls.Add(this.BehaviorWeightEditBox);
             this.BreakdownGroupBox.Location = new System.Drawing.Point(0, 52);
             this.BreakdownGroupBox.Name = "BreakdownGroupBox";
-            this.BreakdownGroupBox.Size = new System.Drawing.Size(297, 340);
+            this.BreakdownGroupBox.Size = new System.Drawing.Size(297, 327);
             this.BreakdownGroupBox.TabIndex = 1;
             this.BreakdownGroupBox.TabStop = false;
             this.BreakdownGroupBox.Text = "Scoring Breakdown";
@@ -118,7 +142,7 @@
             this.FinalScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FinalScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 298);
+            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 285);
             this.FinalScoreLabel.Name = "FinalScoreLabel";
             this.FinalScoreLabel.Size = new System.Drawing.Size(282, 30);
             this.FinalScoreLabel.TabIndex = 5;
@@ -133,16 +157,16 @@
             this.ScoreListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ScoreColumnHeader,
             this.DescriptionColumnHeader});
-            listViewGroup9.Header = "Considerations";
-            listViewGroup9.Name = "ConsiderationGroup";
-            listViewGroup10.Header = "Bonuses";
-            listViewGroup10.Name = "BonusGroup";
+            listViewGroup1.Header = "Considerations";
+            listViewGroup1.Name = "ConsiderationGroup";
+            listViewGroup2.Header = "Bonuses";
+            listViewGroup2.Name = "BonusGroup";
             this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup9,
-            listViewGroup10});
+            listViewGroup1,
+            listViewGroup2});
             this.ScoreListView.Location = new System.Drawing.Point(6, 91);
             this.ScoreListView.Name = "ScoreListView";
-            this.ScoreListView.Size = new System.Drawing.Size(285, 200);
+            this.ScoreListView.Size = new System.Drawing.Size(285, 187);
             this.ScoreListView.TabIndex = 4;
             this.ScoreListView.UseCompatibleStateImageBehavior = false;
             this.ScoreListView.View = System.Windows.Forms.View.Details;
@@ -218,8 +242,8 @@
             // BehaviorSplitContainer.Panel2
             // 
             this.BehaviorSplitContainer.Panel2.Controls.Add(this.ConsiderationScoreGroupBox);
-            this.BehaviorSplitContainer.Size = new System.Drawing.Size(419, 389);
-            this.BehaviorSplitContainer.SplitterDistance = 172;
+            this.BehaviorSplitContainer.Size = new System.Drawing.Size(419, 376);
+            this.BehaviorSplitContainer.SplitterDistance = 166;
             this.BehaviorSplitContainer.TabIndex = 5;
             // 
             // InputGroupBox
@@ -230,7 +254,7 @@
             this.InputGroupBox.Controls.Add(this.InputFlowPanel);
             this.InputGroupBox.Location = new System.Drawing.Point(4, 3);
             this.InputGroupBox.Name = "InputGroupBox";
-            this.InputGroupBox.Size = new System.Drawing.Size(412, 166);
+            this.InputGroupBox.Size = new System.Drawing.Size(412, 160);
             this.InputGroupBox.TabIndex = 2;
             this.InputGroupBox.TabStop = false;
             this.InputGroupBox.Text = "Inputs";
@@ -244,7 +268,7 @@
             this.InputFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.InputFlowPanel.Location = new System.Drawing.Point(6, 19);
             this.InputFlowPanel.Name = "InputFlowPanel";
-            this.InputFlowPanel.Size = new System.Drawing.Size(400, 141);
+            this.InputFlowPanel.Size = new System.Drawing.Size(400, 135);
             this.InputFlowPanel.TabIndex = 0;
             // 
             // ConsiderationScoreGroupBox
@@ -255,7 +279,7 @@
             this.ConsiderationScoreGroupBox.Controls.Add(this.ScoreLayoutPanel);
             this.ConsiderationScoreGroupBox.Location = new System.Drawing.Point(4, 3);
             this.ConsiderationScoreGroupBox.Name = "ConsiderationScoreGroupBox";
-            this.ConsiderationScoreGroupBox.Size = new System.Drawing.Size(412, 213);
+            this.ConsiderationScoreGroupBox.Size = new System.Drawing.Size(412, 206);
             this.ConsiderationScoreGroupBox.TabIndex = 0;
             this.ConsiderationScoreGroupBox.TabStop = false;
             this.ConsiderationScoreGroupBox.Text = "Consideration Scores";
@@ -269,49 +293,23 @@
             this.ScoreLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ScoreLayoutPanel.Location = new System.Drawing.Point(6, 19);
             this.ScoreLayoutPanel.Name = "ScoreLayoutPanel";
-            this.ScoreLayoutPanel.Size = new System.Drawing.Size(400, 188);
+            this.ScoreLayoutPanel.Size = new System.Drawing.Size(400, 181);
             this.ScoreLayoutPanel.TabIndex = 0;
             // 
-            // ActionComboBox
+            // NameEditWidget
             // 
-            this.ActionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ActionComboBox.FormattingEnabled = true;
-            this.ActionComboBox.Location = new System.Drawing.Point(1, 0);
-            this.ActionComboBox.Name = "ActionComboBox";
-            this.ActionComboBox.Size = new System.Drawing.Size(296, 21);
-            this.ActionComboBox.TabIndex = 2;
-            this.ActionComboBox.SelectedIndexChanged += new System.EventHandler(this.ActionComboBox_SelectedIndexChanged);
-            // 
-            // CanTargetSelfCheckBox
-            // 
-            this.CanTargetSelfCheckBox.AutoSize = true;
-            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(1, 27);
-            this.CanTargetSelfCheckBox.Name = "CanTargetSelfCheckBox";
-            this.CanTargetSelfCheckBox.Size = new System.Drawing.Size(100, 17);
-            this.CanTargetSelfCheckBox.TabIndex = 3;
-            this.CanTargetSelfCheckBox.Text = "Can Target Self";
-            this.CanTargetSelfCheckBox.UseVisualStyleBackColor = true;
-            this.CanTargetSelfCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetSelfCheckBox_CheckedChanged);
-            // 
-            // CanTargetOthersCheckBox
-            // 
-            this.CanTargetOthersCheckBox.AutoSize = true;
-            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(107, 27);
-            this.CanTargetOthersCheckBox.Name = "CanTargetOthersCheckBox";
-            this.CanTargetOthersCheckBox.Size = new System.Drawing.Size(113, 17);
-            this.CanTargetOthersCheckBox.TabIndex = 4;
-            this.CanTargetOthersCheckBox.Text = "Can Target Others";
-            this.CanTargetOthersCheckBox.UseVisualStyleBackColor = true;
-            this.CanTargetOthersCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetOthersCheckBox_CheckedChanged);
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(725, 30);
+            this.NameEditWidget.TabIndex = 2;
             // 
             // EditWidgetBehavior
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.VerticalSplit);
-            this.Controls.Add(this.BehaviorNameLabel);
             this.Name = "EditWidgetBehavior";
             this.Size = new System.Drawing.Size(725, 418);
             this.VerticalSplit.Panel1.ResumeLayout(false);
@@ -329,13 +327,10 @@
             this.InputGroupBox.ResumeLayout(false);
             this.ConsiderationScoreGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label BehaviorNameLabel;
         private System.Windows.Forms.SplitContainer VerticalSplit;
         private System.Windows.Forms.GroupBox BreakdownGroupBox;
         private System.Windows.Forms.Label FinalScoreLabel;
@@ -354,5 +349,6 @@
         private System.Windows.Forms.ComboBox ActionComboBox;
         private System.Windows.Forms.CheckBox CanTargetSelfCheckBox;
         private System.Windows.Forms.CheckBox CanTargetOthersCheckBox;
+        private EditWidgetName NameEditWidget;
     }
 }

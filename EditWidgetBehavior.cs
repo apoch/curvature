@@ -30,8 +30,8 @@ namespace Curvature
         internal void Attach(Behavior behavior)
         {
             EditBehavior = behavior;
+            NameEditWidget.Attach("Behavior", EditBehavior);
 
-            BehaviorNameLabel.Text = "Behavior: " + EditBehavior.ReadableName;
             BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
 
             ActionComboBox.SelectedIndex = (int)EditBehavior.Action;

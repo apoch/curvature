@@ -37,7 +37,7 @@ namespace Curvature
         {
             EditSet = set;
 
-            BehaviorSetNameLabel.Text = $"Behavior Set: {EditSet.ReadableName}";
+            NameEditWidget.Attach("Behavior Set", set);
 
             EnabledBehaviorsListBox.Items.Clear();
             foreach (Behavior b in project.Behaviors)
