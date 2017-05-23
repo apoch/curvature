@@ -54,6 +54,7 @@
             this.BehaviorsListView = new System.Windows.Forms.ListView();
             this.BehaviorNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
+            this.AddBehaviorSetButton = new System.Windows.Forms.Button();
             this.BehaviorSetsListView = new System.Windows.Forms.ListView();
             this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ArchetypesTab = new System.Windows.Forms.TabPage();
@@ -72,7 +73,6 @@
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
-            this.AddBehaviorSetButton = new System.Windows.Forms.Button();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -341,6 +341,17 @@
             this.BehaviorSetsTab.Text = "Behavior Sets";
             this.BehaviorSetsTab.UseVisualStyleBackColor = true;
             // 
+            // AddBehaviorSetButton
+            // 
+            this.AddBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddBehaviorSetButton.Location = new System.Drawing.Point(3, 570);
+            this.AddBehaviorSetButton.Name = "AddBehaviorSetButton";
+            this.AddBehaviorSetButton.Size = new System.Drawing.Size(244, 24);
+            this.AddBehaviorSetButton.TabIndex = 2;
+            this.AddBehaviorSetButton.Text = "Add Behavior Set";
+            this.AddBehaviorSetButton.UseVisualStyleBackColor = true;
+            this.AddBehaviorSetButton.Click += new System.EventHandler(this.AddBehaviorSetButton_Click);
+            // 
             // BehaviorSetsListView
             // 
             this.BehaviorSetsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -375,9 +386,9 @@
             // 
             // AddArchetypeButton
             // 
-            this.AddArchetypeButton.Location = new System.Drawing.Point(0, 573);
+            this.AddArchetypeButton.Location = new System.Drawing.Point(3, 570);
             this.AddArchetypeButton.Name = "AddArchetypeButton";
-            this.AddArchetypeButton.Size = new System.Drawing.Size(247, 24);
+            this.AddArchetypeButton.Size = new System.Drawing.Size(244, 24);
             this.AddArchetypeButton.TabIndex = 1;
             this.AddArchetypeButton.Text = "Add Archetype";
             this.AddArchetypeButton.UseVisualStyleBackColor = true;
@@ -436,9 +447,9 @@
             // CreateScenarioButton
             // 
             this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateScenarioButton.Location = new System.Drawing.Point(0, 573);
+            this.CreateScenarioButton.Location = new System.Drawing.Point(3, 570);
             this.CreateScenarioButton.Name = "CreateScenarioButton";
-            this.CreateScenarioButton.Size = new System.Drawing.Size(247, 24);
+            this.CreateScenarioButton.Size = new System.Drawing.Size(244, 24);
             this.CreateScenarioButton.TabIndex = 1;
             this.CreateScenarioButton.Text = "New Scenario";
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
@@ -518,17 +529,6 @@
             this.ArchetypeEditWidget.Size = new System.Drawing.Size(699, 594);
             this.ArchetypeEditWidget.TabIndex = 2;
             this.ArchetypeEditWidget.Visible = false;
-            // 
-            // AddBehaviorSetButton
-            // 
-            this.AddBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddBehaviorSetButton.Location = new System.Drawing.Point(0, 573);
-            this.AddBehaviorSetButton.Name = "AddBehaviorSetButton";
-            this.AddBehaviorSetButton.Size = new System.Drawing.Size(247, 24);
-            this.AddBehaviorSetButton.TabIndex = 2;
-            this.AddBehaviorSetButton.Text = "Add Behavior Set";
-            this.AddBehaviorSetButton.UseVisualStyleBackColor = true;
-            this.AddBehaviorSetButton.Click += new System.EventHandler(this.AddBehaviorSetButton_Click);
             // 
             // MainForm
             // 

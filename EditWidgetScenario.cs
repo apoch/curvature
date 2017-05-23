@@ -227,6 +227,8 @@ namespace Curvature
 
             foreach (var agent in Simulation.Agents)
                 agent.Position = agent.StartPosition;
+
+            ScenarioRenderingBox.Refresh();
         }
     }
 }
