@@ -13,15 +13,17 @@ namespace Curvature
     public partial class EditWidgetKnowledgeBase : UserControl
     {
         private KnowledgeBase MyKB;
+        private Project EditProject;
 
         public EditWidgetKnowledgeBase()
         {
             InitializeComponent();
         }
 
-        internal void Attach(KnowledgeBase kb)
+        internal void Attach(KnowledgeBase kb, Project project)
         {
             MyKB = kb;
+            EditProject = project;
             RefreshKBControls();
         }
 
@@ -36,7 +38,7 @@ namespace Curvature
 
             foreach (var rec in MyKB.Records)
             {
-                KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec));
+                KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec, EditProject));
             }
 
             var newRecordButton = new Button();

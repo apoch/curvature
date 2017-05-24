@@ -51,14 +51,7 @@ namespace Curvature
 
         private void SetUpProject()
         {
-            ProjectEditWidget.Attach(EditingProject);
-            KnowledgeBaseEditWidget.Attach(EditingProject.KB);
-            InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
-
-            RefreshBehaviorControls();
-            RefreshBehaviorSetControls();
-            RefreshArchetypeControls();
-            RefreshScenarioControls();
+            RefreshControls();
 
             EditingProject.Navigate += (e, args) =>
             {
@@ -68,10 +61,28 @@ namespace Curvature
                 // TODO
             };
 
+            EditingProject.ItemDelete += (e, args) =>
+            {
+                RefreshControls();
+            };
+
             if (string.IsNullOrEmpty(EditingFileName))
                 Text = "Curvature Studio";
             else
                 Text = $"Curvature Studio - [{EditingFileName}]";
+        }
+
+
+        private void RefreshControls()
+        {
+            ProjectEditWidget.Attach(EditingProject);
+            KnowledgeBaseEditWidget.Attach(EditingProject.KB, EditingProject);
+            InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
+
+            RefreshBehaviorControls();
+            RefreshBehaviorSetControls();
+            RefreshArchetypeControls();
+            RefreshScenarioControls();
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)

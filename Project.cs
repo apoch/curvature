@@ -45,6 +45,15 @@ namespace Curvature
         internal event NavigationEventHandler Navigate;
 
 
+        internal class DeletionEventArgs : EventArgs
+        {
+            internal object DeletedObject;
+        }
+
+        internal delegate void DeletionEventHandler(object sender, DeletionEventArgs args);
+        internal event DeletionEventHandler ItemDelete;
+
+
         private Dictionary<string, InputAxis> InputLookupByName;
 
         public Project()
@@ -126,6 +135,19 @@ namespace Curvature
             file.Close();
 
             return ret;
+        }
+
+        public void Delete(KnowledgeBase.Record record)
+        {
+            KB.Records.Remove(record);
+
+            foreach (var input in Inputs)
+            {
+                if (input.KBRecord == record)
+                    input.KBRecord = null;
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = record });
         }
     }
 }

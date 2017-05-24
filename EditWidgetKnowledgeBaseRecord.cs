@@ -13,11 +13,13 @@ namespace Curvature
     public partial class EditWidgetKnowledgeBaseRecord : UserControl
     {
         private KnowledgeBase.Record EditRec;
+        private Project EditProject;
 
-        internal EditWidgetKnowledgeBaseRecord(KnowledgeBase.Record rec)
+        internal EditWidgetKnowledgeBaseRecord(KnowledgeBase.Record rec, Project project)
         {
             InitializeComponent();
             EditRec = rec;
+            EditProject = project;
 
             RecordTagEditBox.Text = EditRec.ReadableName;
 
@@ -43,6 +45,11 @@ namespace Curvature
         private void OriginComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateComputedMode();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            EditProject.Delete(EditRec);
         }
     }
 }
