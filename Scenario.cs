@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Scenario : IInputBroker
+    public class Scenario : IInputBroker, INameable
     {
         public interface IScenarioMember
         {
@@ -172,6 +172,16 @@ namespace Curvature
                 var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
                 graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Red, textRect, stringFormat);
             }
+        }
+
+        public void Rename(string newname)
+        {
+            ReadableName = newname;
+        }
+
+        public string GetName()
+        {
+            return ReadableName;
         }
 
         public void RefreshInputs()

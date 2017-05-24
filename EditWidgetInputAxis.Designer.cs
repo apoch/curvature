@@ -28,25 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InputAxisNameLabel = new System.Windows.Forms.Label();
             this.ParameterGroupBox = new System.Windows.Forms.GroupBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
             this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // InputAxisNameLabel
-            // 
-            this.InputAxisNameLabel.AutoSize = true;
-            this.InputAxisNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputAxisNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.InputAxisNameLabel.Name = "InputAxisNameLabel";
-            this.InputAxisNameLabel.Size = new System.Drawing.Size(157, 20);
-            this.InputAxisNameLabel.TabIndex = 0;
-            this.InputAxisNameLabel.Text = "Input Axis: (Name)";
             // 
             // ParameterGroupBox
             // 
@@ -54,9 +44,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ParameterGroupBox.Controls.Add(this.ParamFlowPanel);
-            this.ParameterGroupBox.Location = new System.Drawing.Point(7, 78);
+            this.ParameterGroupBox.Location = new System.Drawing.Point(7, 91);
             this.ParameterGroupBox.Name = "ParameterGroupBox";
-            this.ParameterGroupBox.Size = new System.Drawing.Size(475, 123);
+            this.ParameterGroupBox.Size = new System.Drawing.Size(475, 110);
             this.ParameterGroupBox.TabIndex = 1;
             this.ParameterGroupBox.TabStop = false;
             this.ParameterGroupBox.Text = "Parameters";
@@ -66,7 +56,7 @@
             this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
             this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(469, 104);
+            this.ParamFlowPanel.Size = new System.Drawing.Size(469, 91);
             this.ParamFlowPanel.TabIndex = 0;
             // 
             // PropertiesGroupBox
@@ -75,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesGroupBox.Controls.Add(this.DataSourceComboBox);
             this.PropertiesGroupBox.Controls.Add(this.InputTypeComboBox);
-            this.PropertiesGroupBox.Location = new System.Drawing.Point(7, 23);
+            this.PropertiesGroupBox.Location = new System.Drawing.Point(7, 36);
             this.PropertiesGroupBox.Name = "PropertiesGroupBox";
             this.PropertiesGroupBox.Size = new System.Drawing.Size(475, 49);
             this.PropertiesGroupBox.TabIndex = 2;
@@ -109,29 +99,35 @@
             this.InputTypeComboBox.TabIndex = 0;
             this.InputTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.InputTypeComboBox_SelectedIndexChanged);
             // 
+            // NameEditWidget
+            // 
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(485, 30);
+            this.NameEditWidget.TabIndex = 3;
+            // 
             // EditWidgetInputAxis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.PropertiesGroupBox);
             this.Controls.Add(this.ParameterGroupBox);
-            this.Controls.Add(this.InputAxisNameLabel);
             this.Name = "EditWidgetInputAxis";
             this.Size = new System.Drawing.Size(485, 204);
             this.ParameterGroupBox.ResumeLayout(false);
             this.PropertiesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label InputAxisNameLabel;
         private System.Windows.Forms.GroupBox ParameterGroupBox;
         private System.Windows.Forms.GroupBox PropertiesGroupBox;
         private System.Windows.Forms.ComboBox InputTypeComboBox;
         private System.Windows.Forms.ComboBox DataSourceComboBox;
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
+        private EditWidgetName NameEditWidget;
     }
 }

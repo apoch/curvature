@@ -25,7 +25,7 @@ namespace Curvature
             EditConsideration = editConsideration;
             EditProject = project;
 
-            ConsiderationNameLabel.Text = "Consideration: " + EditConsideration.ReadableName;
+            NameEditWidget.Attach("Consideration", EditConsideration);
 
             InputAxisDropdown.Items.Clear();
             foreach (InputAxis axis in project.Inputs)

@@ -21,7 +21,8 @@ namespace Curvature
             EditedAxis = axis;
             EditedProject = project;
 
-            InputAxisNameLabel.Text = "Input Axis: " + axis.ReadableName;
+            NameEditWidget.Attach("Input Axis", axis);
+
             InputTypeComboBox.SelectedIndex = (int)axis.Origin;
 
             foreach (InputParameter param in EditedAxis.Parameters)

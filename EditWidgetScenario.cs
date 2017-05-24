@@ -36,7 +36,7 @@ namespace Curvature
             Simulation = scenario;
             EditProject = project;
 
-            ScenarioNameLabel.Text = $"Scenario: {Simulation.ReadableName}";
+            NameEditWidget.Attach("Scenario", Simulation);
 
             RefreshAgentTab();
             RefreshLocationTab();
