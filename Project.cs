@@ -165,5 +165,17 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = input });
         }
+
+        public void Delete(Behavior behavior)
+        {
+            Behaviors.Remove(behavior);
+
+            foreach (var set in BehaviorSets)
+            {
+                set.EnabledBehaviors.Remove(behavior);
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = behavior });
+        }
     }
 }

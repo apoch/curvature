@@ -29,6 +29,18 @@ namespace Curvature
 
         internal void Attach(Behavior behavior)
         {
+            foreach (Control ctl in ScoreLayoutPanel.Controls)
+                ctl.Dispose();
+
+            ScoreLayoutPanel.Controls.Clear();
+
+
+            foreach (Control ctl in InputFlowPanel.Controls)
+                ctl.Dispose();
+
+            InputFlowPanel.Controls.Clear();
+
+
             EditBehavior = behavior;
             NameEditWidget.Attach("Behavior", EditBehavior);
 

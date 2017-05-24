@@ -124,6 +124,8 @@ namespace Curvature
                 item.Tag = behavior;
                 BehaviorsListView.Items.Add(item);
             }
+
+            BehaviorTabs.Visible = false;
         }
 
         private void RefreshBehaviorSetControls()
@@ -273,6 +275,20 @@ namespace Curvature
         {
             EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
             RefreshBehaviorSetControls();
+        }
+
+        private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<Behavior>();
+            foreach (var item in BehaviorsListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as Behavior);
+            }
+
+            foreach (var behavior in selection)
+            {
+                EditingProject.Delete(behavior);
+            }
         }
     }
 }
