@@ -149,5 +149,21 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = record });
         }
+
+        public void Delete(InputAxis input)
+        {
+            Inputs.Remove(input);
+
+            foreach (var b in Behaviors)
+            {
+                foreach (var c in b.Considerations)
+                {
+                    if (c.Input == input)
+                        c.Input = null;
+                }
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = input });
+        }
     }
 }

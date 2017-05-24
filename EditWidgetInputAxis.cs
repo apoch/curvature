@@ -59,5 +59,10 @@ namespace Curvature
         {
             EditedAxis.KBRecord = DataSourceComboBox.SelectedItem as KnowledgeBase.Record;
         }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            EditedProject.Delete(EditedAxis);
+        }
     }
 }

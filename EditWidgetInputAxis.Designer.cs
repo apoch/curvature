@@ -34,6 +34,7 @@
             this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
             this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -107,10 +108,22 @@
             this.NameEditWidget.Size = new System.Drawing.Size(485, 30);
             this.NameEditWidget.TabIndex = 3;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Location = new System.Drawing.Point(407, 3);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // EditWidgetInputAxis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.PropertiesGroupBox);
             this.Controls.Add(this.ParameterGroupBox);
@@ -129,5 +142,6 @@
         private System.Windows.Forms.ComboBox DataSourceComboBox;
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
         private EditWidgetName NameEditWidget;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
