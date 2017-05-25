@@ -72,13 +72,13 @@ namespace Curvature
             return ReadableName;
         }
 
-        internal double Score(IInputBroker broker)
+        internal double Score(IInputBroker broker, Scenario.Context context)
         {
             double compensationFactor = 1.0 - (1.0 / (double)Considerations.Count);
             double result = Weight;
             foreach (Consideration c in Considerations)
             {
-                double considerationScore = c.Score(broker);
+                double considerationScore = c.Score(broker, context);
                 double modification = (1.0 - considerationScore) * compensationFactor;
                 considerationScore = considerationScore + (modification * considerationScore);
 

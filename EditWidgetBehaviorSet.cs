@@ -81,7 +81,7 @@ namespace Curvature
             BehaviorScoresListView.Items.Clear();
             foreach (Behavior b in EnabledBehaviorsListBox.CheckedItems)
             {
-                double score = b.Score(this);
+                double score = b.Score(this, null);
                 if (score > winscore)
                 {
                     winscore = score;

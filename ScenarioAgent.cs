@@ -103,7 +103,7 @@ namespace Curvature
                 }
             }
 
-            var scoredBehaviors = scoreSet.Select(ctx => new { ctx, score = ctx.ChosenBehavior.Score(broker) }).OrderByDescending(x => x.score);
+            var scoredBehaviors = scoreSet.Select(ctx => new { ctx, score = ctx.ChosenBehavior.Score(broker, ctx) }).OrderByDescending(x => x.score);
             var topBehavior = scoredBehaviors.First();
 
             if (topBehavior.score > 0.0f)

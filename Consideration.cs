@@ -39,9 +39,9 @@ namespace Curvature
             return null;
         }
 
-        internal double Score(IInputBroker broker)
+        internal double Score(IInputBroker broker, Scenario.Context context)
         {
-            return Curve.ComputeValue(broker.GetInputValue(Input));
+            return Curve.ComputeValue(broker.GetInputValue(Input, context));
         }
 
         public void Rename(string newname)

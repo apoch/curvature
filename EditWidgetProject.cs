@@ -26,5 +26,10 @@ namespace Curvature
             EditedProject = editedProject;
             NameEditWidget.Attach("Project", EditedProject);
         }
+
+        private void WikiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+        }
     }
 }
