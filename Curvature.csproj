@@ -47,182 +47,182 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archetype.cs" />
-    <Compile Include="Behavior.cs" />
-    <Compile Include="BehaviorSet.cs" />
-    <Compile Include="Consideration.cs" />
-    <Compile Include="CurvePresetForm.cs">
+    <Compile Include="UtilityAISystem\Archetype.cs" />
+    <Compile Include="UtilityAISystem\Behavior.cs" />
+    <Compile Include="UtilityAISystem\BehaviorSet.cs" />
+    <Compile Include="UtilityAISystem\Consideration.cs" />
+    <Compile Include="Forms\CurvePresetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CurvePresetForm.Designer.cs">
+    <Compile Include="Forms\CurvePresetForm.Designer.cs">
       <DependentUpon>CurvePresetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CurveWizardForm.cs">
+    <Compile Include="Forms\CurveWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CurveWizardForm.Designer.cs">
+    <Compile Include="Forms\CurveWizardForm.Designer.cs">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetArchetype.cs">
+    <Compile Include="Widgets\EditWidgetArchetype.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetArchetype.Designer.cs">
+    <Compile Include="Widgets\EditWidgetArchetype.Designer.cs">
       <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetBehavior.cs">
+    <Compile Include="Widgets\EditWidgetBehavior.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetBehavior.Designer.cs">
+    <Compile Include="Widgets\EditWidgetBehavior.Designer.cs">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetBehaviorSet.cs">
+    <Compile Include="Widgets\EditWidgetBehaviorSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetBehaviorSet.Designer.cs">
+    <Compile Include="Widgets\EditWidgetBehaviorSet.Designer.cs">
       <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetConsideration.cs">
+    <Compile Include="Widgets\EditWidgetConsideration.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetConsideration.Designer.cs">
+    <Compile Include="Widgets\EditWidgetConsideration.Designer.cs">
       <DependentUpon>EditWidgetConsideration.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetConsiderationInput.cs">
+    <Compile Include="Widgets\EditWidgetConsiderationInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetConsiderationInput.Designer.cs">
+    <Compile Include="Widgets\EditWidgetConsiderationInput.Designer.cs">
       <DependentUpon>EditWidgetConsiderationInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetConsiderationScore.cs">
+    <Compile Include="Widgets\EditWidgetConsiderationScore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetConsiderationScore.Designer.cs">
+    <Compile Include="Widgets\EditWidgetConsiderationScore.Designer.cs">
       <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetInputAxis.cs">
+    <Compile Include="Widgets\EditWidgetInputAxis.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetInputAxis.Designer.cs">
+    <Compile Include="Widgets\EditWidgetInputAxis.Designer.cs">
       <DependentUpon>EditWidgetInputAxis.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetInputs.cs">
+    <Compile Include="Widgets\EditWidgetInputs.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetInputs.Designer.cs">
+    <Compile Include="Widgets\EditWidgetInputs.Designer.cs">
       <DependentUpon>EditWidgetInputs.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetKnowledgeBase.cs">
+    <Compile Include="Widgets\EditWidgetKnowledgeBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetKnowledgeBase.Designer.cs">
+    <Compile Include="Widgets\EditWidgetKnowledgeBase.Designer.cs">
       <DependentUpon>EditWidgetKnowledgeBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetKnowledgeBaseRecord.cs">
+    <Compile Include="Widgets\EditWidgetKnowledgeBaseRecord.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetKnowledgeBaseRecord.Designer.cs">
+    <Compile Include="Widgets\EditWidgetKnowledgeBaseRecord.Designer.cs">
       <DependentUpon>EditWidgetKnowledgeBaseRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetName.cs">
+    <Compile Include="Widgets\EditWidgetName.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetName.Designer.cs">
+    <Compile Include="Widgets\EditWidgetName.Designer.cs">
       <DependentUpon>EditWidgetName.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetParameter.cs">
+    <Compile Include="Widgets\EditWidgetParameter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetParameter.Designer.cs">
+    <Compile Include="Widgets\EditWidgetParameter.Designer.cs">
       <DependentUpon>EditWidgetParameter.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetProject.cs">
+    <Compile Include="Widgets\EditWidgetProject.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetProject.Designer.cs">
+    <Compile Include="Widgets\EditWidgetProject.Designer.cs">
       <DependentUpon>EditWidgetProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetResponseCurve.cs">
+    <Compile Include="Widgets\EditWidgetResponseCurve.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetResponseCurve.Designer.cs">
+    <Compile Include="Widgets\EditWidgetResponseCurve.Designer.cs">
       <DependentUpon>EditWidgetResponseCurve.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditWidgetScenario.cs">
+    <Compile Include="Widgets\EditWidgetScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditWidgetScenario.Designer.cs">
+    <Compile Include="Widgets\EditWidgetScenario.Designer.cs">
       <DependentUpon>EditWidgetScenario.cs</DependentUpon>
     </Compile>
-    <Compile Include="IInputBroker.cs" />
-    <Compile Include="INameable.cs" />
-    <Compile Include="InputAxis.cs" />
-    <Compile Include="InputParameter.cs" />
-    <Compile Include="KnowledgeBase.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Interfaces\IInputBroker.cs" />
+    <Compile Include="Interfaces\INameable.cs" />
+    <Compile Include="UtilityAISystem\InputAxis.cs" />
+    <Compile Include="UtilityAISystem\InputParameter.cs" />
+    <Compile Include="UtilityAISystem\KnowledgeBase.cs" />
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Project.cs" />
+    <Compile Include="UtilityAISystem\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResponseCurve.cs" />
-    <Compile Include="Scenario.cs" />
-    <Compile Include="ScenarioAgent.cs" />
-    <Compile Include="ScenarioLocation.cs" />
-    <EmbeddedResource Include="CurvePresetForm.resx">
+    <Compile Include="UtilityAISystem\ResponseCurve.cs" />
+    <Compile Include="Scenarios\Scenario.cs" />
+    <Compile Include="Scenarios\ScenarioAgent.cs" />
+    <Compile Include="Scenarios\ScenarioLocation.cs" />
+    <EmbeddedResource Include="Forms\CurvePresetForm.resx">
       <DependentUpon>CurvePresetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CurveWizardForm.resx">
+    <EmbeddedResource Include="Forms\CurveWizardForm.resx">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetArchetype.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetArchetype.resx">
       <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetBehavior.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetBehavior.resx">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetBehaviorSet.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetBehaviorSet.resx">
       <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetConsideration.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetConsideration.resx">
       <DependentUpon>EditWidgetConsideration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetConsiderationInput.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetConsiderationInput.resx">
       <DependentUpon>EditWidgetConsiderationInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetConsiderationScore.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetConsiderationScore.resx">
       <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetInputAxis.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetInputAxis.resx">
       <DependentUpon>EditWidgetInputAxis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetInputs.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetInputs.resx">
       <DependentUpon>EditWidgetInputs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetKnowledgeBase.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetKnowledgeBase.resx">
       <DependentUpon>EditWidgetKnowledgeBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetKnowledgeBaseRecord.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetKnowledgeBaseRecord.resx">
       <DependentUpon>EditWidgetKnowledgeBaseRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetName.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetName.resx">
       <DependentUpon>EditWidgetName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetParameter.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetParameter.resx">
       <DependentUpon>EditWidgetParameter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetProject.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetProject.resx">
       <DependentUpon>EditWidgetProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetResponseCurve.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetResponseCurve.resx">
       <DependentUpon>EditWidgetResponseCurve.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWidgetScenario.resx">
+    <EmbeddedResource Include="Widgets\EditWidgetScenario.resx">
       <DependentUpon>EditWidgetScenario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -251,6 +251,7 @@
   <ItemGroup>
     <None Include="Images\00ffff-pencil-32.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
