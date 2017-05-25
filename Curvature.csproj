@@ -157,7 +157,6 @@
     <Compile Include="INameable.cs" />
     <Compile Include="InputAxis.cs" />
     <Compile Include="InputParameter.cs" />
-    <Compile Include="IUserEditable.cs" />
     <Compile Include="KnowledgeBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

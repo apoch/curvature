@@ -36,15 +36,6 @@ namespace Curvature
         public List<Scenario> Scenarios;
 
 
-        internal class ProjectEventArgs : EventArgs
-        {
-            internal IUserEditable Editable;
-        }
-
-        internal delegate void NavigationEventHandler(object sender, ProjectEventArgs args);
-        internal event NavigationEventHandler Navigate;
-
-
         internal class DeletionEventArgs : EventArgs
         {
             internal object DeletedObject;
@@ -69,11 +60,6 @@ namespace Curvature
             InputLookupByName = new Dictionary<string, InputAxis>();
         }
 
-
-        internal void NavigateTo(IUserEditable editable)
-        {
-            Navigate(this, new ProjectEventArgs() { Editable = editable });
-        }
 
         public void RegisterInput(InputAxis axis)
         {

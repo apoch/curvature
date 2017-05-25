@@ -53,14 +53,6 @@ namespace Curvature
         {
             RefreshControls();
 
-            EditingProject.Navigate += (e, args) =>
-            {
-                if (args.Editable == null)
-                    return;
-                
-                // TODO
-            };
-
             EditingProject.ItemDelete += (e, args) =>
             {
                 RefreshControls();

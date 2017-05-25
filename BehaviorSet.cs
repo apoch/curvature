@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class BehaviorSet : IUserEditable, INameable
+    public class BehaviorSet : INameable
     {
         [DataMember]
         public string ReadableName;

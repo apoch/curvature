@@ -53,7 +53,7 @@ namespace Curvature
                 if (item == null)
                     return;
 
-                project.NavigateTo(item.Tag as Behavior);
+                // TODO - activate UI for editing the relevant behavior
             };
         }
 
