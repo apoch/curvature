@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.ScenarioEditorTabs = new System.Windows.Forms.TabControl();
             this.AgentsTab = new System.Windows.Forms.TabPage();
+            this.CopyCurrentAgentPositionButton = new System.Windows.Forms.Button();
+            this.AgentResetButton = new System.Windows.Forms.Button();
+            this.AgentStartYLabel = new System.Windows.Forms.Label();
+            this.AgentStartYUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AgentStartXLabel = new System.Windows.Forms.Label();
+            this.AgentStartXUpDown = new System.Windows.Forms.NumericUpDown();
             this.AgentArchetypeLabel = new System.Windows.Forms.Label();
             this.AgentArchetypeComboBox = new System.Windows.Forms.ComboBox();
             this.AgentRadiusLabel = new System.Windows.Forms.Label();
@@ -50,28 +56,22 @@
             this.LocationNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LocationCoordinatesColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SimulationTab = new System.Windows.Forms.TabPage();
+            this.ResetSimulationButton = new System.Windows.Forms.Button();
+            this.AutoAdvanceButton = new System.Windows.Forms.Button();
             this.Advance100msButton = new System.Windows.Forms.Button();
             this.ScenarioRenderingBox = new System.Windows.Forms.PictureBox();
-            this.AgentStartXUpDown = new System.Windows.Forms.NumericUpDown();
-            this.AgentStartXLabel = new System.Windows.Forms.Label();
-            this.AgentStartYUpDown = new System.Windows.Forms.NumericUpDown();
-            this.AgentStartYLabel = new System.Windows.Forms.Label();
-            this.AgentResetButton = new System.Windows.Forms.Button();
-            this.CopyCurrentAgentPositionButton = new System.Windows.Forms.Button();
-            this.AutoAdvanceButton = new System.Windows.Forms.Button();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
-            this.ResetSimulationButton = new System.Windows.Forms.Button();
             this.NameEditWidget = new Curvature.EditWidgetName();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentYUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentXUpDown)).BeginInit();
             this.LocationsTab.SuspendLayout();
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -110,10 +110,96 @@
             this.AgentsTab.Location = new System.Drawing.Point(4, 4);
             this.AgentsTab.Name = "AgentsTab";
             this.AgentsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AgentsTab.Size = new System.Drawing.Size(738, 443);
+            this.AgentsTab.Size = new System.Drawing.Size(738, 430);
             this.AgentsTab.TabIndex = 0;
             this.AgentsTab.Text = "Agents";
             this.AgentsTab.UseVisualStyleBackColor = true;
+            // 
+            // CopyCurrentAgentPositionButton
+            // 
+            this.CopyCurrentAgentPositionButton.Location = new System.Drawing.Point(266, 286);
+            this.CopyCurrentAgentPositionButton.Name = "CopyCurrentAgentPositionButton";
+            this.CopyCurrentAgentPositionButton.Size = new System.Drawing.Size(81, 20);
+            this.CopyCurrentAgentPositionButton.TabIndex = 16;
+            this.CopyCurrentAgentPositionButton.Text = "Copy Current";
+            this.CopyCurrentAgentPositionButton.UseVisualStyleBackColor = true;
+            this.CopyCurrentAgentPositionButton.Click += new System.EventHandler(this.CopyCurrentAgentPositionButton_Click);
+            // 
+            // AgentResetButton
+            // 
+            this.AgentResetButton.Location = new System.Drawing.Point(179, 286);
+            this.AgentResetButton.Name = "AgentResetButton";
+            this.AgentResetButton.Size = new System.Drawing.Size(81, 20);
+            this.AgentResetButton.TabIndex = 15;
+            this.AgentResetButton.Text = "Set Current";
+            this.AgentResetButton.UseVisualStyleBackColor = true;
+            this.AgentResetButton.Click += new System.EventHandler(this.AgentResetButton_Click);
+            // 
+            // AgentStartYLabel
+            // 
+            this.AgentStartYLabel.AutoSize = true;
+            this.AgentStartYLabel.Location = new System.Drawing.Point(89, 270);
+            this.AgentStartYLabel.Name = "AgentStartYLabel";
+            this.AgentStartYLabel.Size = new System.Drawing.Size(42, 13);
+            this.AgentStartYLabel.TabIndex = 14;
+            this.AgentStartYLabel.Text = "Start Y:";
+            // 
+            // AgentStartYUpDown
+            // 
+            this.AgentStartYUpDown.DecimalPlaces = 3;
+            this.AgentStartYUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AgentStartYUpDown.Location = new System.Drawing.Point(92, 286);
+            this.AgentStartYUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AgentStartYUpDown.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.AgentStartYUpDown.Name = "AgentStartYUpDown";
+            this.AgentStartYUpDown.Size = new System.Drawing.Size(81, 20);
+            this.AgentStartYUpDown.TabIndex = 12;
+            this.AgentStartYUpDown.ValueChanged += new System.EventHandler(this.AgentStartYUpDown_ValueChanged);
+            // 
+            // AgentStartXLabel
+            // 
+            this.AgentStartXLabel.AutoSize = true;
+            this.AgentStartXLabel.Location = new System.Drawing.Point(3, 270);
+            this.AgentStartXLabel.Name = "AgentStartXLabel";
+            this.AgentStartXLabel.Size = new System.Drawing.Size(42, 13);
+            this.AgentStartXLabel.TabIndex = 11;
+            this.AgentStartXLabel.Text = "Start X:";
+            // 
+            // AgentStartXUpDown
+            // 
+            this.AgentStartXUpDown.DecimalPlaces = 3;
+            this.AgentStartXUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.AgentStartXUpDown.Location = new System.Drawing.Point(6, 286);
+            this.AgentStartXUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.AgentStartXUpDown.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.AgentStartXUpDown.Name = "AgentStartXUpDown";
+            this.AgentStartXUpDown.Size = new System.Drawing.Size(80, 20);
+            this.AgentStartXUpDown.TabIndex = 10;
+            this.AgentStartXUpDown.ValueChanged += new System.EventHandler(this.AgentStartXUpDown_ValueChanged);
             // 
             // AgentArchetypeLabel
             // 
@@ -254,6 +340,7 @@
             this.ScenarioAgentArchetypeColumnHeader});
             this.AgentsListView.FullRowSelect = true;
             this.AgentsListView.HideSelection = false;
+            this.AgentsListView.LabelEdit = true;
             this.AgentsListView.Location = new System.Drawing.Point(0, 0);
             this.AgentsListView.Name = "AgentsListView";
             this.AgentsListView.Size = new System.Drawing.Size(633, 222);
@@ -284,7 +371,7 @@
             this.LocationsTab.Location = new System.Drawing.Point(4, 4);
             this.LocationsTab.Name = "LocationsTab";
             this.LocationsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.LocationsTab.Size = new System.Drawing.Size(738, 443);
+            this.LocationsTab.Size = new System.Drawing.Size(738, 430);
             this.LocationsTab.TabIndex = 1;
             this.LocationsTab.Text = "Locations";
             this.LocationsTab.UseVisualStyleBackColor = true;
@@ -339,6 +426,28 @@
             this.SimulationTab.Text = "Simulation";
             this.SimulationTab.UseVisualStyleBackColor = true;
             // 
+            // ResetSimulationButton
+            // 
+            this.ResetSimulationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ResetSimulationButton.Location = new System.Drawing.Point(241, 398);
+            this.ResetSimulationButton.Name = "ResetSimulationButton";
+            this.ResetSimulationButton.Size = new System.Drawing.Size(113, 29);
+            this.ResetSimulationButton.TabIndex = 3;
+            this.ResetSimulationButton.Text = "Reset to Start";
+            this.ResetSimulationButton.UseVisualStyleBackColor = true;
+            this.ResetSimulationButton.Click += new System.EventHandler(this.ResetSimulationButton_Click);
+            // 
+            // AutoAdvanceButton
+            // 
+            this.AutoAdvanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AutoAdvanceButton.Location = new System.Drawing.Point(122, 398);
+            this.AutoAdvanceButton.Name = "AutoAdvanceButton";
+            this.AutoAdvanceButton.Size = new System.Drawing.Size(113, 29);
+            this.AutoAdvanceButton.TabIndex = 2;
+            this.AutoAdvanceButton.Text = "Auto Advance";
+            this.AutoAdvanceButton.UseVisualStyleBackColor = true;
+            this.AutoAdvanceButton.Click += new System.EventHandler(this.AutoAdvanceButton_Click);
+            // 
             // Advance100msButton
             // 
             this.Advance100msButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -362,117 +471,9 @@
             this.ScenarioRenderingBox.TabIndex = 0;
             this.ScenarioRenderingBox.TabStop = false;
             // 
-            // AgentStartXUpDown
-            // 
-            this.AgentStartXUpDown.DecimalPlaces = 3;
-            this.AgentStartXUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.AgentStartXUpDown.Location = new System.Drawing.Point(6, 286);
-            this.AgentStartXUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.AgentStartXUpDown.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.AgentStartXUpDown.Name = "AgentStartXUpDown";
-            this.AgentStartXUpDown.Size = new System.Drawing.Size(80, 20);
-            this.AgentStartXUpDown.TabIndex = 10;
-            this.AgentStartXUpDown.ValueChanged += new System.EventHandler(this.AgentStartXUpDown_ValueChanged);
-            // 
-            // AgentStartXLabel
-            // 
-            this.AgentStartXLabel.AutoSize = true;
-            this.AgentStartXLabel.Location = new System.Drawing.Point(3, 270);
-            this.AgentStartXLabel.Name = "AgentStartXLabel";
-            this.AgentStartXLabel.Size = new System.Drawing.Size(42, 13);
-            this.AgentStartXLabel.TabIndex = 11;
-            this.AgentStartXLabel.Text = "Start X:";
-            // 
-            // AgentStartYUpDown
-            // 
-            this.AgentStartYUpDown.DecimalPlaces = 3;
-            this.AgentStartYUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.AgentStartYUpDown.Location = new System.Drawing.Point(92, 286);
-            this.AgentStartYUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.AgentStartYUpDown.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            -2147483648});
-            this.AgentStartYUpDown.Name = "AgentStartYUpDown";
-            this.AgentStartYUpDown.Size = new System.Drawing.Size(81, 20);
-            this.AgentStartYUpDown.TabIndex = 12;
-            this.AgentStartYUpDown.ValueChanged += new System.EventHandler(this.AgentStartYUpDown_ValueChanged);
-            // 
-            // AgentStartYLabel
-            // 
-            this.AgentStartYLabel.AutoSize = true;
-            this.AgentStartYLabel.Location = new System.Drawing.Point(89, 270);
-            this.AgentStartYLabel.Name = "AgentStartYLabel";
-            this.AgentStartYLabel.Size = new System.Drawing.Size(42, 13);
-            this.AgentStartYLabel.TabIndex = 14;
-            this.AgentStartYLabel.Text = "Start Y:";
-            // 
-            // AgentResetButton
-            // 
-            this.AgentResetButton.Location = new System.Drawing.Point(179, 286);
-            this.AgentResetButton.Name = "AgentResetButton";
-            this.AgentResetButton.Size = new System.Drawing.Size(81, 20);
-            this.AgentResetButton.TabIndex = 15;
-            this.AgentResetButton.Text = "Set Current";
-            this.AgentResetButton.UseVisualStyleBackColor = true;
-            this.AgentResetButton.Click += new System.EventHandler(this.AgentResetButton_Click);
-            // 
-            // CopyCurrentAgentPositionButton
-            // 
-            this.CopyCurrentAgentPositionButton.Location = new System.Drawing.Point(266, 286);
-            this.CopyCurrentAgentPositionButton.Name = "CopyCurrentAgentPositionButton";
-            this.CopyCurrentAgentPositionButton.Size = new System.Drawing.Size(81, 20);
-            this.CopyCurrentAgentPositionButton.TabIndex = 16;
-            this.CopyCurrentAgentPositionButton.Text = "Copy Current";
-            this.CopyCurrentAgentPositionButton.UseVisualStyleBackColor = true;
-            this.CopyCurrentAgentPositionButton.Click += new System.EventHandler(this.CopyCurrentAgentPositionButton_Click);
-            // 
-            // AutoAdvanceButton
-            // 
-            this.AutoAdvanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AutoAdvanceButton.Location = new System.Drawing.Point(122, 398);
-            this.AutoAdvanceButton.Name = "AutoAdvanceButton";
-            this.AutoAdvanceButton.Size = new System.Drawing.Size(113, 29);
-            this.AutoAdvanceButton.TabIndex = 2;
-            this.AutoAdvanceButton.Text = "Auto Advance";
-            this.AutoAdvanceButton.UseVisualStyleBackColor = true;
-            this.AutoAdvanceButton.Click += new System.EventHandler(this.AutoAdvanceButton_Click);
-            // 
             // AutoAdvanceTimer
             // 
             this.AutoAdvanceTimer.Tick += new System.EventHandler(this.AutoAdvanceTimer_Tick);
-            // 
-            // ResetSimulationButton
-            // 
-            this.ResetSimulationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ResetSimulationButton.Location = new System.Drawing.Point(241, 398);
-            this.ResetSimulationButton.Name = "ResetSimulationButton";
-            this.ResetSimulationButton.Size = new System.Drawing.Size(113, 29);
-            this.ResetSimulationButton.TabIndex = 3;
-            this.ResetSimulationButton.Text = "Reset to Start";
-            this.ResetSimulationButton.UseVisualStyleBackColor = true;
-            this.ResetSimulationButton.Click += new System.EventHandler(this.ResetSimulationButton_Click);
             // 
             // NameEditWidget
             // 
@@ -493,14 +494,14 @@
             this.ScenarioEditorTabs.ResumeLayout(false);
             this.AgentsTab.ResumeLayout(false);
             this.AgentsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentYUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentXUpDown)).EndInit();
             this.LocationsTab.ResumeLayout(false);
             this.SimulationTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }

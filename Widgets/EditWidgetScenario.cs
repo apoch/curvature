@@ -28,6 +28,17 @@ namespace Curvature
 
                 Simulation.Render(args.Graphics, ScenarioRenderingBox.ClientRectangle);
             };
+
+            AgentsListView.AfterLabelEdit += (obj, args) =>
+            {
+                if (string.IsNullOrEmpty(args.Label))
+                    return;
+
+                var agent = (AgentsListView.Items[args.Item].Tag as ScenarioAgent);
+                agent.Name = args.Label;
+
+                RefreshAgentTab();
+            };
         }
 
 
@@ -212,6 +223,10 @@ namespace Curvature
         private void AutoAdvanceButton_Click(object sender, EventArgs e)
         {
             AutoAdvanceTimer.Enabled = !AutoAdvanceTimer.Enabled;
+            if (AutoAdvanceTimer.Enabled)
+                AutoAdvanceButton.Text = "Pause";
+            else
+                AutoAdvanceButton.Text = "Auto Advance";
         }
 
         private void AutoAdvanceTimer_Tick(object sender, EventArgs e)

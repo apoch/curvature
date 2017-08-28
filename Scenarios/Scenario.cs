@@ -42,6 +42,8 @@ namespace Curvature
         private float HorizontalUnitsOffset = 0.5f;
         private float VerticalUnitsOffset = 0.5f;
 
+        private Random RandomNumbers = new Random();
+
 
         internal class ScenarioEventArgs : EventArgs
         {
@@ -239,8 +241,8 @@ namespace Curvature
                     {
                         var pos = context.ThinkingAgent.Position;
                         var vec = ComputeVectorTowardsTarget(context);
-                        context.ThinkingAgent.Position.X = ClampToArrival(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
-                        context.ThinkingAgent.Position.Y = ClampToArrival(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
+                        context.ThinkingAgent.Position.X = ClampToEscape(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
+                        context.ThinkingAgent.Position.Y = ClampToEscape(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
                     }
                     break;
 
@@ -328,6 +330,24 @@ namespace Curvature
             }
         }
 
+        private float ClampToEscape(float start, float limit, float desired)
+        {
+            if (start <= limit)
+            {
+                if (desired > limit)
+                    return limit;
+
+                return desired + 0.04f - ((float)RandomNumbers.NextDouble() * 0.08f);
+            }
+            else
+            {
+                if (desired < limit)
+                    return limit;
+
+                return desired + 0.04f - ((float)RandomNumbers.NextDouble() * 0.08f);
+            }
+        }
+
         private float Distance(PointF a, PointF b)
         {
             float dx = b.X - a.X;
@@ -339,6 +359,7 @@ namespace Curvature
         private void OnDeserialized(StreamingContext context)
         {
             InitializeDrawingResources();
+            RandomNumbers = new Random();
         }
 
 

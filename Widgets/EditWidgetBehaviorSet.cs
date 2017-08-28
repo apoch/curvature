@@ -70,6 +70,10 @@ namespace Curvature
 
         public double GetInputValue(InputAxis axis, Scenario.Context context)
         {
+            if (context == null)
+                return GetInputValue(axis);
+
+            // TODO - figure out what input this should link to and retrieve the corresponding value
             return 0.0;
         }
 
