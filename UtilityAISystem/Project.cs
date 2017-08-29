@@ -163,5 +163,17 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = behavior });
         }
+
+        public void Delete(BehaviorSet set)
+        {
+            BehaviorSets.Remove(set);
+
+            foreach (var archetype in Archetypes)
+            {
+                archetype.BehaviorSets.Remove(set);
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = set });
+        }
     }
 }

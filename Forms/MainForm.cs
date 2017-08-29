@@ -130,6 +130,8 @@ namespace Curvature
                 item.Tag = behaviorSet;
                 BehaviorSetsListView.Items.Add(item);
             }
+
+            BehaviorSetEditWidget.Visible = false;
         }
 
         private void RefreshScenarioControls()
@@ -280,6 +282,20 @@ namespace Curvature
             foreach (var behavior in selection)
             {
                 EditingProject.Delete(behavior);
+            }
+        }
+
+        private void DeleteBehaviorSetButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<BehaviorSet>();
+            foreach (var item in BehaviorSetsListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as BehaviorSet);
+            }
+
+            foreach (var behaviorset in selection)
+            {
+                EditingProject.Delete(behaviorset);
             }
         }
     }
