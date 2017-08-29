@@ -191,5 +191,12 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = archetype });
         }
+
+        public void Delete(Scenario scenario)
+        {
+            Scenarios.Remove(scenario);
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = scenario });
+        }
     }
 }

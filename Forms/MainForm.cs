@@ -144,6 +144,11 @@ namespace Curvature
                 item.Tag = scenario;
                 ScenariosListView.Items.Add(item);
             }
+
+            foreach (Control ctl in ScenarioPanel.Controls)
+                ctl.Dispose();
+
+            ScenarioPanel.Controls.Clear();
         }
 
         private void RefreshConsiderationControls()
@@ -312,6 +317,20 @@ namespace Curvature
             foreach (var archetype in selection)
             {
                 EditingProject.Delete(archetype);
+            }
+        }
+
+        private void DeleteScenariosButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<Scenario>();
+            foreach (var item in ScenariosListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as Scenario);
+            }
+
+            foreach (var scenario in selection)
+            {
+                EditingProject.Delete(scenario);
             }
         }
     }
