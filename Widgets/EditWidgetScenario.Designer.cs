@@ -60,6 +60,9 @@
             this.AutoAdvanceButton = new System.Windows.Forms.Button();
             this.Advance100msButton = new System.Windows.Forms.Button();
             this.ScenarioRenderingBox = new System.Windows.Forms.PictureBox();
+            this.LogsTab = new System.Windows.Forms.TabPage();
+            this.LogDetailTextBox = new System.Windows.Forms.TextBox();
+            this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.NameEditWidget = new Curvature.EditWidgetName();
             this.ScenarioEditorTabs.SuspendLayout();
@@ -72,6 +75,7 @@
             this.LocationsTab.SuspendLayout();
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
+            this.LogsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -83,6 +87,7 @@
             this.ScenarioEditorTabs.Controls.Add(this.AgentsTab);
             this.ScenarioEditorTabs.Controls.Add(this.LocationsTab);
             this.ScenarioEditorTabs.Controls.Add(this.SimulationTab);
+            this.ScenarioEditorTabs.Controls.Add(this.LogsTab);
             this.ScenarioEditorTabs.Location = new System.Drawing.Point(3, 36);
             this.ScenarioEditorTabs.Name = "ScenarioEditorTabs";
             this.ScenarioEditorTabs.SelectedIndex = 0;
@@ -471,6 +476,43 @@
             this.ScenarioRenderingBox.TabIndex = 0;
             this.ScenarioRenderingBox.TabStop = false;
             // 
+            // LogsTab
+            // 
+            this.LogsTab.Controls.Add(this.LogDetailTextBox);
+            this.LogsTab.Controls.Add(this.LogsTreeView);
+            this.LogsTab.Location = new System.Drawing.Point(4, 4);
+            this.LogsTab.Name = "LogsTab";
+            this.LogsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.LogsTab.Size = new System.Drawing.Size(738, 430);
+            this.LogsTab.TabIndex = 3;
+            this.LogsTab.Text = "Logs";
+            this.LogsTab.UseVisualStyleBackColor = true;
+            // 
+            // LogDetailTextBox
+            // 
+            this.LogDetailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogDetailTextBox.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogDetailTextBox.Location = new System.Drawing.Point(255, 0);
+            this.LogDetailTextBox.Multiline = true;
+            this.LogDetailTextBox.Name = "LogDetailTextBox";
+            this.LogDetailTextBox.ReadOnly = true;
+            this.LogDetailTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.LogDetailTextBox.Size = new System.Drawing.Size(477, 424);
+            this.LogDetailTextBox.TabIndex = 1;
+            this.LogDetailTextBox.WordWrap = false;
+            // 
+            // LogsTreeView
+            // 
+            this.LogsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LogsTreeView.FullRowSelect = true;
+            this.LogsTreeView.Location = new System.Drawing.Point(0, 0);
+            this.LogsTreeView.Name = "LogsTreeView";
+            this.LogsTreeView.Size = new System.Drawing.Size(249, 424);
+            this.LogsTreeView.TabIndex = 0;
+            // 
             // AutoAdvanceTimer
             // 
             this.AutoAdvanceTimer.Tick += new System.EventHandler(this.AutoAdvanceTimer_Tick);
@@ -502,6 +544,8 @@
             this.LocationsTab.ResumeLayout(false);
             this.SimulationTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
+            this.LogsTab.ResumeLayout(false);
+            this.LogsTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -541,5 +585,8 @@
         private System.Windows.Forms.Timer AutoAdvanceTimer;
         private System.Windows.Forms.Button ResetSimulationButton;
         private EditWidgetName NameEditWidget;
+        private System.Windows.Forms.TabPage LogsTab;
+        private System.Windows.Forms.TreeView LogsTreeView;
+        private System.Windows.Forms.TextBox LogDetailTextBox;
     }
 }

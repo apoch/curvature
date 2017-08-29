@@ -71,12 +71,10 @@ namespace Curvature
         }
 
 
-        public Scenario.Context ChooseBehavior(IInputBroker broker, List<Scenario.IScenarioMember> targets)
+        public Scenario.Context ChooseBehavior(IInputBroker broker, List<Scenario.IScenarioMember> targets, Scenario.DecisionHistory scores)
         {
             if (AgentArchetype == null)
                 return null;
-
-            List<Scenario.Context> scoreSet = new List<Scenario.Context>();
 
             foreach (var set in AgentArchetype.BehaviorSets)
             {
@@ -97,18 +95,24 @@ namespace Curvature
                             context.Target = scenarioTarget;
                             context.ThinkingAgent = this;
 
-                            scoreSet.Add(context);
+                            scores.ScoredContexts.Add(context);
                         }
                     }
                 }
             }
 
-            var scoredBehaviors = scoreSet.Select(ctx => new { ctx, score = ctx.ChosenBehavior.Score(broker, ctx) }).OrderByDescending(x => x.score);
+            var scoredBehaviors = scores.ScoredContexts.Select(ctx => new { ctx, score = ctx.ChosenBehavior.Score(broker, ctx) }).OrderByDescending(x => x.score.FinalScore);
+
+
+            foreach (var behavior in scoredBehaviors.ToList())
+                behavior.ctx.BehaviorScore = behavior.score;
+
+
             var topBehavior = scoredBehaviors.First();
 
-            if (topBehavior.score > 0.0f)
+            if (topBehavior.score.FinalScore > 0.0f)
                 return topBehavior.ctx;
-
+ 
             return null;
         }
 

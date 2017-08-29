@@ -19,11 +19,41 @@ namespace Curvature
             float GetRadius();
         }
 
+        public class Score
+        {
+            public double InputValue;
+            public double FinalScore;
+        }
+
+        public class ConsiderationScores
+        {
+            public Dictionary<Consideration, Score> Considerations;
+            public double InitialWeight;
+            public double FinalScore;
+
+            public override string ToString()
+            {
+                string ret = $"Initial weight: {InitialWeight}\r\nFinal score: {FinalScore}\r\n\r\n";
+                foreach (var pair in Considerations)
+                {
+                    ret += $"{pair.Key.ReadableName}\r\nInput \"{pair.Key.Input.ReadableName}\" = {pair.Value.InputValue}, score = {pair.Value.FinalScore}\r\n\r\n";
+                }
+
+                return ret;
+            }
+        }
+
         public class Context
         {
             public ScenarioAgent ThinkingAgent;
             public IScenarioMember Target;
             public Behavior ChosenBehavior;
+            public ConsiderationScores BehaviorScore;
+
+            public override string ToString()
+            {
+                return $"Target: {Target.GetName()}\r\n{BehaviorScore}";
+            }
         }
 
         [DataMember]
@@ -44,10 +74,16 @@ namespace Curvature
 
         private Random RandomNumbers = new Random();
 
+        public class DecisionHistory
+        {
+            public List<Context> ScoredContexts;
+            public Context WinningContext;
+        }
 
         internal class ScenarioEventArgs : EventArgs
         {
             internal float DeltaTime;
+            internal Dictionary<ScenarioAgent, DecisionHistory> AgentDecisions;
         }
 
         internal delegate void ScenarioEventHandler(object sender, ScenarioEventArgs args);
@@ -66,20 +102,28 @@ namespace Curvature
 
         public void Advance(float dt)
         {
+            var decisions = new Dictionary<ScenarioAgent, DecisionHistory>();
+
             List<IScenarioMember> targets = new List<IScenarioMember>();
             targets.AddRange(Agents);
             targets.AddRange(Locations);
 
             foreach (var agent in Agents)
             {
-                var context = agent.ChooseBehavior(this, targets);
+                var decisionhistory = new DecisionHistory();
+                decisionhistory.ScoredContexts = new List<Context>();
+
+                var context = agent.ChooseBehavior(this, targets, decisionhistory);
                 if (context != null)
                     ExecuteBehaviorOnAgent(context, dt);
                 else
                     SignalStallOnAgent(agent);
+
+                decisionhistory.WinningContext = context;
+                decisions.Add(agent, decisionhistory);
             }
 
-            SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt });
+            SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt, AgentDecisions = decisions });
         }
 
 

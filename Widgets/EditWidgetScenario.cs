@@ -16,10 +16,14 @@ namespace Curvature
         private Scenario Simulation;
         private Project EditProject;
 
+        private float AbsoluteTime;
+
 
         public EditWidgetScenario()
         {
             InitializeComponent();
+
+            AbsoluteTime = 0.0f;
 
             ScenarioRenderingBox.Paint += (obj, args) =>
             {
@@ -39,6 +43,26 @@ namespace Curvature
 
                 RefreshAgentTab();
             };
+
+            LogsTreeView.NodeMouseClick += (obj, args) =>
+            {
+                LogDetailTextBox.Text = "";
+                BuildLogText(args.Node);
+            };
+        }
+
+
+        private void BuildLogText(TreeNode node)
+        {
+            if (node == null)
+                return;
+
+            if (node.Tag == null)
+                return;
+
+            BuildLogText(node.Parent);
+
+            LogDetailTextBox.Text += node.Tag.ToString();
         }
 
 
@@ -52,10 +76,60 @@ namespace Curvature
             RefreshAgentTab();
             RefreshLocationTab();
 
+            AbsoluteTime = 0.0f;
+
             Simulation.SimulationAdvance += (e, args) =>
             {
                 RefreshAgentTab();
+                CreateLogDetails(args);
+                AbsoluteTime += args.DeltaTime;
             };
+        }
+
+        private void CreateLogDetails(Scenario.ScenarioEventArgs args)
+        {
+            if (Simulation == null)
+                return;
+
+            var rootnode = LogsTreeView.Nodes.Add($"Tick at {AbsoluteTime}s");
+            rootnode.Tag = $"Simulation {Simulation.GetName()} at time {AbsoluteTime}s\r\n";
+
+            foreach (var agent in Simulation.Agents)
+            {
+                var agentnode = rootnode.Nodes.Add(agent.GetName());
+                if (agent.AgentArchetype == null)
+                {
+                    agentnode.Tag = "(No archetype set for this agent)";
+                    continue;
+                }
+
+                var winctx = args.AgentDecisions[agent].WinningContext;
+
+                string decisionLog = (winctx == null) ? "(stalled!)" : $"{winctx.ChosenBehavior.GetName()} [{winctx.ChosenBehavior.Action}]";
+                string position = agent.GetPosition().ToString();
+                agentnode.Tag = $"Agent: {agent.GetName()} (running archetype {agent.AgentArchetype.GetName()})\r\nDecision: {decisionLog}\r\nPosition: {position}\r\n";
+
+                foreach (var behaviorset in agent.AgentArchetype.BehaviorSets)
+                {
+                    var setnode = agentnode.Nodes.Add(behaviorset.GetName());
+                    setnode.Tag = $"Behavior set: {setnode.Text}\r\n";
+
+                    foreach (var behavior in behaviorset.EnabledBehaviors)
+                    {
+                        var behaviornode = setnode.Nodes.Add(behavior.GetName());
+                        behaviornode.Tag = $"Behavior: {behaviornode.Text}\r\n\r\n";
+
+                        foreach (var ctx in args.AgentDecisions[agent].ScoredContexts)
+                        {
+                            var contextnode = behaviornode.Nodes.Add(ctx.Target.GetName());
+                            contextnode.Tag = ctx;
+
+                            if (ctx == winctx)
+                                contextnode.Text = "(*) " + contextnode.Text;
+                        }
+                    }
+                }
+            }
         }
 
         private void Advance100msButton_Click(object sender, EventArgs e)
@@ -244,6 +318,11 @@ namespace Curvature
                 agent.Position = agent.StartPosition;
 
             ScenarioRenderingBox.Refresh();
+
+            LogsTreeView.Nodes.Clear();
+            LogDetailTextBox.Text = "";
+
+            AbsoluteTime = 0.0f;
         }
     }
 }

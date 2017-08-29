@@ -66,20 +66,27 @@ namespace Curvature
             return ReadableName;
         }
 
-        internal double Score(IInputBroker broker, Scenario.Context context)
+        internal Scenario.ConsiderationScores Score(IInputBroker broker, Scenario.Context context)
         {
+            var ret = new Scenario.ConsiderationScores();
+            ret.Considerations = new Dictionary<Consideration, Scenario.Score>();
+
             double compensationFactor = 1.0 - (1.0 / (double)Considerations.Count);
             double result = Weight;
+            ret.InitialWeight = Weight;
+
             foreach (Consideration c in Considerations)
             {
-                double considerationScore = c.Score(broker, context);
-                double modification = (1.0 - considerationScore) * compensationFactor;
-                considerationScore = considerationScore + (modification * considerationScore);
+                Scenario.Score considerationScore = c.Score(broker, context);
+                double modification = (1.0 - considerationScore.FinalScore) * compensationFactor;
+                considerationScore.FinalScore = considerationScore.FinalScore + (modification * considerationScore.FinalScore);
 
-                result *= considerationScore;
+                result *= considerationScore.FinalScore;
+                ret.Considerations.Add(c, considerationScore);
             }
 
-            return result;
+            ret.FinalScore = result;
+            return ret;
         }
 
         public void Rename(string newname)

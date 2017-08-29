@@ -85,14 +85,14 @@ namespace Curvature
             BehaviorScoresListView.Items.Clear();
             foreach (Behavior b in EnabledBehaviorsListBox.CheckedItems)
             {
-                double score = b.Score(this, null);
-                if (score > winscore)
+                var score = b.Score(this, null);
+                if (score.FinalScore > winscore)
                 {
-                    winscore = score;
+                    winscore = score.FinalScore;
                     winbehavior = b;
                 }
 
-                var item = new ListViewItem(new string[] { b.ReadableName, $"{b.Weight:f3}", $"{score:f3}" });
+                var item = new ListViewItem(new string[] { b.ReadableName, $"{b.Weight:f3}", $"{score.FinalScore:f3}" });
                 item.Tag = b;
                 BehaviorScoresListView.Items.Add(item);
             }
