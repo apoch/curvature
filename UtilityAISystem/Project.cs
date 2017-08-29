@@ -175,5 +175,21 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = set });
         }
+
+        public void Delete(Archetype archetype)
+        {
+            Archetypes.Remove(archetype);
+
+            foreach (var scenario in Scenarios)
+            {
+                foreach (var agent in scenario.Agents)
+                {
+                    if (agent.AgentArchetype == archetype)
+                        agent.AgentArchetype = null;
+                }
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = archetype });
+        }
     }
 }

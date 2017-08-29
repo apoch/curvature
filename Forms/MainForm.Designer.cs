@@ -67,6 +67,7 @@
             this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateScenarioButton = new System.Windows.Forms.Button();
             this.ScenarioPanel = new System.Windows.Forms.Panel();
+            this.DeleteBehaviorSetButton = new System.Windows.Forms.Button();
             this.ProjectEditWidget = new Curvature.EditWidgetProject();
             this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
             this.InputsEditWidget = new Curvature.EditWidgetInputs();
@@ -74,7 +75,7 @@
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
-            this.DeleteBehaviorSetButton = new System.Windows.Forms.Button();
+            this.DeleteArchetypesButton = new System.Windows.Forms.Button();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -389,6 +390,7 @@
             // 
             // ArchetypesTab
             // 
+            this.ArchetypesTab.Controls.Add(this.DeleteArchetypesButton);
             this.ArchetypesTab.Controls.Add(this.ArchetypeEditWidget);
             this.ArchetypesTab.Controls.Add(this.AddArchetypeButton);
             this.ArchetypesTab.Controls.Add(this.ArchetypesListView);
@@ -401,9 +403,9 @@
             // 
             // AddArchetypeButton
             // 
-            this.AddArchetypeButton.Location = new System.Drawing.Point(3, 570);
+            this.AddArchetypeButton.Location = new System.Drawing.Point(3, 542);
             this.AddArchetypeButton.Name = "AddArchetypeButton";
-            this.AddArchetypeButton.Size = new System.Drawing.Size(244, 24);
+            this.AddArchetypeButton.Size = new System.Drawing.Size(244, 23);
             this.AddArchetypeButton.TabIndex = 1;
             this.AddArchetypeButton.Text = "Add Archetype";
             this.AddArchetypeButton.UseVisualStyleBackColor = true;
@@ -417,7 +419,7 @@
             this.ArchetypesListView.HideSelection = false;
             this.ArchetypesListView.Location = new System.Drawing.Point(3, 3);
             this.ArchetypesListView.Name = "ArchetypesListView";
-            this.ArchetypesListView.Size = new System.Drawing.Size(244, 564);
+            this.ArchetypesListView.Size = new System.Drawing.Size(244, 533);
             this.ArchetypesListView.TabIndex = 0;
             this.ArchetypesListView.UseCompatibleStateImageBehavior = false;
             this.ArchetypesListView.View = System.Windows.Forms.View.Details;
@@ -479,6 +481,17 @@
             this.ScenarioPanel.Name = "ScenarioPanel";
             this.ScenarioPanel.Size = new System.Drawing.Size(699, 591);
             this.ScenarioPanel.TabIndex = 0;
+            // 
+            // DeleteBehaviorSetButton
+            // 
+            this.DeleteBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(3, 571);
+            this.DeleteBehaviorSetButton.Name = "DeleteBehaviorSetButton";
+            this.DeleteBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
+            this.DeleteBehaviorSetButton.TabIndex = 5;
+            this.DeleteBehaviorSetButton.Text = "Delete Selection";
+            this.DeleteBehaviorSetButton.UseVisualStyleBackColor = true;
+            this.DeleteBehaviorSetButton.Click += new System.EventHandler(this.DeleteBehaviorSetButton_Click);
             // 
             // ProjectEditWidget
             // 
@@ -545,16 +558,16 @@
             this.ArchetypeEditWidget.TabIndex = 2;
             this.ArchetypeEditWidget.Visible = false;
             // 
-            // DeleteBehaviorSetButton
+            // DeleteArchetypesButton
             // 
-            this.DeleteBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(3, 571);
-            this.DeleteBehaviorSetButton.Name = "DeleteBehaviorSetButton";
-            this.DeleteBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
-            this.DeleteBehaviorSetButton.TabIndex = 5;
-            this.DeleteBehaviorSetButton.Text = "Delete Selection";
-            this.DeleteBehaviorSetButton.UseVisualStyleBackColor = true;
-            this.DeleteBehaviorSetButton.Click += new System.EventHandler(this.DeleteBehaviorSetButton_Click);
+            this.DeleteArchetypesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteArchetypesButton.Location = new System.Drawing.Point(3, 571);
+            this.DeleteArchetypesButton.Name = "DeleteArchetypesButton";
+            this.DeleteArchetypesButton.Size = new System.Drawing.Size(244, 23);
+            this.DeleteArchetypesButton.TabIndex = 5;
+            this.DeleteArchetypesButton.Text = "Delete Selection";
+            this.DeleteArchetypesButton.UseVisualStyleBackColor = true;
+            this.DeleteArchetypesButton.Click += new System.EventHandler(this.DeleteArchetypesButton_Click);
             // 
             // MainForm
             // 
@@ -632,6 +645,7 @@
         private System.Windows.Forms.Button AddBehaviorSetButton;
         private System.Windows.Forms.Button DeleteSelectedBehaviorsButton;
         private System.Windows.Forms.Button DeleteBehaviorSetButton;
+        private System.Windows.Forms.Button DeleteArchetypesButton;
     }
 }
 

@@ -172,6 +172,8 @@ namespace Curvature
                 item.Tag = archetype;
                 ArchetypesListView.Items.Add(item);
             }
+
+            ArchetypeEditWidget.Visible = false;
         }
 
         private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -296,6 +298,20 @@ namespace Curvature
             foreach (var behaviorset in selection)
             {
                 EditingProject.Delete(behaviorset);
+            }
+        }
+
+        private void DeleteArchetypesButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<Archetype>();
+            foreach (var item in ArchetypesListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as Archetype);
+            }
+
+            foreach (var archetype in selection)
+            {
+                EditingProject.Delete(archetype);
             }
         }
     }
