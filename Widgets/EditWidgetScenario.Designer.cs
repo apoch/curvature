@@ -65,6 +65,7 @@
             this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
@@ -525,6 +526,11 @@
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
             this.NameEditWidget.TabIndex = 1;
             // 
+            // SimulationInspectionTooltip
+            // 
+            this.SimulationInspectionTooltip.IsBalloon = true;
+            this.SimulationInspectionTooltip.ShowAlways = true;
+            // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,5 +594,6 @@
         private System.Windows.Forms.TabPage LogsTab;
         private System.Windows.Forms.TreeView LogsTreeView;
         private System.Windows.Forms.TextBox LogDetailTextBox;
+        private System.Windows.Forms.ToolTip SimulationInspectionTooltip;
     }
 }

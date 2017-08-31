@@ -33,6 +33,24 @@ namespace Curvature
                 Simulation.Render(args.Graphics, ScenarioRenderingBox.ClientRectangle);
             };
 
+            ScenarioRenderingBox.MouseClick += (obj, args) =>
+            {
+                if (Simulation == null)
+                {
+                    SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
+                    return;
+                }
+
+                var text = Simulation.GetInspectionText(ScenarioRenderingBox.ClientRectangle, args.Location);
+                if (string.IsNullOrEmpty(text))
+                {
+                    SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
+                    return;
+                }
+
+                SimulationInspectionTooltip.Show(text, ScenarioRenderingBox, args.X, args.Y);
+            };
+
             AgentsListView.AfterLabelEdit += (obj, args) =>
             {
                 if (string.IsNullOrEmpty(args.Label))

@@ -74,6 +74,9 @@ namespace Curvature
 
         private Random RandomNumbers = new Random();
 
+        private HashSet<ScenarioAgent> AgentsActiveThisTick;
+
+
         public class DecisionHistory
         {
             public List<Context> ScoredContexts;
@@ -103,6 +106,7 @@ namespace Curvature
         public void Advance(float dt)
         {
             var decisions = new Dictionary<ScenarioAgent, DecisionHistory>();
+            AgentsActiveThisTick = new HashSet<ScenarioAgent>();
 
             List<IScenarioMember> targets = new List<IScenarioMember>();
             targets.AddRange(Agents);
@@ -209,7 +213,12 @@ namespace Curvature
             foreach (var agent in Agents)
             {
                 var displayRect = ToDisplayRect(agent, rect);
-                graphics.FillEllipse(Brushes.Black, displayRect);
+
+                var brush = Brushes.Black;
+                if (AgentsActiveThisTick != null && AgentsActiveThisTick.Contains(agent))
+                    brush = Brushes.DarkGreen;
+
+                graphics.FillEllipse(brush, displayRect);
 
                 if (agent.Stalled)
                     graphics.DrawRectangle(Pens.Red, displayRect);
@@ -301,9 +310,11 @@ namespace Curvature
                     break;
 
                 case Behavior.ActionType.Talk:
+                    // TODO - implement speech balloons
                     break;
 
                 case Behavior.ActionType.Custom:
+                    // TODO - what is this supposed to do? Maybe a secondary type of balloon?
                     break;
             }
         }
@@ -311,6 +322,20 @@ namespace Curvature
         private void SignalStallOnAgent(ScenarioAgent agent)
         {
             agent.Stalled = true;
+        }
+
+        private PointF DisplayPointToCoordinates(Point display, Rectangle viewrect)
+        {
+            float x = (float)display.X / (float)viewrect.Width;
+            float y = 1.0f - (float)display.Y / (float)viewrect.Height;
+
+            x *= HorizontalUnitsVisible;
+            y *= VerticalUnitsVisible;
+
+            x -= HorizontalUnitsOffset;
+            y -= VerticalUnitsOffset;
+
+            return new PointF(x, y);
         }
 
 
@@ -330,8 +355,8 @@ namespace Curvature
             PointF center = obj.GetPosition();
             Point centerRender = CoordinatesToDisplayPoint(center.X, center.Y, rect);
 
-            int width = (int)((float)rect.Width * obj.GetRadius() / (HorizontalUnitsVisible));
-            int height = (int)((float)rect.Height * obj.GetRadius() / (VerticalUnitsVisible));
+            int width = (int)((float)rect.Width * obj.GetRadius() / (HorizontalUnitsVisible / 2.0f));
+            int height = (int)((float)rect.Height * obj.GetRadius() / (VerticalUnitsVisible / 2.0f));
 
             return new Rectangle(centerRender.X - (width / 2), centerRender.Y - (height / 2), width, height);
         }
@@ -411,6 +436,43 @@ namespace Curvature
         {
             RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
             RenderPenDottedBlack.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+        }
+
+
+        private bool HitTest(IScenarioMember member, PointF simpt)
+        {
+            var simposition = member.GetPosition();
+
+            float dx = simpt.X - simposition.X;
+            float dy = simpt.Y - simposition.Y;
+
+            float distanceSq = dx * dx + dy * dy;
+
+            return (distanceSq <= member.GetRadius() * member.GetRadius());
+        }
+
+
+        public string GetInspectionText(Rectangle rect, Point pt)
+        {
+            var simpt = DisplayPointToCoordinates(pt, rect);
+
+            foreach (var agent in Agents)
+            {
+                if (HitTest(agent, simpt))
+                {
+                    return agent.GetName();
+                }
+            }
+
+            foreach (var loc in Locations)
+            {
+                if (HitTest(loc, simpt))
+                {
+                    return loc.GetName();
+                }
+            }
+
+            return null;
         }
     }
 }
