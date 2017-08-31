@@ -52,7 +52,7 @@ namespace Curvature
 
             public override string ToString()
             {
-                return $"Target: {Target.GetName()}\r\n{BehaviorScore}";
+                return $"Target: {Target.GetName()}\r\nBehavior: {ChosenBehavior} [{ChosenBehavior.Action}]\r\n{BehaviorScore}";
             }
         }
 
@@ -75,6 +75,7 @@ namespace Curvature
         private Random RandomNumbers = new Random();
 
         private HashSet<ScenarioAgent> AgentsActiveThisTick;
+        private Dictionary<ScenarioAgent, DecisionHistory> AgentDecisions;
 
 
         public class DecisionHistory
@@ -105,7 +106,7 @@ namespace Curvature
 
         public void Advance(float dt)
         {
-            var decisions = new Dictionary<ScenarioAgent, DecisionHistory>();
+            AgentDecisions = new Dictionary<ScenarioAgent, DecisionHistory>();
             AgentsActiveThisTick = new HashSet<ScenarioAgent>();
 
             List<IScenarioMember> targets = new List<IScenarioMember>();
@@ -124,10 +125,10 @@ namespace Curvature
                     SignalStallOnAgent(agent);
 
                 decisionhistory.WinningContext = context;
-                decisions.Add(agent, decisionhistory);
+                AgentDecisions.Add(agent, decisionhistory);
             }
 
-            SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt, AgentDecisions = decisions });
+            SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt, AgentDecisions = AgentDecisions });
         }
 
 
@@ -460,7 +461,14 @@ namespace Curvature
             {
                 if (HitTest(agent, simpt))
                 {
-                    return agent.GetName();
+                    string decisiontext = "[Stalled]";
+                    if (AgentDecisions != null && AgentDecisions.ContainsKey(agent))
+                    {
+                        if (AgentDecisions[agent].WinningContext != null)
+                            decisiontext = AgentDecisions[agent].WinningContext.ToString();
+                    }
+
+                    return $"Agent: {agent.GetName()}\r\n{decisiontext}";
                 }
             }
 
@@ -468,7 +476,7 @@ namespace Curvature
             {
                 if (HitTest(loc, simpt))
                 {
-                    return loc.GetName();
+                    return $"Location: {loc.GetName()}";
                 }
             }
 

@@ -64,8 +64,8 @@
             this.LogDetailTextBox = new System.Windows.Forms.TextBox();
             this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
-            this.NameEditWidget = new Curvature.EditWidgetName();
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
@@ -518,6 +518,10 @@
             // 
             this.AutoAdvanceTimer.Tick += new System.EventHandler(this.AutoAdvanceTimer_Tick);
             // 
+            // SimulationInspectionTooltip
+            // 
+            this.SimulationInspectionTooltip.ShowAlways = true;
+            // 
             // NameEditWidget
             // 
             this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
@@ -525,11 +529,6 @@
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
             this.NameEditWidget.TabIndex = 1;
-            // 
-            // SimulationInspectionTooltip
-            // 
-            this.SimulationInspectionTooltip.IsBalloon = true;
-            this.SimulationInspectionTooltip.ShowAlways = true;
             // 
             // EditWidgetScenario
             // 
