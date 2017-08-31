@@ -27,6 +27,8 @@ namespace Curvature
                 OriginComboBox.SelectedIndex = 1;
             else
                 OriginComboBox.SelectedIndex = 0;
+
+            ClampingBehaviorComboBox.SelectedIndex = (int)EditRec.Params;
         }
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
@@ -50,6 +52,11 @@ namespace Curvature
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             EditProject.Delete(EditRec);
+        }
+
+        private void ClampingBehaviorComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditRec.Params = (KnowledgeBase.Record.Parameterization)ClampingBehaviorComboBox.SelectedIndex;
         }
     }
 }

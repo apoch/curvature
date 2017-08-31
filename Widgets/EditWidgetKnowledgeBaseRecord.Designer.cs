@@ -32,6 +32,7 @@
             this.TagLabel = new System.Windows.Forms.Label();
             this.OriginComboBox = new System.Windows.Forms.ComboBox();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.ClampingBehaviorComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // RecordTagEditBox
@@ -77,16 +78,31 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // ClampingBehaviorComboBox
+            // 
+            this.ClampingBehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ClampingBehaviorComboBox.FormattingEnabled = true;
+            this.ClampingBehaviorComboBox.Items.AddRange(new object[] {
+            "Decimal values in a fixed range",
+            "Decimal values in a configurable range",
+            "Preselected values (enumeration)"});
+            this.ClampingBehaviorComboBox.Location = new System.Drawing.Point(47, 29);
+            this.ClampingBehaviorComboBox.Name = "ClampingBehaviorComboBox";
+            this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(217, 21);
+            this.ClampingBehaviorComboBox.TabIndex = 4;
+            this.ClampingBehaviorComboBox.SelectedIndexChanged += new System.EventHandler(this.ClampingBehaviorComboBox_SelectedIndexChanged);
+            // 
             // EditWidgetKnowledgeBaseRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ClampingBehaviorComboBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.OriginComboBox);
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(578, 28);
+            this.Size = new System.Drawing.Size(578, 53);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +114,6 @@
         private System.Windows.Forms.Label TagLabel;
         private System.Windows.Forms.ComboBox OriginComboBox;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.ComboBox ClampingBehaviorComboBox;
     }
 }

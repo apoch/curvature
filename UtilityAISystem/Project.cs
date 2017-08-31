@@ -129,8 +129,8 @@ namespace Curvature
 
             foreach (var input in Inputs)
             {
-                if (input.KBRecord == record)
-                    input.KBRecord = null;
+                if (input.KBRec == record)
+                    input.KBRec = null;
             }
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = record });

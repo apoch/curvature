@@ -15,6 +15,13 @@ namespace Curvature
         private Project EditedProject;
 
 
+        internal delegate void GuidanceEventHandler(object sender, EventArgs args);
+        internal event GuidanceEventHandler GuidanceKnowledgeBase;
+        internal event GuidanceEventHandler GuidanceInputs;
+        internal event GuidanceEventHandler GuidanceBehaviors;
+        internal event GuidanceEventHandler GuidanceScenarios;
+
+
         public EditWidgetProject()
         {
             InitializeComponent();
@@ -25,11 +32,50 @@ namespace Curvature
         {
             EditedProject = editedProject;
             NameEditWidget.Attach("Project", EditedProject);
+
+            int considerationCount = 0;
+            foreach (var behavior in EditedProject.Behaviors)
+            {
+                considerationCount += behavior.Considerations.Count;
+            }
+
+            KnowledgeBaseEntriesLabel.Text = $"Knowledge Base Entries: {EditedProject.KB.Records.Count}";
+            InputAxesLabel.Text = $"Input Axes: {EditedProject.Inputs.Count}";
+            ConsiderationsLabel.Text = $"Considerations: {considerationCount}";
+            BehaviorsLabel.Text = $"Behaviors: {EditedProject.Behaviors.Count}";
+            BehaviorSetsLabel.Text = $"Behavior Sets: {EditedProject.BehaviorSets.Count}";
+            ArchetypesLabel.Text = $"Archetypes: {EditedProject.Archetypes.Count}";
+            ScenariosLabel.Text = $"Scenarios: {EditedProject.Scenarios.Count}";
         }
 
         private void WikiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+        }
+
+        private void UtilityCrashCourseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki/Utility-Theory-Crash-Course");
+        }
+
+        private void CreateKnowledgeButton_Click(object sender, EventArgs e)
+        {
+            GuidanceKnowledgeBase(this, null);
+        }
+
+        private void DefineInputsButton_Click(object sender, EventArgs e)
+        {
+            GuidanceInputs(this, null);
+        }
+
+        private void SpecifyBehaviorsButton_Click(object sender, EventArgs e)
+        {
+            GuidanceBehaviors(this, null);
+        }
+
+        private void ScenariosButton_Click(object sender, EventArgs e)
+        {
+            GuidanceScenarios(this, null);
         }
     }
 }

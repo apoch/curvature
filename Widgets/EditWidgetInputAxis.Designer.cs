@@ -41,24 +41,29 @@
             // 
             // ParameterGroupBox
             // 
-            this.ParameterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ParameterGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParameterGroupBox.AutoSize = true;
             this.ParameterGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParameterGroupBox.Location = new System.Drawing.Point(7, 91);
+            this.ParameterGroupBox.MinimumSize = new System.Drawing.Size(475, 50);
             this.ParameterGroupBox.Name = "ParameterGroupBox";
-            this.ParameterGroupBox.Size = new System.Drawing.Size(475, 110);
+            this.ParameterGroupBox.Size = new System.Drawing.Size(475, 50);
             this.ParameterGroupBox.TabIndex = 1;
             this.ParameterGroupBox.TabStop = false;
             this.ParameterGroupBox.Text = "Parameters";
             // 
             // ParamFlowPanel
             // 
+            this.ParamFlowPanel.AutoSize = true;
+            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
             this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(469, 91);
+            this.ParamFlowPanel.Size = new System.Drawing.Size(469, 31);
             this.ParamFlowPanel.TabIndex = 0;
+            this.ParamFlowPanel.WrapContents = false;
             // 
             // PropertiesGroupBox
             // 
@@ -123,15 +128,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.PropertiesGroupBox);
             this.Controls.Add(this.ParameterGroupBox);
             this.Name = "EditWidgetInputAxis";
-            this.Size = new System.Drawing.Size(485, 204);
+            this.Size = new System.Drawing.Size(485, 148);
             this.ParameterGroupBox.ResumeLayout(false);
+            this.ParameterGroupBox.PerformLayout();
             this.PropertiesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

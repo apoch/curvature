@@ -28,7 +28,32 @@ namespace Curvature
         public List<InputParameter> Parameters;
 
         [DataMember]
-        public KnowledgeBase.Record KBRecord;
+        private KnowledgeBase.Record KBRecord;
+
+        public KnowledgeBase.Record KBRec
+        {
+            get
+            {
+                return KBRecord;
+            }
+
+            set
+            {
+                if(KBRecord != null)
+                    KBRecord.PropertyChanged -= KBChanged;
+
+                KBRecord = value;
+
+                if (KBRecord != null)
+                    KBRecord.PropertyChanged += KBChanged;
+
+                GenerateParametersFromKBRecord();
+            }
+        }
+
+
+        public delegate void ParametersChangedHandler(object o, EventArgs a);
+        public event ParametersChangedHandler ParametersChanged;
 
 
         internal InputAxis()
@@ -45,11 +70,6 @@ namespace Curvature
         public override string ToString()
         {
             return ReadableName;
-        }
-
-        public Control CreateEditorUI(Project project)
-        {
-            return new EditWidgetInputAxis(project, this);
         }
 
         public InputAxis Union(InputAxis other)
@@ -90,6 +110,39 @@ namespace Curvature
         public string GetName()
         {
             return ReadableName;
+        }
+
+        public void GenerateParametersFromKBRecord()
+        {
+            Parameters = new List<InputParameter>();
+            if (KBRecord == null)
+            {
+                ParametersChanged?.Invoke(this, null);
+                return;
+            }
+
+            switch (KBRecord.Params)
+            {
+                case KnowledgeBase.Record.Parameterization.ConfigurableRange:
+                    Parameters.Add(new InputParameter("Range lower bound", -1e6f, 1e6f));
+                    Parameters.Add(new InputParameter("Range upper bound", -1e6f, 1e6f));
+                    break;
+
+                case KnowledgeBase.Record.Parameterization.Enumeration:
+                    // TODO - implement enumerated parameters
+                    break;
+
+                case KnowledgeBase.Record.Parameterization.FixedRange:
+                    Parameters.Add(new InputParameter("Range", -1e6f, 1e6f));
+                    break;
+            }
+
+            ParametersChanged?.Invoke(this, null);
+        }
+
+        private void KBChanged(object kbrec, EventArgs args)
+        {
+            GenerateParametersFromKBRecord();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Curvature
             newRecordButton.AutoSize = true;
             newRecordButton.Click += (e, args) =>
             {
-                MyKB.Records.Add(new KnowledgeBase.Record("New knowledge", 0.0, 1.0, false));
+                MyKB.Records.Add(new KnowledgeBase.Record("New knowledge", 0.0, 1.0, false, KnowledgeBase.Record.Parameterization.FixedRange));
                 RefreshKBControls();
             };
 

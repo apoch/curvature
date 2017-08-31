@@ -21,6 +21,30 @@ namespace Curvature
 
             EditingProject = new Project();
             SetUpProject();
+
+            ProjectEditWidget.GuidanceBehaviors += (obj, args) =>
+            {
+                MainTabs.SelectTab(BehaviorsTab);
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+            };
+
+            ProjectEditWidget.GuidanceInputs += (obj, args) =>
+            {
+                MainTabs.SelectTab(InputsTab);
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+            };
+
+            ProjectEditWidget.GuidanceKnowledgeBase += (obj, args) =>
+            {
+                MainTabs.SelectTab(KnowledgeTab);
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki/Knowledge-Base");
+            };
+
+            ProjectEditWidget.GuidanceScenarios += (obj, args) =>
+            {
+                MainTabs.SelectTab(ScenariosTab);
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+            };
         }
 
 

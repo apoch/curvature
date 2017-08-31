@@ -251,19 +251,19 @@ namespace Curvature
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
-                    raw = context.ThinkingAgent.GetProperty(axis.KBRecord.ReadableName);
+                    raw = context.ThinkingAgent.GetProperty(axis.KBRec.ReadableName);
                     break;
 
                 case InputAxis.OriginType.PropertyOfTarget:
-                    raw = context.Target.GetProperty(axis.KBRecord.ReadableName);
+                    raw = context.Target.GetProperty(axis.KBRec.ReadableName);
                     break;
             }
 
-            if (raw < axis.KBRecord.MinimumValue)
-                raw = axis.KBRecord.MinimumValue;
+            if (raw < axis.KBRec.MinimumValue)
+                raw = axis.KBRec.MinimumValue;
 
-            if (raw > axis.KBRecord.MaximumValue)
-                raw = axis.KBRecord.MaximumValue;
+            if (raw > axis.KBRec.MaximumValue)
+                raw = axis.KBRec.MaximumValue;
 
             return raw;
         }

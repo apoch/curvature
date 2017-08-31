@@ -121,7 +121,7 @@ namespace Curvature
             {
                 foreach (Consideration c in b.Considerations)
                 {
-                    if (c.Input == null || c.Input.KBRecord == null)
+                    if (c.Input == null || c.Input.KBRec == null)
                         continue;
 
                     if (!inputs.Contains(c.Input))
