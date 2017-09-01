@@ -135,6 +135,12 @@
     <Compile Include="Widgets\EditWidgetParameter.Designer.cs">
       <DependentUpon>EditWidgetParameter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\EditWidgetParameterValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetParameterValue.Designer.cs">
+      <DependentUpon>EditWidgetParameterValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\EditWidgetProject.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetParameter.resx">
       <DependentUpon>EditWidgetParameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetParameterValue.resx">
+      <DependentUpon>EditWidgetParameterValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetProject.resx">
       <DependentUpon>EditWidgetProject.cs</DependentUpon>

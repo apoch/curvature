@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Curvature.Widgets;
 
 namespace Curvature
 {
@@ -33,11 +34,6 @@ namespace Curvature
                 InputAxisDropdown.Items.Add(axis);
             }
 
-            foreach (Control c in ParamFlowPanel.Controls)
-                c.Dispose();
-
-            ParamFlowPanel.Controls.Clear();
-
             foreach (InputParameter param in EditConsideration.Parameters)
             {
                 ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
@@ -54,7 +50,18 @@ namespace Curvature
 
         private void InputAxisDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EditConsideration.Input = InputAxisDropdown.SelectedItem as InputAxis;
+            var axis = InputAxisDropdown.SelectedItem as InputAxis;
+            EditConsideration.Input = axis;
+
+            foreach (Control c in ParamFlowPanel.Controls)
+                c.Dispose();
+
+            ParamFlowPanel.Controls.Clear();
+
+
+            foreach (var param in axis.Parameters)
+                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param));
         }
     }
 }
+
