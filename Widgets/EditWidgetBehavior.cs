@@ -57,14 +57,11 @@ namespace Curvature
                 {
                     inputs.Add(consideration.Input);
                     ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
-                }
-            }
 
-            foreach (var input in inputs)
-            {
-                var widget = new EditWidgetConsiderationInput(input, this);
-                widget.Tag = input;
-                InputFlowPanel.Controls.Add(widget);
+                    var widget = new EditWidgetConsiderationInput(consideration, this);
+                    widget.Tag = consideration.Input;
+                    InputFlowPanel.Controls.Add(widget);
+                }
             }
 
             RefreshInputs();

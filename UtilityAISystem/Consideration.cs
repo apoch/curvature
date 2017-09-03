@@ -21,7 +21,7 @@ namespace Curvature
         public ResponseCurve Curve;
 
         [DataMember]
-        public List<InputParameter> Parameters;
+        public List<InputParameterValue> ParameterValues;
 
         internal Consideration()
         {
@@ -30,13 +30,33 @@ namespace Curvature
         public Consideration(string name)
         {
             ReadableName = name;
-            Parameters = new List<InputParameter>();
+            ParameterValues = new List<InputParameterValue>();
             Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 1.0, 0.0, 0.0);
         }
 
-        public Control CreateEditorUI(Project project)
+        public void GenerateParameterValuesFromInput()
         {
-            return null;
+            var oldparams = ParameterValues;
+
+            ParameterValues = new List<InputParameterValue>();
+            if (Input != null)
+            {
+                int i = 0;
+                foreach (var p in Input.Parameters)
+                {
+                    if (oldparams != null && oldparams[i].ControllingParameter == p)
+                    {
+                        ParameterValues.Add(oldparams[i]);
+                    }
+                    else
+                    {
+                        var v = new InputParameterValue(p, ParameterValues.Count > 0 ? p.MaximumValue : p.MinimumValue);
+                        ParameterValues.Add(v);
+                    }
+
+                    ++i;
+                }
+            }
         }
 
         internal Scenario.Score Score(IInputBroker broker, Scenario.Context context)

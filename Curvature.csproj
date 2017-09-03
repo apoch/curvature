@@ -63,6 +63,7 @@
     <Compile Include="Forms\CurveWizardForm.Designer.cs">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UtilityAISystem\InputParameterValue.cs" />
     <Compile Include="Widgets\EditWidgetArchetype.cs">
       <SubType>UserControl</SubType>
     </Compile>

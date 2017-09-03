@@ -39,7 +39,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InputValueTrackBar.Location = new System.Drawing.Point(3, 3);
             this.InputValueTrackBar.Name = "InputValueTrackBar";
-            this.InputValueTrackBar.Size = new System.Drawing.Size(403, 45);
+            this.InputValueTrackBar.Size = new System.Drawing.Size(305, 45);
             this.InputValueTrackBar.TabIndex = 0;
             this.InputValueTrackBar.Scroll += new System.EventHandler(this.InputValueTrackBar_Scroll);
             // 
@@ -50,7 +50,7 @@
             this.InputCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputCaption.Location = new System.Drawing.Point(3, 51);
             this.InputCaption.Name = "InputCaption";
-            this.InputCaption.Size = new System.Drawing.Size(403, 23);
+            this.InputCaption.Size = new System.Drawing.Size(305, 23);
             this.InputCaption.TabIndex = 1;
             this.InputCaption.Text = "(Input Name)";
             this.InputCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,7 +63,7 @@
             this.Controls.Add(this.InputCaption);
             this.Controls.Add(this.InputValueTrackBar);
             this.Name = "EditWidgetConsiderationInput";
-            this.Size = new System.Drawing.Size(409, 77);
+            this.Size = new System.Drawing.Size(311, 77);
             ((System.ComponentModel.ISupportInitialize)(this.InputValueTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

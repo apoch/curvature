@@ -27,5 +27,15 @@ namespace Curvature
             MinimumValue.Value = (decimal)EditParameter.MinimumValue;
             MaximumValue.Value = (decimal)EditParameter.MaximumValue;
         }
+
+        private void MinimumValue_ValueChanged(object sender, EventArgs e)
+        {
+            EditParameter.MinimumValue = (float)MinimumValue.Value;
+        }
+
+        private void MaximumValue_ValueChanged(object sender, EventArgs e)
+        {
+            EditParameter.MaximumValue = (float)MaximumValue.Value;
+        }
     }
 }

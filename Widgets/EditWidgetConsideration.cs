@@ -34,11 +34,6 @@ namespace Curvature
                 InputAxisDropdown.Items.Add(axis);
             }
 
-            foreach (InputParameter param in EditConsideration.Parameters)
-            {
-                ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
-            }
-
             InputAxisDropdown.SelectedItem = EditConsideration.Input;
             ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
         }
@@ -58,8 +53,8 @@ namespace Curvature
 
             ParamFlowPanel.Controls.Clear();
 
-
-            foreach (var param in axis.Parameters)
+            EditConsideration.GenerateParameterValuesFromInput();
+            foreach (var param in EditConsideration.ParameterValues)
                 ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param));
         }
     }

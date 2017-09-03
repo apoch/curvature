@@ -12,21 +12,21 @@ namespace Curvature.Widgets
 {
     public partial class EditWidgetParameterValue : UserControl
     {
-        private InputParameter Parameter;
+        private InputParameterValue Parameter;
 
-        internal EditWidgetParameterValue(InputParameter param)
+        internal EditWidgetParameterValue(InputParameterValue param)
         {
             InitializeComponent();
             Parameter = param;
 
-            ParamNameLabel.Text = Parameter.ReadableName;
-            ValueUpDown.Minimum = (decimal)Parameter.MinimumValue;
-            ValueUpDown.Maximum = (decimal)Parameter.MaximumValue;
+            ParamNameLabel.Text = Parameter.ControllingParameter.ReadableName;
+            ValueUpDown.Minimum = (decimal)Parameter.ControllingParameter.MinimumValue;
+            ValueUpDown.Maximum = (decimal)Parameter.ControllingParameter.MaximumValue;
         }
 
         private void ValueUpDown_ValueChanged(object sender, EventArgs e)
         {
-            // TODO - propagate input values back up to parent widgets
+            Parameter.Value = (float)ValueUpDown.Value;
         }
     }
 }

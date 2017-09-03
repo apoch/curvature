@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ResponseCurvePictureBox = new System.Windows.Forms.PictureBox();
             this.ConsiderationNameLabel = new System.Windows.Forms.Label();
             this.ScoreLabel = new System.Windows.Forms.Label();
+            this.ResponseCurvePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ResponseCurvePictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ResponseCurvePictureBox
-            // 
-            this.ResponseCurvePictureBox.BackColor = System.Drawing.Color.White;
-            this.ResponseCurvePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ResponseCurvePictureBox.Location = new System.Drawing.Point(168, 3);
-            this.ResponseCurvePictureBox.Name = "ResponseCurvePictureBox";
-            this.ResponseCurvePictureBox.Size = new System.Drawing.Size(110, 110);
-            this.ResponseCurvePictureBox.TabIndex = 0;
-            this.ResponseCurvePictureBox.TabStop = false;
             // 
             // ConsiderationNameLabel
             // 
@@ -62,6 +52,16 @@
             this.ScoreLabel.TabIndex = 2;
             this.ScoreLabel.Text = "= 0.0";
             // 
+            // ResponseCurvePictureBox
+            // 
+            this.ResponseCurvePictureBox.BackColor = System.Drawing.Color.White;
+            this.ResponseCurvePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ResponseCurvePictureBox.Location = new System.Drawing.Point(168, 3);
+            this.ResponseCurvePictureBox.Name = "ResponseCurvePictureBox";
+            this.ResponseCurvePictureBox.Size = new System.Drawing.Size(110, 110);
+            this.ResponseCurvePictureBox.TabIndex = 0;
+            this.ResponseCurvePictureBox.TabStop = false;
+            // 
             // EditWidgetConsiderationScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -70,7 +70,7 @@
             this.Controls.Add(this.ConsiderationNameLabel);
             this.Controls.Add(this.ResponseCurvePictureBox);
             this.Name = "EditWidgetConsiderationScore";
-            this.Size = new System.Drawing.Size(379, 116);
+            this.Size = new System.Drawing.Size(347, 116);
             ((System.ComponentModel.ISupportInitialize)(this.ResponseCurvePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

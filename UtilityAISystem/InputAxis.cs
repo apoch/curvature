@@ -39,6 +39,9 @@ namespace Curvature
 
             set
             {
+                if (KBRecord == value)
+                    return;
+
                 if(KBRecord != null)
                     KBRecord.PropertyChanged -= KBChanged;
 

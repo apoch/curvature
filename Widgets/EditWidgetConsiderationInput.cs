@@ -12,24 +12,41 @@ namespace Curvature
 {
     public partial class EditWidgetConsiderationInput : UserControl
     {
-        private InputAxis EditInputAxis;
+        private Consideration EditConsideration;
         private IInputBroker InputBroker;
 
-        internal EditWidgetConsiderationInput(InputAxis axis, IInputBroker broker)
+        internal EditWidgetConsiderationInput(Consideration consideration, IInputBroker broker)
         {
             InitializeComponent();
-            EditInputAxis = axis;
+            EditConsideration = consideration;
             InputBroker = broker;
 
-            if ((EditInputAxis != null) && (EditInputAxis.Parameters.Count > 0))
+            InputValueTrackBar.Minimum = 0;
+            InputValueTrackBar.Maximum = 100;
+
+            if ((EditConsideration != null) && (EditConsideration.Input != null))
             {
-                InputValueTrackBar.Minimum = (int)(EditInputAxis.Parameters[0].MinimumValue * 100.0f);
-                InputValueTrackBar.Maximum = (int)(EditInputAxis.Parameters[0].MaximumValue * 100.0f);
-            }
-            else
-            {
-                InputValueTrackBar.Minimum = 0;
-                InputValueTrackBar.Maximum = 100;
+                if (EditConsideration.Input.Parameters.Count == 0)
+                {
+                    InputValueTrackBar.Visible = false;
+                }
+                else if (EditConsideration.Input.Parameters.Count == 1)
+                {
+                    InputValueTrackBar.Minimum = (int)(EditConsideration.Input.Parameters[0].MinimumValue * 100.0f);
+                    InputValueTrackBar.Maximum = (int)(EditConsideration.Input.Parameters[0].MaximumValue * 100.0f);
+                }
+                else if (EditConsideration.Input.Parameters.Count == 2)
+                {
+                    if (EditConsideration.ParameterValues == null)
+                        EditConsideration.GenerateParameterValuesFromInput();
+
+                    InputValueTrackBar.Minimum = (int)(EditConsideration.ParameterValues[0].Value * 100.0f);
+                    InputValueTrackBar.Maximum = (int)(EditConsideration.ParameterValues[1].Value * 100.0f);
+                }
+                else
+                {
+                    // TODO - handle this?
+                }
             }
 
             int range = InputValueTrackBar.Maximum - InputValueTrackBar.Minimum;
@@ -43,12 +60,12 @@ namespace Curvature
 
         public double GetNormalizedValue()
         {
-            return ((double)InputValueTrackBar.Value) / ((double)InputValueTrackBar.Maximum - (double)InputValueTrackBar.Minimum);
+            return ((double)InputValueTrackBar.Value - (double)InputValueTrackBar.Minimum) / ((double)InputValueTrackBar.Maximum - (double)InputValueTrackBar.Minimum);
         }
 
         private void InputValueTrackBar_Scroll(object sender, EventArgs e)
         {
-            string name = EditInputAxis.ReadableName;
+            string name = EditConsideration.Input?.ReadableName;
             float value = (float)InputValueTrackBar.Value / 100.0f;
             InputCaption.Text = $"{name} ({value:f3})";
             InputBroker.RefreshInputs();

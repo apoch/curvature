@@ -54,6 +54,7 @@
             this.MinimumValue.Name = "MinimumValue";
             this.MinimumValue.Size = new System.Drawing.Size(94, 20);
             this.MinimumValue.TabIndex = 1;
+            this.MinimumValue.ValueChanged += new System.EventHandler(this.MinimumValue_ValueChanged);
             // 
             // MinLabel
             // 
@@ -80,6 +81,7 @@
             this.MaximumValue.Name = "MaximumValue";
             this.MaximumValue.Size = new System.Drawing.Size(94, 20);
             this.MaximumValue.TabIndex = 4;
+            this.MaximumValue.ValueChanged += new System.EventHandler(this.MaximumValue_ValueChanged);
             // 
             // EditWidgetParameter
             // 
