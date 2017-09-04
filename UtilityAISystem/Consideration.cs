@@ -63,6 +63,7 @@ namespace Curvature
         {
             var score = new Scenario.Score();
             score.InputValue = broker.GetInputValue(Input, context);
+            score.InputValue = NormalizeInput(score.InputValue);
             score.FinalScore = Curve.ComputeValue(score.InputValue);
             return score;
         }
@@ -75,6 +76,31 @@ namespace Curvature
         public string GetName()
         {
             return ReadableName;
+        }
+
+        private double NormalizeInput(double raw)
+        {
+            if (ParameterValues.Count == 1)
+            {
+                return raw / ParameterValues[0].Value;
+            }
+            else if (ParameterValues.Count == 2)
+            {
+                double min = ParameterValues[0].Value;
+                double max = ParameterValues[1].Value;
+
+                return (raw - min) / (max - min);
+            }
+            else
+            {
+                if (raw < 0.0)
+                    return 0.0;
+
+                if (raw > 1.0)
+                    return 1.0;
+
+                return raw;
+            }
         }
     }
 }

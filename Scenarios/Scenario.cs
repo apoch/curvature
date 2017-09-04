@@ -269,12 +269,6 @@ namespace Curvature
                     break;
             }
 
-            if (raw < axis.KBRec.MinimumValue)
-                raw = axis.KBRec.MinimumValue;
-
-            if (raw > axis.KBRec.MaximumValue)
-                raw = axis.KBRec.MaximumValue;
-
             return raw;
         }
 
