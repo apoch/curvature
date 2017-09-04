@@ -22,6 +22,7 @@ namespace Curvature.Widgets
             ParamNameLabel.Text = Parameter.ControllingParameter.ReadableName;
             ValueUpDown.Minimum = (decimal)Parameter.ControllingParameter.MinimumValue;
             ValueUpDown.Maximum = (decimal)Parameter.ControllingParameter.MaximumValue;
+            ValueUpDown.Value = (decimal)Parameter.Value;
         }
 
         private void ValueUpDown_ValueChanged(object sender, EventArgs e)

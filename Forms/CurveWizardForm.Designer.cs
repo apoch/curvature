@@ -37,6 +37,7 @@
             this.InputDescriptionLabel = new System.Windows.Forms.Label();
             this.InputComboBox = new System.Windows.Forms.ComboBox();
             this.ConfigureParametersTab = new System.Windows.Forms.TabPage();
+            this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
@@ -46,9 +47,12 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelWizardButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
+            this.ParametersHintLabel = new System.Windows.Forms.Label();
+            this.ParameterHintSpecificsLabel = new System.Windows.Forms.Label();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
+            this.ConfigureParametersTab.SuspendLayout();
             this.ResponseCurveTab.SuspendLayout();
             this.NameConsiderationTab.SuspendLayout();
             this.SuspendLayout();
@@ -134,9 +138,13 @@
             this.InputComboBox.Name = "InputComboBox";
             this.InputComboBox.Size = new System.Drawing.Size(545, 21);
             this.InputComboBox.TabIndex = 0;
+            this.InputComboBox.SelectedIndexChanged += new System.EventHandler(this.InputComboBox_SelectedIndexChanged);
             // 
             // ConfigureParametersTab
             // 
+            this.ConfigureParametersTab.Controls.Add(this.ParameterHintSpecificsLabel);
+            this.ConfigureParametersTab.Controls.Add(this.ParametersHintLabel);
+            this.ConfigureParametersTab.Controls.Add(this.ParamFlowPanel);
             this.ConfigureParametersTab.Location = new System.Drawing.Point(4, 22);
             this.ConfigureParametersTab.Name = "ConfigureParametersTab";
             this.ConfigureParametersTab.Padding = new System.Windows.Forms.Padding(3);
@@ -144,6 +152,17 @@
             this.ConfigureParametersTab.TabIndex = 1;
             this.ConfigureParametersTab.Text = "Configure Parameters";
             this.ConfigureParametersTab.UseVisualStyleBackColor = true;
+            // 
+            // ParamFlowPanel
+            // 
+            this.ParamFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParamFlowPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ParamFlowPanel.Location = new System.Drawing.Point(3, 81);
+            this.ParamFlowPanel.Name = "ParamFlowPanel";
+            this.ParamFlowPanel.Size = new System.Drawing.Size(551, 156);
+            this.ParamFlowPanel.TabIndex = 0;
             // 
             // ResponseCurveTab
             // 
@@ -237,6 +256,27 @@
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
+            // ParametersHintLabel
+            // 
+            this.ParametersHintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametersHintLabel.Location = new System.Drawing.Point(3, 3);
+            this.ParametersHintLabel.Name = "ParametersHintLabel";
+            this.ParametersHintLabel.Size = new System.Drawing.Size(551, 35);
+            this.ParametersHintLabel.TabIndex = 1;
+            this.ParametersHintLabel.Text = "Some inputs can be parameterized, allowing a specific consideration to control th" +
+    "e values at which the input is considered 0 or 1.";
+            // 
+            // ParameterHintSpecificsLabel
+            // 
+            this.ParameterHintSpecificsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParameterHintSpecificsLabel.Location = new System.Drawing.Point(3, 38);
+            this.ParameterHintSpecificsLabel.Name = "ParameterHintSpecificsLabel";
+            this.ParameterHintSpecificsLabel.Size = new System.Drawing.Size(551, 40);
+            this.ParameterHintSpecificsLabel.TabIndex = 3;
+            this.ParameterHintSpecificsLabel.Text = "Select an input on the previous tab to see what its parameters do.";
+            // 
             // CurveWizardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +295,7 @@
             this.GettingStartedTab.ResumeLayout(false);
             this.GettingStartedTab.PerformLayout();
             this.SelectInputTab.ResumeLayout(false);
+            this.ConfigureParametersTab.ResumeLayout(false);
             this.ResponseCurveTab.ResumeLayout(false);
             this.NameConsiderationTab.ResumeLayout(false);
             this.NameConsiderationTab.PerformLayout();
@@ -281,5 +322,8 @@
         private System.Windows.Forms.Label ResponseCurveDescriptionLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.TextBox ConsiderationNameEditBox;
+        private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
+        private System.Windows.Forms.Label ParametersHintLabel;
+        private System.Windows.Forms.Label ParameterHintSpecificsLabel;
     }
 }
