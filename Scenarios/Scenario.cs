@@ -455,6 +455,8 @@ namespace Curvature
             {
                 if (HitTest(agent, simpt))
                 {
+                    string positiontext = $"{agent.GetPosition()} R:{agent.GetRadius()}";
+
                     string decisiontext = "[Stalled]";
                     if (AgentDecisions != null && AgentDecisions.ContainsKey(agent))
                     {
@@ -462,7 +464,7 @@ namespace Curvature
                             decisiontext = AgentDecisions[agent].WinningContext.ToString();
                     }
 
-                    return $"Agent: {agent.GetName()}\r\n{decisiontext}";
+                    return $"Agent: {agent.GetName()}\r\n\r\n{positiontext}\r\n{decisiontext}";
                 }
             }
 
@@ -470,7 +472,8 @@ namespace Curvature
             {
                 if (HitTest(loc, simpt))
                 {
-                    return $"Location: {loc.GetName()}";
+                    string positiontext = $"{loc.GetPosition()} R:{loc.GetRadius()}";
+                    return $"Location: {loc.GetName()}\r\n{positiontext}";
                 }
             }
 

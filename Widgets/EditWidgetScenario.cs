@@ -48,7 +48,7 @@ namespace Curvature
                     return;
                 }
 
-                SimulationInspectionTooltip.Show(text, ScenarioRenderingBox, args.X, args.Y);
+                SimulationInspectionTooltip.Show(text, ScenarioRenderingBox, args.X + 18, args.Y + 18);
             };
 
             AgentsListView.AfterLabelEdit += (obj, args) =>
