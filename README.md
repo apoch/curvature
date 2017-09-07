@@ -5,6 +5,8 @@ The project is intended to provide a complete playground for creating, editing, 
 
 Curvature is fully data-driven and supports the creation of a complete AI pipeline, from the core knowledge-base accessed by agents, to the specific *considerations* that drive the scoring of individual behaviors. The goal is to deliver an end-to-end solution for modeling and testing AI, including a simple world representation that allows designers or AI programmers to place agents in a virtual space and see how they would choose to behave.
 
+For complete project documentation, please see [the Curvature wiki](https://github.com/apoch/curvature/wiki).
+
 # Project Status
 Curvature recently released [Preview 1 - Core](https://github.com/apoch/curvature/releases/tag/Preview1Core). This release contains the bare minimum functionality of the tool and should be considered pre-release quality. Check back frequently for new features and enhancements.
 
