@@ -33,13 +33,6 @@ namespace Curvature
             return ReadableName;
         }
 
-        public Control CreateEditorUI(Project project)
-        {
-            var widget = new EditWidgetBehaviorSet();
-            widget.Attach(this, project);
-            return widget;
-        }
-
         public void Rename(string newname)
         {
             ReadableName = newname;
