@@ -29,6 +29,9 @@ namespace Curvature
         [DataMember]
         public bool CanTargetOthers;
 
+        [DataMember]
+        public string Payload;
+
 
         public enum ActionType
         {

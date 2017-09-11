@@ -76,6 +76,7 @@ namespace Curvature
 
         private HashSet<ScenarioAgent> AgentsActiveThisTick;
         private Dictionary<ScenarioAgent, DecisionHistory> AgentDecisions;
+        private List<Context> CustomActions;
 
 
         public class DecisionHistory
@@ -108,6 +109,7 @@ namespace Curvature
         {
             AgentDecisions = new Dictionary<ScenarioAgent, DecisionHistory>();
             AgentsActiveThisTick = new HashSet<ScenarioAgent>();
+            CustomActions = null;
 
             List<IScenarioMember> targets = new List<IScenarioMember>();
             targets.AddRange(Agents);
@@ -228,6 +230,31 @@ namespace Curvature
                 var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
                 graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Red, textRect, stringFormat);
             }
+
+            // Custom action balloons
+            if (CustomActions != null)
+            {
+                foreach (var ctx in CustomActions)
+                {
+                    if (ctx.Target != null)
+                    {
+                        var targetCenter = CoordinatesToDisplayPoint(ctx.Target.GetPosition().X, ctx.Target.GetPosition().Y, rect);
+                        var agentCenter = CoordinatesToDisplayPoint(ctx.ThinkingAgent.GetPosition().X, ctx.ThinkingAgent.GetPosition().Y, rect);
+                        graphics.DrawLine(Pens.Blue, targetCenter, agentCenter);
+
+                        var midpoint = new Point((agentCenter.X + targetCenter.X) / 2, (agentCenter.Y + targetCenter.Y) / 2);
+                        var textRect = new Rectangle(midpoint.X - 60, midpoint.Y - 15, 120, 30);
+                        graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, stringFormat);
+                    }
+                    else
+                    {
+                        int pad = 20;
+                        var displayRect = ToDisplayRect(ctx.ThinkingAgent, rect);
+                        var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, pad * 3);
+                        graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, stringFormat);
+                    }
+                }
+            }
         }
 
         public void Rename(string newname)
@@ -305,11 +332,17 @@ namespace Curvature
                     break;
 
                 case Behavior.ActionType.Talk:
-                    // TODO - implement speech balloons
+                    if (CustomActions == null)
+                        CustomActions = new List<Context>();
+
+                    CustomActions.Add(context);
                     break;
 
                 case Behavior.ActionType.Custom:
-                    // TODO - what is this supposed to do? Maybe a secondary type of balloon?
+                    if (CustomActions == null)
+                        CustomActions = new List<Context>();
+
+                    CustomActions.Add(context);
                     break;
             }
         }

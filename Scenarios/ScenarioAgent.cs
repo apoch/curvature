@@ -27,8 +27,8 @@ namespace Curvature
         public Dictionary<string, double> Properties;
 
         [DataMember]
-        public HashSet<string> Tags;
-
+        public Dictionary<string, double> StartProperties;
+        
         [DataMember]
         public Archetype AgentArchetype;
 
@@ -45,7 +45,7 @@ namespace Curvature
             Radius = 1.0f;
 
             Properties = new Dictionary<string, double>();
-            Tags = new HashSet<string>();
+            StartProperties = new Dictionary<string, double>();
         }
 
         [OnDeserialized]
@@ -118,7 +118,30 @@ namespace Curvature
 
         public double GetProperty(string name)
         {
+            if (Properties == null || !Properties.ContainsKey(name))
+                return 0.0;
+
             return Properties[name];
+        }
+
+        public void GenerateStartProperties(KnowledgeBase kb)
+        {
+            var oldstarts = StartProperties;
+            if (oldstarts == null)
+                oldstarts = new Dictionary<string, double>();
+
+            StartProperties = new Dictionary<string, double>();
+
+            foreach (var rec in kb.Records)
+            {
+                if (rec.Computed)
+                    continue;
+
+                if (oldstarts.ContainsKey(rec.ReadableName))
+                    StartProperties.Add(rec.ReadableName, oldstarts[rec.ReadableName]);
+                else
+                    StartProperties.Add(rec.ReadableName, rec.MinimumValue);
+            }
         }
     }
 }

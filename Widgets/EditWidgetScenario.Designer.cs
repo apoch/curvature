@@ -66,6 +66,7 @@
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.AgentProperties = new System.Windows.Forms.PropertyGrid();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
@@ -97,6 +98,7 @@
             // 
             // AgentsTab
             // 
+            this.AgentsTab.Controls.Add(this.AgentProperties);
             this.AgentsTab.Controls.Add(this.CopyCurrentAgentPositionButton);
             this.AgentsTab.Controls.Add(this.AgentResetButton);
             this.AgentsTab.Controls.Add(this.AgentStartYLabel);
@@ -530,6 +532,17 @@
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
             this.NameEditWidget.TabIndex = 1;
             // 
+            // AgentProperties
+            // 
+            this.AgentProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AgentProperties.LineColor = System.Drawing.SystemColors.ControlDark;
+            this.AgentProperties.Location = new System.Drawing.Point(6, 312);
+            this.AgentProperties.Name = "AgentProperties";
+            this.AgentProperties.Size = new System.Drawing.Size(726, 112);
+            this.AgentProperties.TabIndex = 17;
+            // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,5 +607,6 @@
         private System.Windows.Forms.TreeView LogsTreeView;
         private System.Windows.Forms.TextBox LogDetailTextBox;
         private System.Windows.Forms.ToolTip SimulationInspectionTooltip;
+        private System.Windows.Forms.PropertyGrid AgentProperties;
     }
 }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scenarios\AgentPropertyAdapter.cs" />
     <Compile Include="UtilityAISystem\Archetype.cs" />
     <Compile Include="UtilityAISystem\Behavior.cs" />
     <Compile Include="UtilityAISystem\BehaviorSet.cs" />

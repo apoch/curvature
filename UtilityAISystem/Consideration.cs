@@ -44,7 +44,7 @@ namespace Curvature
                 int i = 0;
                 foreach (var p in Input.Parameters)
                 {
-                    if (oldparams != null && oldparams[i].ControllingParameter == p)
+                    if (oldparams != null && oldparams.Count > i && oldparams[i].ControllingParameter == p)
                     {
                         ParameterValues.Add(oldparams[i]);
                     }

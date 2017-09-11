@@ -43,6 +43,10 @@ namespace Curvature
 
             EditBehavior = behavior;
             NameEditWidget.Attach("Behavior", EditBehavior);
+            if (!string.IsNullOrEmpty(EditBehavior.Payload))
+                CustomPayload.Text = EditBehavior.Payload;
+            else
+                CustomPayload.Text = "";
 
             BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
 
@@ -160,6 +164,12 @@ namespace Curvature
         {
             if (EditBehavior != null)
                 EditBehavior.CanTargetOthers = CanTargetOthersCheckBox.Checked;
+        }
+
+        private void CustomPayload_TextChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+                EditBehavior.Payload = CustomPayload.Text;
         }
     }
 }

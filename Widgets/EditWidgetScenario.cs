@@ -139,6 +139,9 @@ namespace Curvature
 
                         foreach (var ctx in args.AgentDecisions[agent].ScoredContexts)
                         {
+                            if (ctx.ChosenBehavior != behavior)
+                                continue;
+
                             var contextnode = behaviornode.Nodes.Add(ctx.Target.GetName());
                             contextnode.Tag = ctx;
 
@@ -310,6 +313,11 @@ namespace Curvature
             AgentStartYUpDown.Value = (decimal)(agent.StartPosition.Y);
             AgentRadiusUpDown.Value = (decimal)(agent.Radius);
             AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
+
+            if (agent.StartProperties == null)
+                agent.GenerateStartProperties(EditProject.KB);
+
+            AgentProperties.SelectedObject = new AgentPropertyAdapter(agent.StartProperties);
         }
 
         private void AutoAdvanceButton_Click(object sender, EventArgs e)
@@ -333,7 +341,14 @@ namespace Curvature
                 return;
 
             foreach (var agent in Simulation.Agents)
+            {
                 agent.Position = agent.StartPosition;
+
+                agent.GenerateStartProperties(EditProject.KB);
+                agent.Properties = new Dictionary<string, double>();
+                foreach (var kvp in agent.StartProperties)
+                    agent.Properties.Add(kvp.Key, kvp.Value);
+            }
 
             ScenarioRenderingBox.Refresh();
 
