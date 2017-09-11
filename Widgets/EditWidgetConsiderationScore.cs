@@ -37,6 +37,7 @@ namespace Curvature
                 }
 
                 double inputX = InputBroker.GetInputValue(EditConsideration.Input);
+                inputX = EditConsideration.NormalizeInput(inputX);
                 double inputY = EditConsideration.Curve.ComputeValue(inputX);
 
                 string name = EditConsideration.ReadableName;
@@ -54,6 +55,7 @@ namespace Curvature
         public double GetValue()
         {
             double inputX = InputBroker.GetInputValue(EditConsideration.Input);
+            inputX = EditConsideration.NormalizeInput(inputX);
             return EditConsideration.Curve.ComputeValue(inputX);
         }
 

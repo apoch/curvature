@@ -75,34 +75,71 @@ namespace Curvature
             return ReadableName;
         }
 
+        public InputAxis Clamp(List<InputParameterValue> parameters)
+        {
+            if (parameters == null)
+                return this;
+
+            if (parameters.Count == 0)
+                return this;
+
+            if (parameters.Count == 1)
+            {
+                var ret = new InputAxis(ReadableName, Origin);
+                ret.KBRecord = KBRecord;
+                ret.ReadableName = ReadableName;
+
+                float newmin = Math.Max(Parameters[0].MinimumValue, parameters[0].Value);
+                float newmax = Math.Min(Parameters[0].MaximumValue, parameters[0].Value);
+
+                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
+                ret.Parameters.Add(param);
+
+                return ret;
+            }
+
+            if (parameters.Count == 2)
+            {
+                var ret = new InputAxis(ReadableName, Origin);
+                ret.KBRecord = KBRecord;
+                ret.ReadableName = ReadableName;
+
+                float newmin = Math.Max(Parameters[0].MinimumValue, parameters[0].Value);
+                float newmax = Math.Min(Parameters[1].MaximumValue, parameters[1].Value);
+
+                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
+                ret.Parameters.Add(param);
+
+                return ret;
+            }
+
+            return this;
+        }
+
         public InputAxis Union(InputAxis other)
         {
             if (other == null)
                 return this;
 
-            if (other.ReadableName.CompareTo(ReadableName) != 0)
-                throw new ArgumentException("Cannot union unrelated inputs");
+            if (other.Parameters.Count == 0)
+                return this;
 
-            if (Parameters.Count != other.Parameters.Count)
-                throw new ArgumentException("Cannot union inputs with disjoint parameters");
-
-            var ret = new InputAxis(ReadableName, Origin);
-            ret.KBRecord = KBRecord;
-            ret.ReadableName = ReadableName;
-
-            for (int i = 0; i < Parameters.Count; ++i)
+            if (other.Parameters.Count == 1)
             {
-                if (other.Parameters[i].ReadableName.CompareTo(Parameters[i].ReadableName) != 0)
-                    throw new ArgumentException("Cannot union inputs with disjoint parameters");
+                var ret = new InputAxis(ReadableName, Origin);
+                ret.KBRecord = KBRecord;
+                ret.ReadableName = ReadableName;
 
-                float newmin = Math.Min(Parameters[i].MinimumValue, other.Parameters[i].MinimumValue);
-                float newmax = Math.Max(Parameters[i].MaximumValue, other.Parameters[i].MaximumValue);
+                float newmin = Math.Min(Parameters[0].MinimumValue, other.Parameters[0].MinimumValue);
+                float newmax = Math.Max(Parameters[0].MaximumValue, other.Parameters[0].MaximumValue);
 
-                var param = new InputParameter(Parameters[i].ReadableName, newmin, newmax);
+                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);
+
+                return ret;
             }
 
-            return ret;
+            return null;
         }
 
         public void Rename(string newname)

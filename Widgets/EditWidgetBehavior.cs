@@ -54,18 +54,33 @@ namespace Curvature
             CanTargetSelfCheckBox.Checked = EditBehavior.CanTargetSelf;
             CanTargetOthersCheckBox.Checked = EditBehavior.CanTargetOthers;
 
-            var inputs = new HashSet<InputAxis>();
+            var inputs = new Dictionary<InputAxis, List<InputAxis>>();
             foreach (var consideration in EditBehavior.Considerations)
             {
                 if (consideration.Input != null)
                 {
-                    inputs.Add(consideration.Input);
-                    ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
+                    if (!inputs.ContainsKey(consideration.Input))
+                        inputs.Add(consideration.Input, new List<InputAxis>());
 
-                    var widget = new EditWidgetConsiderationInput(consideration, this);
-                    widget.Tag = consideration.Input;
-                    InputFlowPanel.Controls.Add(widget);
+                    var clamped = consideration.Input.Clamp(consideration.ParameterValues);
+                    inputs[consideration.Input].Add(clamped);
+
+                    ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
                 }
+            }
+
+            foreach (var kvp in inputs)
+            {
+                InputAxis union = null;
+                foreach (var input in kvp.Value)
+                    union = input.Union(union);
+
+                if (union == null)
+                    continue;
+
+                var widget = new EditWidgetConsiderationInput(union, this);
+                widget.Tag = kvp.Key;
+                InputFlowPanel.Controls.Add(widget);
             }
 
             RefreshInputs();
@@ -76,7 +91,7 @@ namespace Curvature
             foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
             {
                 if (input.Tag == axis)
-                    return input.GetNormalizedValue();
+                    return input.GetRawValue();
             }
 
             return 0.0;

@@ -78,7 +78,7 @@ namespace Curvature
             return ReadableName;
         }
 
-        private double NormalizeInput(double raw)
+        internal double NormalizeInput(double raw)
         {
             if (ParameterValues.Count == 1)
             {

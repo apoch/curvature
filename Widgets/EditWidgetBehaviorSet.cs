@@ -62,7 +62,7 @@ namespace Curvature
             foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
             {
                 if (input.Tag == axis)
-                    return input.GetNormalizedValue();
+                    return input.GetRawValue();
             }
 
             return 0.0;
@@ -114,6 +114,8 @@ namespace Curvature
 
             InputFlowPanel.Controls.Clear();
 
+            var inputs = new Dictionary<InputAxis, List<InputAxis>>();
+
             foreach (Behavior b in EnabledBehaviorsListBox.CheckedItems)
             {
                 foreach (Consideration c in b.Considerations)
@@ -121,10 +123,26 @@ namespace Curvature
                     if (c.Input == null || c.Input.KBRec == null)
                         continue;
 
-                    var ctl = new EditWidgetConsiderationInput(c, this);
-                    ctl.Tag = c;
-                    InputFlowPanel.Controls.Add(ctl);
+                    if (!inputs.ContainsKey(c.Input))
+                        inputs.Add(c.Input, new List<InputAxis>());
+
+                    var clamped = c.Input.Clamp(c.ParameterValues);
+                    inputs[c.Input].Add(clamped);
                 }
+            }
+
+            foreach (var kvp in inputs)
+            {
+                InputAxis union = null;
+                foreach (var input in kvp.Value)
+                    union = input.Union(union);
+
+                if (union == null)
+                    continue;
+
+                var widget = new EditWidgetConsiderationInput(union, this);
+                widget.Tag = kvp.Key;
+                InputFlowPanel.Controls.Add(widget);
             }
 
             RefreshInputs();
