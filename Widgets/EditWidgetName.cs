@@ -30,6 +30,7 @@ namespace Curvature
         private void EditIcon_Click(object sender, EventArgs e)
         {
             ObjectNameLabel.Visible = false;
+            EditIcon.Visible = false;
 
             var edit = new TextBox();
             edit.MinimumSize = new Size(85, 0);
@@ -45,7 +46,24 @@ namespace Curvature
                     ObjectNameLabel.Text = edit.Text;
                     edit.Dispose();
                     ObjectNameLabel.Visible = true;
+                    EditIcon.Visible = true;
                 }
+                else if (args.KeyChar == '\u001b')        // Escape
+                {
+                    edit.Text = ObjectNameLabel.Text;
+                    edit.Dispose();
+                    ObjectNameLabel.Visible = true;
+                    EditIcon.Visible = true;
+                }
+            };
+
+            edit.LostFocus += (o, args) =>
+            {
+                EditedObject.Rename(edit.Text);
+                ObjectNameLabel.Text = edit.Text;
+                edit.Dispose();
+                ObjectNameLabel.Visible = true;
+                EditIcon.Visible = true;
             };
 
             EditIcon.Parent = null;
