@@ -43,6 +43,10 @@ namespace Curvature
         }
 
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         internal Behavior()
         {
             Action = ActionType.Idle;
@@ -95,6 +99,7 @@ namespace Curvature
         public void Rename(string newname)
         {
             ReadableName = newname;
+            DialogRebuildNeeded?.Invoke();
         }
 
         public string GetName()

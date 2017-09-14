@@ -58,6 +58,9 @@ namespace Curvature
         public delegate void ParametersChangedHandler(object o, EventArgs a);
         public event ParametersChangedHandler ParametersChanged;
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
 
         internal InputAxis()
         {
@@ -145,6 +148,7 @@ namespace Curvature
         public void Rename(string newname)
         {
             ReadableName = newname;
+            DialogRebuildNeeded?.Invoke();
         }
 
         public string GetName()

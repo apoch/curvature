@@ -13,6 +13,12 @@ namespace Curvature
     public partial class EditWidgetBehaviorSet : UserControl, IInputBroker
     {
         private BehaviorSet EditSet;
+        private Project EditProject;
+
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
 
         public EditWidgetBehaviorSet()
         {
@@ -31,11 +37,23 @@ namespace Curvature
                         EditSet.EnabledBehaviors.Remove(behavior);
                 }
             };
+
+            BehaviorScoresListView.MouseDoubleClick += (e, args) =>
+            {
+                var item = BehaviorScoresListView.GetItemAt(args.Location.X, args.Location.Y);
+                if (item == null)
+                    return;
+
+                // TODO - activate UI for editing the relevant behavior
+            };
         }
 
         public void Attach(BehaviorSet set, Project project)
         {
             EditSet = set;
+            EditProject = project;
+
+            EditSet.DialogRebuildNeeded += Rebuild;
 
             NameEditWidget.Attach("Behavior Set", set);
 
@@ -46,15 +64,6 @@ namespace Curvature
             }
 
             RefreshInputControls();
-
-            BehaviorScoresListView.MouseDoubleClick += (e, args) =>
-            {
-                var item = BehaviorScoresListView.GetItemAt(args.Location.X, args.Location.Y);
-                if (item == null)
-                    return;
-
-                // TODO - activate UI for editing the relevant behavior
-            };
         }
 
         public double GetInputValue(InputAxis axis)
@@ -152,6 +161,15 @@ namespace Curvature
         {
             RefreshInputControls();
             RefreshTimer.Enabled = false;
+        }
+
+
+        internal void Rebuild()
+        {
+            EditSet.DialogRebuildNeeded -= Rebuild;
+            Attach(EditSet, EditProject);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

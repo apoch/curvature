@@ -19,6 +19,10 @@ namespace Curvature
         private float AbsoluteTime;
 
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         public EditWidgetScenario()
         {
             InitializeComponent();
@@ -88,6 +92,8 @@ namespace Curvature
         {
             Simulation = scenario;
             EditProject = project;
+
+            Simulation.DialogRebuildNeeded += Rebuild;
 
             NameEditWidget.Attach("Scenario", Simulation);
 
@@ -356,6 +362,14 @@ namespace Curvature
             LogDetailTextBox.Text = "";
 
             AbsoluteTime = 0.0f;
+        }
+
+        internal void Rebuild()
+        {
+            Simulation.DialogRebuildNeeded -= Rebuild;
+            Attach(Simulation, EditProject);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

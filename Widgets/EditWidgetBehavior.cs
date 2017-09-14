@@ -15,6 +15,10 @@ namespace Curvature
         private Behavior EditBehavior;
 
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         public EditWidgetBehavior()
         {
             InitializeComponent();
@@ -47,6 +51,8 @@ namespace Curvature
                 CustomPayload.Text = EditBehavior.Payload;
             else
                 CustomPayload.Text = "";
+
+            EditBehavior.DialogRebuildNeeded += Rebuild;
 
             BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
 
@@ -185,6 +191,14 @@ namespace Curvature
         {
             if (EditBehavior != null)
                 EditBehavior.Payload = CustomPayload.Text;
+        }
+
+        internal void Rebuild()
+        {
+            EditBehavior.DialogRebuildNeeded -= Rebuild;
+            Attach(EditBehavior);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

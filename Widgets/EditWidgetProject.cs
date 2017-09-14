@@ -22,6 +22,10 @@ namespace Curvature
         internal event GuidanceEventHandler GuidanceScenarios;
 
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         public EditWidgetProject()
         {
             InitializeComponent();
@@ -32,6 +36,8 @@ namespace Curvature
         {
             EditedProject = editedProject;
             NameEditWidget.Attach("Project", EditedProject);
+
+            EditedProject.DialogRebuildNeeded += Rebuild;
 
             int considerationCount = 0;
             foreach (var behavior in EditedProject.Behaviors)
@@ -76,6 +82,14 @@ namespace Curvature
         private void ScenariosButton_Click(object sender, EventArgs e)
         {
             GuidanceScenarios(this, null);
+        }
+
+        internal void Rebuild()
+        {
+            EditedProject.DialogRebuildNeeded -= Rebuild;
+            Attach(EditedProject);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

@@ -23,6 +23,10 @@ namespace Curvature
         [DataMember]
         public List<InputParameterValue> ParameterValues;
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         internal Consideration()
         {
         }
@@ -71,6 +75,7 @@ namespace Curvature
         public void Rename(string newname)
         {
             ReadableName = newname;
+            DialogRebuildNeeded?.Invoke();
         }
 
         public string GetName()

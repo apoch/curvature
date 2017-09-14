@@ -44,6 +44,10 @@ namespace Curvature
         internal delegate void DeletionEventHandler(object sender, DeletionEventArgs args);
         internal event DeletionEventHandler ItemDelete;
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
@@ -84,6 +88,7 @@ namespace Curvature
         public void Rename(string name)
         {
             ReadableName = name;
+            DialogRebuildNeeded?.Invoke();
         }
 
         public string GetName()

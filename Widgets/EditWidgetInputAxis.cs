@@ -15,11 +15,18 @@ namespace Curvature
         private InputAxis EditedAxis;
         private Project EditedProject;
 
+
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         internal EditWidgetInputAxis(Project project, InputAxis axis)
         {
             InitializeComponent();
             EditedAxis = axis;
             EditedProject = project;
+
+            EditedAxis.DialogRebuildNeeded += Rebuild;
 
             NameEditWidget.Attach("Input Axis", axis);
 
@@ -78,6 +85,13 @@ namespace Curvature
             {
                 ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
             }
+        }
+
+
+        internal void Rebuild()
+        {
+            NameEditWidget.Attach("Input Axis", EditedAxis);
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

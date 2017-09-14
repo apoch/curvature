@@ -45,6 +45,12 @@ namespace Curvature
                 MainTabs.SelectTab(ScenariosTab);
                 System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
             };
+
+            ProjectEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
+            ArchetypeEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
+            BehaviorEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
+            BehaviorSetEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
+            ConsiderationEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
         }
 
 
@@ -275,6 +281,7 @@ namespace Curvature
             var widget = new EditWidgetScenario();
             widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario, EditingProject);
             widget.Dock = DockStyle.Fill;
+            widget.DialogRebuildNeeded += () => { SetUpProject(); };
             ScenarioPanel.Controls.Add(widget);
         }
 

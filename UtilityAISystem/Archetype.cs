@@ -17,6 +17,10 @@ namespace Curvature
         public List<BehaviorSet> BehaviorSets;
 
 
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         public Archetype(string name)
         {
             ReadableName = name;
@@ -36,6 +40,7 @@ namespace Curvature
         public void Rename(string newname)
         {
             ReadableName = newname;
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

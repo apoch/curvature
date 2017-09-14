@@ -16,6 +16,11 @@ namespace Curvature
         private Consideration EditConsideration;
         private Project EditProject;
 
+
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
+
         public EditWidgetConsideration()
         {
             InitializeComponent();
@@ -25,6 +30,8 @@ namespace Curvature
         {
             EditConsideration = editConsideration;
             EditProject = project;
+
+            EditConsideration.DialogRebuildNeeded += Rebuild;
 
             NameEditWidget.Attach("Consideration", EditConsideration);
 
@@ -56,6 +63,14 @@ namespace Curvature
             EditConsideration.GenerateParameterValuesFromInput();
             foreach (var param in EditConsideration.ParameterValues)
                 ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param));
+        }
+
+        internal void Rebuild()
+        {
+            EditConsideration.DialogRebuildNeeded -= Rebuild;
+            Attach(EditProject, EditConsideration);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

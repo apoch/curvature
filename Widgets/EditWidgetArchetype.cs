@@ -13,6 +13,11 @@ namespace Curvature
     public partial class EditWidgetArchetype : UserControl
     {
         private Archetype EditArchetype;
+        private Project EditProject;
+
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
+
 
         public EditWidgetArchetype()
         {
@@ -43,12 +48,22 @@ namespace Curvature
         {
             EditArchetype = archetype;
             NameEditWidget.Attach("Archetype", EditArchetype);
+            EditArchetype.DialogRebuildNeeded += Rebuild;
+            EditProject = project;
 
             EnabledBehaviorSetsListBox.Items.Clear();
             foreach (var behaviorSet in project.BehaviorSets)
             {
                 EnabledBehaviorSetsListBox.Items.Add(behaviorSet, EditArchetype.BehaviorSets.Contains(behaviorSet));
             }
+        }
+
+        internal void Rebuild()
+        {
+            EditArchetype.DialogRebuildNeeded -= Rebuild;
+            Attach(EditArchetype, EditProject);
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }

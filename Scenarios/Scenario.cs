@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class Scenario : IInputBroker, INameable
+    public class Scenario : INameable, IInputBroker
     {
         public interface IScenarioMember
         {
@@ -93,6 +93,9 @@ namespace Curvature
 
         internal delegate void ScenarioEventHandler(object sender, ScenarioEventArgs args);
         internal event ScenarioEventHandler SimulationAdvance;
+
+        internal delegate void DialogRebuildNeededHandler();
+        internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
         public Scenario(string name)
@@ -260,6 +263,7 @@ namespace Curvature
         public void Rename(string newname)
         {
             ReadableName = newname;
+            DialogRebuildNeeded?.Invoke();
         }
 
         public string GetName()
