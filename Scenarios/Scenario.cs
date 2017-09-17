@@ -127,7 +127,7 @@ namespace Curvature
                 if (context != null)
                     ExecuteBehaviorOnAgent(context, dt);
                 else
-                    SignalStallOnAgent(agent);
+                    agent.Stalled = true;
 
                 decisionhistory.WinningContext = context;
                 AgentDecisions.Add(agent, decisionhistory);
@@ -349,11 +349,6 @@ namespace Curvature
                     CustomActions.Add(context);
                     break;
             }
-        }
-
-        private void SignalStallOnAgent(ScenarioAgent agent)
-        {
-            agent.Stalled = true;
         }
 
         private PointF DisplayPointToCoordinates(Point display, Rectangle viewrect)
