@@ -7,6 +7,10 @@ Curvature is fully data-driven and supports the creation of a complete AI pipeli
 
 For complete project documentation, please see [the Curvature wiki](https://github.com/apoch/curvature/wiki).
 
+# Screenshots
+![An example behavior being edited in Curvature](https://raw.githubusercontent.com/apoch/curvature/master/Images/Screenshots/Tabs-Behaviors-Scoring.png)
+![A scenario set up to demonstrate basic chase AI in Curvature](https://raw.githubusercontent.com/apoch/curvature/master/Images/Screenshots/Tabs-Scenarios-Simulation.png)
+
 # Project Status
 Curvature recently released [Preview 1 - Core](https://github.com/apoch/curvature/releases/tag/Preview1Core). This release contains the bare minimum functionality of the tool and should be considered pre-release quality. Check back frequently for new features and enhancements.
 
