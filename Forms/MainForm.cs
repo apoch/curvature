@@ -48,9 +48,7 @@ namespace Curvature
 
             ProjectEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
             ArchetypeEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
-            BehaviorEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
             BehaviorSetEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
-            ConsiderationEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
         }
 
 
@@ -100,8 +98,8 @@ namespace Curvature
             ProjectEditWidget.Attach(EditingProject);
             KnowledgeBaseEditWidget.Attach(EditingProject.KB, EditingProject);
             InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
+            BehaviorsEditWidget.Attach(EditingProject);
 
-            RefreshBehaviorControls();
             RefreshBehaviorSetControls();
             RefreshArchetypeControls();
             RefreshScenarioControls();
@@ -128,26 +126,6 @@ namespace Curvature
             EditingProject = new Project();
             EditingFileName = null;
             SetUpProject();
-        }
-
-        private void CreateBehaviorButton_Click(object sender, EventArgs e)
-        {
-            EditingProject.Behaviors.Add(new Behavior("New behavior"));
-            RefreshBehaviorControls();
-        }
-
-        private void RefreshBehaviorControls()
-        {
-            BehaviorsListView.Items.Clear();
-
-            foreach (var behavior in EditingProject.Behaviors)
-            {
-                var item = new ListViewItem(behavior.ReadableName);
-                item.Tag = behavior;
-                BehaviorsListView.Items.Add(item);
-            }
-
-            BehaviorTabs.Visible = false;
         }
 
         private void RefreshBehaviorSetControls()
@@ -181,22 +159,6 @@ namespace Curvature
             ScenarioPanel.Controls.Clear();
         }
 
-        private void RefreshConsiderationControls()
-        {
-            ConsiderationsListView.Items.Clear();
-
-            if (BehaviorsListView.SelectedItems.Count <= 0)
-                return;
-
-            var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
-            foreach (var consideration in behavior.Considerations)
-            {
-                var item = new ListViewItem(consideration.ReadableName);
-                item.Tag = consideration;
-                ConsiderationsListView.Items.Add(item);
-            }
-        }
-
         private void RefreshArchetypeControls()
         {
             ArchetypesListView.Items.Clear();
@@ -209,45 +171,6 @@ namespace Curvature
             }
 
             ArchetypeEditWidget.Visible = false;
-        }
-
-        private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (BehaviorsListView.SelectedItems.Count <= 0)
-            {
-                BehaviorTabs.Visible = false;
-                return;
-            }
-
-            BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
-            BehaviorTabs.Visible = true;
-
-            RefreshConsiderationControls();
-        }
-
-        private void AddConsiderationButton_Click(object sender, EventArgs e)
-        {
-            if (BehaviorsListView.SelectedItems.Count <= 0)
-                return;
-
-            var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
-            var consideration = new Consideration("New consideration");
-            if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
-                behavior.Considerations.Add(consideration);
-
-            RefreshConsiderationControls();
-        }
-
-        private void ConsiderationsListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ConsiderationsListView.SelectedItems.Count <= 0)
-            {
-                ConsiderationEditWidget.Visible = false;
-                return;
-            }
-
-            ConsiderationEditWidget.Attach(EditingProject, ConsiderationsListView.SelectedItems[0].Tag as Consideration);
-            ConsiderationEditWidget.Visible = true;
         }
 
         private void CreateScenarioButton_Click(object sender, EventArgs e)
@@ -311,16 +234,17 @@ namespace Curvature
 
         private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)
         {
-            var selection = new List<Behavior>();
-            foreach (var item in BehaviorsListView.SelectedItems)
-            {
-                selection.Add((item as ListViewItem).Tag as Behavior);
-            }
+            // TODO - move to widget
+        //    var selection = new List<Behavior>();
+        //    foreach (var item in BehaviorsListView.SelectedItems)
+        //    {
+        //        selection.Add((item as ListViewItem).Tag as Behavior);
+        //    }
 
-            foreach (var behavior in selection)
-            {
-                EditingProject.Delete(behavior);
-            }
+        //    foreach (var behavior in selection)
+        //    {
+        //        EditingProject.Delete(behavior);
+        //    }
         }
 
         private void DeleteBehaviorSetButton_Click(object sender, EventArgs e)

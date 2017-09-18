@@ -34,8 +34,8 @@
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
-            this.CurveWizardButton = new System.Windows.Forms.Button();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
+            this.CurveWizardButton = new System.Windows.Forms.Button();
             this.NameEditWidget = new Curvature.EditWidgetName();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
@@ -83,7 +83,7 @@
             // 
             this.HorizontalSplitter.Panel2.Controls.Add(this.ResponseCurveGroupBox);
             this.HorizontalSplitter.Size = new System.Drawing.Size(758, 442);
-            this.HorizontalSplitter.SplitterDistance = 219;
+            this.HorizontalSplitter.SplitterDistance = 119;
             this.HorizontalSplitter.TabIndex = 4;
             // 
             // ParametersGroupBox
@@ -94,7 +94,7 @@
             this.ParametersGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParametersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ParametersGroupBox.Name = "ParametersGroupBox";
-            this.ParametersGroupBox.Size = new System.Drawing.Size(752, 213);
+            this.ParametersGroupBox.Size = new System.Drawing.Size(752, 113);
             this.ParametersGroupBox.TabIndex = 4;
             this.ParametersGroupBox.TabStop = false;
             this.ParametersGroupBox.Text = "Parameters";
@@ -105,7 +105,7 @@
             this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
             this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 194);
+            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 94);
             this.ParamFlowPanel.TabIndex = 0;
             // 
             // ResponseCurveGroupBox
@@ -116,10 +116,20 @@
             this.ResponseCurveGroupBox.Controls.Add(this.ResponseCurveEditor);
             this.ResponseCurveGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ResponseCurveGroupBox.Name = "ResponseCurveGroupBox";
-            this.ResponseCurveGroupBox.Size = new System.Drawing.Size(752, 213);
+            this.ResponseCurveGroupBox.Size = new System.Drawing.Size(752, 313);
             this.ResponseCurveGroupBox.TabIndex = 0;
             this.ResponseCurveGroupBox.TabStop = false;
             this.ResponseCurveGroupBox.Text = "Response Curve";
+            // 
+            // ResponseCurveEditor
+            // 
+            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
+            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
+            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 288);
+            this.ResponseCurveEditor.TabIndex = 0;
             // 
             // CurveWizardButton
             // 
@@ -131,16 +141,6 @@
             this.CurveWizardButton.Text = "Wizard...";
             this.CurveWizardButton.UseVisualStyleBackColor = true;
             this.CurveWizardButton.Click += new System.EventHandler(this.CurveWizardButton_Click);
-            // 
-            // ResponseCurveEditor
-            // 
-            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResponseCurveEditor.Location = new System.Drawing.Point(6, 19);
-            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
-            this.ResponseCurveEditor.Size = new System.Drawing.Size(740, 188);
-            this.ResponseCurveEditor.TabIndex = 0;
             // 
             // NameEditWidget
             // 

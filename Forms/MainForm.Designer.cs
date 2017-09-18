@@ -41,27 +41,22 @@
             this.OpenFileDialogBox = new System.Windows.Forms.OpenFileDialog();
             this.MainTabs = new System.Windows.Forms.TabControl();
             this.ProjectTab = new System.Windows.Forms.TabPage();
+            this.ProjectEditWidget = new Curvature.EditWidgetProject();
             this.KnowledgeTab = new System.Windows.Forms.TabPage();
+            this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
             this.InputsTab = new System.Windows.Forms.TabPage();
+            this.InputsEditWidget = new Curvature.EditWidgetInputs();
             this.BehaviorsTab = new System.Windows.Forms.TabPage();
-            this.DeleteSelectedBehaviorsButton = new System.Windows.Forms.Button();
-            this.BehaviorTabs = new System.Windows.Forms.TabControl();
-            this.BehaviorOverviewTab = new System.Windows.Forms.TabPage();
-            this.BehaviorConsiderationsTab = new System.Windows.Forms.TabPage();
-            this.AddConsiderationButton = new System.Windows.Forms.Button();
-            this.ConsiderationsListView = new System.Windows.Forms.ListView();
-            this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.BehaviorsListView = new System.Windows.Forms.ListView();
-            this.BehaviorNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CreateBehaviorButton = new System.Windows.Forms.Button();
             this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
             this.DeleteBehaviorSetButton = new System.Windows.Forms.Button();
             this.AddBehaviorSetButton = new System.Windows.Forms.Button();
+            this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.BehaviorSetsListView = new System.Windows.Forms.ListView();
             this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ArchetypesTab = new System.Windows.Forms.TabPage();
             this.DeleteArchetypesButton = new System.Windows.Forms.Button();
             this.AddArchetypeButton = new System.Windows.Forms.Button();
+            this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
             this.ArchetypesListView = new System.Windows.Forms.ListView();
             this.ArchetypeNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ScenariosTab = new System.Windows.Forms.TabPage();
@@ -70,22 +65,13 @@
             this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateScenarioButton = new System.Windows.Forms.Button();
             this.ScenarioPanel = new System.Windows.Forms.Panel();
-            this.ProjectEditWidget = new Curvature.EditWidgetProject();
-            this.KnowledgeBaseEditWidget = new Curvature.EditWidgetKnowledgeBase();
-            this.InputsEditWidget = new Curvature.EditWidgetInputs();
-            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
-            this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
-            this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
-            this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
+            this.BehaviorsEditWidget = new Curvature.Widgets.EditWidgetBehaviors();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
             this.KnowledgeTab.SuspendLayout();
             this.InputsTab.SuspendLayout();
             this.BehaviorsTab.SuspendLayout();
-            this.BehaviorTabs.SuspendLayout();
-            this.BehaviorOverviewTab.SuspendLayout();
-            this.BehaviorConsiderationsTab.SuspendLayout();
             this.BehaviorSetsTab.SuspendLayout();
             this.ArchetypesTab.SuspendLayout();
             this.ScenariosTab.SuspendLayout();
@@ -186,7 +172,7 @@
             this.MainTabs.Name = "MainTabs";
             this.MainTabs.SelectedIndex = 0;
             this.MainTabs.Size = new System.Drawing.Size(963, 623);
-            this.MainTabs.TabIndex = 4;
+            this.MainTabs.TabIndex = 5;
             // 
             // ProjectTab
             // 
@@ -199,6 +185,15 @@
             this.ProjectTab.Text = "Project";
             this.ProjectTab.UseVisualStyleBackColor = true;
             // 
+            // ProjectEditWidget
+            // 
+            this.ProjectEditWidget.BackColor = System.Drawing.SystemColors.Window;
+            this.ProjectEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProjectEditWidget.Location = new System.Drawing.Point(3, 3);
+            this.ProjectEditWidget.Name = "ProjectEditWidget";
+            this.ProjectEditWidget.Size = new System.Drawing.Size(949, 591);
+            this.ProjectEditWidget.TabIndex = 0;
+            // 
             // KnowledgeTab
             // 
             this.KnowledgeTab.Controls.Add(this.KnowledgeBaseEditWidget);
@@ -208,6 +203,14 @@
             this.KnowledgeTab.TabIndex = 1;
             this.KnowledgeTab.Text = "Knowledge Base";
             this.KnowledgeTab.UseVisualStyleBackColor = true;
+            // 
+            // KnowledgeBaseEditWidget
+            // 
+            this.KnowledgeBaseEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KnowledgeBaseEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.KnowledgeBaseEditWidget.Name = "KnowledgeBaseEditWidget";
+            this.KnowledgeBaseEditWidget.Size = new System.Drawing.Size(955, 597);
+            this.KnowledgeBaseEditWidget.TabIndex = 0;
             // 
             // InputsTab
             // 
@@ -219,131 +222,23 @@
             this.InputsTab.Text = "Inputs";
             this.InputsTab.UseVisualStyleBackColor = true;
             // 
+            // InputsEditWidget
+            // 
+            this.InputsEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputsEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.InputsEditWidget.Name = "InputsEditWidget";
+            this.InputsEditWidget.Size = new System.Drawing.Size(955, 597);
+            this.InputsEditWidget.TabIndex = 0;
+            // 
             // BehaviorsTab
             // 
-            this.BehaviorsTab.Controls.Add(this.DeleteSelectedBehaviorsButton);
-            this.BehaviorsTab.Controls.Add(this.BehaviorTabs);
-            this.BehaviorsTab.Controls.Add(this.BehaviorsListView);
-            this.BehaviorsTab.Controls.Add(this.CreateBehaviorButton);
+            this.BehaviorsTab.Controls.Add(this.BehaviorsEditWidget);
             this.BehaviorsTab.Location = new System.Drawing.Point(4, 22);
             this.BehaviorsTab.Name = "BehaviorsTab";
             this.BehaviorsTab.Size = new System.Drawing.Size(955, 597);
             this.BehaviorsTab.TabIndex = 3;
             this.BehaviorsTab.Text = "Behaviors";
             this.BehaviorsTab.UseVisualStyleBackColor = true;
-            // 
-            // DeleteSelectedBehaviorsButton
-            // 
-            this.DeleteSelectedBehaviorsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteSelectedBehaviorsButton.Location = new System.Drawing.Point(3, 571);
-            this.DeleteSelectedBehaviorsButton.Name = "DeleteSelectedBehaviorsButton";
-            this.DeleteSelectedBehaviorsButton.Size = new System.Drawing.Size(244, 23);
-            this.DeleteSelectedBehaviorsButton.TabIndex = 4;
-            this.DeleteSelectedBehaviorsButton.Text = "Delete Selection";
-            this.DeleteSelectedBehaviorsButton.UseVisualStyleBackColor = true;
-            this.DeleteSelectedBehaviorsButton.Click += new System.EventHandler(this.DeleteSelectedBehaviorsButton_Click);
-            // 
-            // BehaviorTabs
-            // 
-            this.BehaviorTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorTabs.Controls.Add(this.BehaviorOverviewTab);
-            this.BehaviorTabs.Controls.Add(this.BehaviorConsiderationsTab);
-            this.BehaviorTabs.Location = new System.Drawing.Point(253, 3);
-            this.BehaviorTabs.Name = "BehaviorTabs";
-            this.BehaviorTabs.SelectedIndex = 0;
-            this.BehaviorTabs.Size = new System.Drawing.Size(699, 591);
-            this.BehaviorTabs.TabIndex = 3;
-            this.BehaviorTabs.Visible = false;
-            // 
-            // BehaviorOverviewTab
-            // 
-            this.BehaviorOverviewTab.Controls.Add(this.BehaviorEditWidget);
-            this.BehaviorOverviewTab.Location = new System.Drawing.Point(4, 22);
-            this.BehaviorOverviewTab.Name = "BehaviorOverviewTab";
-            this.BehaviorOverviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BehaviorOverviewTab.Size = new System.Drawing.Size(691, 565);
-            this.BehaviorOverviewTab.TabIndex = 0;
-            this.BehaviorOverviewTab.Text = "Scoring Overview";
-            this.BehaviorOverviewTab.UseVisualStyleBackColor = true;
-            // 
-            // BehaviorConsiderationsTab
-            // 
-            this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationEditWidget);
-            this.BehaviorConsiderationsTab.Controls.Add(this.AddConsiderationButton);
-            this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationsListView);
-            this.BehaviorConsiderationsTab.Location = new System.Drawing.Point(4, 22);
-            this.BehaviorConsiderationsTab.Name = "BehaviorConsiderationsTab";
-            this.BehaviorConsiderationsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BehaviorConsiderationsTab.Size = new System.Drawing.Size(691, 565);
-            this.BehaviorConsiderationsTab.TabIndex = 1;
-            this.BehaviorConsiderationsTab.Text = "Edit Considerations";
-            this.BehaviorConsiderationsTab.UseVisualStyleBackColor = true;
-            // 
-            // AddConsiderationButton
-            // 
-            this.AddConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddConsiderationButton.Location = new System.Drawing.Point(3, 1153);
-            this.AddConsiderationButton.Name = "AddConsiderationButton";
-            this.AddConsiderationButton.Size = new System.Drawing.Size(72, 25);
-            this.AddConsiderationButton.TabIndex = 1;
-            this.AddConsiderationButton.Text = "Add...";
-            this.AddConsiderationButton.UseVisualStyleBackColor = true;
-            this.AddConsiderationButton.Click += new System.EventHandler(this.AddConsiderationButton_Click);
-            // 
-            // ConsiderationsListView
-            // 
-            this.ConsiderationsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ConsiderationsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ConsiderationNameHeader});
-            this.ConsiderationsListView.FullRowSelect = true;
-            this.ConsiderationsListView.HideSelection = false;
-            this.ConsiderationsListView.Location = new System.Drawing.Point(3, 6);
-            this.ConsiderationsListView.Name = "ConsiderationsListView";
-            this.ConsiderationsListView.Size = new System.Drawing.Size(164, 1143);
-            this.ConsiderationsListView.TabIndex = 0;
-            this.ConsiderationsListView.UseCompatibleStateImageBehavior = false;
-            this.ConsiderationsListView.View = System.Windows.Forms.View.Details;
-            this.ConsiderationsListView.SelectedIndexChanged += new System.EventHandler(this.ConsiderationsListView_SelectedIndexChanged);
-            // 
-            // ConsiderationNameHeader
-            // 
-            this.ConsiderationNameHeader.Text = "Consideration Name";
-            this.ConsiderationNameHeader.Width = 150;
-            // 
-            // BehaviorsListView
-            // 
-            this.BehaviorsListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.BehaviorsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.BehaviorNameColumn});
-            this.BehaviorsListView.FullRowSelect = true;
-            this.BehaviorsListView.HideSelection = false;
-            this.BehaviorsListView.Location = new System.Drawing.Point(3, 3);
-            this.BehaviorsListView.Name = "BehaviorsListView";
-            this.BehaviorsListView.Size = new System.Drawing.Size(244, 533);
-            this.BehaviorsListView.TabIndex = 0;
-            this.BehaviorsListView.UseCompatibleStateImageBehavior = false;
-            this.BehaviorsListView.View = System.Windows.Forms.View.Details;
-            this.BehaviorsListView.SelectedIndexChanged += new System.EventHandler(this.BehaviorsListView_SelectedIndexChanged);
-            // 
-            // BehaviorNameColumn
-            // 
-            this.BehaviorNameColumn.Text = "Behavior Name";
-            this.BehaviorNameColumn.Width = 200;
-            // 
-            // CreateBehaviorButton
-            // 
-            this.CreateBehaviorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateBehaviorButton.Location = new System.Drawing.Point(3, 542);
-            this.CreateBehaviorButton.Name = "CreateBehaviorButton";
-            this.CreateBehaviorButton.Size = new System.Drawing.Size(244, 23);
-            this.CreateBehaviorButton.TabIndex = 1;
-            this.CreateBehaviorButton.Text = "Add New Behavior";
-            this.CreateBehaviorButton.UseVisualStyleBackColor = true;
-            this.CreateBehaviorButton.Click += new System.EventHandler(this.CreateBehaviorButton_Click);
             // 
             // BehaviorSetsTab
             // 
@@ -361,24 +256,33 @@
             // DeleteBehaviorSetButton
             // 
             this.DeleteBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(3, 571);
+            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(3, 48);
             this.DeleteBehaviorSetButton.Name = "DeleteBehaviorSetButton";
             this.DeleteBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
             this.DeleteBehaviorSetButton.TabIndex = 5;
             this.DeleteBehaviorSetButton.Text = "Delete Selection";
             this.DeleteBehaviorSetButton.UseVisualStyleBackColor = true;
-            this.DeleteBehaviorSetButton.Click += new System.EventHandler(this.DeleteBehaviorSetButton_Click);
             // 
             // AddBehaviorSetButton
             // 
             this.AddBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddBehaviorSetButton.Location = new System.Drawing.Point(3, 542);
+            this.AddBehaviorSetButton.Location = new System.Drawing.Point(3, 19);
             this.AddBehaviorSetButton.Name = "AddBehaviorSetButton";
             this.AddBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
             this.AddBehaviorSetButton.TabIndex = 2;
             this.AddBehaviorSetButton.Text = "Add Behavior Set";
             this.AddBehaviorSetButton.UseVisualStyleBackColor = true;
-            this.AddBehaviorSetButton.Click += new System.EventHandler(this.AddBehaviorSetButton_Click);
+            // 
+            // BehaviorSetEditWidget
+            // 
+            this.BehaviorSetEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorSetEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.BehaviorSetEditWidget.Name = "BehaviorSetEditWidget";
+            this.BehaviorSetEditWidget.Size = new System.Drawing.Size(0, 68);
+            this.BehaviorSetEditWidget.TabIndex = 1;
+            this.BehaviorSetEditWidget.Visible = false;
             // 
             // BehaviorSetsListView
             // 
@@ -389,11 +293,10 @@
             this.BehaviorSetsListView.FullRowSelect = true;
             this.BehaviorSetsListView.Location = new System.Drawing.Point(3, 3);
             this.BehaviorSetsListView.Name = "BehaviorSetsListView";
-            this.BehaviorSetsListView.Size = new System.Drawing.Size(244, 533);
+            this.BehaviorSetsListView.Size = new System.Drawing.Size(244, 10);
             this.BehaviorSetsListView.TabIndex = 0;
             this.BehaviorSetsListView.UseCompatibleStateImageBehavior = false;
             this.BehaviorSetsListView.View = System.Windows.Forms.View.Details;
-            this.BehaviorSetsListView.SelectedIndexChanged += new System.EventHandler(this.BehaviorSetsListView_SelectedIndexChanged);
             // 
             // BehaviorSetNameColumn
             // 
@@ -416,13 +319,12 @@
             // DeleteArchetypesButton
             // 
             this.DeleteArchetypesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteArchetypesButton.Location = new System.Drawing.Point(3, 571);
+            this.DeleteArchetypesButton.Location = new System.Drawing.Point(3, 48);
             this.DeleteArchetypesButton.Name = "DeleteArchetypesButton";
             this.DeleteArchetypesButton.Size = new System.Drawing.Size(244, 23);
             this.DeleteArchetypesButton.TabIndex = 5;
             this.DeleteArchetypesButton.Text = "Delete Selection";
             this.DeleteArchetypesButton.UseVisualStyleBackColor = true;
-            this.DeleteArchetypesButton.Click += new System.EventHandler(this.DeleteArchetypesButton_Click);
             // 
             // AddArchetypeButton
             // 
@@ -432,7 +334,14 @@
             this.AddArchetypeButton.TabIndex = 1;
             this.AddArchetypeButton.Text = "Add Archetype";
             this.AddArchetypeButton.UseVisualStyleBackColor = true;
-            this.AddArchetypeButton.Click += new System.EventHandler(this.AddArchetypeButton_Click);
+            // 
+            // ArchetypeEditWidget
+            // 
+            this.ArchetypeEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.ArchetypeEditWidget.Name = "ArchetypeEditWidget";
+            this.ArchetypeEditWidget.Size = new System.Drawing.Size(699, 594);
+            this.ArchetypeEditWidget.TabIndex = 2;
+            this.ArchetypeEditWidget.Visible = false;
             // 
             // ArchetypesListView
             // 
@@ -446,7 +355,6 @@
             this.ArchetypesListView.TabIndex = 0;
             this.ArchetypesListView.UseCompatibleStateImageBehavior = false;
             this.ArchetypesListView.View = System.Windows.Forms.View.Details;
-            this.ArchetypesListView.SelectedIndexChanged += new System.EventHandler(this.ArchetypesListView_SelectedIndexChanged);
             // 
             // ArchetypeNameColumn
             // 
@@ -469,13 +377,12 @@
             // DeleteScenariosButton
             // 
             this.DeleteScenariosButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteScenariosButton.Location = new System.Drawing.Point(3, 571);
+            this.DeleteScenariosButton.Location = new System.Drawing.Point(3, 48);
             this.DeleteScenariosButton.Name = "DeleteScenariosButton";
             this.DeleteScenariosButton.Size = new System.Drawing.Size(244, 23);
             this.DeleteScenariosButton.TabIndex = 5;
             this.DeleteScenariosButton.Text = "Delete Selection";
             this.DeleteScenariosButton.UseVisualStyleBackColor = true;
-            this.DeleteScenariosButton.Click += new System.EventHandler(this.DeleteScenariosButton_Click);
             // 
             // ScenariosListView
             // 
@@ -487,11 +394,10 @@
             this.ScenariosListView.HideSelection = false;
             this.ScenariosListView.Location = new System.Drawing.Point(3, 3);
             this.ScenariosListView.Name = "ScenariosListView";
-            this.ScenariosListView.Size = new System.Drawing.Size(244, 533);
+            this.ScenariosListView.Size = new System.Drawing.Size(244, 10);
             this.ScenariosListView.TabIndex = 2;
             this.ScenariosListView.UseCompatibleStateImageBehavior = false;
             this.ScenariosListView.View = System.Windows.Forms.View.Details;
-            this.ScenariosListView.SelectedIndexChanged += new System.EventHandler(this.ScenariosListView_SelectedIndexChanged);
             // 
             // ScenarioNameColumn
             // 
@@ -501,13 +407,12 @@
             // CreateScenarioButton
             // 
             this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateScenarioButton.Location = new System.Drawing.Point(3, 542);
+            this.CreateScenarioButton.Location = new System.Drawing.Point(3, 19);
             this.CreateScenarioButton.Name = "CreateScenarioButton";
             this.CreateScenarioButton.Size = new System.Drawing.Size(244, 23);
             this.CreateScenarioButton.TabIndex = 1;
             this.CreateScenarioButton.Text = "New Scenario";
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
-            this.CreateScenarioButton.Click += new System.EventHandler(this.CreateScenarioButton_Click);
             // 
             // ScenarioPanel
             // 
@@ -516,73 +421,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ScenarioPanel.Location = new System.Drawing.Point(253, 3);
             this.ScenarioPanel.Name = "ScenarioPanel";
-            this.ScenarioPanel.Size = new System.Drawing.Size(699, 591);
+            this.ScenarioPanel.Size = new System.Drawing.Size(0, 68);
             this.ScenarioPanel.TabIndex = 0;
             // 
-            // ProjectEditWidget
+            // BehaviorsEditWidget
             // 
-            this.ProjectEditWidget.BackColor = System.Drawing.SystemColors.Window;
-            this.ProjectEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectEditWidget.Location = new System.Drawing.Point(3, 3);
-            this.ProjectEditWidget.Name = "ProjectEditWidget";
-            this.ProjectEditWidget.Size = new System.Drawing.Size(949, 591);
-            this.ProjectEditWidget.TabIndex = 0;
-            // 
-            // KnowledgeBaseEditWidget
-            // 
-            this.KnowledgeBaseEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KnowledgeBaseEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.KnowledgeBaseEditWidget.Name = "KnowledgeBaseEditWidget";
-            this.KnowledgeBaseEditWidget.Size = new System.Drawing.Size(955, 597);
-            this.KnowledgeBaseEditWidget.TabIndex = 0;
-            // 
-            // InputsEditWidget
-            // 
-            this.InputsEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InputsEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.InputsEditWidget.Name = "InputsEditWidget";
-            this.InputsEditWidget.Size = new System.Drawing.Size(955, 597);
-            this.InputsEditWidget.TabIndex = 0;
-            // 
-            // BehaviorEditWidget
-            // 
-            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
-            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
-            this.BehaviorEditWidget.Size = new System.Drawing.Size(691, 553);
-            this.BehaviorEditWidget.TabIndex = 3;
-            // 
-            // ConsiderationEditWidget
-            // 
-            this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationEditWidget.Location = new System.Drawing.Point(173, 6);
-            this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
-            this.ConsiderationEditWidget.Size = new System.Drawing.Size(1779, 1178);
-            this.ConsiderationEditWidget.TabIndex = 2;
-            this.ConsiderationEditWidget.Visible = false;
-            // 
-            // BehaviorSetEditWidget
-            // 
-            this.BehaviorSetEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorSetEditWidget.Location = new System.Drawing.Point(253, 3);
-            this.BehaviorSetEditWidget.Name = "BehaviorSetEditWidget";
-            this.BehaviorSetEditWidget.Size = new System.Drawing.Size(699, 591);
-            this.BehaviorSetEditWidget.TabIndex = 1;
-            this.BehaviorSetEditWidget.Visible = false;
-            // 
-            // ArchetypeEditWidget
-            // 
-            this.ArchetypeEditWidget.Location = new System.Drawing.Point(253, 3);
-            this.ArchetypeEditWidget.Name = "ArchetypeEditWidget";
-            this.ArchetypeEditWidget.Size = new System.Drawing.Size(699, 594);
-            this.ArchetypeEditWidget.TabIndex = 2;
-            this.ArchetypeEditWidget.Visible = false;
+            this.BehaviorsEditWidget.Location = new System.Drawing.Point(3, 3);
+            this.BehaviorsEditWidget.Name = "BehaviorsEditWidget";
+            this.BehaviorsEditWidget.Size = new System.Drawing.Size(949, 591);
+            this.BehaviorsEditWidget.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -601,9 +448,6 @@
             this.KnowledgeTab.ResumeLayout(false);
             this.InputsTab.ResumeLayout(false);
             this.BehaviorsTab.ResumeLayout(false);
-            this.BehaviorTabs.ResumeLayout(false);
-            this.BehaviorOverviewTab.ResumeLayout(false);
-            this.BehaviorConsiderationsTab.ResumeLayout(false);
             this.BehaviorSetsTab.ResumeLayout(false);
             this.ArchetypesTab.ResumeLayout(false);
             this.ScenariosTab.ResumeLayout(false);
@@ -626,42 +470,31 @@
         private System.Windows.Forms.OpenFileDialog OpenFileDialogBox;
         private System.Windows.Forms.TabControl MainTabs;
         private System.Windows.Forms.TabPage ProjectTab;
+        private EditWidgetProject ProjectEditWidget;
         private System.Windows.Forms.TabPage KnowledgeTab;
+        private EditWidgetKnowledgeBase KnowledgeBaseEditWidget;
         private System.Windows.Forms.TabPage InputsTab;
+        private EditWidgetInputs InputsEditWidget;
         private System.Windows.Forms.TabPage BehaviorsTab;
         private System.Windows.Forms.TabPage BehaviorSetsTab;
-        private System.Windows.Forms.TabPage ArchetypesTab;
-        private System.Windows.Forms.TabPage ScenariosTab;
-        private EditWidgetProject ProjectEditWidget;
-        private EditWidgetKnowledgeBase KnowledgeBaseEditWidget;
-        private EditWidgetInputs InputsEditWidget;
-        private System.Windows.Forms.ListView BehaviorsListView;
-        private System.Windows.Forms.Button CreateBehaviorButton;
-        private System.Windows.Forms.ColumnHeader BehaviorNameColumn;
-        private System.Windows.Forms.TabControl BehaviorTabs;
-        private System.Windows.Forms.TabPage BehaviorOverviewTab;
-        private EditWidgetBehavior BehaviorEditWidget;
-        private System.Windows.Forms.TabPage BehaviorConsiderationsTab;
-        private System.Windows.Forms.ListView ConsiderationsListView;
-        private System.Windows.Forms.ColumnHeader ConsiderationNameHeader;
-        private System.Windows.Forms.Button AddConsiderationButton;
-        private EditWidgetConsideration ConsiderationEditWidget;
-        private System.Windows.Forms.Button CreateScenarioButton;
-        private System.Windows.Forms.Panel ScenarioPanel;
+        private System.Windows.Forms.Button DeleteBehaviorSetButton;
+        private System.Windows.Forms.Button AddBehaviorSetButton;
+        private EditWidgetBehaviorSet BehaviorSetEditWidget;
         private System.Windows.Forms.ListView BehaviorSetsListView;
         private System.Windows.Forms.ColumnHeader BehaviorSetNameColumn;
-        private EditWidgetBehaviorSet BehaviorSetEditWidget;
+        private System.Windows.Forms.TabPage ArchetypesTab;
+        private System.Windows.Forms.Button DeleteArchetypesButton;
+        private System.Windows.Forms.Button AddArchetypeButton;
+        private EditWidgetArchetype ArchetypeEditWidget;
         private System.Windows.Forms.ListView ArchetypesListView;
         private System.Windows.Forms.ColumnHeader ArchetypeNameColumn;
-        private System.Windows.Forms.Button AddArchetypeButton;
+        private System.Windows.Forms.TabPage ScenariosTab;
+        private System.Windows.Forms.Button DeleteScenariosButton;
         private System.Windows.Forms.ListView ScenariosListView;
         private System.Windows.Forms.ColumnHeader ScenarioNameColumn;
-        private EditWidgetArchetype ArchetypeEditWidget;
-        private System.Windows.Forms.Button AddBehaviorSetButton;
-        private System.Windows.Forms.Button DeleteSelectedBehaviorsButton;
-        private System.Windows.Forms.Button DeleteBehaviorSetButton;
-        private System.Windows.Forms.Button DeleteArchetypesButton;
-        private System.Windows.Forms.Button DeleteScenariosButton;
+        private System.Windows.Forms.Button CreateScenarioButton;
+        private System.Windows.Forms.Panel ScenarioPanel;
+        private Widgets.EditWidgetBehaviors BehaviorsEditWidget;
     }
 }
 

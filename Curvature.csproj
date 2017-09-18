@@ -77,6 +77,12 @@
     <Compile Include="Widgets\EditWidgetBehavior.Designer.cs">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\EditWidgetBehaviors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetBehaviors.Designer.cs">
+      <DependentUpon>EditWidgetBehaviors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\EditWidgetBehaviorSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetBehavior.resx">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetBehaviors.resx">
+      <DependentUpon>EditWidgetBehaviors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetBehaviorSet.resx">
       <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>
