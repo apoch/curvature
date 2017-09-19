@@ -47,7 +47,6 @@ namespace Curvature
             };
 
             ProjectEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
-            ArchetypeEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
         }
 
 
@@ -99,8 +98,8 @@ namespace Curvature
             InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
             BehaviorsEditWidget.Attach(EditingProject);
             BehaviorSetsEditWidget.Attach(EditingProject);
+            ArchetypesEditWidget.Attach(EditingProject);
             
-            RefreshArchetypeControls();
             RefreshScenarioControls();
         }
 
@@ -144,20 +143,6 @@ namespace Curvature
             ScenarioPanel.Controls.Clear();
         }
 
-        private void RefreshArchetypeControls()
-        {
-            ArchetypesListView.Items.Clear();
-
-            foreach (var archetype in EditingProject.Archetypes)
-            {
-                var item = new ListViewItem(archetype.ReadableName);
-                item.Tag = archetype;
-                ArchetypesListView.Items.Add(item);
-            }
-
-            ArchetypeEditWidget.Visible = false;
-        }
-
         private void CreateScenarioButton_Click(object sender, EventArgs e)
         {
             EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
@@ -179,38 +164,6 @@ namespace Curvature
             widget.Dock = DockStyle.Fill;
             widget.DialogRebuildNeeded += () => { SetUpProject(); };
             ScenarioPanel.Controls.Add(widget);
-        }
-
-        private void ArchetypesListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ArchetypesListView.SelectedItems.Count <= 0)
-            {
-                ArchetypeEditWidget.Visible = false;
-                return;
-            }
-
-            ArchetypeEditWidget.Attach(ArchetypesListView.SelectedItems[0].Tag as Archetype, EditingProject);
-            ArchetypeEditWidget.Visible = true;
-        }
-
-        private void AddArchetypeButton_Click(object sender, EventArgs e)
-        {
-            EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
-            RefreshArchetypeControls();
-        }
-
-        private void DeleteArchetypesButton_Click(object sender, EventArgs e)
-        {
-            var selection = new List<Archetype>();
-            foreach (var item in ArchetypesListView.SelectedItems)
-            {
-                selection.Add((item as ListViewItem).Tag as Archetype);
-            }
-
-            foreach (var archetype in selection)
-            {
-                EditingProject.Delete(archetype);
-            }
         }
 
         private void DeleteScenariosButton_Click(object sender, EventArgs e)

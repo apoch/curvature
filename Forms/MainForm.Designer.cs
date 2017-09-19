@@ -51,17 +51,13 @@
             this.BehaviorSetsTab = new System.Windows.Forms.TabPage();
             this.BehaviorSetsEditWidget = new Curvature.Widgets.EditWidgetBehaviorSets();
             this.ArchetypesTab = new System.Windows.Forms.TabPage();
-            this.DeleteArchetypesButton = new System.Windows.Forms.Button();
-            this.AddArchetypeButton = new System.Windows.Forms.Button();
-            this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
-            this.ArchetypesListView = new System.Windows.Forms.ListView();
-            this.ArchetypeNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ScenariosTab = new System.Windows.Forms.TabPage();
             this.DeleteScenariosButton = new System.Windows.Forms.Button();
             this.ScenariosListView = new System.Windows.Forms.ListView();
             this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateScenarioButton = new System.Windows.Forms.Button();
             this.ScenarioPanel = new System.Windows.Forms.Panel();
+            this.ArchetypesEditWidget = new Curvature.Widgets.EditWidgetArchetypes();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -264,61 +260,13 @@
             // 
             // ArchetypesTab
             // 
-            this.ArchetypesTab.Controls.Add(this.DeleteArchetypesButton);
-            this.ArchetypesTab.Controls.Add(this.AddArchetypeButton);
-            this.ArchetypesTab.Controls.Add(this.ArchetypeEditWidget);
-            this.ArchetypesTab.Controls.Add(this.ArchetypesListView);
+            this.ArchetypesTab.Controls.Add(this.ArchetypesEditWidget);
             this.ArchetypesTab.Location = new System.Drawing.Point(4, 22);
             this.ArchetypesTab.Name = "ArchetypesTab";
             this.ArchetypesTab.Size = new System.Drawing.Size(955, 597);
             this.ArchetypesTab.TabIndex = 5;
             this.ArchetypesTab.Text = "Archetypes";
             this.ArchetypesTab.UseVisualStyleBackColor = true;
-            // 
-            // DeleteArchetypesButton
-            // 
-            this.DeleteArchetypesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteArchetypesButton.Location = new System.Drawing.Point(3, 48);
-            this.DeleteArchetypesButton.Name = "DeleteArchetypesButton";
-            this.DeleteArchetypesButton.Size = new System.Drawing.Size(244, 23);
-            this.DeleteArchetypesButton.TabIndex = 5;
-            this.DeleteArchetypesButton.Text = "Delete Selection";
-            this.DeleteArchetypesButton.UseVisualStyleBackColor = true;
-            // 
-            // AddArchetypeButton
-            // 
-            this.AddArchetypeButton.Location = new System.Drawing.Point(3, 542);
-            this.AddArchetypeButton.Name = "AddArchetypeButton";
-            this.AddArchetypeButton.Size = new System.Drawing.Size(244, 23);
-            this.AddArchetypeButton.TabIndex = 1;
-            this.AddArchetypeButton.Text = "Add Archetype";
-            this.AddArchetypeButton.UseVisualStyleBackColor = true;
-            // 
-            // ArchetypeEditWidget
-            // 
-            this.ArchetypeEditWidget.Location = new System.Drawing.Point(253, 3);
-            this.ArchetypeEditWidget.Name = "ArchetypeEditWidget";
-            this.ArchetypeEditWidget.Size = new System.Drawing.Size(699, 594);
-            this.ArchetypeEditWidget.TabIndex = 2;
-            this.ArchetypeEditWidget.Visible = false;
-            // 
-            // ArchetypesListView
-            // 
-            this.ArchetypesListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ArchetypeNameColumn});
-            this.ArchetypesListView.FullRowSelect = true;
-            this.ArchetypesListView.HideSelection = false;
-            this.ArchetypesListView.Location = new System.Drawing.Point(3, 3);
-            this.ArchetypesListView.Name = "ArchetypesListView";
-            this.ArchetypesListView.Size = new System.Drawing.Size(244, 533);
-            this.ArchetypesListView.TabIndex = 0;
-            this.ArchetypesListView.UseCompatibleStateImageBehavior = false;
-            this.ArchetypesListView.View = System.Windows.Forms.View.Details;
-            // 
-            // ArchetypeNameColumn
-            // 
-            this.ArchetypeNameColumn.Text = "Archetype Name";
-            this.ArchetypeNameColumn.Width = 220;
             // 
             // ScenariosTab
             // 
@@ -383,6 +331,14 @@
             this.ScenarioPanel.Size = new System.Drawing.Size(0, 68);
             this.ScenarioPanel.TabIndex = 0;
             // 
+            // ArchetypesEditWidget
+            // 
+            this.ArchetypesEditWidget.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ArchetypesEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.ArchetypesEditWidget.Name = "ArchetypesEditWidget";
+            this.ArchetypesEditWidget.Size = new System.Drawing.Size(955, 597);
+            this.ArchetypesEditWidget.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,11 +386,6 @@
         private System.Windows.Forms.TabPage BehaviorsTab;
         private System.Windows.Forms.TabPage BehaviorSetsTab;
         private System.Windows.Forms.TabPage ArchetypesTab;
-        private System.Windows.Forms.Button DeleteArchetypesButton;
-        private System.Windows.Forms.Button AddArchetypeButton;
-        private EditWidgetArchetype ArchetypeEditWidget;
-        private System.Windows.Forms.ListView ArchetypesListView;
-        private System.Windows.Forms.ColumnHeader ArchetypeNameColumn;
         private System.Windows.Forms.TabPage ScenariosTab;
         private System.Windows.Forms.Button DeleteScenariosButton;
         private System.Windows.Forms.ListView ScenariosListView;
@@ -443,6 +394,7 @@
         private System.Windows.Forms.Panel ScenarioPanel;
         private Widgets.EditWidgetBehaviors BehaviorsEditWidget;
         private Widgets.EditWidgetBehaviorSets BehaviorSetsEditWidget;
+        private Widgets.EditWidgetArchetypes ArchetypesEditWidget;
     }
 }
 

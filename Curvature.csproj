@@ -71,6 +71,12 @@
     <Compile Include="Widgets\EditWidgetArchetype.Designer.cs">
       <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\EditWidgetArchetypes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetArchetypes.Designer.cs">
+      <DependentUpon>EditWidgetArchetypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\EditWidgetBehavior.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetArchetype.resx">
       <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetArchetypes.resx">
+      <DependentUpon>EditWidgetArchetypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetBehavior.resx">
       <DependentUpon>EditWidgetBehavior.cs</DependentUpon>

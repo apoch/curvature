@@ -40,7 +40,7 @@
             this.EnabledBehaviorSetsListBox.FormattingEnabled = true;
             this.EnabledBehaviorSetsListBox.Location = new System.Drawing.Point(7, 38);
             this.EnabledBehaviorSetsListBox.Name = "EnabledBehaviorSetsListBox";
-            this.EnabledBehaviorSetsListBox.Size = new System.Drawing.Size(429, 304);
+            this.EnabledBehaviorSetsListBox.Size = new System.Drawing.Size(493, 304);
             this.EnabledBehaviorSetsListBox.TabIndex = 1;
             // 
             // NameEditWidget
@@ -48,7 +48,7 @@
             this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
-            this.NameEditWidget.Size = new System.Drawing.Size(439, 30);
+            this.NameEditWidget.Size = new System.Drawing.Size(503, 30);
             this.NameEditWidget.TabIndex = 2;
             // 
             // EditWidgetArchetype
@@ -58,7 +58,7 @@
             this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.EnabledBehaviorSetsListBox);
             this.Name = "EditWidgetArchetype";
-            this.Size = new System.Drawing.Size(439, 350);
+            this.Size = new System.Drawing.Size(503, 350);
             this.ResumeLayout(false);
 
         }
