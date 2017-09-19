@@ -48,7 +48,6 @@ namespace Curvature
 
             ProjectEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
             ArchetypeEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
-            BehaviorSetEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
         }
 
 
@@ -99,8 +98,8 @@ namespace Curvature
             KnowledgeBaseEditWidget.Attach(EditingProject.KB, EditingProject);
             InputsEditWidget.Attach(EditingProject, EditingProject.Inputs);
             BehaviorsEditWidget.Attach(EditingProject);
-
-            RefreshBehaviorSetControls();
+            BehaviorSetsEditWidget.Attach(EditingProject);
+            
             RefreshArchetypeControls();
             RefreshScenarioControls();
         }
@@ -126,20 +125,6 @@ namespace Curvature
             EditingProject = new Project();
             EditingFileName = null;
             SetUpProject();
-        }
-
-        private void RefreshBehaviorSetControls()
-        {
-            BehaviorSetsListView.Items.Clear();
-
-            foreach (var behaviorSet in EditingProject.BehaviorSets)
-            {
-                var item = new ListViewItem(behaviorSet.ReadableName);
-                item.Tag = behaviorSet;
-                BehaviorSetsListView.Items.Add(item);
-            }
-
-            BehaviorSetEditWidget.Visible = false;
         }
 
         private void RefreshScenarioControls()
@@ -179,18 +164,6 @@ namespace Curvature
             RefreshScenarioControls();
         }
 
-        private void BehaviorSetsListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (BehaviorSetsListView.SelectedItems.Count <= 0)
-            {
-                BehaviorSetEditWidget.Visible = false;
-                return;
-            }
-
-            BehaviorSetEditWidget.Attach(BehaviorSetsListView.SelectedItems[0].Tag as BehaviorSet, EditingProject);
-            BehaviorSetEditWidget.Visible = true;
-        }
-
         private void ScenariosListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Control ctl in ScenarioPanel.Controls)
@@ -224,41 +197,6 @@ namespace Curvature
         {
             EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
             RefreshArchetypeControls();
-        }
-
-        private void AddBehaviorSetButton_Click(object sender, EventArgs e)
-        {
-            EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
-            RefreshBehaviorSetControls();
-        }
-
-        private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)
-        {
-            // TODO - move to widget
-        //    var selection = new List<Behavior>();
-        //    foreach (var item in BehaviorsListView.SelectedItems)
-        //    {
-        //        selection.Add((item as ListViewItem).Tag as Behavior);
-        //    }
-
-        //    foreach (var behavior in selection)
-        //    {
-        //        EditingProject.Delete(behavior);
-        //    }
-        }
-
-        private void DeleteBehaviorSetButton_Click(object sender, EventArgs e)
-        {
-            var selection = new List<BehaviorSet>();
-            foreach (var item in BehaviorSetsListView.SelectedItems)
-            {
-                selection.Add((item as ListViewItem).Tag as BehaviorSet);
-            }
-
-            foreach (var behaviorset in selection)
-            {
-                EditingProject.Delete(behaviorset);
-            }
         }
 
         private void DeleteArchetypesButton_Click(object sender, EventArgs e)

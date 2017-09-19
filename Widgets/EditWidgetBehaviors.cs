@@ -102,5 +102,19 @@ namespace Curvature.Widgets
 
             RefreshConsiderationControls();
         }
+
+        private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<Behavior>();
+            foreach (var item in BehaviorsListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as Behavior);
+            }
+
+            foreach (var behavior in selection)
+            {
+                EditingProject.Delete(behavior);
+            }
+        }
     }
 }

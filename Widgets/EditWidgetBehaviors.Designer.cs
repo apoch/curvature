@@ -54,6 +54,7 @@
             this.DeleteSelectedBehaviorsButton.TabIndex = 7;
             this.DeleteSelectedBehaviorsButton.Text = "Delete Selection";
             this.DeleteSelectedBehaviorsButton.UseVisualStyleBackColor = true;
+            this.DeleteSelectedBehaviorsButton.Click += new System.EventHandler(this.DeleteSelectedBehaviorsButton_Click);
             // 
             // BehaviorsListView
             // 
