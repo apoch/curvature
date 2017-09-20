@@ -99,8 +99,7 @@ namespace Curvature
             BehaviorsEditWidget.Attach(EditingProject);
             BehaviorSetsEditWidget.Attach(EditingProject);
             ArchetypesEditWidget.Attach(EditingProject);
-            
-            RefreshScenarioControls();
+            ScenariosEditWidget.Attach(EditingProject);
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,60 +123,6 @@ namespace Curvature
             EditingProject = new Project();
             EditingFileName = null;
             SetUpProject();
-        }
-
-        private void RefreshScenarioControls()
-        {
-            ScenariosListView.Items.Clear();
-
-            foreach (var scenario in EditingProject.Scenarios)
-            {
-                var item = new ListViewItem(scenario.ReadableName);
-                item.Tag = scenario;
-                ScenariosListView.Items.Add(item);
-            }
-
-            foreach (Control ctl in ScenarioPanel.Controls)
-                ctl.Dispose();
-
-            ScenarioPanel.Controls.Clear();
-        }
-
-        private void CreateScenarioButton_Click(object sender, EventArgs e)
-        {
-            EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
-            RefreshScenarioControls();
-        }
-
-        private void ScenariosListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (Control ctl in ScenarioPanel.Controls)
-                ctl.Dispose();
-
-            ScenarioPanel.Controls.Clear();
-
-            if (ScenariosListView.SelectedItems.Count <= 0)
-                return;
-
-            var widget = new EditWidgetScenario();
-            widget.Attach(ScenariosListView.SelectedItems[0].Tag as Scenario, EditingProject);
-            widget.Dock = DockStyle.Fill;
-            widget.DialogRebuildNeeded += () => { SetUpProject(); };
-            ScenarioPanel.Controls.Add(widget);
-        }
-
-        private void DeleteScenariosButton_Click(object sender, EventArgs e)
-        {
-            var selection = new List<Scenario>();
-            foreach (var item in ScenariosListView.SelectedItems)
-            {
-                selection.Add((item as ListViewItem).Tag as Scenario);
-            }
-
-            foreach (var scenario in selection)
-            {
-                EditingProject.Delete(scenario);
-            }
         }
     }
 }

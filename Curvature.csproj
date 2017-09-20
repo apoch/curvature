@@ -197,6 +197,12 @@
     <Compile Include="Scenarios\Scenario.cs" />
     <Compile Include="Scenarios\ScenarioAgent.cs" />
     <Compile Include="Scenarios\ScenarioLocation.cs" />
+    <Compile Include="Widgets\EditWidgetScenarios.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetScenarios.Designer.cs">
+      <DependentUpon>EditWidgetScenarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\CurvePresetForm.resx">
       <DependentUpon>CurvePresetForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +279,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Widgets\EditWidgetScenarios.resx">
+      <DependentUpon>EditWidgetScenarios.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
