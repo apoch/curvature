@@ -46,7 +46,7 @@ namespace Curvature
                 System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
             };
 
-            ProjectEditWidget.DialogRebuildNeeded += () => { SetUpProject(); };
+            ProjectEditWidget.DialogRebuildNeeded += () => { RefreshControls(); };
         }
 
 
@@ -57,7 +57,7 @@ namespace Curvature
                 EditingProject.SaveToFile(SaveFileDialogBox.FileName);
                 EditingFileName = SaveFileDialogBox.FileName;
 
-                SetUpProject();
+                RefreshControls();
             }
         }
 
@@ -83,11 +83,6 @@ namespace Curvature
             {
                 RefreshControls();
             };
-
-            if (string.IsNullOrEmpty(EditingFileName))
-                Text = "Curvature Studio";
-            else
-                Text = $"Curvature Studio - [{EditingFileName}]";
         }
 
 
@@ -100,6 +95,11 @@ namespace Curvature
             BehaviorSetsEditWidget.Attach(EditingProject);
             ArchetypesEditWidget.Attach(EditingProject);
             ScenariosEditWidget.Attach(EditingProject);
+
+            if (string.IsNullOrEmpty(EditingFileName))
+                Text = "Curvature Studio";
+            else
+                Text = $"Curvature Studio - [{EditingFileName}]";
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
