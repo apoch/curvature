@@ -105,8 +105,8 @@ namespace Curvature
             }
 
             var scoredBehaviors = scores.ScoredContexts.Select(ctx => new { ctx, score = ctx.ChosenBehavior.Score(broker, ctx) }).OrderByDescending(x => x.score.FinalScore);
-            
-            // TODO - check if any behaviors actually got scored, because the IEnumerable might be empty here
+            if (scoredBehaviors == null || !scoredBehaviors.Any())
+                return null;
 
             foreach (var behavior in scoredBehaviors.ToList())
                 behavior.ctx.BehaviorScore = behavior.score;

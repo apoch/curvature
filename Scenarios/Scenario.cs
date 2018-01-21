@@ -288,6 +288,8 @@ namespace Curvature
         public double GetInputValue(InputAxis axis, Context context)
         {
             double raw = 0.0;
+            if (axis == null)
+                return raw;
 
             switch (axis.Origin)
             {
