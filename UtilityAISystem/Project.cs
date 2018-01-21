@@ -203,5 +203,15 @@ namespace Curvature
 
             ItemDelete(this, new DeletionEventArgs { DeletedObject = scenario });
         }
+
+        public void Delete(Consideration consideration)
+        {
+            foreach (var behavior in Behaviors)
+            {
+                behavior.Considerations.Remove(consideration);
+            }
+
+            ItemDelete(this, new DeletionEventArgs { DeletedObject = consideration });
+        }
     }
 }

@@ -116,5 +116,19 @@ namespace Curvature.Widgets
                 EditingProject.Delete(behavior);
             }
         }
+
+        private void DeleteConsiderationButton_Click(object sender, EventArgs e)
+        {
+            var selection = new List<Consideration>();
+            foreach (var item in ConsiderationsListView.SelectedItems)
+            {
+                selection.Add((item as ListViewItem).Tag as Consideration);
+            }
+
+            foreach (var consideration in selection)
+            {
+                EditingProject.Delete(consideration);
+            }
+        }
     }
 }

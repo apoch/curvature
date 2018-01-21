@@ -37,12 +37,13 @@
             this.CreateBehaviorButton = new System.Windows.Forms.Button();
             this.BehaviorTabs = new System.Windows.Forms.TabControl();
             this.BehaviorOverviewTab = new System.Windows.Forms.TabPage();
-            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.BehaviorConsiderationsTab = new System.Windows.Forms.TabPage();
-            this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.AddConsiderationButton = new System.Windows.Forms.Button();
             this.ConsiderationsListView = new System.Windows.Forms.ListView();
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DeleteConsiderationButton = new System.Windows.Forms.Button();
+            this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
+            this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorTabs.SuspendLayout();
             this.BehaviorOverviewTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
@@ -131,18 +132,9 @@
             this.BehaviorOverviewTab.Text = "Scoring Overview";
             this.BehaviorOverviewTab.UseVisualStyleBackColor = true;
             // 
-            // BehaviorEditWidget
-            // 
-            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
-            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
-            this.BehaviorEditWidget.Size = new System.Drawing.Size(542, 545);
-            this.BehaviorEditWidget.TabIndex = 3;
-            // 
             // BehaviorConsiderationsTab
             // 
+            this.BehaviorConsiderationsTab.Controls.Add(this.DeleteConsiderationButton);
             this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationEditWidget);
             this.BehaviorConsiderationsTab.Controls.Add(this.AddConsiderationButton);
             this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationsListView);
@@ -153,17 +145,6 @@
             this.BehaviorConsiderationsTab.TabIndex = 1;
             this.BehaviorConsiderationsTab.Text = "Edit Considerations";
             this.BehaviorConsiderationsTab.UseVisualStyleBackColor = true;
-            // 
-            // ConsiderationEditWidget
-            // 
-            this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationEditWidget.Location = new System.Drawing.Point(176, 6);
-            this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
-            this.ConsiderationEditWidget.Size = new System.Drawing.Size(372, 545);
-            this.ConsiderationEditWidget.TabIndex = 2;
-            this.ConsiderationEditWidget.Visible = false;
             // 
             // AddConsiderationButton
             // 
@@ -197,6 +178,38 @@
             this.ConsiderationNameHeader.Text = "Consideration Name";
             this.ConsiderationNameHeader.Width = 150;
             // 
+            // DeleteConsiderationButton
+            // 
+            this.DeleteConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteConsiderationButton.Location = new System.Drawing.Point(92, 529);
+            this.DeleteConsiderationButton.Name = "DeleteConsiderationButton";
+            this.DeleteConsiderationButton.Size = new System.Drawing.Size(78, 25);
+            this.DeleteConsiderationButton.TabIndex = 3;
+            this.DeleteConsiderationButton.Text = "Delete";
+            this.DeleteConsiderationButton.UseVisualStyleBackColor = true;
+            this.DeleteConsiderationButton.Click += new System.EventHandler(this.DeleteConsiderationButton_Click);
+            // 
+            // BehaviorEditWidget
+            // 
+            this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
+            this.BehaviorEditWidget.Name = "BehaviorEditWidget";
+            this.BehaviorEditWidget.Size = new System.Drawing.Size(542, 545);
+            this.BehaviorEditWidget.TabIndex = 3;
+            // 
+            // ConsiderationEditWidget
+            // 
+            this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConsiderationEditWidget.Location = new System.Drawing.Point(176, 6);
+            this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
+            this.ConsiderationEditWidget.Size = new System.Drawing.Size(372, 545);
+            this.ConsiderationEditWidget.TabIndex = 2;
+            this.ConsiderationEditWidget.Visible = false;
+            // 
             // EditWidgetBehaviors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +242,6 @@
         private System.Windows.Forms.ListView ConsiderationsListView;
         private System.Windows.Forms.ColumnHeader ConsiderationNameHeader;
         private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Button DeleteConsiderationButton;
     }
 }
