@@ -319,6 +319,7 @@ namespace Curvature
             AgentStartYUpDown.Value = (decimal)(agent.StartPosition.Y);
             AgentRadiusUpDown.Value = (decimal)(agent.Radius);
             AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
+            ColorSwatch.BackColor = agent.Color;
 
             if (agent.StartProperties == null)
                 agent.GenerateStartProperties(EditProject.KB);
@@ -384,6 +385,20 @@ namespace Curvature
             }
 
             DialogRebuildNeeded?.Invoke();
+        }
+
+        private void ColorSwatch_Click(object sender, EventArgs e)
+        {
+            if (ColorPicker.ShowDialog() == DialogResult.OK)
+            {
+                ColorSwatch.BackColor = ColorPicker.Color;
+
+                foreach (var item in AgentsListView.SelectedItems)
+                {
+                    var agent = (item as ListViewItem).Tag as ScenarioAgent;
+                    agent.Color = ColorPicker.Color;
+                }
+            }
         }
     }
 }

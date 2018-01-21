@@ -220,9 +220,9 @@ namespace Curvature
             {
                 var displayRect = ToDisplayRect(agent, rect);
 
-                var brush = Brushes.Black;
-                if (AgentsActiveThisTick != null && AgentsActiveThisTick.Contains(agent))
-                    brush = Brushes.DarkGreen;
+                var brush = new SolidBrush(agent.Color);
+                //if (AgentsActiveThisTick != null && AgentsActiveThisTick.Contains(agent))
+                //    brush = Brushes.DarkGreen;
 
                 graphics.FillEllipse(brush, displayRect);
 
@@ -231,7 +231,12 @@ namespace Curvature
 
                 int pad = 20;
                 var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
-                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Red, textRect, stringFormat);
+                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.DarkRed, textRect, stringFormat);
+
+                textRect.Offset(-1, -1);
+                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Black, textRect, stringFormat);
+
+                brush.Dispose();
             }
 
             // Custom action balloons

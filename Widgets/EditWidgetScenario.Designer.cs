@@ -66,8 +66,11 @@
             this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.NameEditWidget = new Curvature.EditWidgetName();
             this.DeleteSelectedAgentsButton = new System.Windows.Forms.Button();
+            this.NameEditWidget = new Curvature.EditWidgetName();
+            this.ColorPicker = new System.Windows.Forms.ColorDialog();
+            this.ColorSwatch = new System.Windows.Forms.PictureBox();
+            this.ColorSwatchLabel = new System.Windows.Forms.Label();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
@@ -79,6 +82,7 @@
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
             this.LogsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -99,6 +103,8 @@
             // 
             // AgentsTab
             // 
+            this.AgentsTab.Controls.Add(this.ColorSwatchLabel);
+            this.AgentsTab.Controls.Add(this.ColorSwatch);
             this.AgentsTab.Controls.Add(this.DeleteSelectedAgentsButton);
             this.AgentsTab.Controls.Add(this.AgentProperties);
             this.AgentsTab.Controls.Add(this.CopyCurrentAgentPositionButton);
@@ -537,14 +543,6 @@
             // 
             this.SimulationInspectionTooltip.ShowAlways = true;
             // 
-            // NameEditWidget
-            // 
-            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.NameEditWidget.Name = "NameEditWidget";
-            this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
-            this.NameEditWidget.TabIndex = 1;
-            // 
             // DeleteSelectedAgentsButton
             // 
             this.DeleteSelectedAgentsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -555,6 +553,38 @@
             this.DeleteSelectedAgentsButton.Text = "Delete";
             this.DeleteSelectedAgentsButton.UseVisualStyleBackColor = true;
             this.DeleteSelectedAgentsButton.Click += new System.EventHandler(this.DeleteSelectedAgentsButton_Click);
+            // 
+            // NameEditWidget
+            // 
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
+            this.NameEditWidget.TabIndex = 1;
+            // 
+            // ColorPicker
+            // 
+            this.ColorPicker.AnyColor = true;
+            this.ColorPicker.FullOpen = true;
+            // 
+            // ColorSwatch
+            // 
+            this.ColorSwatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ColorSwatch.Location = new System.Drawing.Point(453, 240);
+            this.ColorSwatch.Name = "ColorSwatch";
+            this.ColorSwatch.Size = new System.Drawing.Size(31, 21);
+            this.ColorSwatch.TabIndex = 19;
+            this.ColorSwatch.TabStop = false;
+            this.ColorSwatch.Click += new System.EventHandler(this.ColorSwatch_Click);
+            // 
+            // ColorSwatchLabel
+            // 
+            this.ColorSwatchLabel.AutoSize = true;
+            this.ColorSwatchLabel.Location = new System.Drawing.Point(450, 225);
+            this.ColorSwatchLabel.Name = "ColorSwatchLabel";
+            this.ColorSwatchLabel.Size = new System.Drawing.Size(34, 13);
+            this.ColorSwatchLabel.TabIndex = 20;
+            this.ColorSwatchLabel.Text = "Color:";
             // 
             // EditWidgetScenario
             // 
@@ -577,6 +607,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
             this.LogsTab.ResumeLayout(false);
             this.LogsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -622,5 +653,8 @@
         private System.Windows.Forms.ToolTip SimulationInspectionTooltip;
         private System.Windows.Forms.PropertyGrid AgentProperties;
         private System.Windows.Forms.Button DeleteSelectedAgentsButton;
+        private System.Windows.Forms.ColorDialog ColorPicker;
+        private System.Windows.Forms.Label ColorSwatchLabel;
+        private System.Windows.Forms.PictureBox ColorSwatch;
     }
 }

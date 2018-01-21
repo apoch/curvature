@@ -32,6 +32,9 @@ namespace Curvature
         [DataMember]
         public Archetype AgentArchetype;
 
+        [DataMember]
+        public Color Color;
+
 
         public bool Stalled = false;
 
