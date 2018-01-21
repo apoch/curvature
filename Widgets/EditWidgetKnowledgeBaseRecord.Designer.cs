@@ -54,8 +54,6 @@
             // 
             // OriginComboBox
             // 
-            this.OriginComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.OriginComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OriginComboBox.FormattingEnabled = true;
             this.OriginComboBox.Items.AddRange(new object[] {
@@ -63,14 +61,14 @@
             "Computed using a known equation"});
             this.OriginComboBox.Location = new System.Drawing.Point(270, 3);
             this.OriginComboBox.Name = "OriginComboBox";
-            this.OriginComboBox.Size = new System.Drawing.Size(244, 21);
+            this.OriginComboBox.Size = new System.Drawing.Size(198, 21);
             this.OriginComboBox.TabIndex = 2;
             this.OriginComboBox.SelectedIndexChanged += new System.EventHandler(this.OriginComboBox_SelectedIndexChanged);
             // 
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(520, 3);
+            this.DeleteButton.Location = new System.Drawing.Point(735, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(55, 22);
             this.DeleteButton.TabIndex = 3;
@@ -80,15 +78,17 @@
             // 
             // ClampingBehaviorComboBox
             // 
+            this.ClampingBehaviorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ClampingBehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClampingBehaviorComboBox.FormattingEnabled = true;
             this.ClampingBehaviorComboBox.Items.AddRange(new object[] {
             "Decimal values in a fixed range",
             "Decimal values in a configurable range",
             "Preselected values (enumeration)"});
-            this.ClampingBehaviorComboBox.Location = new System.Drawing.Point(47, 29);
+            this.ClampingBehaviorComboBox.Location = new System.Drawing.Point(474, 3);
             this.ClampingBehaviorComboBox.Name = "ClampingBehaviorComboBox";
-            this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(217, 21);
+            this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(255, 21);
             this.ClampingBehaviorComboBox.TabIndex = 4;
             this.ClampingBehaviorComboBox.SelectedIndexChanged += new System.EventHandler(this.ClampingBehaviorComboBox_SelectedIndexChanged);
             // 
@@ -102,7 +102,7 @@
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(578, 53);
+            this.Size = new System.Drawing.Size(793, 33);
             this.ResumeLayout(false);
             this.PerformLayout();
 
