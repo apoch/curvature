@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetBehaviors));
             this.DeleteSelectedBehaviorsButton = new System.Windows.Forms.Button();
             this.BehaviorsListView = new System.Windows.Forms.ListView();
             this.BehaviorNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,6 +40,7 @@
             this.AddConsiderationButton = new System.Windows.Forms.Button();
             this.ConsiderationsListView = new System.Windows.Forms.ListView();
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorTabs.SuspendLayout();
@@ -48,11 +51,15 @@
             // DeleteSelectedBehaviorsButton
             // 
             this.DeleteSelectedBehaviorsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteSelectedBehaviorsButton.Location = new System.Drawing.Point(3, 563);
+            this.DeleteSelectedBehaviorsButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.DeleteSelectedBehaviorsButton.ImageIndex = 1;
+            this.DeleteSelectedBehaviorsButton.ImageList = this.IconImageList;
+            this.DeleteSelectedBehaviorsButton.Location = new System.Drawing.Point(128, 534);
             this.DeleteSelectedBehaviorsButton.Name = "DeleteSelectedBehaviorsButton";
-            this.DeleteSelectedBehaviorsButton.Size = new System.Drawing.Size(244, 23);
+            this.DeleteSelectedBehaviorsButton.Size = new System.Drawing.Size(119, 52);
             this.DeleteSelectedBehaviorsButton.TabIndex = 7;
             this.DeleteSelectedBehaviorsButton.Text = "Delete Selection";
+            this.DeleteSelectedBehaviorsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DeleteSelectedBehaviorsButton.UseVisualStyleBackColor = true;
             this.DeleteSelectedBehaviorsButton.Click += new System.EventHandler(this.DeleteSelectedBehaviorsButton_Click);
             // 
@@ -80,11 +87,15 @@
             // CreateBehaviorButton
             // 
             this.CreateBehaviorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateBehaviorButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CreateBehaviorButton.ImageIndex = 0;
+            this.CreateBehaviorButton.ImageList = this.IconImageList;
             this.CreateBehaviorButton.Location = new System.Drawing.Point(3, 534);
             this.CreateBehaviorButton.Name = "CreateBehaviorButton";
-            this.CreateBehaviorButton.Size = new System.Drawing.Size(244, 23);
+            this.CreateBehaviorButton.Size = new System.Drawing.Size(119, 52);
             this.CreateBehaviorButton.TabIndex = 6;
             this.CreateBehaviorButton.Text = "Add New Behavior";
+            this.CreateBehaviorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CreateBehaviorButton.UseVisualStyleBackColor = true;
             this.CreateBehaviorButton.Click += new System.EventHandler(this.CreateBehaviorButton_Click);
             // 
@@ -158,6 +169,13 @@
             this.ConsiderationNameHeader.Text = "Consideration Name";
             this.ConsiderationNameHeader.Width = 150;
             // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
+            // 
             // BehaviorEditWidget
             // 
             this.BehaviorEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -210,5 +228,6 @@
         private System.Windows.Forms.Button AddConsiderationButton;
         private System.Windows.Forms.ListView ConsiderationsListView;
         private System.Windows.Forms.ColumnHeader ConsiderationNameHeader;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }
