@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetName));
             this.FlowPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.EditIcon = new System.Windows.Forms.PictureBox();
-            this.ObjectNameLabel = new System.Windows.Forms.Label();
             this.ObjectTypeLabel = new System.Windows.Forms.Label();
+            this.ObjectNameLabel = new System.Windows.Forms.Label();
+            this.EditIcon = new System.Windows.Forms.Label();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.RenameWidgetTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.FlowPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // FlowPanel
@@ -49,27 +52,6 @@
             this.FlowPanel.TabIndex = 3;
             this.FlowPanel.WrapContents = false;
             // 
-            // EditIcon
-            // 
-            this.EditIcon.Image = global::Curvature.Properties.Resources._00ffff_pencil_32;
-            this.EditIcon.Location = new System.Drawing.Point(197, 3);
-            this.EditIcon.Name = "EditIcon";
-            this.EditIcon.Size = new System.Drawing.Size(12, 16);
-            this.EditIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.EditIcon.TabIndex = 5;
-            this.EditIcon.TabStop = false;
-            this.EditIcon.Click += new System.EventHandler(this.EditIcon_Click);
-            // 
-            // ObjectNameLabel
-            // 
-            this.ObjectNameLabel.AutoSize = true;
-            this.ObjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ObjectNameLabel.Location = new System.Drawing.Point(136, 0);
-            this.ObjectNameLabel.Name = "ObjectNameLabel";
-            this.ObjectNameLabel.Size = new System.Drawing.Size(55, 20);
-            this.ObjectNameLabel.TabIndex = 4;
-            this.ObjectNameLabel.Text = "Name";
-            // 
             // ObjectTypeLabel
             // 
             this.ObjectTypeLabel.AutoSize = true;
@@ -80,6 +62,35 @@
             this.ObjectTypeLabel.TabIndex = 3;
             this.ObjectTypeLabel.Text = "Named Object:";
             // 
+            // ObjectNameLabel
+            // 
+            this.ObjectNameLabel.AutoSize = true;
+            this.ObjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ObjectNameLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ObjectNameLabel.Location = new System.Drawing.Point(136, 0);
+            this.ObjectNameLabel.Name = "ObjectNameLabel";
+            this.ObjectNameLabel.Size = new System.Drawing.Size(55, 20);
+            this.ObjectNameLabel.TabIndex = 4;
+            this.ObjectNameLabel.Text = "Name";
+            // 
+            // EditIcon
+            // 
+            this.EditIcon.ImageIndex = 0;
+            this.EditIcon.ImageList = this.IconImageList;
+            this.EditIcon.Location = new System.Drawing.Point(197, 0);
+            this.EditIcon.Name = "EditIcon";
+            this.EditIcon.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.EditIcon.Size = new System.Drawing.Size(18, 18);
+            this.EditIcon.TabIndex = 5;
+            this.RenameWidgetTooltip.SetToolTip(this.EditIcon, "Rename this item");
+            this.EditIcon.Click += new System.EventHandler(this.EditIcon_Click);
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "RenameItemIcon.png");
+            // 
             // EditWidgetName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -89,7 +100,6 @@
             this.Size = new System.Drawing.Size(398, 141);
             this.FlowPanel.ResumeLayout(false);
             this.FlowPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -98,6 +108,8 @@
         private System.Windows.Forms.FlowLayoutPanel FlowPanel;
         private System.Windows.Forms.Label ObjectTypeLabel;
         private System.Windows.Forms.Label ObjectNameLabel;
-        private System.Windows.Forms.PictureBox EditIcon;
+        private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Label EditIcon;
+        private System.Windows.Forms.ToolTip RenameWidgetTooltip;
     }
 }

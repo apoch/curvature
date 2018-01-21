@@ -296,11 +296,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\00ffff-pencil-32.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Images\DeleteItemIcon.png" />
     <Content Include="Images\CreateItemIcon.png" />
+    <Content Include="Images\RenameItemIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
