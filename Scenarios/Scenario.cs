@@ -229,6 +229,21 @@ namespace Curvature
                 if (agent.Stalled)
                     graphics.DrawRectangle(Pens.Red, displayRect);
 
+
+                // TODO - orient the indicator arrow towards the direction of agent intention/motion
+                int tipX = displayRect.Left + (displayRect.Width / 2);
+                int tipY = displayRect.Top;
+
+                int bottomX1 = displayRect.Left + (displayRect.Width / 3);
+                int bottomY1 = displayRect.Bottom;
+
+                int bottomX2 = displayRect.Right - (displayRect.Width / 3);
+                int bottomY2 = displayRect.Bottom;
+
+                graphics.DrawLines(Pens.Black, new Point[] { new Point(tipX, tipY), new Point(bottomX1, bottomY1), new Point(bottomX2, bottomY2), new Point(tipX, tipY) });
+
+
+
                 int pad = 20;
                 var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
                 graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.DarkRed, textRect, stringFormat);
