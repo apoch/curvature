@@ -371,5 +371,19 @@ namespace Curvature
 
             DialogRebuildNeeded?.Invoke();
         }
+
+        private void DeleteSelectedAgentsButton_Click(object sender, EventArgs e)
+        {
+            if (Simulation == null)
+                return;
+
+            foreach (var selected in AgentsListView.SelectedItems)
+            {
+                var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+                Simulation.Agents.Remove(agent);
+            }
+
+            DialogRebuildNeeded?.Invoke();
+        }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.ScenarioEditorTabs = new System.Windows.Forms.TabControl();
             this.AgentsTab = new System.Windows.Forms.TabPage();
+            this.AgentProperties = new System.Windows.Forms.PropertyGrid();
             this.CopyCurrentAgentPositionButton = new System.Windows.Forms.Button();
             this.AgentResetButton = new System.Windows.Forms.Button();
             this.AgentStartYLabel = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.NameEditWidget = new Curvature.EditWidgetName();
-            this.AgentProperties = new System.Windows.Forms.PropertyGrid();
+            this.DeleteSelectedAgentsButton = new System.Windows.Forms.Button();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
@@ -98,6 +99,7 @@
             // 
             // AgentsTab
             // 
+            this.AgentsTab.Controls.Add(this.DeleteSelectedAgentsButton);
             this.AgentsTab.Controls.Add(this.AgentProperties);
             this.AgentsTab.Controls.Add(this.CopyCurrentAgentPositionButton);
             this.AgentsTab.Controls.Add(this.AgentResetButton);
@@ -122,6 +124,17 @@
             this.AgentsTab.TabIndex = 0;
             this.AgentsTab.Text = "Agents";
             this.AgentsTab.UseVisualStyleBackColor = true;
+            // 
+            // AgentProperties
+            // 
+            this.AgentProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AgentProperties.LineColor = System.Drawing.SystemColors.ControlDark;
+            this.AgentProperties.Location = new System.Drawing.Point(6, 312);
+            this.AgentProperties.Name = "AgentProperties";
+            this.AgentProperties.Size = new System.Drawing.Size(726, 112);
+            this.AgentProperties.TabIndex = 17;
             // 
             // CopyCurrentAgentPositionButton
             // 
@@ -532,16 +545,16 @@
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
             this.NameEditWidget.TabIndex = 1;
             // 
-            // AgentProperties
+            // DeleteSelectedAgentsButton
             // 
-            this.AgentProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AgentProperties.LineColor = System.Drawing.SystemColors.ControlDark;
-            this.AgentProperties.Location = new System.Drawing.Point(6, 312);
-            this.AgentProperties.Name = "AgentProperties";
-            this.AgentProperties.Size = new System.Drawing.Size(726, 112);
-            this.AgentProperties.TabIndex = 17;
+            this.DeleteSelectedAgentsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteSelectedAgentsButton.Location = new System.Drawing.Point(639, 33);
+            this.DeleteSelectedAgentsButton.Name = "DeleteSelectedAgentsButton";
+            this.DeleteSelectedAgentsButton.Size = new System.Drawing.Size(96, 27);
+            this.DeleteSelectedAgentsButton.TabIndex = 18;
+            this.DeleteSelectedAgentsButton.Text = "Delete";
+            this.DeleteSelectedAgentsButton.UseVisualStyleBackColor = true;
+            this.DeleteSelectedAgentsButton.Click += new System.EventHandler(this.DeleteSelectedAgentsButton_Click);
             // 
             // EditWidgetScenario
             // 
@@ -608,5 +621,6 @@
         private System.Windows.Forms.TextBox LogDetailTextBox;
         private System.Windows.Forms.ToolTip SimulationInspectionTooltip;
         private System.Windows.Forms.PropertyGrid AgentProperties;
+        private System.Windows.Forms.Button DeleteSelectedAgentsButton;
     }
 }
