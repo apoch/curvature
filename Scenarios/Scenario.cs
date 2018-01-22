@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Curvature
 {
@@ -219,29 +221,59 @@ namespace Curvature
             foreach (var agent in Agents)
             {
                 var displayRect = ToDisplayRect(agent, rect);
-
-                var brush = new SolidBrush(agent.Color);
-                //if (AgentsActiveThisTick != null && AgentsActiveThisTick.Contains(agent))
-                //    brush = Brushes.DarkGreen;
-
-                graphics.FillEllipse(brush, displayRect);
-
                 if (agent.Stalled)
                     graphics.DrawRectangle(Pens.Red, displayRect);
 
 
-                // TODO - orient the indicator arrow towards the direction of agent intention/motion
-                int tipX = displayRect.Left + (displayRect.Width / 2);
-                int tipY = displayRect.Top;
+                // Intention indicator
+                var intentVec = new PointF() { X = agent.IntentPosition.X - agent.GetPosition().X, Y = agent.IntentPosition.Y - agent.GetPosition().Y };
+                var intentLength = Magnitude(intentVec);
 
-                int bottomX1 = displayRect.Left + (displayRect.Width / 3);
-                int bottomY1 = displayRect.Bottom;
+                if (intentLength > 0.05f)
+                {
+                    intentVec.X /= intentLength;
+                    intentVec.Y /= intentLength;
 
-                int bottomX2 = displayRect.Right - (displayRect.Width / 3);
-                int bottomY2 = displayRect.Bottom;
+                    var tip = CoordinatesToDisplayPoint(agent.GetPosition().X - intentVec.X * agent.Radius, agent.GetPosition().Y - intentVec.Y * agent.Radius, rect);
+                    var bottomCenter = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius, agent.GetPosition().Y + intentVec.Y * agent.Radius);
 
-                graphics.DrawLines(Pens.Black, new Point[] { new Point(tipX, tipY), new Point(bottomX1, bottomY1), new Point(bottomX2, bottomY2), new Point(tipX, tipY) });
+                    var intentOrthogonalVec = Normalize(new PointF(-intentVec.Y, intentVec.X));
 
+
+                    var bottomL = CoordinatesToDisplayPoint(bottomCenter.X - intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y - intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+                    var bottomR = CoordinatesToDisplayPoint(bottomCenter.X + intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y + intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+
+                    var bcExtended = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius * 1.2f, agent.GetPosition().Y + intentVec.Y * agent.Radius * 1.2f);
+                    var bc = CoordinatesToDisplayPoint(bcExtended.X, bcExtended.Y, rect);
+
+                    Color darker = GetDarkerColor(agent.Color);
+                    Color lighter = GetLighterColor(agent.Color);
+
+                    var gradient = new LinearGradientBrush(tip, bc, lighter, darker);
+
+                    var poly = new Point[] { tip, bottomL, bottomR, tip };
+
+                    graphics.DrawLines(Pens.Black, poly);
+                    graphics.FillPolygon(gradient, poly);
+
+                    gradient.Dispose();
+                }
+                else
+                {
+                    using (var ellipse = new GraphicsPath())
+                    {
+                        var insetRect = ToDisplayRect(agent, rect, 0.35f);
+                        ellipse.AddEllipse(insetRect);
+
+                        using (var gradient = new PathGradientBrush(ellipse))
+                        {
+                            gradient.CenterColor = GetDarkerColor(agent.Color);
+                            gradient.SurroundColors = new[] { GetLighterColor(agent.Color) };
+
+                            graphics.FillRectangle(gradient, insetRect);
+                        }
+                    }
+                }
 
 
                 int pad = 20;
@@ -250,8 +282,6 @@ namespace Curvature
 
                 textRect.Offset(-1, -1);
                 graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Black, textRect, stringFormat);
-
-                brush.Dispose();
             }
 
             // Custom action balloons
@@ -331,6 +361,7 @@ namespace Curvature
             const float speed = 1.0f;
 
             context.ThinkingAgent.Stalled = false;
+            context.ThinkingAgent.IntentPosition = context.ThinkingAgent.GetPosition();
 
             switch (context.ChosenBehavior.Action)
             {
@@ -344,6 +375,9 @@ namespace Curvature
                         var vec = ComputeVectorTowardsTarget(context);
                         context.ThinkingAgent.Position.X = ClampToEscape(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
                         context.ThinkingAgent.Position.Y = ClampToEscape(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
+
+                        context.ThinkingAgent.IntentPosition.X = vec.X + context.Target.GetPosition().X;
+                        context.ThinkingAgent.IntentPosition.Y = vec.Y + context.Target.GetPosition().Y;
                     }
                     break;
 
@@ -354,6 +388,8 @@ namespace Curvature
                         var vec = ComputeVectorTowardsTarget(context);
                         context.ThinkingAgent.Position.X = ClampToArrival(pos.X, context.Target.GetPosition().X, pos.X + (speed * dt * vec.X));
                         context.ThinkingAgent.Position.Y = ClampToArrival(pos.Y, context.Target.GetPosition().Y, pos.Y + (speed * dt * vec.Y));
+
+                        context.ThinkingAgent.IntentPosition = context.Target.GetPosition();
                     }
                     break;
 
@@ -399,13 +435,13 @@ namespace Curvature
             return new Point((int)(x * (float)rect.Width), rect.Height - (int)(y * (float)rect.Height));
         }
 
-        private Rectangle ToDisplayRect(IScenarioMember obj, Rectangle rect)
+        private Rectangle ToDisplayRect(IScenarioMember obj, Rectangle rect, float scaleRadius = 1.0f)
         {
             PointF center = obj.GetPosition();
             Point centerRender = CoordinatesToDisplayPoint(center.X, center.Y, rect);
 
-            int width = (int)((float)rect.Width * obj.GetRadius() / (HorizontalUnitsVisible / 2.0f));
-            int height = (int)((float)rect.Height * obj.GetRadius() / (VerticalUnitsVisible / 2.0f));
+            int width = (int)((float)rect.Width * obj.GetRadius() * scaleRadius / (HorizontalUnitsVisible / 2.0f));
+            int height = (int)((float)rect.Height * obj.GetRadius() * scaleRadius / (VerticalUnitsVisible / 2.0f));
 
             return new Rectangle(centerRender.X - (width / 2), centerRender.Y - (height / 2), width, height);
         }
@@ -473,6 +509,11 @@ namespace Curvature
             return (float)Math.Sqrt(dx * dx + dy * dy);
         }
 
+        private float Magnitude(PointF p)
+        {
+            return (float)Math.Sqrt(p.X * p.X + p.Y * p.Y);
+        }
+
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
@@ -532,6 +573,17 @@ namespace Curvature
             }
 
             return null;
+        }
+
+
+        private Color GetDarkerColor (Color c)
+        {
+            return ControlPaint.Dark(c, 0.25f);
+        }
+
+        private Color GetLighterColor (Color c)
+        {
+            return ControlPaint.Light(c, 0.25f);
         }
     }
 }
