@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
+            this.CustomPayload = new System.Windows.Forms.TextBox();
+            this.CustomPayloadLabel = new System.Windows.Forms.Label();
             this.CanTargetOthersCheckBox = new System.Windows.Forms.CheckBox();
             this.CanTargetSelfCheckBox = new System.Windows.Forms.CheckBox();
             this.ActionComboBox = new System.Windows.Forms.ComboBox();
@@ -49,8 +51,6 @@
             this.ConsiderationScoreGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoreLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.NameEditWidget = new Curvature.EditWidgetName();
-            this.CustomPayloadLabel = new System.Windows.Forms.Label();
-            this.CustomPayload = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalSplit)).BeginInit();
             this.VerticalSplit.Panel1.SuspendLayout();
             this.VerticalSplit.Panel2.SuspendLayout();
@@ -88,6 +88,25 @@
             this.VerticalSplit.Size = new System.Drawing.Size(719, 379);
             this.VerticalSplit.SplitterDistance = 300;
             this.VerticalSplit.TabIndex = 1;
+            // 
+            // CustomPayload
+            // 
+            this.CustomPayload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomPayload.Location = new System.Drawing.Point(78, 50);
+            this.CustomPayload.Name = "CustomPayload";
+            this.CustomPayload.Size = new System.Drawing.Size(213, 20);
+            this.CustomPayload.TabIndex = 6;
+            this.CustomPayload.TextChanged += new System.EventHandler(this.CustomPayload_TextChanged);
+            // 
+            // CustomPayloadLabel
+            // 
+            this.CustomPayloadLabel.AutoSize = true;
+            this.CustomPayloadLabel.Location = new System.Drawing.Point(3, 53);
+            this.CustomPayloadLabel.Name = "CustomPayloadLabel";
+            this.CustomPayloadLabel.Size = new System.Drawing.Size(69, 13);
+            this.CustomPayloadLabel.TabIndex = 5;
+            this.CustomPayloadLabel.Text = "Custom Text:";
             // 
             // CanTargetOthersCheckBox
             // 
@@ -161,13 +180,14 @@
             this.ScoreListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ScoreColumnHeader,
             this.DescriptionColumnHeader});
-            listViewGroup3.Header = "Considerations";
-            listViewGroup3.Name = "ConsiderationGroup";
-            listViewGroup4.Header = "Bonuses";
-            listViewGroup4.Name = "BonusGroup";
+            this.ScoreListView.FullRowSelect = true;
+            listViewGroup1.Header = "Considerations";
+            listViewGroup1.Name = "ConsiderationGroup";
+            listViewGroup2.Header = "Bonuses";
+            listViewGroup2.Name = "BonusGroup";
             this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.ScoreListView.Location = new System.Drawing.Point(6, 91);
             this.ScoreListView.Name = "ScoreListView";
             this.ScoreListView.Size = new System.Drawing.Size(285, 162);
@@ -307,25 +327,6 @@
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(725, 30);
             this.NameEditWidget.TabIndex = 2;
-            // 
-            // CustomPayloadLabel
-            // 
-            this.CustomPayloadLabel.AutoSize = true;
-            this.CustomPayloadLabel.Location = new System.Drawing.Point(3, 53);
-            this.CustomPayloadLabel.Name = "CustomPayloadLabel";
-            this.CustomPayloadLabel.Size = new System.Drawing.Size(69, 13);
-            this.CustomPayloadLabel.TabIndex = 5;
-            this.CustomPayloadLabel.Text = "Custom Text:";
-            // 
-            // CustomPayload
-            // 
-            this.CustomPayload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomPayload.Location = new System.Drawing.Point(78, 50);
-            this.CustomPayload.Name = "CustomPayload";
-            this.CustomPayload.Size = new System.Drawing.Size(213, 20);
-            this.CustomPayload.TabIndex = 6;
-            this.CustomPayload.TextChanged += new System.EventHandler(this.CustomPayload_TextChanged);
             // 
             // EditWidgetBehavior
             // 
