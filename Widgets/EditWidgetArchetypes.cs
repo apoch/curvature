@@ -38,6 +38,11 @@ namespace Curvature.Widgets
             }
 
             ArchetypeEditWidget.Visible = false;
+
+            if (ArchetypesListView.Items.Count <= 0)
+                return;
+
+            ArchetypesListView.SelectedIndices.Add(0);
         }
 
         private void AddArchetypeButton_Click(object sender, EventArgs e)

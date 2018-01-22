@@ -40,6 +40,11 @@ namespace Curvature.Widgets
             }
 
             BehaviorTabs.Visible = false;
+
+            if (BehaviorsListView.Items.Count <= 0)
+                return;
+
+            BehaviorsListView.SelectedIndices.Add(0);
         }
 
         private void RefreshConsiderationControls()

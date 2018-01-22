@@ -45,6 +45,11 @@ namespace Curvature.Widgets
                 ctl.Dispose();
 
             ScenarioPanel.Controls.Clear();
+
+            if (ScenariosListView.Items.Count <= 0)
+                return;
+
+            ScenariosListView.SelectedIndices.Add(0);
         }
 
         private void ScenariosListView_SelectedIndexChanged(object sender, EventArgs e)

@@ -39,6 +39,11 @@ namespace Curvature.Widgets
             }
 
             BehaviorSetEditWidget.Visible = false;
+
+            if (BehaviorSetsListView.Items.Count <= 0)
+                return;
+
+            BehaviorSetsListView.SelectedIndices.Add(0);
         }
 
         private void BehaviorSetsListView_SelectedIndexChanged(object sender, EventArgs e)
