@@ -28,6 +28,20 @@ namespace Curvature.Widgets
         }
 
 
+        internal void NavigateTo(Behavior behavior)
+        {
+            foreach (ListViewItem item in BehaviorsListView.Items)
+            {
+                if ((item.Tag as Behavior) == behavior)
+                {
+                    BehaviorsListView.SelectedIndices.Clear();
+                    BehaviorsListView.SelectedIndices.Add(item.Index);
+                    return;
+                }
+            }
+        }
+
+
         private void RefreshBehaviorControls()
         {
             BehaviorsListView.Items.Clear();

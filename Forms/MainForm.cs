@@ -47,6 +47,9 @@ namespace Curvature
             };
 
             ProjectEditWidget.DialogRebuildNeeded += () => { RefreshControls(); };
+
+
+            BehaviorSetsEditWidget.AutoNavigationRequested += AutoNavigationRequestedFromChild;
         }
 
 
@@ -123,6 +126,12 @@ namespace Curvature
             EditingProject = new Project();
             EditingFileName = null;
             SetUpProject();
+        }
+
+        internal void AutoNavigationRequestedFromChild(Behavior behavior)
+        {
+            MainTabs.SelectTab(BehaviorsTab);
+            BehaviorsEditWidget.NavigateTo(behavior);
         }
     }
 }

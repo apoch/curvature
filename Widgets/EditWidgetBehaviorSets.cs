@@ -16,9 +16,14 @@ namespace Curvature.Widgets
         private Project EditingProject;
 
 
+        internal delegate void AutoNavigationRequestedHandler(Behavior behavior);
+        internal event AutoNavigationRequestedHandler AutoNavigationRequested;
+
+
         public EditWidgetBehaviorSets()
         {
             InitializeComponent();
+            BehaviorSetEditWidget.AutoNavigationRequested += AutoNavigationRequestedFromChild;
         }
 
         public void Attach(Project project)
@@ -76,6 +81,11 @@ namespace Curvature.Widgets
         {
             EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
             RefreshBehaviorSetControls();
+        }
+
+        internal void AutoNavigationRequestedFromChild(Behavior behavior)
+        {
+            AutoNavigationRequested?.Invoke(behavior);
         }
     }
 }

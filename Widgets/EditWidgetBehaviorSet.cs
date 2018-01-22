@@ -19,6 +19,9 @@ namespace Curvature
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
+        internal delegate void AutoNavigationRequestedHandler(Behavior behavior);
+        internal event AutoNavigationRequestedHandler AutoNavigationRequested;
+
 
         public EditWidgetBehaviorSet()
         {
@@ -44,7 +47,7 @@ namespace Curvature
                 if (item == null)
                     return;
 
-                // TODO - activate UI for editing the relevant behavior
+                AutoNavigationRequested?.Invoke(item.Tag as Behavior);
             };
         }
 
