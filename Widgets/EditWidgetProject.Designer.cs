@@ -32,19 +32,20 @@
             this.ResourcesLabel = new System.Windows.Forms.Label();
             this.NameEditWidget = new Curvature.EditWidgetName();
             this.StatsGroupBox = new System.Windows.Forms.GroupBox();
-            this.KnowledgeBaseEntriesLabel = new System.Windows.Forms.Label();
-            this.InputAxesLabel = new System.Windows.Forms.Label();
-            this.ConsiderationsLabel = new System.Windows.Forms.Label();
-            this.BehaviorsLabel = new System.Windows.Forms.Label();
-            this.BehaviorSetsLabel = new System.Windows.Forms.Label();
-            this.ArchetypesLabel = new System.Windows.Forms.Label();
             this.ScenariosLabel = new System.Windows.Forms.Label();
+            this.ArchetypesLabel = new System.Windows.Forms.Label();
+            this.BehaviorSetsLabel = new System.Windows.Forms.Label();
+            this.BehaviorsLabel = new System.Windows.Forms.Label();
+            this.ConsiderationsLabel = new System.Windows.Forms.Label();
+            this.InputAxesLabel = new System.Windows.Forms.Label();
+            this.KnowledgeBaseEntriesLabel = new System.Windows.Forms.Label();
             this.UtilityCrashCourseLinkLabel = new System.Windows.Forms.LinkLabel();
             this.WizardsGroupBox = new System.Windows.Forms.GroupBox();
-            this.CreateKnowledgeButton = new System.Windows.Forms.Button();
-            this.DefineInputsButton = new System.Windows.Forms.Button();
-            this.SpecifyBehaviorsButton = new System.Windows.Forms.Button();
             this.ScenariosButton = new System.Windows.Forms.Button();
+            this.SpecifyBehaviorsButton = new System.Windows.Forms.Button();
+            this.DefineInputsButton = new System.Windows.Forms.Button();
+            this.CreateKnowledgeButton = new System.Windows.Forms.Button();
+            this.GuidedTourButton = new System.Windows.Forms.Button();
             this.StatsGroupBox.SuspendLayout();
             this.WizardsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -91,55 +92,19 @@
             this.StatsGroupBox.Controls.Add(this.KnowledgeBaseEntriesLabel);
             this.StatsGroupBox.Location = new System.Drawing.Point(8, 33);
             this.StatsGroupBox.Name = "StatsGroupBox";
-            this.StatsGroupBox.Size = new System.Drawing.Size(203, 173);
+            this.StatsGroupBox.Size = new System.Drawing.Size(203, 183);
             this.StatsGroupBox.TabIndex = 3;
             this.StatsGroupBox.TabStop = false;
             this.StatsGroupBox.Text = "Project Statistics";
             // 
-            // KnowledgeBaseEntriesLabel
+            // ScenariosLabel
             // 
-            this.KnowledgeBaseEntriesLabel.AutoSize = true;
-            this.KnowledgeBaseEntriesLabel.Location = new System.Drawing.Point(6, 18);
-            this.KnowledgeBaseEntriesLabel.Name = "KnowledgeBaseEntriesLabel";
-            this.KnowledgeBaseEntriesLabel.Size = new System.Drawing.Size(134, 13);
-            this.KnowledgeBaseEntriesLabel.TabIndex = 0;
-            this.KnowledgeBaseEntriesLabel.Text = "Knowledge Base Entries: 0";
-            // 
-            // InputAxesLabel
-            // 
-            this.InputAxesLabel.AutoSize = true;
-            this.InputAxesLabel.Location = new System.Drawing.Point(6, 39);
-            this.InputAxesLabel.Name = "InputAxesLabel";
-            this.InputAxesLabel.Size = new System.Drawing.Size(69, 13);
-            this.InputAxesLabel.TabIndex = 1;
-            this.InputAxesLabel.Text = "Input Axes: 0";
-            // 
-            // ConsiderationsLabel
-            // 
-            this.ConsiderationsLabel.AutoSize = true;
-            this.ConsiderationsLabel.Location = new System.Drawing.Point(6, 60);
-            this.ConsiderationsLabel.Name = "ConsiderationsLabel";
-            this.ConsiderationsLabel.Size = new System.Drawing.Size(88, 13);
-            this.ConsiderationsLabel.TabIndex = 2;
-            this.ConsiderationsLabel.Text = "Considerations: 0";
-            // 
-            // BehaviorsLabel
-            // 
-            this.BehaviorsLabel.AutoSize = true;
-            this.BehaviorsLabel.Location = new System.Drawing.Point(6, 82);
-            this.BehaviorsLabel.Name = "BehaviorsLabel";
-            this.BehaviorsLabel.Size = new System.Drawing.Size(66, 13);
-            this.BehaviorsLabel.TabIndex = 3;
-            this.BehaviorsLabel.Text = "Behaviors: 0";
-            // 
-            // BehaviorSetsLabel
-            // 
-            this.BehaviorSetsLabel.AutoSize = true;
-            this.BehaviorSetsLabel.Location = new System.Drawing.Point(6, 104);
-            this.BehaviorSetsLabel.Name = "BehaviorSetsLabel";
-            this.BehaviorSetsLabel.Size = new System.Drawing.Size(85, 13);
-            this.BehaviorSetsLabel.TabIndex = 4;
-            this.BehaviorSetsLabel.Text = "Behavior Sets: 0";
+            this.ScenariosLabel.AutoSize = true;
+            this.ScenariosLabel.Location = new System.Drawing.Point(6, 148);
+            this.ScenariosLabel.Name = "ScenariosLabel";
+            this.ScenariosLabel.Size = new System.Drawing.Size(66, 13);
+            this.ScenariosLabel.TabIndex = 6;
+            this.ScenariosLabel.Text = "Scenarios: 0";
             // 
             // ArchetypesLabel
             // 
@@ -150,14 +115,50 @@
             this.ArchetypesLabel.TabIndex = 5;
             this.ArchetypesLabel.Text = "Archetypes: 0";
             // 
-            // ScenariosLabel
+            // BehaviorSetsLabel
             // 
-            this.ScenariosLabel.AutoSize = true;
-            this.ScenariosLabel.Location = new System.Drawing.Point(6, 148);
-            this.ScenariosLabel.Name = "ScenariosLabel";
-            this.ScenariosLabel.Size = new System.Drawing.Size(66, 13);
-            this.ScenariosLabel.TabIndex = 6;
-            this.ScenariosLabel.Text = "Scenarios: 0";
+            this.BehaviorSetsLabel.AutoSize = true;
+            this.BehaviorSetsLabel.Location = new System.Drawing.Point(6, 104);
+            this.BehaviorSetsLabel.Name = "BehaviorSetsLabel";
+            this.BehaviorSetsLabel.Size = new System.Drawing.Size(85, 13);
+            this.BehaviorSetsLabel.TabIndex = 4;
+            this.BehaviorSetsLabel.Text = "Behavior Sets: 0";
+            // 
+            // BehaviorsLabel
+            // 
+            this.BehaviorsLabel.AutoSize = true;
+            this.BehaviorsLabel.Location = new System.Drawing.Point(6, 82);
+            this.BehaviorsLabel.Name = "BehaviorsLabel";
+            this.BehaviorsLabel.Size = new System.Drawing.Size(66, 13);
+            this.BehaviorsLabel.TabIndex = 3;
+            this.BehaviorsLabel.Text = "Behaviors: 0";
+            // 
+            // ConsiderationsLabel
+            // 
+            this.ConsiderationsLabel.AutoSize = true;
+            this.ConsiderationsLabel.Location = new System.Drawing.Point(6, 60);
+            this.ConsiderationsLabel.Name = "ConsiderationsLabel";
+            this.ConsiderationsLabel.Size = new System.Drawing.Size(88, 13);
+            this.ConsiderationsLabel.TabIndex = 2;
+            this.ConsiderationsLabel.Text = "Considerations: 0";
+            // 
+            // InputAxesLabel
+            // 
+            this.InputAxesLabel.AutoSize = true;
+            this.InputAxesLabel.Location = new System.Drawing.Point(6, 39);
+            this.InputAxesLabel.Name = "InputAxesLabel";
+            this.InputAxesLabel.Size = new System.Drawing.Size(69, 13);
+            this.InputAxesLabel.TabIndex = 1;
+            this.InputAxesLabel.Text = "Input Axes: 0";
+            // 
+            // KnowledgeBaseEntriesLabel
+            // 
+            this.KnowledgeBaseEntriesLabel.AutoSize = true;
+            this.KnowledgeBaseEntriesLabel.Location = new System.Drawing.Point(6, 18);
+            this.KnowledgeBaseEntriesLabel.Name = "KnowledgeBaseEntriesLabel";
+            this.KnowledgeBaseEntriesLabel.Size = new System.Drawing.Size(134, 13);
+            this.KnowledgeBaseEntriesLabel.TabIndex = 0;
+            this.KnowledgeBaseEntriesLabel.Text = "Knowledge Base Entries: 0";
             // 
             // UtilityCrashCourseLinkLabel
             // 
@@ -173,40 +174,31 @@
             // 
             // WizardsGroupBox
             // 
+            this.WizardsGroupBox.Controls.Add(this.GuidedTourButton);
             this.WizardsGroupBox.Controls.Add(this.ScenariosButton);
             this.WizardsGroupBox.Controls.Add(this.SpecifyBehaviorsButton);
             this.WizardsGroupBox.Controls.Add(this.DefineInputsButton);
             this.WizardsGroupBox.Controls.Add(this.CreateKnowledgeButton);
             this.WizardsGroupBox.Location = new System.Drawing.Point(217, 33);
             this.WizardsGroupBox.Name = "WizardsGroupBox";
-            this.WizardsGroupBox.Size = new System.Drawing.Size(206, 173);
+            this.WizardsGroupBox.Size = new System.Drawing.Size(206, 183);
             this.WizardsGroupBox.TabIndex = 5;
             this.WizardsGroupBox.TabStop = false;
             this.WizardsGroupBox.Text = "Guidance";
             // 
-            // CreateKnowledgeButton
+            // ScenariosButton
             // 
-            this.CreateKnowledgeButton.Location = new System.Drawing.Point(6, 19);
-            this.CreateKnowledgeButton.Name = "CreateKnowledgeButton";
-            this.CreateKnowledgeButton.Size = new System.Drawing.Size(194, 27);
-            this.CreateKnowledgeButton.TabIndex = 0;
-            this.CreateKnowledgeButton.Text = "Create Knowledge";
-            this.CreateKnowledgeButton.UseVisualStyleBackColor = true;
-            this.CreateKnowledgeButton.Click += new System.EventHandler(this.CreateKnowledgeButton_Click);
-            // 
-            // DefineInputsButton
-            // 
-            this.DefineInputsButton.Location = new System.Drawing.Point(6, 52);
-            this.DefineInputsButton.Name = "DefineInputsButton";
-            this.DefineInputsButton.Size = new System.Drawing.Size(194, 26);
-            this.DefineInputsButton.TabIndex = 1;
-            this.DefineInputsButton.Text = "Define Inputs";
-            this.DefineInputsButton.UseVisualStyleBackColor = true;
-            this.DefineInputsButton.Click += new System.EventHandler(this.DefineInputsButton_Click);
+            this.ScenariosButton.Location = new System.Drawing.Point(6, 150);
+            this.ScenariosButton.Name = "ScenariosButton";
+            this.ScenariosButton.Size = new System.Drawing.Size(193, 26);
+            this.ScenariosButton.TabIndex = 3;
+            this.ScenariosButton.Text = "Configure Scenarios";
+            this.ScenariosButton.UseVisualStyleBackColor = true;
+            this.ScenariosButton.Click += new System.EventHandler(this.ScenariosButton_Click);
             // 
             // SpecifyBehaviorsButton
             // 
-            this.SpecifyBehaviorsButton.Location = new System.Drawing.Point(6, 84);
+            this.SpecifyBehaviorsButton.Location = new System.Drawing.Point(6, 118);
             this.SpecifyBehaviorsButton.Name = "SpecifyBehaviorsButton";
             this.SpecifyBehaviorsButton.Size = new System.Drawing.Size(194, 26);
             this.SpecifyBehaviorsButton.TabIndex = 2;
@@ -214,15 +206,35 @@
             this.SpecifyBehaviorsButton.UseVisualStyleBackColor = true;
             this.SpecifyBehaviorsButton.Click += new System.EventHandler(this.SpecifyBehaviorsButton_Click);
             // 
-            // ScenariosButton
+            // DefineInputsButton
             // 
-            this.ScenariosButton.Location = new System.Drawing.Point(6, 116);
-            this.ScenariosButton.Name = "ScenariosButton";
-            this.ScenariosButton.Size = new System.Drawing.Size(193, 26);
-            this.ScenariosButton.TabIndex = 3;
-            this.ScenariosButton.Text = "Configure Scenarios";
-            this.ScenariosButton.UseVisualStyleBackColor = true;
-            this.ScenariosButton.Click += new System.EventHandler(this.ScenariosButton_Click);
+            this.DefineInputsButton.Location = new System.Drawing.Point(6, 86);
+            this.DefineInputsButton.Name = "DefineInputsButton";
+            this.DefineInputsButton.Size = new System.Drawing.Size(194, 26);
+            this.DefineInputsButton.TabIndex = 1;
+            this.DefineInputsButton.Text = "Define Inputs";
+            this.DefineInputsButton.UseVisualStyleBackColor = true;
+            this.DefineInputsButton.Click += new System.EventHandler(this.DefineInputsButton_Click);
+            // 
+            // CreateKnowledgeButton
+            // 
+            this.CreateKnowledgeButton.Location = new System.Drawing.Point(6, 53);
+            this.CreateKnowledgeButton.Name = "CreateKnowledgeButton";
+            this.CreateKnowledgeButton.Size = new System.Drawing.Size(194, 27);
+            this.CreateKnowledgeButton.TabIndex = 0;
+            this.CreateKnowledgeButton.Text = "Create Knowledge";
+            this.CreateKnowledgeButton.UseVisualStyleBackColor = true;
+            this.CreateKnowledgeButton.Click += new System.EventHandler(this.CreateKnowledgeButton_Click);
+            // 
+            // GuidedTourButton
+            // 
+            this.GuidedTourButton.Location = new System.Drawing.Point(7, 21);
+            this.GuidedTourButton.Name = "GuidedTourButton";
+            this.GuidedTourButton.Size = new System.Drawing.Size(193, 26);
+            this.GuidedTourButton.TabIndex = 4;
+            this.GuidedTourButton.Text = "Guided Introduction";
+            this.GuidedTourButton.UseVisualStyleBackColor = true;
+            this.GuidedTourButton.Click += new System.EventHandler(this.GuidedTourButton_Click);
             // 
             // EditWidgetProject
             // 
@@ -264,5 +276,6 @@
         private System.Windows.Forms.Button DefineInputsButton;
         private System.Windows.Forms.Button SpecifyBehaviorsButton;
         private System.Windows.Forms.Button ScenariosButton;
+        private System.Windows.Forms.Button GuidedTourButton;
     }
 }

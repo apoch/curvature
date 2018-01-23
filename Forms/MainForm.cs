@@ -46,6 +46,11 @@ namespace Curvature
                 System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
             };
 
+            ProjectEditWidget.GuidanceTour += (obj, args) =>
+            {
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+            };
+
             ProjectEditWidget.DialogRebuildNeeded += () => { RefreshControls(); };
 
 

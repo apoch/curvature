@@ -20,6 +20,7 @@ namespace Curvature
         internal event GuidanceEventHandler GuidanceInputs;
         internal event GuidanceEventHandler GuidanceBehaviors;
         internal event GuidanceEventHandler GuidanceScenarios;
+        internal event GuidanceEventHandler GuidanceTour;
 
 
         internal delegate void DialogRebuildNeededHandler();
@@ -90,6 +91,11 @@ namespace Curvature
             Attach(EditedProject);
 
             DialogRebuildNeeded?.Invoke();
+        }
+
+        private void GuidedTourButton_Click(object sender, EventArgs e)
+        {
+            GuidanceTour(this, null);
         }
     }
 }
