@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -35,13 +36,21 @@ namespace Curvature
 
         public enum ActionType
         {
+            [Description("Do nothing")]
             Idle,
+
+            [Description("Move towards the target")]
             MoveToTarget,
+
+            [Description("Move away from the target")]
             MoveAwayFromTarget,
+
+            [Description("Show a speech balloon")]
             Talk,
+
+            [Description("Show a custom animation")]
             Custom
         }
-
 
         internal delegate void DialogRebuildNeededHandler();
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
@@ -105,6 +114,24 @@ namespace Curvature
         public string GetName()
         {
             return ReadableName;
+        }
+    }
+
+    internal static class EnumExtensions
+    {
+        internal static string GetDescription(this Enum genericEnum)
+        {
+            Type genericEnumType = genericEnum.GetType();
+            var memberInfo = genericEnumType.GetMember(genericEnum.ToString());
+            if ((memberInfo != null && memberInfo.Length > 0))
+            {
+                var _Attribs = memberInfo[0].GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
+                if ((_Attribs != null && _Attribs.Count() > 0))
+                {
+                    return ((System.ComponentModel.DescriptionAttribute)_Attribs.ElementAt(0)).Description;
+                }
+            }
+            return genericEnum.ToString();
         }
     }
 }

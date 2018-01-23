@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
+            this.WhenActiveLabel = new System.Windows.Forms.Label();
             this.CustomPayload = new System.Windows.Forms.TextBox();
             this.CustomPayloadLabel = new System.Windows.Forms.Label();
             this.CanTargetOthersCheckBox = new System.Windows.Forms.CheckBox();
@@ -75,6 +76,7 @@
             // 
             // VerticalSplit.Panel1
             // 
+            this.VerticalSplit.Panel1.Controls.Add(this.WhenActiveLabel);
             this.VerticalSplit.Panel1.Controls.Add(this.CustomPayload);
             this.VerticalSplit.Panel1.Controls.Add(this.CustomPayloadLabel);
             this.VerticalSplit.Panel1.Controls.Add(this.CanTargetOthersCheckBox);
@@ -89,20 +91,29 @@
             this.VerticalSplit.SplitterDistance = 300;
             this.VerticalSplit.TabIndex = 1;
             // 
+            // WhenActiveLabel
+            // 
+            this.WhenActiveLabel.AutoSize = true;
+            this.WhenActiveLabel.Location = new System.Drawing.Point(1, 3);
+            this.WhenActiveLabel.Name = "WhenActiveLabel";
+            this.WhenActiveLabel.Size = new System.Drawing.Size(71, 13);
+            this.WhenActiveLabel.TabIndex = 7;
+            this.WhenActiveLabel.Text = "When active:";
+            // 
             // CustomPayload
             // 
             this.CustomPayload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CustomPayload.Location = new System.Drawing.Point(78, 50);
+            this.CustomPayload.Location = new System.Drawing.Point(78, 27);
             this.CustomPayload.Name = "CustomPayload";
-            this.CustomPayload.Size = new System.Drawing.Size(213, 20);
+            this.CustomPayload.Size = new System.Drawing.Size(219, 20);
             this.CustomPayload.TabIndex = 6;
             this.CustomPayload.TextChanged += new System.EventHandler(this.CustomPayload_TextChanged);
             // 
             // CustomPayloadLabel
             // 
             this.CustomPayloadLabel.AutoSize = true;
-            this.CustomPayloadLabel.Location = new System.Drawing.Point(3, 53);
+            this.CustomPayloadLabel.Location = new System.Drawing.Point(3, 30);
             this.CustomPayloadLabel.Name = "CustomPayloadLabel";
             this.CustomPayloadLabel.Size = new System.Drawing.Size(69, 13);
             this.CustomPayloadLabel.TabIndex = 5;
@@ -111,7 +122,7 @@
             // CanTargetOthersCheckBox
             // 
             this.CanTargetOthersCheckBox.AutoSize = true;
-            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(107, 27);
+            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(147, 54);
             this.CanTargetOthersCheckBox.Name = "CanTargetOthersCheckBox";
             this.CanTargetOthersCheckBox.Size = new System.Drawing.Size(113, 17);
             this.CanTargetOthersCheckBox.TabIndex = 4;
@@ -122,7 +133,7 @@
             // CanTargetSelfCheckBox
             // 
             this.CanTargetSelfCheckBox.AutoSize = true;
-            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(1, 27);
+            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(41, 54);
             this.CanTargetSelfCheckBox.Name = "CanTargetSelfCheckBox";
             this.CanTargetSelfCheckBox.Size = new System.Drawing.Size(100, 17);
             this.CanTargetSelfCheckBox.TabIndex = 3;
@@ -136,9 +147,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ActionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ActionComboBox.FormattingEnabled = true;
-            this.ActionComboBox.Location = new System.Drawing.Point(1, 0);
+            this.ActionComboBox.Location = new System.Drawing.Point(78, 0);
             this.ActionComboBox.Name = "ActionComboBox";
-            this.ActionComboBox.Size = new System.Drawing.Size(296, 21);
+            this.ActionComboBox.Size = new System.Drawing.Size(219, 21);
             this.ActionComboBox.TabIndex = 2;
             this.ActionComboBox.SelectedIndexChanged += new System.EventHandler(this.ActionComboBox_SelectedIndexChanged);
             // 
@@ -181,13 +192,13 @@
             this.ScoreColumnHeader,
             this.DescriptionColumnHeader});
             this.ScoreListView.FullRowSelect = true;
-            listViewGroup1.Header = "Considerations";
-            listViewGroup1.Name = "ConsiderationGroup";
-            listViewGroup2.Header = "Bonuses";
-            listViewGroup2.Name = "BonusGroup";
+            listViewGroup3.Header = "Considerations";
+            listViewGroup3.Name = "ConsiderationGroup";
+            listViewGroup4.Header = "Bonuses";
+            listViewGroup4.Name = "BonusGroup";
             this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.ScoreListView.Location = new System.Drawing.Point(6, 91);
             this.ScoreListView.Name = "ScoreListView";
             this.ScoreListView.Size = new System.Drawing.Size(285, 162);
@@ -213,6 +224,7 @@
             this.MomentumBonusCheckBox.TabIndex = 3;
             this.MomentumBonusCheckBox.Text = "Include momentum bonus";
             this.MomentumBonusCheckBox.UseVisualStyleBackColor = true;
+            this.MomentumBonusCheckBox.CheckedChanged += new System.EventHandler(this.MomentumBonusCheckBox_CheckedChanged);
             // 
             // CompensationCheckBox
             // 
@@ -225,6 +237,7 @@
             this.CompensationCheckBox.TabIndex = 2;
             this.CompensationCheckBox.Text = "Use compensation formula";
             this.CompensationCheckBox.UseVisualStyleBackColor = true;
+            this.CompensationCheckBox.CheckedChanged += new System.EventHandler(this.CompensationCheckBox_CheckedChanged);
             // 
             // WeightLabel
             // 
@@ -249,6 +262,7 @@
             0,
             0,
             0});
+            this.BehaviorWeightEditBox.ValueChanged += new System.EventHandler(this.BehaviorWeightEditBox_ValueChanged);
             // 
             // BehaviorSplitContainer
             // 
@@ -303,7 +317,7 @@
             this.ConsiderationScoreGroupBox.Controls.Add(this.ScoreLayoutPanel);
             this.ConsiderationScoreGroupBox.Location = new System.Drawing.Point(4, 3);
             this.ConsiderationScoreGroupBox.Name = "ConsiderationScoreGroupBox";
-            this.ConsiderationScoreGroupBox.Size = new System.Drawing.Size(412, 206);
+            this.ConsiderationScoreGroupBox.Size = new System.Drawing.Size(412, 200);
             this.ConsiderationScoreGroupBox.TabIndex = 0;
             this.ConsiderationScoreGroupBox.TabStop = false;
             this.ConsiderationScoreGroupBox.Text = "Consideration Scores";
@@ -376,5 +390,6 @@
         private EditWidgetName NameEditWidget;
         private System.Windows.Forms.Label CustomPayloadLabel;
         private System.Windows.Forms.TextBox CustomPayload;
+        private System.Windows.Forms.Label WhenActiveLabel;
     }
 }

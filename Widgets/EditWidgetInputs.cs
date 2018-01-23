@@ -40,9 +40,17 @@ namespace Curvature
                 InputsFlowPanel.Controls.Add(new EditWidgetInputAxis(EditingProject, input));
             }
 
-            var newInputButton = new Button();
-            newInputButton.Text = "Add New Input Axis";
-            newInputButton.AutoSize = true;
+            var newInputButton = new Button
+            {
+                ImageList = IconImageList,
+                ImageIndex = 0,
+                ImageAlign = ContentAlignment.MiddleRight,
+                TextImageRelation = TextImageRelation.ImageBeforeText,
+
+                Text = "Create Input Axis",
+                AutoSize = true
+            };
+
             newInputButton.Click += (e, args) =>
             {
                 Inputs.Add(new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf));

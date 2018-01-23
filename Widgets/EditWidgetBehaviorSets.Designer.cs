@@ -28,32 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetBehaviorSets));
             this.DeleteBehaviorSetButton = new System.Windows.Forms.Button();
             this.AddBehaviorSetButton = new System.Windows.Forms.Button();
             this.BehaviorSetsListView = new System.Windows.Forms.ListView();
             this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
             this.SuspendLayout();
             // 
             // DeleteBehaviorSetButton
             // 
             this.DeleteBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(3, 395);
+            this.DeleteBehaviorSetButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.DeleteBehaviorSetButton.ImageIndex = 1;
+            this.DeleteBehaviorSetButton.ImageList = this.IconImageList;
+            this.DeleteBehaviorSetButton.Location = new System.Drawing.Point(128, 366);
             this.DeleteBehaviorSetButton.Name = "DeleteBehaviorSetButton";
-            this.DeleteBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
+            this.DeleteBehaviorSetButton.Size = new System.Drawing.Size(119, 52);
             this.DeleteBehaviorSetButton.TabIndex = 9;
             this.DeleteBehaviorSetButton.Text = "Delete Selection";
+            this.DeleteBehaviorSetButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DeleteBehaviorSetButton.UseVisualStyleBackColor = true;
             this.DeleteBehaviorSetButton.Click += new System.EventHandler(this.DeleteBehaviorSetButton_Click);
             // 
             // AddBehaviorSetButton
             // 
             this.AddBehaviorSetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddBehaviorSetButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AddBehaviorSetButton.ImageIndex = 0;
+            this.AddBehaviorSetButton.ImageList = this.IconImageList;
             this.AddBehaviorSetButton.Location = new System.Drawing.Point(3, 366);
             this.AddBehaviorSetButton.Name = "AddBehaviorSetButton";
-            this.AddBehaviorSetButton.Size = new System.Drawing.Size(244, 23);
+            this.AddBehaviorSetButton.Size = new System.Drawing.Size(119, 52);
             this.AddBehaviorSetButton.TabIndex = 8;
-            this.AddBehaviorSetButton.Text = "Add Behavior Set";
+            this.AddBehaviorSetButton.Text = "Create Behavior Set";
+            this.AddBehaviorSetButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddBehaviorSetButton.UseVisualStyleBackColor = true;
             this.AddBehaviorSetButton.Click += new System.EventHandler(this.AddBehaviorSetButton_Click);
             // 
@@ -76,6 +87,13 @@
             // 
             this.BehaviorSetNameColumn.Text = "Behavior Set Name";
             this.BehaviorSetNameColumn.Width = 220;
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
             // BehaviorSetEditWidget
             // 
@@ -109,5 +127,6 @@
         private EditWidgetBehaviorSet BehaviorSetEditWidget;
         private System.Windows.Forms.ListView BehaviorSetsListView;
         private System.Windows.Forms.ColumnHeader BehaviorSetNameColumn;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }

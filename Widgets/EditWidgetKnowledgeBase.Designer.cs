@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetKnowledgeBase));
             this.KnowledgeBaseFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // KnowledgeBaseFlowPanel
@@ -40,6 +43,12 @@
             this.KnowledgeBaseFlowPanel.Name = "KnowledgeBaseFlowPanel";
             this.KnowledgeBaseFlowPanel.Size = new System.Drawing.Size(474, 202);
             this.KnowledgeBaseFlowPanel.TabIndex = 0;
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
             // 
             // EditWidgetKnowledgeBase
             // 
@@ -55,5 +64,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel KnowledgeBaseFlowPanel;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }

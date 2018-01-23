@@ -28,21 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetScenarios));
             this.DeleteScenariosButton = new System.Windows.Forms.Button();
             this.ScenariosListView = new System.Windows.Forms.ListView();
             this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateScenarioButton = new System.Windows.Forms.Button();
             this.ScenarioPanel = new System.Windows.Forms.Panel();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // DeleteScenariosButton
             // 
             this.DeleteScenariosButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteScenariosButton.Location = new System.Drawing.Point(3, 560);
+            this.DeleteScenariosButton.ImageIndex = 1;
+            this.DeleteScenariosButton.ImageList = this.IconImageList;
+            this.DeleteScenariosButton.Location = new System.Drawing.Point(128, 531);
             this.DeleteScenariosButton.Name = "DeleteScenariosButton";
-            this.DeleteScenariosButton.Size = new System.Drawing.Size(244, 23);
+            this.DeleteScenariosButton.Size = new System.Drawing.Size(119, 52);
             this.DeleteScenariosButton.TabIndex = 9;
             this.DeleteScenariosButton.Text = "Delete Selection";
+            this.DeleteScenariosButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.DeleteScenariosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DeleteScenariosButton.UseVisualStyleBackColor = true;
             this.DeleteScenariosButton.Click += new System.EventHandler(this.DeleteScenariosButton_Click);
             // 
@@ -70,11 +77,15 @@
             // CreateScenarioButton
             // 
             this.CreateScenarioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateScenarioButton.ImageIndex = 0;
+            this.CreateScenarioButton.ImageList = this.IconImageList;
             this.CreateScenarioButton.Location = new System.Drawing.Point(3, 531);
             this.CreateScenarioButton.Name = "CreateScenarioButton";
-            this.CreateScenarioButton.Size = new System.Drawing.Size(244, 23);
+            this.CreateScenarioButton.Size = new System.Drawing.Size(119, 52);
             this.CreateScenarioButton.TabIndex = 7;
-            this.CreateScenarioButton.Text = "New Scenario";
+            this.CreateScenarioButton.Text = "Create Scenario";
+            this.CreateScenarioButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.CreateScenarioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
             this.CreateScenarioButton.Click += new System.EventHandler(this.CreateScenarioButton_Click);
             // 
@@ -87,6 +98,13 @@
             this.ScenarioPanel.Name = "ScenarioPanel";
             this.ScenarioPanel.Size = new System.Drawing.Size(668, 580);
             this.ScenarioPanel.TabIndex = 6;
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
             // EditWidgetScenarios
             // 
@@ -109,5 +127,6 @@
         private System.Windows.Forms.ColumnHeader ScenarioNameColumn;
         private System.Windows.Forms.Button CreateScenarioButton;
         private System.Windows.Forms.Panel ScenarioPanel;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }

@@ -23,9 +23,9 @@ namespace Curvature
         {
             InitializeComponent();
 
-            foreach (var e in Enum.GetValues(typeof(Behavior.ActionType)))
+            foreach (Behavior.ActionType e in Enum.GetValues(typeof(Behavior.ActionType)))
             {
-                ActionComboBox.Items.Add(e);
+                ActionComboBox.Items.Add(e.GetDescription());
             }
 
             ActionComboBox.SelectedIndex = 0;
@@ -151,23 +151,10 @@ namespace Curvature
             FinalScoreLabel.Text = $"Final Score = {finalScore:f3}";
         }
 
-        private void MomentumBonusCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshInputs();
-        }
 
-        private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
-        {
-            if (EditBehavior != null)
-                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
 
-            RefreshInputs();
-        }
 
-        private void CompensationCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshInputs();
-        }
+
 
         private void ActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -199,6 +186,24 @@ namespace Curvature
             Attach(EditBehavior);
 
             DialogRebuildNeeded?.Invoke();
+        }
+
+        private void MomentumBonusCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshInputs();
+        }
+
+        private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
+
+            RefreshInputs();
+        }
+
+        private void CompensationCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshInputs();
         }
     }
 }

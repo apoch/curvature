@@ -41,9 +41,17 @@ namespace Curvature
                 KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec, EditProject));
             }
 
-            var newRecordButton = new Button();
-            newRecordButton.Text = "Add New Knowledge";
-            newRecordButton.AutoSize = true;
+            var newRecordButton = new Button
+            {
+                ImageList = IconImageList,
+                ImageIndex = 0,
+                ImageAlign = ContentAlignment.MiddleRight,
+                TextImageRelation = TextImageRelation.ImageBeforeText,
+
+                Text = "Create Knowledge",
+                AutoSize = true
+            };
+
             newRecordButton.Click += (e, args) =>
             {
                 MyKB.Records.Add(new KnowledgeBase.Record("New knowledge", 0.0, 1.0, false, KnowledgeBase.Record.Parameterization.FixedRange));

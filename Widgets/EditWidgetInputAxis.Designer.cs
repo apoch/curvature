@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetInputAxis));
             this.ParameterGroupBox = new System.Windows.Forms.GroupBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
@@ -35,6 +37,7 @@
             this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
             this.NameEditWidget = new Curvature.EditWidgetName();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -84,9 +87,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataSourceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DataSourceComboBox.FormattingEnabled = true;
-            this.DataSourceComboBox.Location = new System.Drawing.Point(260, 19);
+            this.DataSourceComboBox.Location = new System.Drawing.Point(228, 19);
             this.DataSourceComboBox.Name = "DataSourceComboBox";
-            this.DataSourceComboBox.Size = new System.Drawing.Size(209, 21);
+            this.DataSourceComboBox.Size = new System.Drawing.Size(241, 21);
             this.DataSourceComboBox.Sorted = true;
             this.DataSourceComboBox.TabIndex = 1;
             this.DataSourceComboBox.SelectedIndexChanged += new System.EventHandler(this.DataSourceComboBox_SelectedIndexChanged);
@@ -96,12 +99,12 @@
             this.InputTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InputTypeComboBox.FormattingEnabled = true;
             this.InputTypeComboBox.Items.AddRange(new object[] {
-            "Reads a property from myself",
-            "Reads a property of the target",
-            "Computes a value using a known equation"});
+            "Based on the value of my property",
+            "Based on the value of target\'s property",
+            "Based on a prefab equation"});
             this.InputTypeComboBox.Location = new System.Drawing.Point(6, 19);
             this.InputTypeComboBox.Name = "InputTypeComboBox";
-            this.InputTypeComboBox.Size = new System.Drawing.Size(248, 21);
+            this.InputTypeComboBox.Size = new System.Drawing.Size(216, 21);
             this.InputTypeComboBox.TabIndex = 0;
             this.InputTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.InputTypeComboBox_SelectedIndexChanged);
             // 
@@ -116,13 +119,23 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteButton.ImageIndex = 0;
+            this.DeleteButton.ImageList = this.IconImageList;
             this.DeleteButton.Location = new System.Drawing.Point(407, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "Delete";
+            this.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "DeleteItemIcon.png");
             // 
             // EditWidgetInputAxis
             // 
@@ -151,5 +164,6 @@
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
         private EditWidgetName NameEditWidget;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }

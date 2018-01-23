@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetScenario));
             this.ScenarioEditorTabs = new System.Windows.Forms.TabControl();
             this.AgentsTab = new System.Windows.Forms.TabPage();
+            this.ColorSwatchLabel = new System.Windows.Forms.Label();
+            this.ColorSwatch = new System.Windows.Forms.PictureBox();
+            this.DeleteSelectedAgentsButton = new System.Windows.Forms.Button();
             this.AgentProperties = new System.Windows.Forms.PropertyGrid();
             this.CopyCurrentAgentPositionButton = new System.Windows.Forms.Button();
             this.AgentResetButton = new System.Windows.Forms.Button();
@@ -66,13 +70,12 @@
             this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.DeleteSelectedAgentsButton = new System.Windows.Forms.Button();
             this.NameEditWidget = new Curvature.EditWidgetName();
             this.ColorPicker = new System.Windows.Forms.ColorDialog();
-            this.ColorSwatch = new System.Windows.Forms.PictureBox();
-            this.ColorSwatchLabel = new System.Windows.Forms.Label();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).BeginInit();
@@ -82,7 +85,6 @@
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
             this.LogsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -130,6 +132,40 @@
             this.AgentsTab.TabIndex = 0;
             this.AgentsTab.Text = "Agents";
             this.AgentsTab.UseVisualStyleBackColor = true;
+            // 
+            // ColorSwatchLabel
+            // 
+            this.ColorSwatchLabel.AutoSize = true;
+            this.ColorSwatchLabel.Location = new System.Drawing.Point(450, 225);
+            this.ColorSwatchLabel.Name = "ColorSwatchLabel";
+            this.ColorSwatchLabel.Size = new System.Drawing.Size(34, 13);
+            this.ColorSwatchLabel.TabIndex = 20;
+            this.ColorSwatchLabel.Text = "Color:";
+            // 
+            // ColorSwatch
+            // 
+            this.ColorSwatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ColorSwatch.Location = new System.Drawing.Point(453, 240);
+            this.ColorSwatch.Name = "ColorSwatch";
+            this.ColorSwatch.Size = new System.Drawing.Size(31, 21);
+            this.ColorSwatch.TabIndex = 19;
+            this.ColorSwatch.TabStop = false;
+            this.ColorSwatch.Click += new System.EventHandler(this.ColorSwatch_Click);
+            // 
+            // DeleteSelectedAgentsButton
+            // 
+            this.DeleteSelectedAgentsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteSelectedAgentsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteSelectedAgentsButton.ImageIndex = 1;
+            this.DeleteSelectedAgentsButton.ImageList = this.IconImageList;
+            this.DeleteSelectedAgentsButton.Location = new System.Drawing.Point(639, 33);
+            this.DeleteSelectedAgentsButton.Name = "DeleteSelectedAgentsButton";
+            this.DeleteSelectedAgentsButton.Size = new System.Drawing.Size(96, 27);
+            this.DeleteSelectedAgentsButton.TabIndex = 18;
+            this.DeleteSelectedAgentsButton.Text = "Delete";
+            this.DeleteSelectedAgentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteSelectedAgentsButton.UseVisualStyleBackColor = true;
+            this.DeleteSelectedAgentsButton.Click += new System.EventHandler(this.DeleteSelectedAgentsButton_Click);
             // 
             // AgentProperties
             // 
@@ -349,11 +385,15 @@
             // AddAgentButton
             // 
             this.AddAgentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddAgentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddAgentButton.ImageIndex = 0;
+            this.AddAgentButton.ImageList = this.IconImageList;
             this.AddAgentButton.Location = new System.Drawing.Point(639, 0);
             this.AddAgentButton.Name = "AddAgentButton";
             this.AddAgentButton.Size = new System.Drawing.Size(96, 27);
             this.AddAgentButton.TabIndex = 1;
             this.AddAgentButton.Text = "Add Agent";
+            this.AddAgentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddAgentButton.UseVisualStyleBackColor = true;
             this.AddAgentButton.Click += new System.EventHandler(this.AddAgentButton_Click);
             // 
@@ -406,11 +446,15 @@
             // AddLocationButton
             // 
             this.AddLocationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddLocationButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddLocationButton.ImageIndex = 0;
+            this.AddLocationButton.ImageList = this.IconImageList;
             this.AddLocationButton.Location = new System.Drawing.Point(639, 0);
             this.AddLocationButton.Name = "AddLocationButton";
             this.AddLocationButton.Size = new System.Drawing.Size(96, 27);
             this.AddLocationButton.TabIndex = 1;
             this.AddLocationButton.Text = "Add Location";
+            this.AddLocationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddLocationButton.UseVisualStyleBackColor = true;
             this.AddLocationButton.Click += new System.EventHandler(this.AddLocationButton_Click);
             // 
@@ -543,17 +587,6 @@
             // 
             this.SimulationInspectionTooltip.ShowAlways = true;
             // 
-            // DeleteSelectedAgentsButton
-            // 
-            this.DeleteSelectedAgentsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteSelectedAgentsButton.Location = new System.Drawing.Point(639, 33);
-            this.DeleteSelectedAgentsButton.Name = "DeleteSelectedAgentsButton";
-            this.DeleteSelectedAgentsButton.Size = new System.Drawing.Size(96, 27);
-            this.DeleteSelectedAgentsButton.TabIndex = 18;
-            this.DeleteSelectedAgentsButton.Text = "Delete";
-            this.DeleteSelectedAgentsButton.UseVisualStyleBackColor = true;
-            this.DeleteSelectedAgentsButton.Click += new System.EventHandler(this.DeleteSelectedAgentsButton_Click);
-            // 
             // NameEditWidget
             // 
             this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
@@ -567,24 +600,12 @@
             this.ColorPicker.AnyColor = true;
             this.ColorPicker.FullOpen = true;
             // 
-            // ColorSwatch
+            // IconImageList
             // 
-            this.ColorSwatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ColorSwatch.Location = new System.Drawing.Point(453, 240);
-            this.ColorSwatch.Name = "ColorSwatch";
-            this.ColorSwatch.Size = new System.Drawing.Size(31, 21);
-            this.ColorSwatch.TabIndex = 19;
-            this.ColorSwatch.TabStop = false;
-            this.ColorSwatch.Click += new System.EventHandler(this.ColorSwatch_Click);
-            // 
-            // ColorSwatchLabel
-            // 
-            this.ColorSwatchLabel.AutoSize = true;
-            this.ColorSwatchLabel.Location = new System.Drawing.Point(450, 225);
-            this.ColorSwatchLabel.Name = "ColorSwatchLabel";
-            this.ColorSwatchLabel.Size = new System.Drawing.Size(34, 13);
-            this.ColorSwatchLabel.TabIndex = 20;
-            this.ColorSwatchLabel.Text = "Color:";
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
             // EditWidgetScenario
             // 
@@ -597,6 +618,7 @@
             this.ScenarioEditorTabs.ResumeLayout(false);
             this.AgentsTab.ResumeLayout(false);
             this.AgentsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartYUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentStartXUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentRadiusUpDown)).EndInit();
@@ -607,7 +629,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
             this.LogsTab.ResumeLayout(false);
             this.LogsTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -656,5 +677,6 @@
         private System.Windows.Forms.ColorDialog ColorPicker;
         private System.Windows.Forms.Label ColorSwatchLabel;
         private System.Windows.Forms.PictureBox ColorSwatch;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }

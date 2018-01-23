@@ -38,10 +38,10 @@
             this.BehaviorTabs = new System.Windows.Forms.TabControl();
             this.BehaviorOverviewTab = new System.Windows.Forms.TabPage();
             this.BehaviorConsiderationsTab = new System.Windows.Forms.TabPage();
+            this.DeleteConsiderationButton = new System.Windows.Forms.Button();
             this.AddConsiderationButton = new System.Windows.Forms.Button();
             this.ConsiderationsListView = new System.Windows.Forms.ListView();
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DeleteConsiderationButton = new System.Windows.Forms.Button();
             this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.BehaviorTabs.SuspendLayout();
@@ -102,7 +102,7 @@
             this.CreateBehaviorButton.Name = "CreateBehaviorButton";
             this.CreateBehaviorButton.Size = new System.Drawing.Size(119, 52);
             this.CreateBehaviorButton.TabIndex = 6;
-            this.CreateBehaviorButton.Text = "Add New Behavior";
+            this.CreateBehaviorButton.Text = "Create Behavior";
             this.CreateBehaviorButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CreateBehaviorButton.UseVisualStyleBackColor = true;
             this.CreateBehaviorButton.Click += new System.EventHandler(this.CreateBehaviorButton_Click);
@@ -135,8 +135,8 @@
             // BehaviorConsiderationsTab
             // 
             this.BehaviorConsiderationsTab.Controls.Add(this.DeleteConsiderationButton);
-            this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationEditWidget);
             this.BehaviorConsiderationsTab.Controls.Add(this.AddConsiderationButton);
+            this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationEditWidget);
             this.BehaviorConsiderationsTab.Controls.Add(this.ConsiderationsListView);
             this.BehaviorConsiderationsTab.Location = new System.Drawing.Point(4, 22);
             this.BehaviorConsiderationsTab.Name = "BehaviorConsiderationsTab";
@@ -146,14 +146,33 @@
             this.BehaviorConsiderationsTab.Text = "Edit Considerations";
             this.BehaviorConsiderationsTab.UseVisualStyleBackColor = true;
             // 
+            // DeleteConsiderationButton
+            // 
+            this.DeleteConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteConsiderationButton.ImageIndex = 1;
+            this.DeleteConsiderationButton.ImageList = this.IconImageList;
+            this.DeleteConsiderationButton.Location = new System.Drawing.Point(124, 529);
+            this.DeleteConsiderationButton.Name = "DeleteConsiderationButton";
+            this.DeleteConsiderationButton.Size = new System.Drawing.Size(102, 25);
+            this.DeleteConsiderationButton.TabIndex = 3;
+            this.DeleteConsiderationButton.Text = "Delete";
+            this.DeleteConsiderationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteConsiderationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteConsiderationButton.UseVisualStyleBackColor = true;
+            this.DeleteConsiderationButton.Click += new System.EventHandler(this.DeleteConsiderationButton_Click);
+            // 
             // AddConsiderationButton
             // 
             this.AddConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddConsiderationButton.ImageIndex = 0;
+            this.AddConsiderationButton.ImageList = this.IconImageList;
             this.AddConsiderationButton.Location = new System.Drawing.Point(6, 529);
             this.AddConsiderationButton.Name = "AddConsiderationButton";
-            this.AddConsiderationButton.Size = new System.Drawing.Size(80, 25);
+            this.AddConsiderationButton.Size = new System.Drawing.Size(112, 25);
             this.AddConsiderationButton.TabIndex = 1;
             this.AddConsiderationButton.Text = "Add...";
+            this.AddConsiderationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AddConsiderationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddConsiderationButton.UseVisualStyleBackColor = true;
             this.AddConsiderationButton.Click += new System.EventHandler(this.AddConsiderationButton_Click);
             // 
@@ -167,7 +186,7 @@
             this.ConsiderationsListView.HideSelection = false;
             this.ConsiderationsListView.Location = new System.Drawing.Point(6, 6);
             this.ConsiderationsListView.Name = "ConsiderationsListView";
-            this.ConsiderationsListView.Size = new System.Drawing.Size(164, 517);
+            this.ConsiderationsListView.Size = new System.Drawing.Size(220, 517);
             this.ConsiderationsListView.TabIndex = 0;
             this.ConsiderationsListView.UseCompatibleStateImageBehavior = false;
             this.ConsiderationsListView.View = System.Windows.Forms.View.Details;
@@ -176,18 +195,7 @@
             // ConsiderationNameHeader
             // 
             this.ConsiderationNameHeader.Text = "Consideration Name";
-            this.ConsiderationNameHeader.Width = 150;
-            // 
-            // DeleteConsiderationButton
-            // 
-            this.DeleteConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteConsiderationButton.Location = new System.Drawing.Point(92, 529);
-            this.DeleteConsiderationButton.Name = "DeleteConsiderationButton";
-            this.DeleteConsiderationButton.Size = new System.Drawing.Size(78, 25);
-            this.DeleteConsiderationButton.TabIndex = 3;
-            this.DeleteConsiderationButton.Text = "Delete";
-            this.DeleteConsiderationButton.UseVisualStyleBackColor = true;
-            this.DeleteConsiderationButton.Click += new System.EventHandler(this.DeleteConsiderationButton_Click);
+            this.ConsiderationNameHeader.Width = 185;
             // 
             // BehaviorEditWidget
             // 
@@ -204,9 +212,9 @@
             this.ConsiderationEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationEditWidget.Location = new System.Drawing.Point(176, 6);
+            this.ConsiderationEditWidget.Location = new System.Drawing.Point(232, 6);
             this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
-            this.ConsiderationEditWidget.Size = new System.Drawing.Size(372, 545);
+            this.ConsiderationEditWidget.Size = new System.Drawing.Size(316, 545);
             this.ConsiderationEditWidget.TabIndex = 2;
             this.ConsiderationEditWidget.Visible = false;
             // 

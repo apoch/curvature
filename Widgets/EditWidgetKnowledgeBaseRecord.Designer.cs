@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetKnowledgeBaseRecord));
             this.RecordTagEditBox = new System.Windows.Forms.TextBox();
             this.TagLabel = new System.Windows.Forms.Label();
             this.OriginComboBox = new System.Windows.Forms.ComboBox();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.ClampingBehaviorComboBox = new System.Windows.Forms.ComboBox();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // RecordTagEditBox
@@ -57,8 +60,8 @@
             this.OriginComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OriginComboBox.FormattingEnabled = true;
             this.OriginComboBox.Items.AddRange(new object[] {
-            "Stored as a property on an agent",
-            "Computed using a known equation"});
+            "is a property of every agent",
+            "is computed using a prefab equation"});
             this.OriginComboBox.Location = new System.Drawing.Point(270, 3);
             this.OriginComboBox.Name = "OriginComboBox";
             this.OriginComboBox.Size = new System.Drawing.Size(198, 21);
@@ -68,11 +71,15 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(735, 3);
+            this.DeleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteButton.ImageIndex = 0;
+            this.DeleteButton.ImageList = this.IconImageList;
+            this.DeleteButton.Location = new System.Drawing.Point(672, 2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(55, 22);
+            this.DeleteButton.Size = new System.Drawing.Size(77, 22);
             this.DeleteButton.TabIndex = 3;
             this.DeleteButton.Text = "Delete";
+            this.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -83,14 +90,20 @@
             this.ClampingBehaviorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClampingBehaviorComboBox.FormattingEnabled = true;
             this.ClampingBehaviorComboBox.Items.AddRange(new object[] {
-            "Decimal values in a fixed range",
-            "Decimal values in a configurable range",
-            "Preselected values (enumeration)"});
+            "and must be in a fixed range",
+            "and must be in a configurable range",
+            "and must be a predefined value"});
             this.ClampingBehaviorComboBox.Location = new System.Drawing.Point(474, 3);
             this.ClampingBehaviorComboBox.Name = "ClampingBehaviorComboBox";
-            this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(255, 21);
+            this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(192, 21);
             this.ClampingBehaviorComboBox.TabIndex = 4;
             this.ClampingBehaviorComboBox.SelectedIndexChanged += new System.EventHandler(this.ClampingBehaviorComboBox_SelectedIndexChanged);
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "DeleteItemIcon.png");
             // 
             // EditWidgetKnowledgeBaseRecord
             // 
@@ -102,7 +115,7 @@
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(793, 33);
+            this.Size = new System.Drawing.Size(753, 33);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +128,6 @@
         private System.Windows.Forms.ComboBox OriginComboBox;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ComboBox ClampingBehaviorComboBox;
+        private System.Windows.Forms.ImageList IconImageList;
     }
 }
