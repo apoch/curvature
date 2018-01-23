@@ -36,6 +36,7 @@
             this.ArchetypeNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
+            this.HintLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DeleteArchetypesButton
@@ -107,6 +108,19 @@
             this.ArchetypeEditWidget.TabIndex = 8;
             this.ArchetypeEditWidget.Visible = false;
             // 
+            // HintLabel
+            // 
+            this.HintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HintLabel.Location = new System.Drawing.Point(253, 3);
+            this.HintLabel.Name = "HintLabel";
+            this.HintLabel.Size = new System.Drawing.Size(685, 622);
+            this.HintLabel.TabIndex = 10;
+            this.HintLabel.Text = "Select or create an archetype to begin editing.";
+            this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // EditWidgetArchetypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,6 +129,7 @@
             this.Controls.Add(this.AddArchetypeButton);
             this.Controls.Add(this.ArchetypeEditWidget);
             this.Controls.Add(this.ArchetypesListView);
+            this.Controls.Add(this.HintLabel);
             this.Name = "EditWidgetArchetypes";
             this.Size = new System.Drawing.Size(941, 628);
             this.ResumeLayout(false);
@@ -129,5 +144,6 @@
         private System.Windows.Forms.ListView ArchetypesListView;
         private System.Windows.Forms.ColumnHeader ArchetypeNameColumn;
         private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Label HintLabel;
     }
 }
