@@ -36,6 +36,7 @@
             this.BehaviorSetNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.BehaviorSetEditWidget = new Curvature.EditWidgetBehaviorSet();
+            this.HintLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DeleteBehaviorSetButton
@@ -106,6 +107,19 @@
             this.BehaviorSetEditWidget.TabIndex = 7;
             this.BehaviorSetEditWidget.Visible = false;
             // 
+            // HintLabel
+            // 
+            this.HintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HintLabel.Location = new System.Drawing.Point(253, 3);
+            this.HintLabel.Name = "HintLabel";
+            this.HintLabel.Size = new System.Drawing.Size(554, 415);
+            this.HintLabel.TabIndex = 10;
+            this.HintLabel.Text = "Select or create a behavior set to begin editing.";
+            this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // EditWidgetBehaviorSets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +128,7 @@
             this.Controls.Add(this.AddBehaviorSetButton);
             this.Controls.Add(this.BehaviorSetEditWidget);
             this.Controls.Add(this.BehaviorSetsListView);
+            this.Controls.Add(this.HintLabel);
             this.Name = "EditWidgetBehaviorSets";
             this.Size = new System.Drawing.Size(810, 421);
             this.ResumeLayout(false);
@@ -128,5 +143,6 @@
         private System.Windows.Forms.ListView BehaviorSetsListView;
         private System.Windows.Forms.ColumnHeader BehaviorSetNameColumn;
         private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Label HintLabel;
     }
 }
