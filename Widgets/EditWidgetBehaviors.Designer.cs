@@ -44,6 +44,7 @@
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
+            this.HintLabel = new System.Windows.Forms.Label();
             this.BehaviorTabs.SuspendLayout();
             this.BehaviorOverviewTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
@@ -218,6 +219,18 @@
             this.ConsiderationEditWidget.TabIndex = 2;
             this.ConsiderationEditWidget.Visible = false;
             // 
+            // HintLabel
+            // 
+            this.HintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HintLabel.Location = new System.Drawing.Point(253, 3);
+            this.HintLabel.Name = "HintLabel";
+            this.HintLabel.Size = new System.Drawing.Size(558, 583);
+            this.HintLabel.TabIndex = 9;
+            this.HintLabel.Text = "Select or create a behavior to begin editing.";
+            this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // EditWidgetBehaviors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +239,7 @@
             this.Controls.Add(this.DeleteSelectedBehaviorsButton);
             this.Controls.Add(this.BehaviorsListView);
             this.Controls.Add(this.CreateBehaviorButton);
+            this.Controls.Add(this.HintLabel);
             this.Name = "EditWidgetBehaviors";
             this.Size = new System.Drawing.Size(818, 589);
             this.BehaviorTabs.ResumeLayout(false);
@@ -251,5 +265,6 @@
         private System.Windows.Forms.ColumnHeader ConsiderationNameHeader;
         private System.Windows.Forms.ImageList IconImageList;
         private System.Windows.Forms.Button DeleteConsiderationButton;
+        private System.Windows.Forms.Label HintLabel;
     }
 }
