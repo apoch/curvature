@@ -36,6 +36,8 @@
             this.CreateScenarioButton = new System.Windows.Forms.Button();
             this.ScenarioPanel = new System.Windows.Forms.Panel();
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.HintLabel = new System.Windows.Forms.Label();
+            this.ScenarioPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DeleteScenariosButton
@@ -94,6 +96,7 @@
             this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScenarioPanel.Controls.Add(this.HintLabel);
             this.ScenarioPanel.Location = new System.Drawing.Point(253, 3);
             this.ScenarioPanel.Name = "ScenarioPanel";
             this.ScenarioPanel.Size = new System.Drawing.Size(668, 580);
@@ -106,6 +109,19 @@
             this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
             this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
+            // HintLabel
+            // 
+            this.HintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HintLabel.Location = new System.Drawing.Point(0, 0);
+            this.HintLabel.Name = "HintLabel";
+            this.HintLabel.Size = new System.Drawing.Size(668, 580);
+            this.HintLabel.TabIndex = 10;
+            this.HintLabel.Text = "Select or create a scenario to watch your AI come to life!";
+            this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // EditWidgetScenarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +132,7 @@
             this.Controls.Add(this.ScenarioPanel);
             this.Name = "EditWidgetScenarios";
             this.Size = new System.Drawing.Size(924, 586);
+            this.ScenarioPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +145,6 @@
         private System.Windows.Forms.Button CreateScenarioButton;
         private System.Windows.Forms.Panel ScenarioPanel;
         private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Label HintLabel;
     }
 }
