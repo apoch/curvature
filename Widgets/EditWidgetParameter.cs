@@ -13,10 +13,14 @@ namespace Curvature
     public partial class EditWidgetParameter : UserControl
     {
         private InputParameter EditParameter;
+        private Project EditProject;
 
-        internal EditWidgetParameter(InputParameter param)
+
+        internal EditWidgetParameter(InputParameter param, Project project)
         {
             InitializeComponent();
+
+            EditProject = project;
             EditParameter = param;
 
             ParameterNameLabel.Text = EditParameter.ReadableName;
@@ -30,12 +34,22 @@ namespace Curvature
 
         private void MinimumValue_ValueChanged(object sender, EventArgs e)
         {
+            var prev = EditParameter.MinimumValue;
+
             EditParameter.MinimumValue = (float)MinimumValue.Value;
+
+            if (prev != EditParameter.MinimumValue)
+                EditProject.MarkDirty();
         }
 
         private void MaximumValue_ValueChanged(object sender, EventArgs e)
         {
+            var prev = EditParameter.MaximumValue;
+
             EditParameter.MaximumValue = (float)MaximumValue.Value;
+
+            if (prev != EditParameter.MaximumValue)
+                EditProject.MarkDirty();
         }
     }
 }

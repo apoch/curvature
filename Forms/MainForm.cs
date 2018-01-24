@@ -19,6 +19,25 @@ namespace Curvature
         {
             InitializeComponent();
 
+            FormClosing += (e, args) =>
+            {
+                if (EditingProject == null)
+                    return;
+
+                if (!EditingProject.IsDirty)
+                    return;
+
+                var response = MessageBox.Show("The current project has unsaved changes.\r\nWould you like to save first?", "Curvature Studio", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (response == DialogResult.Cancel)
+                {
+                    args.Cancel = true;
+                    return;
+                }
+
+                if (response == DialogResult.Yes)
+                    saveProjectAsToolStripMenuItem_Click(null, null);
+            };
+
             EditingProject = new Project();
             SetUpProject();
 
@@ -91,6 +110,11 @@ namespace Curvature
             {
                 RefreshControls();
             };
+
+            EditingProject.ProjectDirtied += (dirty) =>
+            {
+                SetWindowCaption(dirty);
+            };
         }
 
 
@@ -104,10 +128,7 @@ namespace Curvature
             ArchetypesEditWidget.Attach(EditingProject);
             ScenariosEditWidget.Attach(EditingProject);
 
-            if (string.IsNullOrEmpty(EditingFileName))
-                Text = "Curvature Studio";
-            else
-                Text = $"Curvature Studio - [{EditingFileName}]";
+            SetWindowCaption(EditingProject.IsDirty);
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,6 +158,28 @@ namespace Curvature
         {
             MainTabs.SelectTab(BehaviorsTab);
             BehaviorsEditWidget.NavigateTo(behavior);
+        }
+
+        private void SetWindowCaption(bool dirty)
+        {
+            if (string.IsNullOrEmpty(EditingFileName))
+            {
+                if (dirty)
+                {
+                    Text = "Curvature Studio - [Unsaved Project]";
+                }
+                else
+                {
+                    Text = "Curvature Studio";
+                }
+            }
+            else
+            {
+                if (dirty)
+                    Text = $"Curvature Studio - [{EditingFileName}] (*)";
+                else
+                    Text = $"Curvature Studio - [{EditingFileName}]";
+            }
         }
     }
 }

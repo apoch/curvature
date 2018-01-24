@@ -54,6 +54,7 @@ namespace Curvature
             newInputButton.Click += (e, args) =>
             {
                 Inputs.Add(new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf));
+                EditingProject.MarkDirty();
                 RefreshControls();
             };
 

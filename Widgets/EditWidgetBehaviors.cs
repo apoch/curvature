@@ -92,6 +92,7 @@ namespace Curvature.Widgets
         private void CreateBehaviorButton_Click(object sender, EventArgs e)
         {
             EditingProject.Behaviors.Add(new Behavior("New behavior"));
+            EditingProject.MarkDirty();
             RefreshBehaviorControls();
         }
 
@@ -103,7 +104,7 @@ namespace Curvature.Widgets
                 return;
             }
 
-            BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior);
+            BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior, EditingProject);
             BehaviorTabs.Visible = true;
 
             RefreshConsiderationControls();
@@ -117,7 +118,10 @@ namespace Curvature.Widgets
             var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
             var consideration = new Consideration("New consideration");
             if ((new CurveWizardForm(EditingProject, consideration)).ShowDialog() == DialogResult.OK)
+            {
                 behavior.Considerations.Add(consideration);
+                EditingProject.MarkDirty();
+            }
 
             RefreshConsiderationControls();
         }

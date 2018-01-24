@@ -33,7 +33,7 @@ namespace Curvature
 
             EditConsideration.DialogRebuildNeeded += Rebuild;
 
-            NameEditWidget.Attach("Consideration", EditConsideration);
+            NameEditWidget.Attach("Consideration", EditConsideration, project);
 
             InputAxisDropdown.Items.Clear();
             foreach (InputAxis axis in project.Inputs)
@@ -42,16 +42,19 @@ namespace Curvature
             }
 
             InputAxisDropdown.SelectedItem = EditConsideration.Input;
-            ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
+            ResponseCurveEditor.AttachCurve(EditConsideration.Curve, EditProject);
         }
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
         {
             (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
+            // TODO - mark project dirty if dialog commits changes
         }
 
         private void InputAxisDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var prev = EditConsideration.Input;
+
             var axis = InputAxisDropdown.SelectedItem as InputAxis;
             EditConsideration.Input = axis;
 
@@ -62,7 +65,10 @@ namespace Curvature
 
             EditConsideration.GenerateParameterValuesFromInput();
             foreach (var param in EditConsideration.ParameterValues)
-                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param));
+                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditProject));
+
+            if (prev != EditConsideration.Input)
+                EditProject.MarkDirty();
         }
 
         internal void Rebuild()

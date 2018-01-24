@@ -80,6 +80,7 @@ namespace Curvature.Widgets
         private void AddBehaviorSetButton_Click(object sender, EventArgs e)
         {
             EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
+            EditingProject.MarkDirty();
             RefreshBehaviorSetControls();
         }
 

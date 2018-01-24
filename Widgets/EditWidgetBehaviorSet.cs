@@ -38,6 +38,8 @@ namespace Curvature
                         EditSet.EnabledBehaviors.Add(behavior);
                     else
                         EditSet.EnabledBehaviors.Remove(behavior);
+
+                    EditProject.MarkDirty();
                 }
             };
 
@@ -58,7 +60,7 @@ namespace Curvature
 
             EditSet.DialogRebuildNeeded += Rebuild;
 
-            NameEditWidget.Attach("Behavior Set", set);
+            NameEditWidget.Attach("Behavior Set", set, project);
 
             EnabledBehaviorsListBox.Items.Clear();
             foreach (Behavior b in project.Behaviors)

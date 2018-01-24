@@ -41,13 +41,15 @@ namespace Curvature
                 {
                     EditArchetype.BehaviorSets.Remove(set);
                 }
+
+                EditProject.MarkDirty();
             };
         }
 
         internal void Attach(Archetype archetype, Project project)
         {
             EditArchetype = archetype;
-            NameEditWidget.Attach("Archetype", EditArchetype);
+            NameEditWidget.Attach("Archetype", EditArchetype, project);
             EditArchetype.DialogRebuildNeeded += Rebuild;
             EditProject = project;
 

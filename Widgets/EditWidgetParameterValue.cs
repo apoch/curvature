@@ -13,10 +13,14 @@ namespace Curvature.Widgets
     public partial class EditWidgetParameterValue : UserControl
     {
         private InputParameterValue Parameter;
+        private Project EditingProject;
 
-        internal EditWidgetParameterValue(InputParameterValue param)
+
+        internal EditWidgetParameterValue(InputParameterValue param, Project project)
         {
             InitializeComponent();
+
+            EditingProject = project;
             Parameter = param;
 
             ParamNameLabel.Text = Parameter.ControllingParameter.ReadableName;
@@ -27,7 +31,12 @@ namespace Curvature.Widgets
 
         private void ValueUpDown_ValueChanged(object sender, EventArgs e)
         {
+            var prev = Parameter.Value;
+
             Parameter.Value = (float)ValueUpDown.Value;
+
+            if (prev != Parameter.Value)
+                EditingProject.MarkDirty();
         }
     }
 }

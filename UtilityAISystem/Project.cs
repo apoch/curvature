@@ -47,7 +47,16 @@ namespace Curvature
         internal delegate void DialogRebuildNeededHandler();
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
+        internal delegate void ProjectDirtiedHandler(bool dirty);
+        internal event ProjectDirtiedHandler ProjectDirtied;
 
+
+        private bool Dirty;
+
+        internal bool IsDirty
+        {
+            get { return Dirty; }
+        }
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
@@ -97,6 +106,16 @@ namespace Curvature
         }
 
 
+        public void MarkDirty()
+        {
+            if (!Dirty)
+            {
+                Dirty = true;
+                ProjectDirtied?.Invoke(Dirty);
+            }
+        }
+
+
         public void SaveToFile(string filename)
         {
             var settings = new DataContractSerializerSettings();
@@ -107,10 +126,18 @@ namespace Curvature
             var xmlSettings = new XmlWriterSettings();
             xmlSettings.Indent = true;
 
-            var file = XmlWriter.Create(new FileStream(filename, FileMode.Create), xmlSettings);
+            var stream = new FileStream(filename, FileMode.Create);
+            var file = XmlWriter.Create(stream, xmlSettings);
 
             serializer.WriteObject(file, this);
             file.Close();
+            file.Dispose();
+
+            stream.Close();
+            stream.Dispose();
+
+            Dirty = false;
+            ProjectDirtied?.Invoke(Dirty);
         }
 
         public static Project Deserialize(string filename)
@@ -124,7 +151,10 @@ namespace Curvature
             var ret = deserializer.ReadObject(file) as Project;
 
             file.Close();
+            file.Dispose();
 
+            ret.Dirty = false;
+            ret.ProjectDirtied?.Invoke(false);
             return ret;
         }
 
@@ -138,6 +168,7 @@ namespace Curvature
                     input.KBRec = null;
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = record });
         }
 
@@ -154,6 +185,7 @@ namespace Curvature
                 }
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = input });
         }
 
@@ -166,6 +198,7 @@ namespace Curvature
                 set.EnabledBehaviors.Remove(behavior);
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = behavior });
         }
 
@@ -178,6 +211,7 @@ namespace Curvature
                 archetype.BehaviorSets.Remove(set);
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = set });
         }
 
@@ -194,6 +228,7 @@ namespace Curvature
                 }
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = archetype });
         }
 
@@ -201,6 +236,7 @@ namespace Curvature
         {
             Scenarios.Remove(scenario);
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = scenario });
         }
 
@@ -211,6 +247,7 @@ namespace Curvature
                 behavior.Considerations.Remove(consideration);
             }
 
+            MarkDirty();
             ItemDelete(this, new DeletionEventArgs { DeletedObject = consideration });
         }
     }

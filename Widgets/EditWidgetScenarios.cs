@@ -86,6 +86,7 @@ namespace Curvature.Widgets
         private void CreateScenarioButton_Click(object sender, EventArgs e)
         {
             EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
+            EditingProject.MarkDirty();
             RefreshScenarioControls();
         }
     }

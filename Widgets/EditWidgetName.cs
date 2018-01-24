@@ -13,15 +13,17 @@ namespace Curvature
     public partial class EditWidgetName : UserControl
     {
         private INameable EditedObject;
+        private Project EditedProject;
 
         public EditWidgetName()
         {
             InitializeComponent();
         }
 
-        internal void Attach(string objectType, INameable editedObject)
+        internal void Attach(string objectType, INameable editedObject, Project project)
         {
             EditedObject = editedObject;
+            EditedProject = project;
 
             ObjectTypeLabel.Text = $"{objectType}:";
             ObjectNameLabel.Text = EditedObject.GetName();
@@ -43,6 +45,7 @@ namespace Curvature
                 if (args.KeyChar == '\r' || args.KeyChar == '\n')
                 {
                     EditedObject.Rename(edit.Text);
+                    EditedProject.MarkDirty();
                     ObjectNameLabel.Text = edit.Text;
                     edit.Dispose();
                     ObjectNameLabel.Visible = true;
@@ -60,6 +63,7 @@ namespace Curvature
             edit.LostFocus += (o, args) =>
             {
                 EditedObject.Rename(edit.Text);
+                EditedProject.MarkDirty();
                 ObjectNameLabel.Text = edit.Text;
                 edit.Dispose();
                 ObjectNameLabel.Visible = true;

@@ -48,6 +48,7 @@ namespace Curvature.Widgets
         private void AddArchetypeButton_Click(object sender, EventArgs e)
         {
             EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
+            EditingProject.MarkDirty();
             RefreshArchetypeControls();
         }
 

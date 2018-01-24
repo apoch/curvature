@@ -31,7 +31,7 @@ namespace Curvature
 
             ConsiderationNameEditBox.Text = EditConsideration.ReadableName;
 
-            ResponseCurveEditor.AttachCurve(EditConsideration.Curve);
+            ResponseCurveEditor.AttachCurve(EditConsideration.Curve, EditProject);
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace Curvature
 
             EditConsideration.GenerateParameterValuesFromInput();
             foreach (var param in EditConsideration.ParameterValues)
-                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param));
+                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditProject));
 
             if (EditConsideration.ParameterValues.Count == 0)
                 ParameterHintSpecificsLabel.Text = "This input has no parameters, so go ahead and click Next to move on.";

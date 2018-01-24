@@ -13,6 +13,7 @@ namespace Curvature
     public partial class EditWidgetBehavior : UserControl, IInputBroker
     {
         private Behavior EditBehavior;
+        private Project EditProject;                // TODO - mark project dirty on changes
 
 
         internal delegate void DialogRebuildNeededHandler();
@@ -31,8 +32,10 @@ namespace Curvature
             ActionComboBox.SelectedIndex = 0;
         }
 
-        internal void Attach(Behavior behavior)
+        internal void Attach(Behavior behavior, Project project)
         {
+            EditProject = project;
+
             foreach (Control ctl in ScoreLayoutPanel.Controls)
                 ctl.Dispose();
 
@@ -46,7 +49,7 @@ namespace Curvature
 
 
             EditBehavior = behavior;
-            NameEditWidget.Attach("Behavior", EditBehavior);
+            NameEditWidget.Attach("Behavior", EditBehavior, EditProject);
             if (!string.IsNullOrEmpty(EditBehavior.Payload))
                 CustomPayload.Text = EditBehavior.Payload;
             else
@@ -183,7 +186,7 @@ namespace Curvature
         internal void Rebuild()
         {
             EditBehavior.DialogRebuildNeeded -= Rebuild;
-            Attach(EditBehavior);
+            Attach(EditBehavior, EditProject);
 
             DialogRebuildNeeded?.Invoke();
         }

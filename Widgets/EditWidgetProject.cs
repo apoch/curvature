@@ -36,7 +36,7 @@ namespace Curvature
         internal void Attach(Project editedProject)
         {
             EditedProject = editedProject;
-            NameEditWidget.Attach("Project", EditedProject);
+            NameEditWidget.Attach("Project", EditedProject, EditedProject);
 
             EditedProject.DialogRebuildNeeded += Rebuild;
 

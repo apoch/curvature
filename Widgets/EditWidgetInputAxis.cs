@@ -28,13 +28,14 @@ namespace Curvature
 
             EditedAxis.DialogRebuildNeeded += Rebuild;
 
-            NameEditWidget.Attach("Input Axis", axis);
+            NameEditWidget.Attach("Input Axis", axis, project);
 
             InputTypeComboBox.SelectedIndex = (int)axis.Origin;
 
             EditedAxis.ParametersChanged += (obj, args) =>
             {
                 GenerateParameterControls();
+                EditedProject.MarkDirty();
             };
         }
 
@@ -58,15 +59,26 @@ namespace Curvature
                     DataSourceComboBox.Items.Add(rec);
             }
 
+            var prev = EditedAxis.Origin;
+
             DataSourceComboBox.SelectedItem = EditedAxis.KBRec;
             EditedAxis.Origin = (InputAxis.OriginType)InputTypeComboBox.SelectedIndex;
 
             GenerateParameterControls();
+
+
+            if (prev != EditedAxis.Origin)
+                EditedProject.MarkDirty();
         }
 
         private void DataSourceComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var prev = EditedAxis.KBRec;
+
             EditedAxis.KBRec = DataSourceComboBox.SelectedItem as KnowledgeBase.Record;
+
+            if (prev != EditedAxis.KBRec)
+                EditedProject.MarkDirty();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -83,14 +95,14 @@ namespace Curvature
 
             foreach (InputParameter param in EditedAxis.Parameters)
             {
-                ParamFlowPanel.Controls.Add(new EditWidgetParameter(param));
+                ParamFlowPanel.Controls.Add(new EditWidgetParameter(param, EditedProject));
             }
         }
 
 
         internal void Rebuild()
         {
-            NameEditWidget.Attach("Input Axis", EditedAxis);
+            NameEditWidget.Attach("Input Axis", EditedAxis, EditedProject);
             DialogRebuildNeeded?.Invoke();
         }
     }

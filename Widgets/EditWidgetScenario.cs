@@ -25,6 +25,8 @@ namespace Curvature
 
         public EditWidgetScenario()
         {
+            // TODO - hook up to project and mark dirty as appropriate
+
             InitializeComponent();
 
             AbsoluteTime = 0.0f;
@@ -95,7 +97,7 @@ namespace Curvature
 
             Simulation.DialogRebuildNeeded += Rebuild;
 
-            NameEditWidget.Attach("Scenario", Simulation);
+            NameEditWidget.Attach("Scenario", Simulation, EditProject);
 
             RefreshAgentTab();
             RefreshLocationTab();

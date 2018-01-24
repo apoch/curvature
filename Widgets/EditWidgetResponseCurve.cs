@@ -13,6 +13,7 @@ namespace Curvature
     public partial class EditWidgetResponseCurve : UserControl
     {
         private ResponseCurve EditCurve = null;
+        private Project EditProject = null;
 
         private Pen ThickBlackArrowPen = new Pen(Color.Black, 2.0f);
 
@@ -63,7 +64,12 @@ namespace Curvature
                 if (EditCurve == null)
                     return;
 
+                var prev = EditCurve.Slope;
+
                 EditCurve.Slope = (double)SlopeEditBox.Value;
+
+                if (prev != EditCurve.Slope)
+                    EditProject.MarkDirty();
 
                 CurvePictureBox.Refresh();
             };
@@ -73,7 +79,14 @@ namespace Curvature
                 if (EditCurve == null)
                     return;
 
+
+                var prev = EditCurve.Exponent;
+
                 EditCurve.Exponent = (double)ExponentEditBox.Value;
+
+                if (prev != EditCurve.Exponent)
+                    EditProject.MarkDirty();
+
 
                 CurvePictureBox.Refresh();
             };
@@ -83,7 +96,14 @@ namespace Curvature
                 if (EditCurve == null)
                     return;
 
+
+                var prev = EditCurve.XShift;
+
                 EditCurve.XShift = (double)HorizontalShiftEditBox.Value;
+
+                if (prev != EditCurve.XShift)
+                    EditProject.MarkDirty();
+
 
                 CurvePictureBox.Refresh();
             };
@@ -93,14 +113,20 @@ namespace Curvature
                 if (EditCurve == null)
                     return;
 
+                var prev = EditCurve.YShift;
+
                 EditCurve.YShift = (double)VerticalShiftEditBox.Value;
+
+                if (prev != EditCurve.YShift)
+                    EditProject.MarkDirty();
 
                 CurvePictureBox.Refresh();
             };
         }
 
-        internal void AttachCurve(ResponseCurve curve)
+        internal void AttachCurve(ResponseCurve curve, Project project)
         {
+            EditProject = project;
             EditCurve = curve;
 
             CurveTypeDropdown.SelectedIndex = (int)curve.Type;
@@ -137,14 +163,20 @@ namespace Curvature
             if (EditCurve == null)
                 return;
 
+            var prev = EditCurve.Type;
+
             EditCurve.Type = (ResponseCurve.CurveType)CurveTypeDropdown.SelectedIndex;
             CurvePictureBox.Refresh();
+
+            if (EditCurve.Type != prev)
+                EditProject.MarkDirty();
         }
 
         private void PresetButton_Click(object sender, EventArgs e)
         {
             (new CurvePresetForm(EditCurve)).ShowDialog();
-            AttachCurve(EditCurve);
+            // TODO - mark project dirty if dialog commits changes
+            AttachCurve(EditCurve, EditProject);
         }
 
         private void ShiftLeftButton_Click(object sender, EventArgs e)
