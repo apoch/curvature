@@ -13,7 +13,7 @@ namespace Curvature
     public partial class EditWidgetBehavior : UserControl, IInputBroker
     {
         private Behavior EditBehavior;
-        private Project EditProject;                // TODO - mark project dirty on changes
+        private Project EditProject;
 
 
         internal delegate void DialogRebuildNeededHandler();
@@ -162,25 +162,45 @@ namespace Curvature
         private void ActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (EditBehavior != null)
+            {
+                var prev = EditBehavior.Action;
                 EditBehavior.Action = (Behavior.ActionType)ActionComboBox.SelectedIndex;
+                if (prev != EditBehavior.Action)
+                    EditProject.MarkDirty();
+            }
         }
 
         private void CanTargetSelfCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (EditBehavior != null)
+            {
+                var prev = EditBehavior.CanTargetSelf;
                 EditBehavior.CanTargetSelf = CanTargetSelfCheckBox.Checked;
+                if (prev != EditBehavior.CanTargetSelf)
+                    EditProject.MarkDirty();
+            }
         }
 
         private void CanTargetOthersCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (EditBehavior != null)
+            {
+                var prev = EditBehavior.CanTargetOthers;
                 EditBehavior.CanTargetOthers = CanTargetOthersCheckBox.Checked;
+                if (EditBehavior.CanTargetOthers != prev)
+                    EditProject.MarkDirty();
+            }
         }
 
         private void CustomPayload_TextChanged(object sender, EventArgs e)
         {
             if (EditBehavior != null)
+            {
+                var prev = EditBehavior.Payload;
                 EditBehavior.Payload = CustomPayload.Text;
+                if (prev != EditBehavior.Payload)
+                    EditProject.MarkDirty();
+            }
         }
 
         internal void Rebuild()
@@ -199,7 +219,12 @@ namespace Curvature
         private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
         {
             if (EditBehavior != null)
+            {
+                var prev = EditBehavior.Weight;
                 EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
+                if (prev != EditBehavior.Weight)
+                    EditProject.MarkDirty();
+            }
 
             RefreshInputs();
         }
