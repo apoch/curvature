@@ -50,6 +50,16 @@ namespace Curvature
         }
 
 
+        public void CopyFrom(ResponseCurve other)
+        {
+            Type = other.Type;
+            Slope = other.Slope;
+            Exponent = other.Exponent;
+            XShift = other.XShift;
+            YShift = other.YShift;
+        }
+
+
         public double ComputeValue(double x)
         {
             switch (Type)

@@ -27,15 +27,20 @@ namespace Curvature
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
-        internal Consideration()
-        {
-        }
-
         public Consideration(string name)
         {
             ReadableName = name;
             ParameterValues = new List<InputParameterValue>();
             Curve = new ResponseCurve(ResponseCurve.CurveType.Linear, 1.0, 1.0, 0.0, 0.0);
+        }
+
+
+        public void CopyFrom(Consideration other)
+        {
+            ReadableName = other.ReadableName;
+            Input = other.Input;
+            Curve.CopyFrom(other.Curve);
+            ParameterValues = other.ParameterValues;
         }
 
         public void GenerateParameterValuesFromInput()

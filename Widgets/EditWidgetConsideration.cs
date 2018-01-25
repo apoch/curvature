@@ -47,9 +47,14 @@ namespace Curvature
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
         {
+            var prev = new Consideration(EditConsideration.GetName());
+            prev.CopyFrom(EditConsideration);
+
             var result = (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
             if (result == DialogResult.OK)
                 EditProject.MarkDirty();
+            else
+                EditConsideration.CopyFrom(prev);
         }
 
         private void InputAxisDropdown_SelectedIndexChanged(object sender, EventArgs e)
