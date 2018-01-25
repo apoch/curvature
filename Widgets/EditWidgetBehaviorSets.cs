@@ -30,6 +30,8 @@ namespace Curvature.Widgets
         {
             EditingProject = project;
             RefreshBehaviorSetControls();
+
+            BehaviorSetEditWidget.DialogRebuildNeeded += RefreshBehaviorSetControls;
         }
 
         private void RefreshBehaviorSetControls()

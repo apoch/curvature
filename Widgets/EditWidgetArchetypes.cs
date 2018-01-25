@@ -24,6 +24,8 @@ namespace Curvature.Widgets
         {
             EditingProject = project;
             RefreshArchetypeControls();
+
+            ArchetypeEditWidget.DialogRebuildNeeded += RefreshArchetypeControls;
         }
 
         private void RefreshArchetypeControls()

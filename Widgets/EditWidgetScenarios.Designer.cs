@@ -31,13 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetScenarios));
             this.DeleteScenariosButton = new System.Windows.Forms.Button();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ScenariosListView = new System.Windows.Forms.ListView();
             this.ScenarioNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateScenarioButton = new System.Windows.Forms.Button();
-            this.ScenarioPanel = new System.Windows.Forms.Panel();
-            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.ScenarioEditWidget = new Curvature.EditWidgetScenario();
             this.HintLabel = new System.Windows.Forms.Label();
-            this.ScenarioPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DeleteScenariosButton
@@ -54,6 +53,13 @@
             this.DeleteScenariosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DeleteScenariosButton.UseVisualStyleBackColor = true;
             this.DeleteScenariosButton.Click += new System.EventHandler(this.DeleteScenariosButton_Click);
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
             // ScenariosListView
             // 
@@ -91,23 +97,15 @@
             this.CreateScenarioButton.UseVisualStyleBackColor = true;
             this.CreateScenarioButton.Click += new System.EventHandler(this.CreateScenarioButton_Click);
             // 
-            // ScenarioPanel
+            // ScenarioEditWidget
             // 
-            this.ScenarioPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ScenarioEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScenarioPanel.Controls.Add(this.HintLabel);
-            this.ScenarioPanel.Location = new System.Drawing.Point(253, 3);
-            this.ScenarioPanel.Name = "ScenarioPanel";
-            this.ScenarioPanel.Size = new System.Drawing.Size(668, 580);
-            this.ScenarioPanel.TabIndex = 6;
-            // 
-            // IconImageList
-            // 
-            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
-            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
-            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
+            this.ScenarioEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.ScenarioEditWidget.Name = "ScenarioEditWidget";
+            this.ScenarioEditWidget.Size = new System.Drawing.Size(668, 580);
+            this.ScenarioEditWidget.TabIndex = 10;
             // 
             // HintLabel
             // 
@@ -115,10 +113,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HintLabel.Location = new System.Drawing.Point(0, 0);
+            this.HintLabel.Location = new System.Drawing.Point(253, 3);
             this.HintLabel.Name = "HintLabel";
             this.HintLabel.Size = new System.Drawing.Size(668, 580);
-            this.HintLabel.TabIndex = 10;
+            this.HintLabel.TabIndex = 11;
             this.HintLabel.Text = "Select or create a scenario to watch your AI come to life!";
             this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -126,13 +124,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ScenarioEditWidget);
             this.Controls.Add(this.DeleteScenariosButton);
             this.Controls.Add(this.ScenariosListView);
             this.Controls.Add(this.CreateScenarioButton);
-            this.Controls.Add(this.ScenarioPanel);
+            this.Controls.Add(this.HintLabel);
             this.Name = "EditWidgetScenarios";
             this.Size = new System.Drawing.Size(924, 586);
-            this.ScenarioPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -143,8 +141,8 @@
         private System.Windows.Forms.ListView ScenariosListView;
         private System.Windows.Forms.ColumnHeader ScenarioNameColumn;
         private System.Windows.Forms.Button CreateScenarioButton;
-        private System.Windows.Forms.Panel ScenarioPanel;
         private System.Windows.Forms.ImageList IconImageList;
+        private EditWidgetScenario ScenarioEditWidget;
         private System.Windows.Forms.Label HintLabel;
     }
 }

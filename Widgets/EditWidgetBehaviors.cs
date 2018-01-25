@@ -25,6 +25,9 @@ namespace Curvature.Widgets
         {
             EditingProject = project;
             RefreshBehaviorControls();
+
+            BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
+            ConsiderationEditWidget.DialogRebuildNeeded += RefreshConsiderationControls;
         }
 
 
