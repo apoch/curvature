@@ -114,6 +114,7 @@ namespace Curvature
             EditingProject.ProjectDirtied += (dirty) =>
             {
                 SetWindowCaption(dirty);
+                ProjectEditWidget.Attach(EditingProject);
             };
         }
 

@@ -108,11 +108,8 @@ namespace Curvature
 
         public void MarkDirty()
         {
-            if (!Dirty)
-            {
-                Dirty = true;
-                ProjectDirtied?.Invoke(Dirty);
-            }
+            Dirty = true;
+            ProjectDirtied?.Invoke(Dirty);
         }
 
 
