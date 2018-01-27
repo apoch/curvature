@@ -62,6 +62,7 @@ namespace Curvature
         private void InputComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var axis = InputComboBox.SelectedItem as InputAxis;
+            EditConsideration.Input = axis;
 
             foreach (Control c in ParamFlowPanel.Controls)
                 c.Dispose();

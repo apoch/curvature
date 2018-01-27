@@ -34,8 +34,17 @@
             this.TagLabel = new System.Windows.Forms.Label();
             this.OriginComboBox = new System.Windows.Forms.ComboBox();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.ClampingBehaviorComboBox = new System.Windows.Forms.ComboBox();
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.ClampingBehaviorComboBox = new System.Windows.Forms.ComboBox();
+            this.RangeConfigurationPanel = new System.Windows.Forms.Panel();
+            this.RangeMinimum = new System.Windows.Forms.NumericUpDown();
+            this.RangeValidValuesLabel = new System.Windows.Forms.Label();
+            this.RangeToLabel = new System.Windows.Forms.Label();
+            this.RangeMaximum = new System.Windows.Forms.NumericUpDown();
+            this.EnumerationPanel = new System.Windows.Forms.Panel();
+            this.RangeConfigurationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).BeginInit();
             this.SuspendLayout();
             // 
             // RecordTagEditBox
@@ -83,6 +92,12 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "DeleteItemIcon.png");
+            // 
             // ClampingBehaviorComboBox
             // 
             this.ClampingBehaviorComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -99,23 +114,102 @@
             this.ClampingBehaviorComboBox.TabIndex = 4;
             this.ClampingBehaviorComboBox.SelectedIndexChanged += new System.EventHandler(this.ClampingBehaviorComboBox_SelectedIndexChanged);
             // 
-            // IconImageList
+            // RangeConfigurationPanel
             // 
-            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
-            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.IconImageList.Images.SetKeyName(0, "DeleteItemIcon.png");
+            this.RangeConfigurationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RangeConfigurationPanel.Controls.Add(this.RangeMaximum);
+            this.RangeConfigurationPanel.Controls.Add(this.RangeToLabel);
+            this.RangeConfigurationPanel.Controls.Add(this.RangeMinimum);
+            this.RangeConfigurationPanel.Location = new System.Drawing.Point(270, 30);
+            this.RangeConfigurationPanel.Name = "RangeConfigurationPanel";
+            this.RangeConfigurationPanel.Size = new System.Drawing.Size(396, 31);
+            this.RangeConfigurationPanel.TabIndex = 5;
+            // 
+            // RangeMinimum
+            // 
+            this.RangeMinimum.DecimalPlaces = 3;
+            this.RangeMinimum.Location = new System.Drawing.Point(3, 3);
+            this.RangeMinimum.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.RangeMinimum.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.RangeMinimum.Name = "RangeMinimum";
+            this.RangeMinimum.Size = new System.Drawing.Size(184, 20);
+            this.RangeMinimum.TabIndex = 0;
+            this.RangeMinimum.ValueChanged += new System.EventHandler(this.RangeMinimum_ValueChanged);
+            // 
+            // RangeValidValuesLabel
+            // 
+            this.RangeValidValuesLabel.AutoSize = true;
+            this.RangeValidValuesLabel.Location = new System.Drawing.Point(197, 35);
+            this.RangeValidValuesLabel.Name = "RangeValidValuesLabel";
+            this.RangeValidValuesLabel.Size = new System.Drawing.Size(67, 13);
+            this.RangeValidValuesLabel.TabIndex = 6;
+            this.RangeValidValuesLabel.Text = "Valid values:";
+            // 
+            // RangeToLabel
+            // 
+            this.RangeToLabel.AutoSize = true;
+            this.RangeToLabel.Location = new System.Drawing.Point(193, 5);
+            this.RangeToLabel.Name = "RangeToLabel";
+            this.RangeToLabel.Size = new System.Drawing.Size(16, 13);
+            this.RangeToLabel.TabIndex = 1;
+            this.RangeToLabel.Text = "to";
+            // 
+            // RangeMaximum
+            // 
+            this.RangeMaximum.DecimalPlaces = 3;
+            this.RangeMaximum.Location = new System.Drawing.Point(215, 3);
+            this.RangeMaximum.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.RangeMaximum.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.RangeMaximum.Name = "RangeMaximum";
+            this.RangeMaximum.Size = new System.Drawing.Size(181, 20);
+            this.RangeMaximum.TabIndex = 2;
+            this.RangeMaximum.ValueChanged += new System.EventHandler(this.RangeMaximum_ValueChanged);
+            // 
+            // EnumerationPanel
+            // 
+            this.EnumerationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnumerationPanel.Location = new System.Drawing.Point(270, 30);
+            this.EnumerationPanel.Name = "EnumerationPanel";
+            this.EnumerationPanel.Size = new System.Drawing.Size(396, 31);
+            this.EnumerationPanel.TabIndex = 7;
+            this.EnumerationPanel.Visible = false;
             // 
             // EditWidgetKnowledgeBaseRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RangeValidValuesLabel);
+            this.Controls.Add(this.RangeConfigurationPanel);
             this.Controls.Add(this.ClampingBehaviorComboBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.OriginComboBox);
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
+            this.Controls.Add(this.EnumerationPanel);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(753, 33);
+            this.Size = new System.Drawing.Size(753, 69);
+            this.RangeConfigurationPanel.ResumeLayout(false);
+            this.RangeConfigurationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +223,11 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.ComboBox ClampingBehaviorComboBox;
         private System.Windows.Forms.ImageList IconImageList;
+        private System.Windows.Forms.Panel RangeConfigurationPanel;
+        private System.Windows.Forms.NumericUpDown RangeMinimum;
+        private System.Windows.Forms.Label RangeToLabel;
+        private System.Windows.Forms.Label RangeValidValuesLabel;
+        private System.Windows.Forms.NumericUpDown RangeMaximum;
+        private System.Windows.Forms.Panel EnumerationPanel;
     }
 }

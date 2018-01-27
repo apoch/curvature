@@ -168,8 +168,8 @@ namespace Curvature
             switch (KBRecord.Params)
             {
                 case KnowledgeBase.Record.Parameterization.ConfigurableRange:
-                    Parameters.Add(new InputParameter("Range lower bound", -1e6f, 1e6f));
-                    Parameters.Add(new InputParameter("Range upper bound", -1e6f, 1e6f));
+                    Parameters.Add(new InputParameter("Range lower bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
+                    Parameters.Add(new InputParameter("Range upper bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
                     break;
 
                 case KnowledgeBase.Record.Parameterization.Enumeration:
@@ -177,7 +177,7 @@ namespace Curvature
                     break;
 
                 case KnowledgeBase.Record.Parameterization.FixedRange:
-                    Parameters.Add(new InputParameter("Range", -1e6f, 1e6f));
+                    Parameters.Add(new InputParameter("Maximum", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
                     break;
             }
 

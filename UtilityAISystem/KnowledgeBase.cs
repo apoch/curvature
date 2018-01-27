@@ -26,17 +26,20 @@ namespace Curvature
             public string ReadableName;
 
             [DataMember]
+            public bool Computed;
+
+            [DataMember]
             public double MinimumValue;
 
             [DataMember]
             public double MaximumValue;
 
             [DataMember]
-            public bool Computed;
+            public List<string> EnumerationValues;
+
 
             [DataMember]
             private Parameterization Parameters;
-
 
             public Parameterization Params
             {
@@ -57,13 +60,14 @@ namespace Curvature
             {
             }
 
-            public Record(string name, double min, double max, bool computed, Parameterization param)
+            public Record(string name, bool computed, Parameterization param)
             {
                 ReadableName = name;
-                MinimumValue = min;
-                MaximumValue = max;
                 Computed = computed;
                 Params = param;
+
+                MinimumValue = 0.0;
+                MaximumValue = 1.0;
             }
 
             public override string ToString()

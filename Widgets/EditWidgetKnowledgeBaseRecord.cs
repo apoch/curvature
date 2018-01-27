@@ -29,6 +29,16 @@ namespace Curvature
                 OriginComboBox.SelectedIndex = 0;
 
             ClampingBehaviorComboBox.SelectedIndex = (int)EditRec.Params;
+
+            if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+            {
+                // TODO - finish enumeration support
+            }
+            else
+            {
+                RangeMinimum.Value = (decimal)EditRec.MinimumValue;
+                RangeMaximum.Value = (decimal)EditRec.MaximumValue;
+            }
         }
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
@@ -70,6 +80,39 @@ namespace Curvature
             EditRec.Params = (KnowledgeBase.Record.Parameterization)ClampingBehaviorComboBox.SelectedIndex;
 
             if (prev != EditRec.Params)
+            {
+                EditProject.MarkDirty();
+
+                if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                {
+                    RangeConfigurationPanel.Visible = false;
+                    EnumerationPanel.Visible = true;
+                }
+                else
+                {
+                    RangeConfigurationPanel.Visible = true;
+                    EnumerationPanel.Visible = false;
+                }
+            }
+        }
+
+        private void RangeMinimum_ValueChanged(object sender, EventArgs e)
+        {
+            var prev = EditRec.MinimumValue;
+
+            EditRec.MinimumValue = (double)RangeMinimum.Value;
+
+            if (prev != EditRec.MinimumValue)
+                EditProject.MarkDirty();
+        }
+
+        private void RangeMaximum_ValueChanged(object sender, EventArgs e)
+        {
+            var prev = EditRec.MaximumValue;
+
+            EditRec.MaximumValue = (double)RangeMaximum.Value;
+
+            if (prev != EditRec.MaximumValue)
                 EditProject.MarkDirty();
         }
     }
