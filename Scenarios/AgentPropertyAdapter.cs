@@ -9,9 +9,9 @@ namespace Curvature
 {
     class AgentPropertyAdapter : ICustomTypeDescriptor
     {
-        private Dictionary<string, double> PropertyDict;
+        private Dictionary<KnowledgeBase.Record, double> PropertyDict;
 
-        public AgentPropertyAdapter(Dictionary<string, double> propdict)
+        public AgentPropertyAdapter(Dictionary<KnowledgeBase.Record, double> propdict)
         {
             PropertyDict = propdict;
         }
@@ -83,12 +83,15 @@ namespace Curvature
 
     class DictionaryPropertyDescriptor : PropertyDescriptor
     {
-        Dictionary<string, double> PropertyDict;
-        string Key;
+        Dictionary<KnowledgeBase.Record, double> PropertyDict;
+        KnowledgeBase.Record Key;
 
-        internal DictionaryPropertyDescriptor(Dictionary<string, double> dict, string key)
-            : base(key, null)
+        internal DictionaryPropertyDescriptor(Dictionary<KnowledgeBase.Record, double> dict, KnowledgeBase.Record key)
+            : base(key.ReadableName, null)
         {
+
+            // TODO - figure out how we can clamp the user-provided value to the KBRecord's min/max automatically here
+
             PropertyDict = dict;
             Key = key;
         }

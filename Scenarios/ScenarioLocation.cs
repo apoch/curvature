@@ -45,7 +45,7 @@ namespace Curvature
             return Position;
         }
 
-        public double GetProperty(string name)
+        public double GetProperty(KnowledgeBase.Record kbrec)
         {
             return 0.0;
         }

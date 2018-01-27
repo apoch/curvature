@@ -17,7 +17,7 @@ namespace Curvature
         {
             string GetName();
             PointF GetPosition();
-            double GetProperty(string name);
+            double GetProperty(KnowledgeBase.Record kbrec);
             float GetRadius();
         }
 
@@ -108,6 +108,29 @@ namespace Curvature
             Locations = new List<ScenarioLocation>();
 
             InitializeDrawingResources();
+        }
+
+        public void ReseedRandoms(int seed)
+        {
+            RandomNumbers = new Random(seed);
+        }
+
+        public void ReseedRandoms()
+        {
+            RandomNumbers = new Random();
+        }
+
+        public void ResetAgents(KnowledgeBase kb)
+        {
+            foreach (var agent in Agents)
+            {
+                agent.MoveToStartPosition(RandomNumbers);
+
+                agent.GenerateStartProperties(kb);
+                agent.Properties = new Dictionary<KnowledgeBase.Record, double>();
+                foreach (var kvp in agent.StartProperties)
+                    agent.Properties.Add(kvp.Key, kvp.Value);
+            }
         }
 
         public void Advance(float dt)
@@ -344,11 +367,11 @@ namespace Curvature
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
-                    raw = context.ThinkingAgent.GetProperty(axis.KBRec.ReadableName);
+                    raw = context.ThinkingAgent.GetProperty(axis.KBRec);
                     break;
 
                 case InputAxis.OriginType.PropertyOfTarget:
-                    raw = context.Target.GetProperty(axis.KBRec.ReadableName);
+                    raw = context.Target.GetProperty(axis.KBRec);
                     break;
             }
 
@@ -525,7 +548,7 @@ namespace Curvature
         private void InitializeDrawingResources()
         {
             RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
-            RenderPenDottedBlack.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            RenderPenDottedBlack.DashStyle = DashStyle.Dot;
         }
 
 

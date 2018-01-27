@@ -194,6 +194,9 @@ namespace Curvature
 
         private void RefreshLocationTab()
         {
+            AgentStartLocationCombo.Items.Clear();
+            AgentStartLocationCombo.Items.Add("(Manual)");
+
             LocationsListView.Items.Clear();
             if (Simulation == null)
                 return;
@@ -203,6 +206,8 @@ namespace Curvature
                 var item = new ListViewItem(new string[] { loc.GetName(), loc.GetPosition().ToString() + $" R={loc.Radius}" });
                 item.Tag = loc;
                 LocationsListView.Items.Add(item);
+
+                AgentStartLocationCombo.Items.Add(loc.GetName());
             }
         }
 
@@ -322,9 +327,9 @@ namespace Curvature
             AgentRadiusUpDown.Value = (decimal)(agent.Radius);
             AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
             ColorSwatch.BackColor = agent.Color;
+            AgentRandomStartPositionCheckBox.Checked = agent.StartFuzzed;
 
-            if (agent.StartProperties == null)
-                agent.GenerateStartProperties(EditProject.KB);
+            agent.GenerateStartProperties(EditProject.KB);
 
             AgentProperties.SelectedObject = new AgentPropertyAdapter(agent.StartProperties);
         }
@@ -349,15 +354,12 @@ namespace Curvature
             if (Simulation == null)
                 return;
 
-            foreach (var agent in Simulation.Agents)
-            {
-                agent.Position = agent.StartPosition;
+            if (int.TryParse(RandomSeedCombo.Text, out int seed))
+                Simulation.ReseedRandoms(seed);
+            else
+                Simulation.ReseedRandoms();
 
-                agent.GenerateStartProperties(EditProject.KB);
-                agent.Properties = new Dictionary<string, double>();
-                foreach (var kvp in agent.StartProperties)
-                    agent.Properties.Add(kvp.Key, kvp.Value);
-            }
+            Simulation.ResetAgents(EditProject.KB);
 
             ScenarioRenderingBox.Refresh();
 
@@ -400,6 +402,17 @@ namespace Curvature
                     var agent = (item as ListViewItem).Tag as ScenarioAgent;
                     agent.Color = ColorPicker.Color;
                 }
+
+                EditProject.MarkDirty();
+            }
+        }
+
+        private void AgentRandomStartPositionCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (var selected in AgentsListView.SelectedItems)
+            {
+                var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+                agent.StartFuzzed = AgentRandomStartPositionCheckBox.Checked;
             }
         }
     }

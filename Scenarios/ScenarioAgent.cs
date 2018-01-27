@@ -24,16 +24,22 @@ namespace Curvature
         public float Radius;
 
         [DataMember]
-        public Dictionary<string, double> Properties;
+        public Dictionary<KnowledgeBase.Record, double> Properties;
 
         [DataMember]
-        public Dictionary<string, double> StartProperties;
+        public Dictionary<KnowledgeBase.Record, double> StartProperties;
         
         [DataMember]
         public Archetype AgentArchetype;
 
         [DataMember]
         public Color Color;
+
+        [DataMember]
+        public ScenarioLocation StartLocation;
+
+        [DataMember]
+        public bool StartFuzzed;
 
 
         public bool Stalled = false;
@@ -48,8 +54,9 @@ namespace Curvature
             Position = new PointF(0.0f, 0.0f);
             Radius = 1.0f;
 
-            Properties = new Dictionary<string, double>();
-            StartProperties = new Dictionary<string, double>();
+            Properties = new Dictionary<KnowledgeBase.Record, double>();
+
+            Color = Color.LightSteelBlue;
         }
 
         [OnDeserialized]
@@ -121,32 +128,52 @@ namespace Curvature
             return null;
         }
 
-        public double GetProperty(string name)
+        public double GetProperty(KnowledgeBase.Record kbrec)
         {
-            if (Properties == null || !Properties.ContainsKey(name))
+            if (Properties == null || !Properties.ContainsKey(kbrec))
                 return 0.0;
 
-            return Properties[name];
+            return Properties[kbrec];
         }
 
         public void GenerateStartProperties(KnowledgeBase kb)
         {
             var oldstarts = StartProperties;
             if (oldstarts == null)
-                oldstarts = new Dictionary<string, double>();
+                oldstarts = new Dictionary<KnowledgeBase.Record, double>();
 
-            StartProperties = new Dictionary<string, double>();
+            StartProperties = new Dictionary<KnowledgeBase.Record, double>();
 
             foreach (var rec in kb.Records)
             {
                 if (rec.Computed)
                     continue;
 
-                if (oldstarts.ContainsKey(rec.ReadableName))
-                    StartProperties.Add(rec.ReadableName, oldstarts[rec.ReadableName]);
+                if (oldstarts.ContainsKey(rec))
+                    StartProperties.Add(rec, oldstarts[rec]);
                 else
-                    StartProperties.Add(rec.ReadableName, rec.MinimumValue);
+                    StartProperties.Add(rec, rec.MinimumValue);
             }
+        }
+
+        internal void MoveToStartPosition(Random rand)
+        {
+            float fuzzRadius = Radius;
+            PointF startPos = StartPosition;
+
+            if (StartLocation != null)
+            {
+                startPos.X += StartLocation.Position.X;
+                startPos.Y += StartLocation.Position.Y;
+            }
+
+            if (StartFuzzed)
+            {
+                startPos.X += (0.5f - (float)rand.NextDouble()) * fuzzRadius;
+                startPos.Y += (0.5f - (float)rand.NextDouble()) * fuzzRadius;
+            }
+
+            Position = startPos;
         }
     }
 }
