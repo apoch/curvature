@@ -213,6 +213,7 @@
             this.AgentProperties.Name = "AgentProperties";
             this.AgentProperties.Size = new System.Drawing.Size(317, 196);
             this.AgentProperties.TabIndex = 17;
+            this.AgentProperties.ToolbarVisible = false;
             // 
             // CopyCurrentAgentPositionButton
             // 
