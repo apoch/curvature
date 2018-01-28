@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Curvature")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Curvature Studio")]
+[assembly: AssemblyDescription("A full-featured edit for working with Utility-based AI")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Curvature")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright © 2017-2018 Mike Lewis")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
