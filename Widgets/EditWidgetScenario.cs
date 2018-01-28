@@ -161,8 +161,9 @@ namespace Curvature
                 var winctx = args.AgentDecisions[agent].WinningContext;
 
                 string decisionLog = (winctx == null) ? "(stalled!)" : $"{winctx.ChosenBehavior.GetName()} [{winctx.ChosenBehavior.Action}]";
+                string contextLog = (winctx == null) ? "(N/A)" : $"{winctx.Target.GetName()}";
                 string position = agent.GetPosition().ToString();
-                agentnode.Tag = $"Agent: {agent.GetName()} (running archetype {agent.AgentArchetype.GetName()})\r\nDecision: {decisionLog}\r\nPosition: {position}\r\n";
+                agentnode.Tag = $"Agent: {agent.GetName()} (running archetype {agent.AgentArchetype.GetName()})\r\nDecision: {decisionLog}\r\nContext: {contextLog}\r\nPosition: {position}\r\n";
 
                 foreach (var behaviorset in agent.AgentArchetype.BehaviorSets)
                 {
