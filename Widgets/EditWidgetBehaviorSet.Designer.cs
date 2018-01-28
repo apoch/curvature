@@ -88,7 +88,7 @@
             this.InputGroupBox.Location = new System.Drawing.Point(0, 0);
             this.InputGroupBox.Name = "InputGroupBox";
             this.InputGroupBox.Size = new System.Drawing.Size(265, 80);
-            this.InputGroupBox.TabIndex = 3;
+            this.InputGroupBox.TabIndex = 0;
             this.InputGroupBox.TabStop = false;
             this.InputGroupBox.Text = "Inputs";
             // 
@@ -155,7 +155,7 @@
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(506, 30);
-            this.NameEditWidget.TabIndex = 3;
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetBehaviorSet
             // 

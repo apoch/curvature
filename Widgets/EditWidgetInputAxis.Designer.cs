@@ -35,9 +35,9 @@
             this.PropertiesGroupBox = new System.Windows.Forms.GroupBox();
             this.DataSourceComboBox = new System.Windows.Forms.ComboBox();
             this.InputTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.NameEditWidget = new Curvature.EditWidgetName();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.ParameterGroupBox.SuspendLayout();
             this.PropertiesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             this.ParameterGroupBox.MinimumSize = new System.Drawing.Size(475, 50);
             this.ParameterGroupBox.Name = "ParameterGroupBox";
             this.ParameterGroupBox.Size = new System.Drawing.Size(475, 50);
-            this.ParameterGroupBox.TabIndex = 1;
+            this.ParameterGroupBox.TabIndex = 3;
             this.ParameterGroupBox.TabStop = false;
             this.ParameterGroupBox.Text = "Parameters";
             // 
@@ -108,14 +108,6 @@
             this.InputTypeComboBox.TabIndex = 0;
             this.InputTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.InputTypeComboBox_SelectedIndexChanged);
             // 
-            // NameEditWidget
-            // 
-            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.NameEditWidget.Name = "NameEditWidget";
-            this.NameEditWidget.Size = new System.Drawing.Size(485, 30);
-            this.NameEditWidget.TabIndex = 3;
-            // 
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -125,7 +117,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(407, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.TabIndex = 1;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -136,6 +128,14 @@
             this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
             this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.IconImageList.Images.SetKeyName(0, "DeleteItemIcon.png");
+            // 
+            // NameEditWidget
+            // 
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(485, 30);
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetInputAxis
             // 

@@ -47,7 +47,7 @@
             this.DeleteScenariosButton.Location = new System.Drawing.Point(128, 531);
             this.DeleteScenariosButton.Name = "DeleteScenariosButton";
             this.DeleteScenariosButton.Size = new System.Drawing.Size(119, 52);
-            this.DeleteScenariosButton.TabIndex = 9;
+            this.DeleteScenariosButton.TabIndex = 2;
             this.DeleteScenariosButton.Text = "Delete Selection";
             this.DeleteScenariosButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.DeleteScenariosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -72,7 +72,7 @@
             this.ScenariosListView.Location = new System.Drawing.Point(3, 3);
             this.ScenariosListView.Name = "ScenariosListView";
             this.ScenariosListView.Size = new System.Drawing.Size(244, 522);
-            this.ScenariosListView.TabIndex = 8;
+            this.ScenariosListView.TabIndex = 0;
             this.ScenariosListView.UseCompatibleStateImageBehavior = false;
             this.ScenariosListView.View = System.Windows.Forms.View.Details;
             this.ScenariosListView.SelectedIndexChanged += new System.EventHandler(this.ScenariosListView_SelectedIndexChanged);
@@ -90,7 +90,7 @@
             this.CreateScenarioButton.Location = new System.Drawing.Point(3, 531);
             this.CreateScenarioButton.Name = "CreateScenarioButton";
             this.CreateScenarioButton.Size = new System.Drawing.Size(119, 52);
-            this.CreateScenarioButton.TabIndex = 7;
+            this.CreateScenarioButton.TabIndex = 1;
             this.CreateScenarioButton.Text = "Create Scenario";
             this.CreateScenarioButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.CreateScenarioButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -105,7 +105,7 @@
             this.ScenarioEditWidget.Location = new System.Drawing.Point(253, 3);
             this.ScenarioEditWidget.Name = "ScenarioEditWidget";
             this.ScenarioEditWidget.Size = new System.Drawing.Size(668, 580);
-            this.ScenarioEditWidget.TabIndex = 10;
+            this.ScenarioEditWidget.TabIndex = 3;
             // 
             // HintLabel
             // 

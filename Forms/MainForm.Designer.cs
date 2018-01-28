@@ -72,7 +72,7 @@
             this.PrimaryMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMenuStrip.Name = "PrimaryMenuStrip";
             this.PrimaryMenuStrip.Size = new System.Drawing.Size(987, 24);
-            this.PrimaryMenuStrip.TabIndex = 2;
+            this.PrimaryMenuStrip.TabIndex = 0;
             this.PrimaryMenuStrip.Text = "Menu";
             // 
             // fileToolStripMenuItem
@@ -100,7 +100,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(232, 6);
             // 
             // openProjectToolStripMenuItem
             // 
@@ -114,7 +114,7 @@
             // 
             this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
             this.saveProjectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.saveProjectToolStripMenuItem.Text = "&Save Project";
             this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
             // 
@@ -130,12 +130,12 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(160, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(232, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -165,7 +165,7 @@
             this.MainTabs.Name = "MainTabs";
             this.MainTabs.SelectedIndex = 0;
             this.MainTabs.Size = new System.Drawing.Size(963, 623);
-            this.MainTabs.TabIndex = 5;
+            this.MainTabs.TabIndex = 1;
             // 
             // ProjectTab
             // 

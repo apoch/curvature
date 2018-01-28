@@ -39,7 +39,7 @@
             this.ConsiderationNameLabel.Location = new System.Drawing.Point(3, 47);
             this.ConsiderationNameLabel.Name = "ConsiderationNameLabel";
             this.ConsiderationNameLabel.Size = new System.Drawing.Size(159, 23);
-            this.ConsiderationNameLabel.TabIndex = 1;
+            this.ConsiderationNameLabel.TabIndex = 0;
             this.ConsiderationNameLabel.Text = "(Consideration Name) x";
             this.ConsiderationNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -49,7 +49,7 @@
             this.ScoreLabel.Location = new System.Drawing.Point(284, 52);
             this.ScoreLabel.Name = "ScoreLabel";
             this.ScoreLabel.Size = new System.Drawing.Size(31, 13);
-            this.ScoreLabel.TabIndex = 2;
+            this.ScoreLabel.TabIndex = 1;
             this.ScoreLabel.Text = "= 0.0";
             // 
             // ResponseCurvePictureBox

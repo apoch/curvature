@@ -55,7 +55,7 @@
             this.RecordTagEditBox.Location = new System.Drawing.Point(47, 3);
             this.RecordTagEditBox.Name = "RecordTagEditBox";
             this.RecordTagEditBox.Size = new System.Drawing.Size(217, 20);
-            this.RecordTagEditBox.TabIndex = 0;
+            this.RecordTagEditBox.TabIndex = 1;
             this.RecordTagEditBox.TextChanged += new System.EventHandler(this.RecordTagEditBox_TextChanged);
             // 
             // TagLabel
@@ -64,7 +64,7 @@
             this.TagLabel.Location = new System.Drawing.Point(11, 6);
             this.TagLabel.Name = "TagLabel";
             this.TagLabel.Size = new System.Drawing.Size(30, 13);
-            this.TagLabel.TabIndex = 1;
+            this.TagLabel.TabIndex = 0;
             this.TagLabel.Text = "Title:";
             // 
             // OriginComboBox
@@ -89,7 +89,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(672, 2);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(77, 22);
-            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.TabIndex = 7;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
             this.ClampingBehaviorComboBox.Location = new System.Drawing.Point(474, 3);
             this.ClampingBehaviorComboBox.Name = "ClampingBehaviorComboBox";
             this.ClampingBehaviorComboBox.Size = new System.Drawing.Size(192, 21);
-            this.ClampingBehaviorComboBox.TabIndex = 4;
+            this.ClampingBehaviorComboBox.TabIndex = 3;
             this.ClampingBehaviorComboBox.SelectedIndexChanged += new System.EventHandler(this.ClampingBehaviorComboBox_SelectedIndexChanged);
             // 
             // RangeConfigurationPanel
@@ -127,7 +127,7 @@
             this.RangeConfigurationPanel.Location = new System.Drawing.Point(270, 30);
             this.RangeConfigurationPanel.Name = "RangeConfigurationPanel";
             this.RangeConfigurationPanel.Size = new System.Drawing.Size(396, 31);
-            this.RangeConfigurationPanel.TabIndex = 5;
+            this.RangeConfigurationPanel.TabIndex = 6;
             // 
             // RangeMaximum
             // 
@@ -182,7 +182,7 @@
             this.RangeValidValuesLabel.Location = new System.Drawing.Point(197, 35);
             this.RangeValidValuesLabel.Name = "RangeValidValuesLabel";
             this.RangeValidValuesLabel.Size = new System.Drawing.Size(67, 13);
-            this.RangeValidValuesLabel.TabIndex = 6;
+            this.RangeValidValuesLabel.TabIndex = 5;
             this.RangeValidValuesLabel.Text = "Valid values:";
             // 
             // EnumerationPanel
@@ -201,7 +201,7 @@
             this.PrefabPanel.Location = new System.Drawing.Point(47, 30);
             this.PrefabPanel.Name = "PrefabPanel";
             this.PrefabPanel.Size = new System.Drawing.Size(144, 36);
-            this.PrefabPanel.TabIndex = 8;
+            this.PrefabPanel.TabIndex = 4;
             this.PrefabPanel.Visible = false;
             // 
             // PrefabComboBox

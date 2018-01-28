@@ -55,7 +55,7 @@
             this.IncreasingDecreasingComboBox.Location = new System.Drawing.Point(272, 12);
             this.IncreasingDecreasingComboBox.Name = "IncreasingDecreasingComboBox";
             this.IncreasingDecreasingComboBox.Size = new System.Drawing.Size(304, 21);
-            this.IncreasingDecreasingComboBox.TabIndex = 0;
+            this.IncreasingDecreasingComboBox.TabIndex = 1;
             this.IncreasingDecreasingComboBox.SelectedIndexChanged += new System.EventHandler(this.IncreasingDecreasingComboBox_SelectedIndexChanged);
             // 
             // IncreasingDecreasingLabel
@@ -64,7 +64,7 @@
             this.IncreasingDecreasingLabel.Location = new System.Drawing.Point(12, 15);
             this.IncreasingDecreasingLabel.Name = "IncreasingDecreasingLabel";
             this.IncreasingDecreasingLabel.Size = new System.Drawing.Size(245, 13);
-            this.IncreasingDecreasingLabel.TabIndex = 1;
+            this.IncreasingDecreasingLabel.TabIndex = 0;
             this.IncreasingDecreasingLabel.Text = "As input values grow towards 1, this consideration:";
             // 
             // SuggestedPresetList
@@ -78,7 +78,7 @@
             this.SuggestedPresetList.Location = new System.Drawing.Point(15, 98);
             this.SuggestedPresetList.Name = "SuggestedPresetList";
             this.SuggestedPresetList.Size = new System.Drawing.Size(378, 176);
-            this.SuggestedPresetList.TabIndex = 2;
+            this.SuggestedPresetList.TabIndex = 5;
             this.SuggestedPresetList.UseCompatibleStateImageBehavior = false;
             this.SuggestedPresetList.View = System.Windows.Forms.View.Details;
             // 
@@ -98,7 +98,7 @@
             this.SuggestionsLabel.Location = new System.Drawing.Point(12, 78);
             this.SuggestionsLabel.Name = "SuggestionsLabel";
             this.SuggestionsLabel.Size = new System.Drawing.Size(68, 13);
-            this.SuggestionsLabel.TabIndex = 3;
+            this.SuggestionsLabel.TabIndex = 4;
             this.SuggestionsLabel.Text = "Suggestions:";
             // 
             // CancelPresetsButton
@@ -108,7 +108,7 @@
             this.CancelPresetsButton.Location = new System.Drawing.Point(501, 280);
             this.CancelPresetsButton.Name = "CancelPresetsButton";
             this.CancelPresetsButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelPresetsButton.TabIndex = 4;
+            this.CancelPresetsButton.TabIndex = 8;
             this.CancelPresetsButton.Text = "Cancel";
             this.CancelPresetsButton.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +119,7 @@
             this.OKButton.Location = new System.Drawing.Point(420, 280);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 5;
+            this.OKButton.TabIndex = 7;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -138,7 +138,7 @@
             this.AccelerationComboBox.Location = new System.Drawing.Point(272, 39);
             this.AccelerationComboBox.Name = "AccelerationComboBox";
             this.AccelerationComboBox.Size = new System.Drawing.Size(304, 21);
-            this.AccelerationComboBox.TabIndex = 8;
+            this.AccelerationComboBox.TabIndex = 3;
             this.AccelerationComboBox.SelectedIndexChanged += new System.EventHandler(this.AccelerationComboBox_SelectedIndexChanged);
             // 
             // AccelerationLabel
@@ -147,7 +147,7 @@
             this.AccelerationLabel.Location = new System.Drawing.Point(12, 42);
             this.AccelerationLabel.Name = "AccelerationLabel";
             this.AccelerationLabel.Size = new System.Drawing.Size(247, 13);
-            this.AccelerationLabel.TabIndex = 9;
+            this.AccelerationLabel.TabIndex = 2;
             this.AccelerationLabel.Text = "The rate of change of this consideration should be:";
             // 
             // PreviewBox
@@ -167,7 +167,7 @@
             this.PreviewLabel.Location = new System.Drawing.Point(396, 82);
             this.PreviewLabel.Name = "PreviewLabel";
             this.PreviewLabel.Size = new System.Drawing.Size(48, 13);
-            this.PreviewLabel.TabIndex = 11;
+            this.PreviewLabel.TabIndex = 6;
             this.PreviewLabel.Text = "Preview:";
             // 
             // CurvePresetForm

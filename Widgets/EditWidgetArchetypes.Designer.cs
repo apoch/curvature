@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetArchetypes));
             this.DeleteArchetypesButton = new System.Windows.Forms.Button();
+            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.AddArchetypeButton = new System.Windows.Forms.Button();
             this.ArchetypesListView = new System.Windows.Forms.ListView();
             this.ArchetypeNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ArchetypeEditWidget = new Curvature.EditWidgetArchetype();
             this.HintLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -48,11 +48,18 @@
             this.DeleteArchetypesButton.Location = new System.Drawing.Point(128, 573);
             this.DeleteArchetypesButton.Name = "DeleteArchetypesButton";
             this.DeleteArchetypesButton.Size = new System.Drawing.Size(119, 52);
-            this.DeleteArchetypesButton.TabIndex = 9;
+            this.DeleteArchetypesButton.TabIndex = 2;
             this.DeleteArchetypesButton.Text = "Delete Selection";
             this.DeleteArchetypesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DeleteArchetypesButton.UseVisualStyleBackColor = true;
             this.DeleteArchetypesButton.Click += new System.EventHandler(this.DeleteArchetypesButton_Click);
+            // 
+            // IconImageList
+            // 
+            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
+            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
+            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
             // 
             // AddArchetypeButton
             // 
@@ -63,7 +70,7 @@
             this.AddArchetypeButton.Location = new System.Drawing.Point(3, 573);
             this.AddArchetypeButton.Name = "AddArchetypeButton";
             this.AddArchetypeButton.Size = new System.Drawing.Size(119, 52);
-            this.AddArchetypeButton.TabIndex = 7;
+            this.AddArchetypeButton.TabIndex = 1;
             this.AddArchetypeButton.Text = "Create Archetype";
             this.AddArchetypeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AddArchetypeButton.UseVisualStyleBackColor = true;
@@ -80,7 +87,7 @@
             this.ArchetypesListView.Location = new System.Drawing.Point(3, 3);
             this.ArchetypesListView.Name = "ArchetypesListView";
             this.ArchetypesListView.Size = new System.Drawing.Size(244, 564);
-            this.ArchetypesListView.TabIndex = 6;
+            this.ArchetypesListView.TabIndex = 0;
             this.ArchetypesListView.UseCompatibleStateImageBehavior = false;
             this.ArchetypesListView.View = System.Windows.Forms.View.Details;
             this.ArchetypesListView.SelectedIndexChanged += new System.EventHandler(this.ArchetypesListView_SelectedIndexChanged);
@@ -90,13 +97,6 @@
             this.ArchetypeNameColumn.Text = "Archetype Name";
             this.ArchetypeNameColumn.Width = 220;
             // 
-            // IconImageList
-            // 
-            this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
-            this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
-            this.IconImageList.Images.SetKeyName(1, "DeleteItemIcon.png");
-            // 
             // ArchetypeEditWidget
             // 
             this.ArchetypeEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -105,7 +105,7 @@
             this.ArchetypeEditWidget.Location = new System.Drawing.Point(253, 3);
             this.ArchetypeEditWidget.Name = "ArchetypeEditWidget";
             this.ArchetypeEditWidget.Size = new System.Drawing.Size(685, 622);
-            this.ArchetypeEditWidget.TabIndex = 8;
+            this.ArchetypeEditWidget.TabIndex = 3;
             this.ArchetypeEditWidget.Visible = false;
             // 
             // HintLabel

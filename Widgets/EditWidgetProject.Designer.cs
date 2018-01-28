@@ -57,7 +57,7 @@
             this.WikiLinkLabel.Location = new System.Drawing.Point(15, 333);
             this.WikiLinkLabel.Name = "WikiLinkLabel";
             this.WikiLinkLabel.Size = new System.Drawing.Size(128, 13);
-            this.WikiLinkLabel.TabIndex = 1;
+            this.WikiLinkLabel.TabIndex = 4;
             this.WikiLinkLabel.TabStop = true;
             this.WikiLinkLabel.Text = "Curvature Wiki on GitHub";
             this.WikiLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.WikiLinkLabel_LinkClicked);
@@ -70,7 +70,7 @@
             this.ResourcesLabel.Location = new System.Drawing.Point(5, 314);
             this.ResourcesLabel.Name = "ResourcesLabel";
             this.ResourcesLabel.Size = new System.Drawing.Size(79, 15);
-            this.ResourcesLabel.TabIndex = 2;
+            this.ResourcesLabel.TabIndex = 3;
             this.ResourcesLabel.Text = "Resources:";
             // 
             // NameEditWidget
@@ -93,7 +93,7 @@
             this.StatsGroupBox.Location = new System.Drawing.Point(8, 33);
             this.StatsGroupBox.Name = "StatsGroupBox";
             this.StatsGroupBox.Size = new System.Drawing.Size(203, 183);
-            this.StatsGroupBox.TabIndex = 3;
+            this.StatsGroupBox.TabIndex = 1;
             this.StatsGroupBox.TabStop = false;
             this.StatsGroupBox.Text = "Project Statistics";
             // 
@@ -167,7 +167,7 @@
             this.UtilityCrashCourseLinkLabel.Location = new System.Drawing.Point(149, 333);
             this.UtilityCrashCourseLinkLabel.Name = "UtilityCrashCourseLinkLabel";
             this.UtilityCrashCourseLinkLabel.Size = new System.Drawing.Size(134, 13);
-            this.UtilityCrashCourseLinkLabel.TabIndex = 4;
+            this.UtilityCrashCourseLinkLabel.TabIndex = 5;
             this.UtilityCrashCourseLinkLabel.TabStop = true;
             this.UtilityCrashCourseLinkLabel.Text = "Utility Theory Crash Course";
             this.UtilityCrashCourseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UtilityCrashCourseLinkLabel_LinkClicked);
@@ -182,7 +182,7 @@
             this.WizardsGroupBox.Location = new System.Drawing.Point(217, 33);
             this.WizardsGroupBox.Name = "WizardsGroupBox";
             this.WizardsGroupBox.Size = new System.Drawing.Size(206, 183);
-            this.WizardsGroupBox.TabIndex = 5;
+            this.WizardsGroupBox.TabIndex = 2;
             this.WizardsGroupBox.TabStop = false;
             this.WizardsGroupBox.Text = "Guidance";
             // 
@@ -191,7 +191,7 @@
             this.GuidedTourButton.Location = new System.Drawing.Point(6, 21);
             this.GuidedTourButton.Name = "GuidedTourButton";
             this.GuidedTourButton.Size = new System.Drawing.Size(194, 26);
-            this.GuidedTourButton.TabIndex = 4;
+            this.GuidedTourButton.TabIndex = 0;
             this.GuidedTourButton.Text = "Guided Introduction";
             this.GuidedTourButton.UseVisualStyleBackColor = true;
             this.GuidedTourButton.Click += new System.EventHandler(this.GuidedTourButton_Click);
@@ -201,7 +201,7 @@
             this.ScenariosButton.Location = new System.Drawing.Point(6, 150);
             this.ScenariosButton.Name = "ScenariosButton";
             this.ScenariosButton.Size = new System.Drawing.Size(193, 26);
-            this.ScenariosButton.TabIndex = 3;
+            this.ScenariosButton.TabIndex = 4;
             this.ScenariosButton.Text = "Configure Scenarios";
             this.ScenariosButton.UseVisualStyleBackColor = true;
             this.ScenariosButton.Click += new System.EventHandler(this.ScenariosButton_Click);
@@ -211,7 +211,7 @@
             this.SpecifyBehaviorsButton.Location = new System.Drawing.Point(6, 118);
             this.SpecifyBehaviorsButton.Name = "SpecifyBehaviorsButton";
             this.SpecifyBehaviorsButton.Size = new System.Drawing.Size(194, 26);
-            this.SpecifyBehaviorsButton.TabIndex = 2;
+            this.SpecifyBehaviorsButton.TabIndex = 3;
             this.SpecifyBehaviorsButton.Text = "Specify Behaviors";
             this.SpecifyBehaviorsButton.UseVisualStyleBackColor = true;
             this.SpecifyBehaviorsButton.Click += new System.EventHandler(this.SpecifyBehaviorsButton_Click);
@@ -221,7 +221,7 @@
             this.DefineInputsButton.Location = new System.Drawing.Point(6, 86);
             this.DefineInputsButton.Name = "DefineInputsButton";
             this.DefineInputsButton.Size = new System.Drawing.Size(194, 26);
-            this.DefineInputsButton.TabIndex = 1;
+            this.DefineInputsButton.TabIndex = 2;
             this.DefineInputsButton.Text = "Define Inputs";
             this.DefineInputsButton.UseVisualStyleBackColor = true;
             this.DefineInputsButton.Click += new System.EventHandler(this.DefineInputsButton_Click);
@@ -231,7 +231,7 @@
             this.CreateKnowledgeButton.Location = new System.Drawing.Point(6, 53);
             this.CreateKnowledgeButton.Name = "CreateKnowledgeButton";
             this.CreateKnowledgeButton.Size = new System.Drawing.Size(194, 27);
-            this.CreateKnowledgeButton.TabIndex = 0;
+            this.CreateKnowledgeButton.TabIndex = 1;
             this.CreateKnowledgeButton.Text = "Create Knowledge";
             this.CreateKnowledgeButton.UseVisualStyleBackColor = true;
             this.CreateKnowledgeButton.Click += new System.EventHandler(this.CreateKnowledgeButton_Click);

@@ -42,7 +42,6 @@
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
-            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.NameConsiderationTab = new System.Windows.Forms.TabPage();
             this.ConsiderationNameEditBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.NextButton = new System.Windows.Forms.Button();
             this.NameHintLabel = new System.Windows.Forms.Label();
             this.NamingWikiLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
@@ -127,7 +127,7 @@
             this.InputDescriptionLabel.Location = new System.Drawing.Point(6, 3);
             this.InputDescriptionLabel.Name = "InputDescriptionLabel";
             this.InputDescriptionLabel.Size = new System.Drawing.Size(545, 136);
-            this.InputDescriptionLabel.TabIndex = 1;
+            this.InputDescriptionLabel.TabIndex = 0;
             this.InputDescriptionLabel.Text = resources.GetString("InputDescriptionLabel.Text");
             // 
             // InputComboBox
@@ -139,7 +139,7 @@
             this.InputComboBox.Location = new System.Drawing.Point(6, 158);
             this.InputComboBox.Name = "InputComboBox";
             this.InputComboBox.Size = new System.Drawing.Size(545, 21);
-            this.InputComboBox.TabIndex = 0;
+            this.InputComboBox.TabIndex = 1;
             this.InputComboBox.SelectedIndexChanged += new System.EventHandler(this.InputComboBox_SelectedIndexChanged);
             // 
             // ConfigureParametersTab
@@ -162,7 +162,7 @@
             this.ParameterHintSpecificsLabel.Location = new System.Drawing.Point(3, 38);
             this.ParameterHintSpecificsLabel.Name = "ParameterHintSpecificsLabel";
             this.ParameterHintSpecificsLabel.Size = new System.Drawing.Size(551, 40);
-            this.ParameterHintSpecificsLabel.TabIndex = 3;
+            this.ParameterHintSpecificsLabel.TabIndex = 1;
             this.ParameterHintSpecificsLabel.Text = "Select an input on the previous tab to see what its parameters do.";
             // 
             // ParametersHintLabel
@@ -172,7 +172,7 @@
             this.ParametersHintLabel.Location = new System.Drawing.Point(3, 3);
             this.ParametersHintLabel.Name = "ParametersHintLabel";
             this.ParametersHintLabel.Size = new System.Drawing.Size(551, 35);
-            this.ParametersHintLabel.TabIndex = 1;
+            this.ParametersHintLabel.TabIndex = 0;
             this.ParametersHintLabel.Text = "Some inputs can be parameterized, allowing a specific consideration to control th" +
     "e values at which the input is considered 0 or 1.";
             // 
@@ -185,7 +185,7 @@
             this.ParamFlowPanel.Location = new System.Drawing.Point(3, 81);
             this.ParamFlowPanel.Name = "ParamFlowPanel";
             this.ParamFlowPanel.Size = new System.Drawing.Size(551, 156);
-            this.ParamFlowPanel.TabIndex = 0;
+            this.ParamFlowPanel.TabIndex = 2;
             // 
             // ResponseCurveTab
             // 
@@ -203,18 +203,8 @@
             this.ResponseCurveDescriptionLabel.Location = new System.Drawing.Point(3, 3);
             this.ResponseCurveDescriptionLabel.Name = "ResponseCurveDescriptionLabel";
             this.ResponseCurveDescriptionLabel.Size = new System.Drawing.Size(212, 230);
-            this.ResponseCurveDescriptionLabel.TabIndex = 1;
+            this.ResponseCurveDescriptionLabel.TabIndex = 0;
             this.ResponseCurveDescriptionLabel.Text = resources.GetString("ResponseCurveDescriptionLabel.Text");
-            // 
-            // ResponseCurveEditor
-            // 
-            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResponseCurveEditor.Location = new System.Drawing.Point(221, 3);
-            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
-            this.ResponseCurveEditor.Size = new System.Drawing.Size(335, 230);
-            this.ResponseCurveEditor.TabIndex = 0;
             // 
             // NameConsiderationTab
             // 
@@ -236,7 +226,7 @@
             this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 145);
             this.ConsiderationNameEditBox.Name = "ConsiderationNameEditBox";
             this.ConsiderationNameEditBox.Size = new System.Drawing.Size(551, 20);
-            this.ConsiderationNameEditBox.TabIndex = 1;
+            this.ConsiderationNameEditBox.TabIndex = 2;
             // 
             // NameLabel
             // 
@@ -255,7 +245,7 @@
             this.OKButton.Location = new System.Drawing.Point(415, 322);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(76, 30);
-            this.OKButton.TabIndex = 1;
+            this.OKButton.TabIndex = 2;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -267,7 +257,7 @@
             this.CancelWizardButton.Location = new System.Drawing.Point(497, 322);
             this.CancelWizardButton.Name = "CancelWizardButton";
             this.CancelWizardButton.Size = new System.Drawing.Size(76, 30);
-            this.CancelWizardButton.TabIndex = 2;
+            this.CancelWizardButton.TabIndex = 3;
             this.CancelWizardButton.Text = "Cancel";
             this.CancelWizardButton.UseVisualStyleBackColor = true;
             // 
@@ -276,7 +266,7 @@
             this.NextButton.Location = new System.Drawing.Point(237, 277);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(115, 31);
-            this.NextButton.TabIndex = 4;
+            this.NextButton.TabIndex = 1;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
@@ -287,7 +277,7 @@
             this.NameHintLabel.Location = new System.Drawing.Point(3, 129);
             this.NameHintLabel.Name = "NameHintLabel";
             this.NameHintLabel.Size = new System.Drawing.Size(38, 13);
-            this.NameHintLabel.TabIndex = 2;
+            this.NameHintLabel.TabIndex = 1;
             this.NameHintLabel.Text = "Name:";
             // 
             // NamingWikiLinkLabel
@@ -300,6 +290,16 @@
             this.NamingWikiLinkLabel.TabStop = true;
             this.NamingWikiLinkLabel.Text = "View the Consideration Naming Guide on the Curvature Wiki";
             this.NamingWikiLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NamingWikiLinkLabel_LinkClicked);
+            // 
+            // ResponseCurveEditor
+            // 
+            this.ResponseCurveEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResponseCurveEditor.Location = new System.Drawing.Point(221, 3);
+            this.ResponseCurveEditor.Name = "ResponseCurveEditor";
+            this.ResponseCurveEditor.Size = new System.Drawing.Size(335, 230);
+            this.ResponseCurveEditor.TabIndex = 1;
             // 
             // CurveWizardForm
             // 

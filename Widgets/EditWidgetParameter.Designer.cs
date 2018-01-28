@@ -53,7 +53,7 @@
             this.MinimumValue.Location = new System.Drawing.Point(60, 21);
             this.MinimumValue.Name = "MinimumValue";
             this.MinimumValue.Size = new System.Drawing.Size(94, 20);
-            this.MinimumValue.TabIndex = 1;
+            this.MinimumValue.TabIndex = 2;
             this.MinimumValue.ValueChanged += new System.EventHandler(this.MinimumValue_ValueChanged);
             // 
             // MinLabel
@@ -62,7 +62,7 @@
             this.MinLabel.Location = new System.Drawing.Point(3, 23);
             this.MinLabel.Name = "MinLabel";
             this.MinLabel.Size = new System.Drawing.Size(51, 13);
-            this.MinLabel.TabIndex = 2;
+            this.MinLabel.TabIndex = 1;
             this.MinLabel.Text = "Minimum:";
             // 
             // MaxLabel

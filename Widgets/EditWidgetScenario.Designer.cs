@@ -117,7 +117,7 @@
             this.ScenarioEditorTabs.Name = "ScenarioEditorTabs";
             this.ScenarioEditorTabs.SelectedIndex = 0;
             this.ScenarioEditorTabs.Size = new System.Drawing.Size(746, 456);
-            this.ScenarioEditorTabs.TabIndex = 0;
+            this.ScenarioEditorTabs.TabIndex = 1;
             // 
             // AgentsTab
             // 
@@ -157,7 +157,7 @@
             this.AgentRandomStartPositionCheckBox.Location = new System.Drawing.Point(229, 283);
             this.AgentRandomStartPositionCheckBox.Name = "AgentRandomStartPositionCheckBox";
             this.AgentRandomStartPositionCheckBox.Size = new System.Drawing.Size(70, 17);
-            this.AgentRandomStartPositionCheckBox.TabIndex = 23;
+            this.AgentRandomStartPositionCheckBox.TabIndex = 9;
             this.AgentRandomStartPositionCheckBox.Text = "Add Fuzz";
             this.ScenariosToolTip.SetToolTip(this.AgentRandomStartPositionCheckBox, resources.GetString("AgentRandomStartPositionCheckBox.ToolTip"));
             this.AgentRandomStartPositionCheckBox.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.AgentStartLocationCombo.Location = new System.Drawing.Point(6, 281);
             this.AgentStartLocationCombo.Name = "AgentStartLocationCombo";
             this.AgentStartLocationCombo.Size = new System.Drawing.Size(217, 21);
-            this.AgentStartLocationCombo.TabIndex = 22;
+            this.AgentStartLocationCombo.TabIndex = 8;
             this.AgentStartLocationCombo.SelectedIndexChanged += new System.EventHandler(this.AgentStartLocationCombo_SelectedIndexChanged);
             // 
             // AgentStartLocationLabel
@@ -179,7 +179,7 @@
             this.AgentStartLocationLabel.Location = new System.Drawing.Point(3, 265);
             this.AgentStartLocationLabel.Name = "AgentStartLocationLabel";
             this.AgentStartLocationLabel.Size = new System.Drawing.Size(76, 13);
-            this.AgentStartLocationLabel.TabIndex = 21;
+            this.AgentStartLocationLabel.TabIndex = 7;
             this.AgentStartLocationLabel.Text = "Start Location:";
             // 
             // ColorSwatch
@@ -202,7 +202,7 @@
             this.DeleteSelectedAgentsButton.Location = new System.Drawing.Point(639, 33);
             this.DeleteSelectedAgentsButton.Name = "DeleteSelectedAgentsButton";
             this.DeleteSelectedAgentsButton.Size = new System.Drawing.Size(96, 27);
-            this.DeleteSelectedAgentsButton.TabIndex = 18;
+            this.DeleteSelectedAgentsButton.TabIndex = 2;
             this.DeleteSelectedAgentsButton.Text = "Delete";
             this.DeleteSelectedAgentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeleteSelectedAgentsButton.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.AgentProperties.Location = new System.Drawing.Point(316, 228);
             this.AgentProperties.Name = "AgentProperties";
             this.AgentProperties.Size = new System.Drawing.Size(317, 196);
-            this.AgentProperties.TabIndex = 17;
+            this.AgentProperties.TabIndex = 20;
             this.AgentProperties.ToolbarVisible = false;
             // 
             // CopyCurrentAgentPositionButton
@@ -232,7 +232,7 @@
             this.CopyCurrentAgentPositionButton.Location = new System.Drawing.Point(179, 328);
             this.CopyCurrentAgentPositionButton.Name = "CopyCurrentAgentPositionButton";
             this.CopyCurrentAgentPositionButton.Size = new System.Drawing.Size(131, 20);
-            this.CopyCurrentAgentPositionButton.TabIndex = 16;
+            this.CopyCurrentAgentPositionButton.TabIndex = 14;
             this.CopyCurrentAgentPositionButton.Text = "Use Current Location";
             this.CopyCurrentAgentPositionButton.UseVisualStyleBackColor = true;
             this.CopyCurrentAgentPositionButton.Click += new System.EventHandler(this.CopyCurrentAgentPositionButton_Click);
@@ -242,7 +242,7 @@
             this.AgentResetButton.Location = new System.Drawing.Point(179, 376);
             this.AgentResetButton.Name = "AgentResetButton";
             this.AgentResetButton.Size = new System.Drawing.Size(131, 20);
-            this.AgentResetButton.TabIndex = 15;
+            this.AgentResetButton.TabIndex = 19;
             this.AgentResetButton.Text = "Teleport Back to Start";
             this.AgentResetButton.UseVisualStyleBackColor = true;
             this.AgentResetButton.Click += new System.EventHandler(this.AgentResetButton_Click);
@@ -253,7 +253,7 @@
             this.AgentStartYLabel.Location = new System.Drawing.Point(89, 312);
             this.AgentStartYLabel.Name = "AgentStartYLabel";
             this.AgentStartYLabel.Size = new System.Drawing.Size(56, 13);
-            this.AgentStartYLabel.TabIndex = 14;
+            this.AgentStartYLabel.TabIndex = 12;
             this.AgentStartYLabel.Text = "Starting Y:";
             // 
             // AgentStartYUpDown
@@ -277,7 +277,7 @@
             -2147483648});
             this.AgentStartYUpDown.Name = "AgentStartYUpDown";
             this.AgentStartYUpDown.Size = new System.Drawing.Size(81, 20);
-            this.AgentStartYUpDown.TabIndex = 12;
+            this.AgentStartYUpDown.TabIndex = 13;
             this.AgentStartYUpDown.ValueChanged += new System.EventHandler(this.AgentStartYUpDown_ValueChanged);
             // 
             // AgentStartXLabel
@@ -286,7 +286,7 @@
             this.AgentStartXLabel.Location = new System.Drawing.Point(3, 312);
             this.AgentStartXLabel.Name = "AgentStartXLabel";
             this.AgentStartXLabel.Size = new System.Drawing.Size(56, 13);
-            this.AgentStartXLabel.TabIndex = 11;
+            this.AgentStartXLabel.TabIndex = 10;
             this.AgentStartXLabel.Text = "Starting X:";
             // 
             // AgentStartXUpDown
@@ -310,7 +310,7 @@
             -2147483648});
             this.AgentStartXUpDown.Name = "AgentStartXUpDown";
             this.AgentStartXUpDown.Size = new System.Drawing.Size(80, 20);
-            this.AgentStartXUpDown.TabIndex = 10;
+            this.AgentStartXUpDown.TabIndex = 11;
             this.AgentStartXUpDown.ValueChanged += new System.EventHandler(this.AgentStartXUpDown_ValueChanged);
             // 
             // AgentArchetypeLabel
@@ -319,7 +319,7 @@
             this.AgentArchetypeLabel.Location = new System.Drawing.Point(3, 225);
             this.AgentArchetypeLabel.Name = "AgentArchetypeLabel";
             this.AgentArchetypeLabel.Size = new System.Drawing.Size(58, 13);
-            this.AgentArchetypeLabel.TabIndex = 9;
+            this.AgentArchetypeLabel.TabIndex = 3;
             this.AgentArchetypeLabel.Text = "Archetype:";
             // 
             // AgentArchetypeComboBox
@@ -329,7 +329,7 @@
             this.AgentArchetypeComboBox.Location = new System.Drawing.Point(6, 241);
             this.AgentArchetypeComboBox.Name = "AgentArchetypeComboBox";
             this.AgentArchetypeComboBox.Size = new System.Drawing.Size(217, 21);
-            this.AgentArchetypeComboBox.TabIndex = 8;
+            this.AgentArchetypeComboBox.TabIndex = 4;
             this.AgentArchetypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AgentArchetypeComboBox_SelectedIndexChanged);
             // 
             // AgentRadiusLabel
@@ -338,7 +338,7 @@
             this.AgentRadiusLabel.Location = new System.Drawing.Point(226, 225);
             this.AgentRadiusLabel.Name = "AgentRadiusLabel";
             this.AgentRadiusLabel.Size = new System.Drawing.Size(43, 13);
-            this.AgentRadiusLabel.TabIndex = 7;
+            this.AgentRadiusLabel.TabIndex = 5;
             this.AgentRadiusLabel.Text = "Radius:";
             // 
             // AgentRadiusUpDown
@@ -371,7 +371,7 @@
             this.AgentYLabel.Location = new System.Drawing.Point(89, 360);
             this.AgentYLabel.Name = "AgentYLabel";
             this.AgentYLabel.Size = new System.Drawing.Size(54, 13);
-            this.AgentYLabel.TabIndex = 5;
+            this.AgentYLabel.TabIndex = 17;
             this.AgentYLabel.Text = "Current Y:";
             // 
             // AgentYUpDown
@@ -395,7 +395,7 @@
             -2147483648});
             this.AgentYUpDown.Name = "AgentYUpDown";
             this.AgentYUpDown.Size = new System.Drawing.Size(81, 20);
-            this.AgentYUpDown.TabIndex = 4;
+            this.AgentYUpDown.TabIndex = 18;
             this.AgentYUpDown.ValueChanged += new System.EventHandler(this.AgentYUpDown_ValueChanged);
             // 
             // AgentXUpDown
@@ -419,7 +419,7 @@
             -2147483648});
             this.AgentXUpDown.Name = "AgentXUpDown";
             this.AgentXUpDown.Size = new System.Drawing.Size(80, 20);
-            this.AgentXUpDown.TabIndex = 3;
+            this.AgentXUpDown.TabIndex = 16;
             this.AgentXUpDown.ValueChanged += new System.EventHandler(this.AgentXUpDown_ValueChanged);
             // 
             // AgentXLabel
@@ -428,7 +428,7 @@
             this.AgentXLabel.Location = new System.Drawing.Point(3, 360);
             this.AgentXLabel.Name = "AgentXLabel";
             this.AgentXLabel.Size = new System.Drawing.Size(54, 13);
-            this.AgentXLabel.TabIndex = 2;
+            this.AgentXLabel.TabIndex = 15;
             this.AgentXLabel.Text = "Current X:";
             // 
             // AddAgentButton
@@ -509,7 +509,7 @@
             this.DeleteLocationButton.Location = new System.Drawing.Point(639, 33);
             this.DeleteLocationButton.Name = "DeleteLocationButton";
             this.DeleteLocationButton.Size = new System.Drawing.Size(96, 27);
-            this.DeleteLocationButton.TabIndex = 9;
+            this.DeleteLocationButton.TabIndex = 2;
             this.DeleteLocationButton.Text = "Delete";
             this.DeleteLocationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.DeleteLocationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -524,7 +524,7 @@
             this.LocationPropertyGrid.Location = new System.Drawing.Point(316, 228);
             this.LocationPropertyGrid.Name = "LocationPropertyGrid";
             this.LocationPropertyGrid.Size = new System.Drawing.Size(317, 196);
-            this.LocationPropertyGrid.TabIndex = 8;
+            this.LocationPropertyGrid.TabIndex = 9;
             this.LocationPropertyGrid.ToolbarVisible = false;
             // 
             // LocationRadius
@@ -543,7 +543,7 @@
             0});
             this.LocationRadius.Name = "LocationRadius";
             this.LocationRadius.Size = new System.Drawing.Size(98, 20);
-            this.LocationRadius.TabIndex = 7;
+            this.LocationRadius.TabIndex = 8;
             this.LocationRadius.Value = new decimal(new int[] {
             1,
             0,
@@ -557,7 +557,7 @@
             this.LocationRadiusLabel.Location = new System.Drawing.Point(209, 225);
             this.LocationRadiusLabel.Name = "LocationRadiusLabel";
             this.LocationRadiusLabel.Size = new System.Drawing.Size(43, 13);
-            this.LocationRadiusLabel.TabIndex = 6;
+            this.LocationRadiusLabel.TabIndex = 7;
             this.LocationRadiusLabel.Text = "Radius:";
             // 
             // LocationCenterY
@@ -576,7 +576,7 @@
             -2147483648});
             this.LocationCenterY.Name = "LocationCenterY";
             this.LocationCenterY.Size = new System.Drawing.Size(97, 20);
-            this.LocationCenterY.TabIndex = 5;
+            this.LocationCenterY.TabIndex = 6;
             this.LocationCenterY.ValueChanged += new System.EventHandler(this.LocationCenterY_ValueChanged);
             // 
             // LocationCenterYLabel
@@ -585,7 +585,7 @@
             this.LocationCenterYLabel.Location = new System.Drawing.Point(106, 225);
             this.LocationCenterYLabel.Name = "LocationCenterYLabel";
             this.LocationCenterYLabel.Size = new System.Drawing.Size(51, 13);
-            this.LocationCenterYLabel.TabIndex = 4;
+            this.LocationCenterYLabel.TabIndex = 5;
             this.LocationCenterYLabel.Text = "Center Y:";
             // 
             // LocationCenterX
@@ -604,7 +604,7 @@
             -2147483648});
             this.LocationCenterX.Name = "LocationCenterX";
             this.LocationCenterX.Size = new System.Drawing.Size(97, 20);
-            this.LocationCenterX.TabIndex = 3;
+            this.LocationCenterX.TabIndex = 4;
             this.LocationCenterX.ValueChanged += new System.EventHandler(this.LocationCenterX_ValueChanged);
             // 
             // LocationCenterXLabel
@@ -613,7 +613,7 @@
             this.LocationCenterXLabel.Location = new System.Drawing.Point(3, 225);
             this.LocationCenterXLabel.Name = "LocationCenterXLabel";
             this.LocationCenterXLabel.Size = new System.Drawing.Size(51, 13);
-            this.LocationCenterXLabel.TabIndex = 2;
+            this.LocationCenterXLabel.TabIndex = 3;
             this.LocationCenterXLabel.Text = "Center X:";
             // 
             // AddLocationButton
@@ -681,7 +681,7 @@
             this.RandomSeedCombo.Location = new System.Drawing.Point(85, 403);
             this.RandomSeedCombo.Name = "RandomSeedCombo";
             this.RandomSeedCombo.Size = new System.Drawing.Size(137, 21);
-            this.RandomSeedCombo.TabIndex = 5;
+            this.RandomSeedCombo.TabIndex = 1;
             // 
             // RandomSeedLabel
             // 
@@ -690,7 +690,7 @@
             this.RandomSeedLabel.Location = new System.Drawing.Point(3, 406);
             this.RandomSeedLabel.Name = "RandomSeedLabel";
             this.RandomSeedLabel.Size = new System.Drawing.Size(76, 13);
-            this.RandomSeedLabel.TabIndex = 4;
+            this.RandomSeedLabel.TabIndex = 0;
             this.RandomSeedLabel.Text = "Random seed:";
             // 
             // ResetSimulationButton
@@ -699,7 +699,7 @@
             this.ResetSimulationButton.Location = new System.Drawing.Point(622, 398);
             this.ResetSimulationButton.Name = "ResetSimulationButton";
             this.ResetSimulationButton.Size = new System.Drawing.Size(113, 29);
-            this.ResetSimulationButton.TabIndex = 3;
+            this.ResetSimulationButton.TabIndex = 4;
             this.ResetSimulationButton.Text = "Reset to Start";
             this.ResetSimulationButton.UseVisualStyleBackColor = true;
             this.ResetSimulationButton.Click += new System.EventHandler(this.ResetSimulationButton_Click);
@@ -710,7 +710,7 @@
             this.AutoAdvanceButton.Location = new System.Drawing.Point(503, 398);
             this.AutoAdvanceButton.Name = "AutoAdvanceButton";
             this.AutoAdvanceButton.Size = new System.Drawing.Size(113, 29);
-            this.AutoAdvanceButton.TabIndex = 2;
+            this.AutoAdvanceButton.TabIndex = 3;
             this.AutoAdvanceButton.Text = "Auto Advance";
             this.AutoAdvanceButton.UseVisualStyleBackColor = true;
             this.AutoAdvanceButton.Click += new System.EventHandler(this.AutoAdvanceButton_Click);
@@ -721,7 +721,7 @@
             this.Advance100msButton.Location = new System.Drawing.Point(384, 398);
             this.Advance100msButton.Name = "Advance100msButton";
             this.Advance100msButton.Size = new System.Drawing.Size(113, 29);
-            this.Advance100msButton.TabIndex = 1;
+            this.Advance100msButton.TabIndex = 2;
             this.Advance100msButton.Text = "Advance 100 ms";
             this.Advance100msButton.UseVisualStyleBackColor = true;
             this.Advance100msButton.Click += new System.EventHandler(this.Advance100msButton_Click);
@@ -800,7 +800,7 @@
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
-            this.NameEditWidget.TabIndex = 1;
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetScenario
             // 

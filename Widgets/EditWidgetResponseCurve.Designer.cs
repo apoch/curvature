@@ -76,7 +76,7 @@
             this.HorizontalShiftLabel.Location = new System.Drawing.Point(12, 89);
             this.HorizontalShiftLabel.Name = "HorizontalShiftLabel";
             this.HorizontalShiftLabel.Size = new System.Drawing.Size(45, 13);
-            this.HorizontalShiftLabel.TabIndex = 6;
+            this.HorizontalShiftLabel.TabIndex = 5;
             this.HorizontalShiftLabel.Text = "H. Shift:";
             // 
             // VerticalShiftLabel
@@ -102,7 +102,7 @@
             this.CurveTypeDropdown.Location = new System.Drawing.Point(3, 3);
             this.CurveTypeDropdown.Name = "CurveTypeDropdown";
             this.CurveTypeDropdown.Size = new System.Drawing.Size(129, 21);
-            this.CurveTypeDropdown.TabIndex = 8;
+            this.CurveTypeDropdown.TabIndex = 0;
             this.CurveTypeDropdown.SelectedIndexChanged += new System.EventHandler(this.CurveTypeDropdown_SelectedIndexChanged);
             // 
             // CurvePictureBox
@@ -139,7 +139,7 @@
             -2147483648});
             this.SlopeEditBox.Name = "SlopeEditBox";
             this.SlopeEditBox.Size = new System.Drawing.Size(69, 20);
-            this.SlopeEditBox.TabIndex = 10;
+            this.SlopeEditBox.TabIndex = 2;
             this.SlopeEditBox.Value = new decimal(new int[] {
             10,
             0,
@@ -152,7 +152,7 @@
             this.ExponentEditBox.Location = new System.Drawing.Point(63, 61);
             this.ExponentEditBox.Name = "ExponentEditBox";
             this.ExponentEditBox.Size = new System.Drawing.Size(69, 20);
-            this.ExponentEditBox.TabIndex = 11;
+            this.ExponentEditBox.TabIndex = 4;
             this.ExponentEditBox.Value = new decimal(new int[] {
             10,
             0,
@@ -175,7 +175,7 @@
             -2147483648});
             this.HorizontalShiftEditBox.Name = "HorizontalShiftEditBox";
             this.HorizontalShiftEditBox.Size = new System.Drawing.Size(69, 20);
-            this.HorizontalShiftEditBox.TabIndex = 12;
+            this.HorizontalShiftEditBox.TabIndex = 6;
             // 
             // VerticalShiftEditBox
             // 
@@ -193,7 +193,7 @@
             -2147483648});
             this.VerticalShiftEditBox.Name = "VerticalShiftEditBox";
             this.VerticalShiftEditBox.Size = new System.Drawing.Size(69, 20);
-            this.VerticalShiftEditBox.TabIndex = 13;
+            this.VerticalShiftEditBox.TabIndex = 8;
             // 
             // PresetButton
             // 
@@ -201,7 +201,7 @@
             this.PresetButton.Location = new System.Drawing.Point(5, 170);
             this.PresetButton.Name = "PresetButton";
             this.PresetButton.Size = new System.Drawing.Size(126, 31);
-            this.PresetButton.TabIndex = 14;
+            this.PresetButton.TabIndex = 9;
             this.PresetButton.Text = "Preset...";
             this.PresetButton.UseVisualStyleBackColor = true;
             this.PresetButton.Click += new System.EventHandler(this.PresetButton_Click);
@@ -214,7 +214,7 @@
             this.ShiftLeftButton.Location = new System.Drawing.Point(140, 25);
             this.ShiftLeftButton.Name = "ShiftLeftButton";
             this.ShiftLeftButton.Size = new System.Drawing.Size(20, 157);
-            this.ShiftLeftButton.TabIndex = 15;
+            this.ShiftLeftButton.TabIndex = 12;
             this.ShiftLeftButton.Text = "×";
             this.ShiftLeftButton.UseVisualStyleBackColor = true;
             this.ShiftLeftButton.Click += new System.EventHandler(this.ShiftLeftButton_Click);
@@ -227,7 +227,7 @@
             this.ShiftRightButton.Location = new System.Drawing.Point(335, 25);
             this.ShiftRightButton.Name = "ShiftRightButton";
             this.ShiftRightButton.Size = new System.Drawing.Size(20, 157);
-            this.ShiftRightButton.TabIndex = 16;
+            this.ShiftRightButton.TabIndex = 13;
             this.ShiftRightButton.Text = "Ø";
             this.ShiftRightButton.UseVisualStyleBackColor = true;
             this.ShiftRightButton.Click += new System.EventHandler(this.ShiftRightButton_Click);
@@ -240,7 +240,7 @@
             this.ShiftUpButton.Location = new System.Drawing.Point(159, 5);
             this.ShiftUpButton.Name = "ShiftUpButton";
             this.ShiftUpButton.Size = new System.Drawing.Size(177, 20);
-            this.ShiftUpButton.TabIndex = 17;
+            this.ShiftUpButton.TabIndex = 10;
             this.ShiftUpButton.Text = "Ù";
             this.ShiftUpButton.UseVisualStyleBackColor = true;
             this.ShiftUpButton.Click += new System.EventHandler(this.ShiftUpButton_Click);
@@ -253,7 +253,7 @@
             this.ShiftDownButton.Location = new System.Drawing.Point(159, 181);
             this.ShiftDownButton.Name = "ShiftDownButton";
             this.ShiftDownButton.Size = new System.Drawing.Size(177, 20);
-            this.ShiftDownButton.TabIndex = 18;
+            this.ShiftDownButton.TabIndex = 11;
             this.ShiftDownButton.Text = "Ú";
             this.ShiftDownButton.UseVisualStyleBackColor = true;
             this.ShiftDownButton.Click += new System.EventHandler(this.ShiftDownButton_Click);

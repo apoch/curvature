@@ -49,7 +49,7 @@
             this.FlowPanel.Location = new System.Drawing.Point(0, 0);
             this.FlowPanel.Name = "FlowPanel";
             this.FlowPanel.Size = new System.Drawing.Size(398, 141);
-            this.FlowPanel.TabIndex = 3;
+            this.FlowPanel.TabIndex = 0;
             this.FlowPanel.WrapContents = false;
             // 
             // ObjectTypeLabel
@@ -59,7 +59,7 @@
             this.ObjectTypeLabel.Location = new System.Drawing.Point(3, 0);
             this.ObjectTypeLabel.Name = "ObjectTypeLabel";
             this.ObjectTypeLabel.Size = new System.Drawing.Size(127, 20);
-            this.ObjectTypeLabel.TabIndex = 3;
+            this.ObjectTypeLabel.TabIndex = 0;
             this.ObjectTypeLabel.Text = "Named Object:";
             // 
             // ObjectNameLabel
@@ -70,7 +70,7 @@
             this.ObjectNameLabel.Location = new System.Drawing.Point(136, 0);
             this.ObjectNameLabel.Name = "ObjectNameLabel";
             this.ObjectNameLabel.Size = new System.Drawing.Size(55, 20);
-            this.ObjectNameLabel.TabIndex = 4;
+            this.ObjectNameLabel.TabIndex = 1;
             this.ObjectNameLabel.Text = "Name";
             // 
             // EditIcon
@@ -81,7 +81,7 @@
             this.EditIcon.Name = "EditIcon";
             this.EditIcon.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.EditIcon.Size = new System.Drawing.Size(18, 18);
-            this.EditIcon.TabIndex = 5;
+            this.EditIcon.TabIndex = 2;
             this.RenameWidgetTooltip.SetToolTip(this.EditIcon, "Rename this item");
             this.EditIcon.Click += new System.EventHandler(this.EditIcon_Click);
             // 

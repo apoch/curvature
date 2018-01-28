@@ -49,7 +49,7 @@
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(503, 30);
-            this.NameEditWidget.TabIndex = 2;
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetArchetype
             // 

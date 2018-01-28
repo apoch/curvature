@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
             this.WhenActiveLabel = new System.Windows.Forms.Label();
             this.CustomPayload = new System.Windows.Forms.TextBox();
@@ -97,7 +97,7 @@
             this.WhenActiveLabel.Location = new System.Drawing.Point(1, 3);
             this.WhenActiveLabel.Name = "WhenActiveLabel";
             this.WhenActiveLabel.Size = new System.Drawing.Size(71, 13);
-            this.WhenActiveLabel.TabIndex = 7;
+            this.WhenActiveLabel.TabIndex = 0;
             this.WhenActiveLabel.Text = "When active:";
             // 
             // CustomPayload
@@ -107,7 +107,7 @@
             this.CustomPayload.Location = new System.Drawing.Point(78, 27);
             this.CustomPayload.Name = "CustomPayload";
             this.CustomPayload.Size = new System.Drawing.Size(219, 20);
-            this.CustomPayload.TabIndex = 6;
+            this.CustomPayload.TabIndex = 3;
             this.CustomPayload.TextChanged += new System.EventHandler(this.CustomPayload_TextChanged);
             // 
             // CustomPayloadLabel
@@ -116,7 +116,7 @@
             this.CustomPayloadLabel.Location = new System.Drawing.Point(3, 30);
             this.CustomPayloadLabel.Name = "CustomPayloadLabel";
             this.CustomPayloadLabel.Size = new System.Drawing.Size(69, 13);
-            this.CustomPayloadLabel.TabIndex = 5;
+            this.CustomPayloadLabel.TabIndex = 2;
             this.CustomPayloadLabel.Text = "Custom Text:";
             // 
             // CanTargetOthersCheckBox
@@ -125,7 +125,7 @@
             this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(147, 54);
             this.CanTargetOthersCheckBox.Name = "CanTargetOthersCheckBox";
             this.CanTargetOthersCheckBox.Size = new System.Drawing.Size(113, 17);
-            this.CanTargetOthersCheckBox.TabIndex = 4;
+            this.CanTargetOthersCheckBox.TabIndex = 5;
             this.CanTargetOthersCheckBox.Text = "Can Target Others";
             this.CanTargetOthersCheckBox.UseVisualStyleBackColor = true;
             this.CanTargetOthersCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetOthersCheckBox_CheckedChanged);
@@ -136,7 +136,7 @@
             this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(41, 54);
             this.CanTargetSelfCheckBox.Name = "CanTargetSelfCheckBox";
             this.CanTargetSelfCheckBox.Size = new System.Drawing.Size(100, 17);
-            this.CanTargetSelfCheckBox.TabIndex = 3;
+            this.CanTargetSelfCheckBox.TabIndex = 4;
             this.CanTargetSelfCheckBox.Text = "Can Target Self";
             this.CanTargetSelfCheckBox.UseVisualStyleBackColor = true;
             this.CanTargetSelfCheckBox.CheckedChanged += new System.EventHandler(this.CanTargetSelfCheckBox_CheckedChanged);
@@ -150,7 +150,7 @@
             this.ActionComboBox.Location = new System.Drawing.Point(78, 0);
             this.ActionComboBox.Name = "ActionComboBox";
             this.ActionComboBox.Size = new System.Drawing.Size(219, 21);
-            this.ActionComboBox.TabIndex = 2;
+            this.ActionComboBox.TabIndex = 1;
             this.ActionComboBox.SelectedIndexChanged += new System.EventHandler(this.ActionComboBox_SelectedIndexChanged);
             // 
             // BreakdownGroupBox
@@ -167,7 +167,7 @@
             this.BreakdownGroupBox.Location = new System.Drawing.Point(0, 77);
             this.BreakdownGroupBox.Name = "BreakdownGroupBox";
             this.BreakdownGroupBox.Size = new System.Drawing.Size(297, 302);
-            this.BreakdownGroupBox.TabIndex = 1;
+            this.BreakdownGroupBox.TabIndex = 6;
             this.BreakdownGroupBox.TabStop = false;
             this.BreakdownGroupBox.Text = "Scoring Breakdown";
             // 
@@ -192,13 +192,13 @@
             this.ScoreColumnHeader,
             this.DescriptionColumnHeader});
             this.ScoreListView.FullRowSelect = true;
-            listViewGroup3.Header = "Considerations";
-            listViewGroup3.Name = "ConsiderationGroup";
-            listViewGroup4.Header = "Bonuses";
-            listViewGroup4.Name = "BonusGroup";
+            listViewGroup1.Header = "Considerations";
+            listViewGroup1.Name = "ConsiderationGroup";
+            listViewGroup2.Header = "Bonuses";
+            listViewGroup2.Name = "BonusGroup";
             this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.ScoreListView.Location = new System.Drawing.Point(6, 91);
             this.ScoreListView.Name = "ScoreListView";
             this.ScoreListView.Size = new System.Drawing.Size(285, 162);
@@ -245,7 +245,7 @@
             this.WeightLabel.Location = new System.Drawing.Point(6, 22);
             this.WeightLabel.Name = "WeightLabel";
             this.WeightLabel.Size = new System.Drawing.Size(89, 13);
-            this.WeightLabel.TabIndex = 1;
+            this.WeightLabel.TabIndex = 0;
             this.WeightLabel.Text = "Behavior Weight:";
             // 
             // BehaviorWeightEditBox
@@ -256,7 +256,7 @@
             this.BehaviorWeightEditBox.Location = new System.Drawing.Point(101, 19);
             this.BehaviorWeightEditBox.Name = "BehaviorWeightEditBox";
             this.BehaviorWeightEditBox.Size = new System.Drawing.Size(190, 20);
-            this.BehaviorWeightEditBox.TabIndex = 0;
+            this.BehaviorWeightEditBox.TabIndex = 1;
             this.BehaviorWeightEditBox.Value = new decimal(new int[] {
             1,
             0,
@@ -282,7 +282,7 @@
             this.BehaviorSplitContainer.Panel2.Controls.Add(this.ConsiderationScoreGroupBox);
             this.BehaviorSplitContainer.Size = new System.Drawing.Size(419, 376);
             this.BehaviorSplitContainer.SplitterDistance = 166;
-            this.BehaviorSplitContainer.TabIndex = 5;
+            this.BehaviorSplitContainer.TabIndex = 0;
             // 
             // InputGroupBox
             // 
@@ -293,7 +293,7 @@
             this.InputGroupBox.Location = new System.Drawing.Point(4, 3);
             this.InputGroupBox.Name = "InputGroupBox";
             this.InputGroupBox.Size = new System.Drawing.Size(412, 160);
-            this.InputGroupBox.TabIndex = 2;
+            this.InputGroupBox.TabIndex = 0;
             this.InputGroupBox.TabStop = false;
             this.InputGroupBox.Text = "Inputs";
             // 
@@ -340,7 +340,7 @@
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(725, 30);
-            this.NameEditWidget.TabIndex = 2;
+            this.NameEditWidget.TabIndex = 0;
             // 
             // EditWidgetBehavior
             // 

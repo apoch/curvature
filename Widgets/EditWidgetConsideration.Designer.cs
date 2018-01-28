@@ -55,7 +55,7 @@
             this.InputAxisDropdown.Location = new System.Drawing.Point(43, 37);
             this.InputAxisDropdown.Name = "InputAxisDropdown";
             this.InputAxisDropdown.Size = new System.Drawing.Size(613, 21);
-            this.InputAxisDropdown.TabIndex = 1;
+            this.InputAxisDropdown.TabIndex = 2;
             this.InputAxisDropdown.SelectedIndexChanged += new System.EventHandler(this.InputAxisDropdown_SelectedIndexChanged);
             // 
             // InputAxisLabel
@@ -64,7 +64,7 @@
             this.InputAxisLabel.Location = new System.Drawing.Point(4, 40);
             this.InputAxisLabel.Name = "InputAxisLabel";
             this.InputAxisLabel.Size = new System.Drawing.Size(34, 13);
-            this.InputAxisLabel.TabIndex = 2;
+            this.InputAxisLabel.TabIndex = 1;
             this.InputAxisLabel.Text = "Input:";
             // 
             // HorizontalSplitter
@@ -97,7 +97,7 @@
             this.ParametersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ParametersGroupBox.Name = "ParametersGroupBox";
             this.ParametersGroupBox.Size = new System.Drawing.Size(752, 113);
-            this.ParametersGroupBox.TabIndex = 4;
+            this.ParametersGroupBox.TabIndex = 0;
             this.ParametersGroupBox.TabStop = false;
             this.ParametersGroupBox.Text = "Parameters";
             // 
@@ -140,7 +140,7 @@
             this.CurveWizardButton.Location = new System.Drawing.Point(662, 36);
             this.CurveWizardButton.Name = "CurveWizardButton";
             this.CurveWizardButton.Size = new System.Drawing.Size(103, 23);
-            this.CurveWizardButton.TabIndex = 5;
+            this.CurveWizardButton.TabIndex = 3;
             this.CurveWizardButton.Text = "Wizard...";
             this.CurveWizardButton.UseVisualStyleBackColor = true;
             this.CurveWizardButton.Click += new System.EventHandler(this.CurveWizardButton_Click);
@@ -151,7 +151,7 @@
             this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
             this.NameEditWidget.Name = "NameEditWidget";
             this.NameEditWidget.Size = new System.Drawing.Size(768, 30);
-            this.NameEditWidget.TabIndex = 6;
+            this.NameEditWidget.TabIndex = 0;
             // 
             // WrapInputCheckBox
             // 
