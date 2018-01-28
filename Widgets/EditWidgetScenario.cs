@@ -97,6 +97,17 @@ namespace Curvature
                 RefreshAgentTab();
             };
 
+            LocationsListView.AfterLabelEdit += (obj, args) =>
+            {
+                if (string.IsNullOrEmpty(args.Label))
+                    return;
+
+                var location = LocationsListView.Items[args.Item].Tag as ScenarioLocation;
+                location.Name = args.Label;
+
+                RefreshLocationTab();
+            };
+
             LogsTreeView.NodeMouseClick += (obj, args) =>
             {
                 LogDetailTextBox.Text = "";
@@ -233,7 +244,7 @@ namespace Curvature
 
             foreach (var loc in Simulation.Locations)
             {
-                var item = new ListViewItem(new string[] { loc.GetName(), loc.GetPosition().ToString() + $" R={loc.Radius}" });
+                var item = new ListViewItem(new string[] { loc.GetName(), GetLocationCoordsDescription(loc) });
                 item.Tag = loc;
                 LocationsListView.Items.Add(item);
 
@@ -367,6 +378,15 @@ namespace Curvature
             AgentProperties.SelectedObject = new AgentPropertyAdapter(agent.StartProperties);
         }
 
+        private void PopulateLocationTab(ScenarioLocation location)
+        {
+            LocationCenterX.Value = (decimal)(location.Position.X);
+            LocationCenterY.Value = (decimal)(location.Position.Y);
+            LocationRadius.Value = (decimal)(location.Radius);
+
+            // TODO - add properties to locations
+        }
+
         private void AutoAdvanceButton_Click(object sender, EventArgs e)
         {
             AutoAdvanceTimer.Enabled = !AutoAdvanceTimer.Enabled;
@@ -447,6 +467,67 @@ namespace Curvature
                 var agent = (selected as ListViewItem).Tag as ScenarioAgent;
                 agent.StartFuzzed = AgentRandomStartPositionCheckBox.Checked;
             }
+        }
+
+        private string GetLocationCoordsDescription(ScenarioLocation loc)
+        {
+            return $"{loc.GetPosition()} R={loc.Radius}";
+        }
+
+        private void LocationCenterX_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var item in LocationsListView.SelectedItems)
+            {
+                var lvi = (item as ListViewItem);
+                var location = lvi.Tag as ScenarioLocation;
+                location.Position.X = (float)LocationCenterX.Value;
+                lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
+            }
+        }
+
+        private void LocationCenterY_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var item in LocationsListView.SelectedItems)
+            {
+                var lvi = (item as ListViewItem);
+                var location = lvi.Tag as ScenarioLocation;
+                location.Position.Y = (float)LocationCenterY.Value;
+                lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
+            }
+        }
+
+        private void LocationRadius_ValueChanged(object sender, EventArgs e)
+        {
+            foreach (var item in LocationsListView.SelectedItems)
+            {
+                var lvi = (item as ListViewItem);
+                var location = lvi.Tag as ScenarioLocation;
+                location.Radius = (float)LocationRadius.Value;
+                lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
+            }
+        }
+
+        private void LocationsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LocationsListView.SelectedItems.Count <= 0)
+                return;
+
+            var location = (LocationsListView.SelectedItems[0].Tag as ScenarioLocation);
+            PopulateLocationTab(location);
+        }
+
+        private void DeleteLocationButton_Click(object sender, EventArgs e)
+        {
+            if (Simulation == null)
+                return;
+
+            foreach (var selected in LocationsListView.SelectedItems)
+            {
+                var location = (selected as ListViewItem).Tag as ScenarioLocation;
+                Simulation.Locations.Remove(location);
+            }
+
+            DialogRebuildNeeded?.Invoke();
         }
     }
 }
