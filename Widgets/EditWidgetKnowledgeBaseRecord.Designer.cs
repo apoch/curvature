@@ -37,14 +37,17 @@
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
             this.ClampingBehaviorComboBox = new System.Windows.Forms.ComboBox();
             this.RangeConfigurationPanel = new System.Windows.Forms.Panel();
+            this.RangeMaximum = new System.Windows.Forms.NumericUpDown();
+            this.RangeToLabel = new System.Windows.Forms.Label();
             this.RangeMinimum = new System.Windows.Forms.NumericUpDown();
             this.RangeValidValuesLabel = new System.Windows.Forms.Label();
-            this.RangeToLabel = new System.Windows.Forms.Label();
-            this.RangeMaximum = new System.Windows.Forms.NumericUpDown();
             this.EnumerationPanel = new System.Windows.Forms.Panel();
+            this.PrefabPanel = new System.Windows.Forms.Panel();
+            this.PrefabComboBox = new System.Windows.Forms.ComboBox();
             this.RangeConfigurationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).BeginInit();
+            this.PrefabPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // RecordTagEditBox
@@ -126,6 +129,34 @@
             this.RangeConfigurationPanel.Size = new System.Drawing.Size(396, 31);
             this.RangeConfigurationPanel.TabIndex = 5;
             // 
+            // RangeMaximum
+            // 
+            this.RangeMaximum.DecimalPlaces = 3;
+            this.RangeMaximum.Location = new System.Drawing.Point(215, 3);
+            this.RangeMaximum.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.RangeMaximum.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.RangeMaximum.Name = "RangeMaximum";
+            this.RangeMaximum.Size = new System.Drawing.Size(181, 20);
+            this.RangeMaximum.TabIndex = 2;
+            this.RangeMaximum.ValueChanged += new System.EventHandler(this.RangeMaximum_ValueChanged);
+            // 
+            // RangeToLabel
+            // 
+            this.RangeToLabel.AutoSize = true;
+            this.RangeToLabel.Location = new System.Drawing.Point(193, 5);
+            this.RangeToLabel.Name = "RangeToLabel";
+            this.RangeToLabel.Size = new System.Drawing.Size(16, 13);
+            this.RangeToLabel.TabIndex = 1;
+            this.RangeToLabel.Text = "to";
+            // 
             // RangeMinimum
             // 
             this.RangeMinimum.DecimalPlaces = 3;
@@ -154,34 +185,6 @@
             this.RangeValidValuesLabel.TabIndex = 6;
             this.RangeValidValuesLabel.Text = "Valid values:";
             // 
-            // RangeToLabel
-            // 
-            this.RangeToLabel.AutoSize = true;
-            this.RangeToLabel.Location = new System.Drawing.Point(193, 5);
-            this.RangeToLabel.Name = "RangeToLabel";
-            this.RangeToLabel.Size = new System.Drawing.Size(16, 13);
-            this.RangeToLabel.TabIndex = 1;
-            this.RangeToLabel.Text = "to";
-            // 
-            // RangeMaximum
-            // 
-            this.RangeMaximum.DecimalPlaces = 3;
-            this.RangeMaximum.Location = new System.Drawing.Point(215, 3);
-            this.RangeMaximum.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.RangeMaximum.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.RangeMaximum.Name = "RangeMaximum";
-            this.RangeMaximum.Size = new System.Drawing.Size(181, 20);
-            this.RangeMaximum.TabIndex = 2;
-            this.RangeMaximum.ValueChanged += new System.EventHandler(this.RangeMaximum_ValueChanged);
-            // 
             // EnumerationPanel
             // 
             this.EnumerationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -192,10 +195,33 @@
             this.EnumerationPanel.TabIndex = 7;
             this.EnumerationPanel.Visible = false;
             // 
+            // PrefabPanel
+            // 
+            this.PrefabPanel.Controls.Add(this.PrefabComboBox);
+            this.PrefabPanel.Location = new System.Drawing.Point(47, 30);
+            this.PrefabPanel.Name = "PrefabPanel";
+            this.PrefabPanel.Size = new System.Drawing.Size(144, 36);
+            this.PrefabPanel.TabIndex = 8;
+            this.PrefabPanel.Visible = false;
+            // 
+            // PrefabComboBox
+            // 
+            this.PrefabComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PrefabComboBox.FormattingEnabled = true;
+            this.PrefabComboBox.Items.AddRange(new object[] {
+            "Use distance prefab",
+            "Use wall-clock prefab"});
+            this.PrefabComboBox.Location = new System.Drawing.Point(0, 2);
+            this.PrefabComboBox.Name = "PrefabComboBox";
+            this.PrefabComboBox.Size = new System.Drawing.Size(144, 21);
+            this.PrefabComboBox.TabIndex = 0;
+            this.PrefabComboBox.SelectedIndexChanged += new System.EventHandler(this.PrefabComboBox_SelectedIndexChanged);
+            // 
             // EditWidgetKnowledgeBaseRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PrefabPanel);
             this.Controls.Add(this.RangeValidValuesLabel);
             this.Controls.Add(this.RangeConfigurationPanel);
             this.Controls.Add(this.ClampingBehaviorComboBox);
@@ -208,8 +234,9 @@
             this.Size = new System.Drawing.Size(753, 69);
             this.RangeConfigurationPanel.ResumeLayout(false);
             this.RangeConfigurationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).EndInit();
+            this.PrefabPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +256,7 @@
         private System.Windows.Forms.Label RangeValidValuesLabel;
         private System.Windows.Forms.NumericUpDown RangeMaximum;
         private System.Windows.Forms.Panel EnumerationPanel;
+        private System.Windows.Forms.Panel PrefabPanel;
+        private System.Windows.Forms.ComboBox PrefabComboBox;
     }
 }

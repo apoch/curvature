@@ -15,6 +15,13 @@ namespace Curvature
         [DataContract(Namespace = "")]
         public class Record
         {
+            public enum Prefabs
+            {
+                NoPrefab,
+                Distance,
+                SimulationTime,
+            }
+
             public enum Parameterization
             {
                 FixedRange,
@@ -36,6 +43,9 @@ namespace Curvature
 
             [DataMember]
             public List<string> EnumerationValues;
+
+            [DataMember]
+            public Prefabs Prefab;
 
 
             [DataMember]
@@ -65,6 +75,7 @@ namespace Curvature
                 ReadableName = name;
                 Computed = computed;
                 Params = param;
+                Prefab = Prefabs.NoPrefab;
 
                 MinimumValue = 0.0;
                 MaximumValue = 1.0;

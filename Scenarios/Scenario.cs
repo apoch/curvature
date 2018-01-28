@@ -81,6 +81,9 @@ namespace Curvature
         private List<Context> CustomActions;
 
 
+        private double SimulationTime = 0.0;
+
+
         public class DecisionHistory
         {
             public List<Context> ScoredContexts;
@@ -122,6 +125,7 @@ namespace Curvature
 
         public void ResetAgents(KnowledgeBase kb)
         {
+            SimulationTime = 0.0;
             foreach (var agent in Agents)
             {
                 agent.MoveToStartPosition(RandomNumbers);
@@ -159,6 +163,7 @@ namespace Curvature
             }
 
             SimulationAdvance(this, new ScenarioEventArgs { DeltaTime = dt, AgentDecisions = AgentDecisions });
+            SimulationTime += dt;
         }
 
 
@@ -368,8 +373,20 @@ namespace Curvature
             switch (axis.Origin)
             {
                 case InputAxis.OriginType.ComputedValue:
-                    // TODO - compute stuff that isn't distance
-                    raw = Distance(context.ThinkingAgent.GetPosition(), context.Target.GetPosition());
+                    switch (axis.KBRec.Prefab)
+                    {
+                        case KnowledgeBase.Record.Prefabs.Distance:
+                            raw = Distance(context.ThinkingAgent.GetPosition(), context.Target.GetPosition());
+                            break;
+
+                        case KnowledgeBase.Record.Prefabs.SimulationTime:
+                            // TODO - scale this over input axis parameters/consideration values instead
+                            raw = SimulationTime % axis.KBRec.MaximumValue;
+                            break;
+
+                        default:
+                            return raw;
+                    }
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
@@ -405,8 +422,8 @@ namespace Curvature
                         context.ThinkingAgent.Position.X = ClampToEscape(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
                         context.ThinkingAgent.Position.Y = ClampToEscape(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
 
-                        context.ThinkingAgent.IntentPosition.X = vec.X + context.Target.GetPosition().X;
-                        context.ThinkingAgent.IntentPosition.Y = vec.Y + context.Target.GetPosition().Y;
+                        context.ThinkingAgent.IntentPosition.X = pos.X - vec.X;
+                        context.ThinkingAgent.IntentPosition.Y = pos.Y - vec.Y;
                     }
                     break;
 

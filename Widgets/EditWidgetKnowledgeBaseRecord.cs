@@ -39,6 +39,11 @@ namespace Curvature
                 RangeMinimum.Value = (decimal)EditRec.MinimumValue;
                 RangeMaximum.Value = (decimal)EditRec.MaximumValue;
             }
+
+            if (EditRec.Prefab != KnowledgeBase.Record.Prefabs.NoPrefab)
+                PrefabComboBox.SelectedIndex = (int)(EditRec.Prefab) - 1;
+            else
+                PrefabPanel.Visible = false;
         }
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
@@ -61,6 +66,8 @@ namespace Curvature
 
             if (prev != EditRec.Computed)
                 EditProject.MarkDirty();
+
+            PrefabPanel.Visible = EditRec.Computed;
         }
 
         private void OriginComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,6 +120,16 @@ namespace Curvature
             EditRec.MaximumValue = (double)RangeMaximum.Value;
 
             if (prev != EditRec.MaximumValue)
+                EditProject.MarkDirty();
+        }
+
+        private void PrefabComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var prev = EditRec.Prefab;
+
+            EditRec.Prefab = (KnowledgeBase.Record.Prefabs)(PrefabComboBox.SelectedIndex + 1);
+
+            if (prev != EditRec.Prefab)
                 EditProject.MarkDirty();
         }
     }
