@@ -75,9 +75,9 @@
             this.LogsTreeView = new System.Windows.Forms.TreeView();
             this.AutoAdvanceTimer = new System.Windows.Forms.Timer(this.components);
             this.SimulationInspectionTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.NameEditWidget = new Curvature.EditWidgetName();
             this.ColorPicker = new System.Windows.Forms.ColorDialog();
             this.ScenariosToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.NameEditWidget = new Curvature.EditWidgetName();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
@@ -446,6 +446,7 @@
             this.AgentsListView.HideSelection = false;
             this.AgentsListView.LabelEdit = true;
             this.AgentsListView.Location = new System.Drawing.Point(0, 0);
+            this.AgentsListView.MultiSelect = false;
             this.AgentsListView.Name = "AgentsListView";
             this.AgentsListView.Size = new System.Drawing.Size(633, 222);
             this.AgentsListView.TabIndex = 0;
@@ -645,14 +646,6 @@
             // 
             this.SimulationInspectionTooltip.ShowAlways = true;
             // 
-            // NameEditWidget
-            // 
-            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
-            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
-            this.NameEditWidget.Name = "NameEditWidget";
-            this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
-            this.NameEditWidget.TabIndex = 1;
-            // 
             // ColorPicker
             // 
             this.ColorPicker.AnyColor = true;
@@ -663,6 +656,14 @@
             this.ScenariosToolTip.AutoPopDelay = 5000;
             this.ScenariosToolTip.InitialDelay = 500;
             this.ScenariosToolTip.ReshowDelay = 100;
+            // 
+            // NameEditWidget
+            // 
+            this.NameEditWidget.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NameEditWidget.Location = new System.Drawing.Point(0, 0);
+            this.NameEditWidget.Name = "NameEditWidget";
+            this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
+            this.NameEditWidget.TabIndex = 1;
             // 
             // EditWidgetScenario
             // 
