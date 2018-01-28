@@ -43,7 +43,8 @@ namespace Curvature
 
 
         public bool Stalled = false;
-        public PointF IntentPosition;
+        public Scenario.IScenarioMember Intent = null;
+        public bool IntentAttractive = true;
 
 
         public ScenarioAgent(string name, Archetype archetype)

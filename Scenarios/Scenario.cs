@@ -173,7 +173,6 @@ namespace Curvature
             stringFormat.Alignment = StringAlignment.Center;
             stringFormat.LineAlignment = StringAlignment.Center;
 
-
             // Set up scaling
             PointF minCoordinate;
             PointF maxCoordinate;
@@ -254,43 +253,52 @@ namespace Curvature
 
 
                 // Intention indicator
-                var intentVec = new PointF() { X = agent.GetPosition().X - agent.IntentPosition.X, Y = agent.GetPosition().Y - agent.IntentPosition.Y };
-                var intentLength = Magnitude(intentVec);
-
-                if (intentLength > 0.05f)
+                if (agent.Intent != null)
                 {
-                    intentVec.X /= intentLength;
-                    intentVec.Y /= intentLength;
+                    var intentVec = new PointF() { X = agent.GetPosition().X - agent.Intent.GetPosition().X, Y = agent.GetPosition().Y - agent.Intent.GetPosition().Y };
+                    var intentLength = Magnitude(intentVec);
 
-                    var tip = CoordinatesToDisplayPoint(agent.GetPosition().X - intentVec.X * agent.Radius, agent.GetPosition().Y - intentVec.Y * agent.Radius, rect);
-                    var bottomCenter = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius, agent.GetPosition().Y + intentVec.Y * agent.Radius);
-
-                    var intentOrthogonalVec = Normalize(new PointF(-intentVec.Y, intentVec.X));
-
-
-                    var bottomL = CoordinatesToDisplayPoint(bottomCenter.X - intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y - intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
-                    var bottomR = CoordinatesToDisplayPoint(bottomCenter.X + intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y + intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
-
-                    var bcExtended = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius * 1.2f, agent.GetPosition().Y + intentVec.Y * agent.Radius * 1.2f);
-                    var bc = CoordinatesToDisplayPoint(bcExtended.X, bcExtended.Y, rect);
-
-                    Color darker = GetDarkerColor(agent.Color);
-                    Color lighter = GetLighterColor(agent.Color);
-
-                    var gradient = new LinearGradientBrush(tip, bc, lighter, darker);
-
-                    var poly = new Point[] { tip, bottomL, bottomR, tip };
-
-                    graphics.DrawLines(Pens.Black, poly);
-                    graphics.FillPolygon(gradient, poly);
-
-                    using (var dashPen = new Pen(agent.Color))
+                    if (intentLength > 0.05f)
                     {
-                        dashPen.DashStyle = DashStyle.Dash;
-                        graphics.DrawLine(dashPen, tip, CoordinatesToDisplayPoint(agent.IntentPosition.X, agent.IntentPosition.Y, rect));
-                    }
+                        intentVec.X /= intentLength;
+                        intentVec.Y /= intentLength;
 
-                    gradient.Dispose();
+                        if (!agent.IntentAttractive)
+                        {
+                            intentVec.X = -intentVec.X;
+                            intentVec.Y = -intentVec.Y;
+                        }
+
+                        var tip = CoordinatesToDisplayPoint(agent.GetPosition().X - intentVec.X * agent.Radius, agent.GetPosition().Y - intentVec.Y * agent.Radius, rect);
+                        var bottomCenter = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius, agent.GetPosition().Y + intentVec.Y * agent.Radius);
+
+                        var intentOrthogonalVec = Normalize(new PointF(-intentVec.Y, intentVec.X));
+
+                        var bottomL = CoordinatesToDisplayPoint(bottomCenter.X - intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y - intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+                        var bottomR = CoordinatesToDisplayPoint(bottomCenter.X + intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y + intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+
+                        var bcExtended = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius * 1.2f, agent.GetPosition().Y + intentVec.Y * agent.Radius * 1.2f);
+                        var bc = CoordinatesToDisplayPoint(bcExtended.X, bcExtended.Y, rect);
+
+                        Color darker = GetDarkerColor(agent.Color);
+                        Color lighter = GetLighterColor(agent.Color);
+
+                        using (var gradient = new LinearGradientBrush(tip, bc, lighter, darker))
+                        {
+                            var poly = new Point[] { tip, bottomL, bottomR, tip };
+
+                            graphics.DrawLines(Pens.Black, poly);
+                            graphics.FillPolygon(gradient, poly);
+
+                            using (var dashPen = new Pen(agent.Color))
+                            {
+                                var agentCenter = CoordinatesToDisplayPoint(agent.GetPosition().X, agent.GetPosition().Y, rect);
+
+                                dashPen.DashStyle = DashStyle.Dash;
+                                graphics.DrawLine(dashPen, agentCenter, CoordinatesToDisplayPoint(agent.Intent.GetPosition().X, agent.Intent.GetPosition().Y, rect));
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -342,6 +350,8 @@ namespace Curvature
                     }
                 }
             }
+
+            stringFormat.Dispose();
         }
 
         public void Rename(string newname)
@@ -407,7 +417,8 @@ namespace Curvature
             const float speed = 1.0f;
 
             context.ThinkingAgent.Stalled = false;
-            context.ThinkingAgent.IntentPosition = context.ThinkingAgent.GetPosition();
+            context.ThinkingAgent.Intent = context.Target;
+            context.ThinkingAgent.IntentAttractive = true;
 
             switch (context.ChosenBehavior.Action)
             {
@@ -422,8 +433,7 @@ namespace Curvature
                         context.ThinkingAgent.Position.X = ClampToEscape(pos.X, context.Target.GetPosition().X, pos.X - (speed * dt * vec.X));
                         context.ThinkingAgent.Position.Y = ClampToEscape(pos.Y, context.Target.GetPosition().Y, pos.Y - (speed * dt * vec.Y));
 
-                        context.ThinkingAgent.IntentPosition.X = pos.X - vec.X;
-                        context.ThinkingAgent.IntentPosition.Y = pos.Y - vec.Y;
+                        context.ThinkingAgent.IntentAttractive = false;
                     }
                     break;
 
@@ -434,8 +444,6 @@ namespace Curvature
                         var vec = ComputeVectorTowardsTarget(context);
                         context.ThinkingAgent.Position.X = ClampToArrival(pos.X, context.Target.GetPosition().X, pos.X + (speed * dt * vec.X));
                         context.ThinkingAgent.Position.Y = ClampToArrival(pos.Y, context.Target.GetPosition().Y, pos.Y + (speed * dt * vec.Y));
-
-                        context.ThinkingAgent.IntentPosition = context.Target.GetPosition();
                     }
                     break;
 
