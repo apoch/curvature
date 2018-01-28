@@ -23,6 +23,10 @@ namespace Curvature
         [DataMember]
         public List<InputParameterValue> ParameterValues;
 
+        [DataMember]
+        public bool WrapInput;
+
+
         internal delegate void DialogRebuildNeededHandler();
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
@@ -92,34 +96,62 @@ namespace Curvature
         {
             if (ParameterValues.Count == 1)
             {
-                if (raw < 0.0)
-                    raw = 0.0;
-                else if (raw > ParameterValues[0].Value)
-                    raw = ParameterValues[0].Value;
+                double max = ParameterValues[0].Value;
 
-                return raw / ParameterValues[0].Value;
+                if (WrapInput)
+                {
+                    raw %= max;
+                }
+                else
+                {
+                    if (raw < 0.0)
+                        raw = 0.0;
+                    else if (raw > max)
+                        raw = max;
+                }
+
+                return raw / max;
             }
             else if (ParameterValues.Count == 2)
             {
                 double min = ParameterValues[0].Value;
                 double max = ParameterValues[1].Value;
 
-                if (raw < min)
-                    raw = min;
-                else if (raw > max)
-                    raw = max;
+                if (WrapInput)
+                {
+                    if (raw < min)
+                        raw = min;
+                    
+                    raw %= (max - min);
 
-                return (raw - min) / (max - min);
+                    return raw;
+                }
+                else
+                {
+                    if (raw < min)
+                        raw = min;
+                    else if (raw > max)
+                        raw = max;
+
+                    return (raw - min) / (max - min);
+                }
             }
             else
             {
-                if (raw < 0.0)
-                    return 0.0;
+                if (WrapInput)
+                {
+                    return raw - Math.Truncate(raw);
+                }
+                else
+                {
+                    if (raw < 0.0)
+                        return 0.0;
 
-                if (raw > 1.0)
-                    return 1.0;
+                    if (raw > 1.0)
+                        return 1.0;
 
-                return raw;
+                    return raw;
+                }
             }
         }
     }

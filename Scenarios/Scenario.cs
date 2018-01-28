@@ -390,8 +390,7 @@ namespace Curvature
                             break;
 
                         case KnowledgeBase.Record.Prefabs.SimulationTime:
-                            // TODO - scale this over input axis parameters/consideration values instead
-                            raw = SimulationTime % axis.KBRec.MaximumValue;
+                            raw = SimulationTime;
                             break;
 
                         default:

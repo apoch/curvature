@@ -37,6 +37,7 @@
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.CurveWizardButton = new System.Windows.Forms.Button();
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.WrapInputCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
@@ -91,6 +92,7 @@
             this.ParametersGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametersGroupBox.Controls.Add(this.WrapInputCheckBox);
             this.ParametersGroupBox.Controls.Add(this.ParamFlowPanel);
             this.ParametersGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ParametersGroupBox.Name = "ParametersGroupBox";
@@ -101,11 +103,12 @@
             // 
             // ParamFlowPanel
             // 
-            this.ParamFlowPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ParamFlowPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ParamFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ParamFlowPanel.Location = new System.Drawing.Point(3, 16);
             this.ParamFlowPanel.Name = "ParamFlowPanel";
-            this.ParamFlowPanel.Size = new System.Drawing.Size(746, 94);
+            this.ParamFlowPanel.Size = new System.Drawing.Size(643, 94);
             this.ParamFlowPanel.TabIndex = 0;
             // 
             // ResponseCurveGroupBox
@@ -150,6 +153,18 @@
             this.NameEditWidget.Size = new System.Drawing.Size(768, 30);
             this.NameEditWidget.TabIndex = 6;
             // 
+            // WrapInputCheckBox
+            // 
+            this.WrapInputCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.WrapInputCheckBox.AutoSize = true;
+            this.WrapInputCheckBox.Location = new System.Drawing.Point(648, 16);
+            this.WrapInputCheckBox.Name = "WrapInputCheckBox";
+            this.WrapInputCheckBox.Size = new System.Drawing.Size(84, 17);
+            this.WrapInputCheckBox.TabIndex = 1;
+            this.WrapInputCheckBox.Text = "Wrap Inputs";
+            this.WrapInputCheckBox.UseVisualStyleBackColor = true;
+            this.WrapInputCheckBox.CheckedChanged += new System.EventHandler(this.WrapInputCheckBox_CheckedChanged);
+            // 
             // EditWidgetConsideration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).EndInit();
             this.HorizontalSplitter.ResumeLayout(false);
             this.ParametersGroupBox.ResumeLayout(false);
+            this.ParametersGroupBox.PerformLayout();
             this.ResponseCurveGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,5 +198,6 @@
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
         private System.Windows.Forms.Button CurveWizardButton;
         private EditWidgetName NameEditWidget;
+        private System.Windows.Forms.CheckBox WrapInputCheckBox;
     }
 }

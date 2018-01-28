@@ -43,6 +43,8 @@ namespace Curvature
 
             InputAxisDropdown.SelectedItem = EditConsideration.Input;
             ResponseCurveEditor.AttachCurve(EditConsideration.Curve, EditProject);
+
+            WrapInputCheckBox.Checked = EditConsideration.WrapInput;
         }
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
@@ -83,6 +85,16 @@ namespace Curvature
             Attach(EditProject, EditConsideration);
 
             DialogRebuildNeeded?.Invoke();
+        }
+
+        private void WrapInputCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var prev = EditConsideration.WrapInput;
+
+            EditConsideration.WrapInput = WrapInputCheckBox.Checked;
+
+            if (prev != EditConsideration.WrapInput)
+                EditProject.MarkDirty();
         }
     }
 }
