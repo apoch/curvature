@@ -605,6 +605,19 @@ namespace Curvature
         }
 
 
+        public ScenarioAgent GetAgentAtLocation(Rectangle rect, Point pt)
+        {
+            var simpt = DisplayPointToCoordinates(pt, rect);
+            foreach (var agent in Agents)
+            {
+                if (HitTest(agent, simpt))
+                    return agent;
+            }
+
+            return null;
+        }
+
+
         private Color GetDarkerColor (Color c)
         {
             return ControlPaint.Dark(c, 0.25f);

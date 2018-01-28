@@ -57,6 +57,29 @@ namespace Curvature
                 SimulationInspectionTooltip.Show(text, ScenarioRenderingBox, args.X + 18, args.Y + 18);
             };
 
+            ScenarioRenderingBox.MouseDoubleClick += (obj, args) =>
+            {
+                if (Simulation == null)
+                    return;
+
+                var agent = Simulation.GetAgentAtLocation(ScenarioRenderingBox.ClientRectangle, args.Location);
+                if (agent == null)
+                    return;
+
+                for (int i = 0; i < AgentsListView.Items.Count; ++i)
+                {
+                    if ((AgentsListView.Items[i].Tag as ScenarioAgent) == agent)
+                    {
+                        AgentsListView.SelectedItems.Clear();
+                        AgentsListView.SelectedIndices.Add(i);
+
+                        ScenarioEditorTabs.SelectTab(AgentsTab);
+
+                        return;
+                    }
+                }
+            };
+
             AgentsListView.AfterLabelEdit += (obj, args) =>
             {
                 if (string.IsNullOrEmpty(args.Label))
