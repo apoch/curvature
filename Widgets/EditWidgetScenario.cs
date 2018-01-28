@@ -41,6 +41,12 @@ namespace Curvature
 
             ScenarioRenderingBox.MouseClick += (obj, args) =>
             {
+                if (args.Button != MouseButtons.Right)
+                {
+                    SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
+                    return;
+                }
+
                 if (Simulation == null)
                 {
                     SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
