@@ -171,6 +171,7 @@
             this.AgentStartLocationCombo.Name = "AgentStartLocationCombo";
             this.AgentStartLocationCombo.Size = new System.Drawing.Size(217, 21);
             this.AgentStartLocationCombo.TabIndex = 22;
+            this.AgentStartLocationCombo.SelectedIndexChanged += new System.EventHandler(this.AgentStartLocationCombo_SelectedIndexChanged);
             // 
             // AgentStartLocationLabel
             // 

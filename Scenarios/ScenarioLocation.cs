@@ -24,6 +24,12 @@ namespace Curvature
         public HashSet<string> Tags;
 
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
+
         public ScenarioLocation(string name)
         {
             Name = name;

@@ -248,7 +248,7 @@ namespace Curvature
                 item.Tag = loc;
                 LocationsListView.Items.Add(item);
 
-                AgentStartLocationCombo.Items.Add(loc.GetName());
+                AgentStartLocationCombo.Items.Add(loc);
             }
         }
 
@@ -372,6 +372,10 @@ namespace Curvature
             AgentArchetypeComboBox.SelectedItem = agent.AgentArchetype;
             ColorSwatch.BackColor = agent.Color;
             AgentRandomStartPositionCheckBox.Checked = agent.StartFuzzed;
+
+            AgentStartLocationCombo.SelectedItem = agent.StartLocation;
+            if (AgentStartLocationCombo.SelectedIndex < 0)
+                AgentStartLocationCombo.SelectedIndex = 0;
 
             agent.GenerateStartProperties(EditProject.KB);
 
@@ -528,6 +532,28 @@ namespace Curvature
             }
 
             DialogRebuildNeeded?.Invoke();
+        }
+
+        private void AgentStartLocationCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AgentStartLocationCombo.SelectedIndex <= 0)
+            {
+                foreach (var selected in AgentsListView.SelectedItems)
+                {
+                    var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+                    agent.StartLocation = null;
+                }
+            }
+            else
+            {
+                var location = AgentStartLocationCombo.SelectedItem as ScenarioLocation;
+
+                foreach (var selected in AgentsListView.SelectedItems)
+                {
+                    var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+                    agent.StartLocation = location;
+                }
+            }
         }
     }
 }
