@@ -249,7 +249,7 @@ namespace Curvature
 
 
                 // Intention indicator
-                var intentVec = new PointF() { X = agent.IntentPosition.X - agent.GetPosition().X, Y = agent.IntentPosition.Y - agent.GetPosition().Y };
+                var intentVec = new PointF() { X = agent.GetPosition().X - agent.IntentPosition.X, Y = agent.GetPosition().Y - agent.IntentPosition.Y };
                 var intentLength = Magnitude(intentVec);
 
                 if (intentLength > 0.05f)
@@ -278,6 +278,12 @@ namespace Curvature
 
                     graphics.DrawLines(Pens.Black, poly);
                     graphics.FillPolygon(gradient, poly);
+
+                    using (var dashPen = new Pen(agent.Color))
+                    {
+                        dashPen.DashStyle = DashStyle.Dash;
+                        graphics.DrawLine(dashPen, tip, CoordinatesToDisplayPoint(agent.IntentPosition.X, agent.IntentPosition.Y, rect));
+                    }
 
                     gradient.Dispose();
                 }
