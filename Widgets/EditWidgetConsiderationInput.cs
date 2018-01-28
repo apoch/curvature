@@ -26,11 +26,7 @@ namespace Curvature
 
             if ((EditingAxis != null) && (EditingAxis.Parameters != null))
             {
-                if (EditingAxis.Parameters.Count == 0)
-                {
-                    InputValueTrackBar.Visible = false;
-                }
-                else if (EditingAxis.Parameters.Count == 1)
+                if (EditingAxis.Parameters.Count == 1)
                 {
                     InputValueTrackBar.Minimum = (int)(EditingAxis.Parameters[0].MinimumValue * 100.0f);
                     InputValueTrackBar.Maximum = (int)(EditingAxis.Parameters[0].MaximumValue * 100.0f);
@@ -42,7 +38,7 @@ namespace Curvature
                 }
                 else
                 {
-                    // TODO - handle this?
+                    InputValueTrackBar.Visible = false;
                 }
             }
 
