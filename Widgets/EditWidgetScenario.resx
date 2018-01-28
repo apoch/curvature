@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ScenariosToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>616, 17</value>
-  </metadata>
-  <data name="AgentRandomStartPositionCheckBox.ToolTip" xml:space="preserve">
-    <value>If fuzz is enabled, the agent will start at a randomly chosen point
-near the specified location. Otherwise, the agent will start in the
-middle of the specified location, plus the starting X and Y offsets.</value>
-  </data>
   <metadata name="IconImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>489, 17</value>
   </metadata>
@@ -158,6 +150,14 @@ middle of the specified location, plus the starting X and Y offsets.</value>
         AfgBHwQAAYABAQH8AT8EAAGAAQEB/AE/BAABgAEBAfgBHwQAAYABAQHxAY8EAAGAAQEB4wHHBAABwAED
         AccB4wQAAeABBwGPAfEEAAHwAQ8B3wH7BAAE/wQACw==
 </value>
+  </data>
+  <metadata name="ScenariosToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>616, 17</value>
+  </metadata>
+  <data name="AgentRandomStartPositionCheckBox.ToolTip" xml:space="preserve">
+    <value>If fuzz is enabled, the agent will start at a randomly chosen point
+near the specified location. Otherwise, the agent will start in the
+middle of the specified location, plus the starting X and Y offsets.</value>
   </data>
   <metadata name="AutoAdvanceTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

@@ -78,6 +78,14 @@
             this.ColorPicker = new System.Windows.Forms.ColorDialog();
             this.ScenariosToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.LocationCenterXLabel = new System.Windows.Forms.Label();
+            this.LocationCenterX = new System.Windows.Forms.NumericUpDown();
+            this.LocationCenterYLabel = new System.Windows.Forms.Label();
+            this.LocationCenterY = new System.Windows.Forms.NumericUpDown();
+            this.LocationRadiusLabel = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.LocationPropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.DeleteLocationButton = new System.Windows.Forms.Button();
             this.ScenarioEditorTabs.SuspendLayout();
             this.AgentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ColorSwatch)).BeginInit();
@@ -90,6 +98,9 @@
             this.SimulationTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).BeginInit();
             this.LogsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationCenterX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationCenterY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenarioEditorTabs
@@ -471,6 +482,14 @@
             // 
             // LocationsTab
             // 
+            this.LocationsTab.Controls.Add(this.DeleteLocationButton);
+            this.LocationsTab.Controls.Add(this.LocationPropertyGrid);
+            this.LocationsTab.Controls.Add(this.numericUpDown1);
+            this.LocationsTab.Controls.Add(this.LocationRadiusLabel);
+            this.LocationsTab.Controls.Add(this.LocationCenterY);
+            this.LocationsTab.Controls.Add(this.LocationCenterYLabel);
+            this.LocationsTab.Controls.Add(this.LocationCenterX);
+            this.LocationsTab.Controls.Add(this.LocationCenterXLabel);
             this.LocationsTab.Controls.Add(this.AddLocationButton);
             this.LocationsTab.Controls.Add(this.LocationsListView);
             this.LocationsTab.Location = new System.Drawing.Point(4, 4);
@@ -505,6 +524,7 @@
             this.LocationCoordinatesColumnHeader});
             this.LocationsListView.FullRowSelect = true;
             this.LocationsListView.HideSelection = false;
+            this.LocationsListView.LabelEdit = true;
             this.LocationsListView.Location = new System.Drawing.Point(0, 0);
             this.LocationsListView.Name = "LocationsListView";
             this.LocationsListView.Size = new System.Drawing.Size(633, 222);
@@ -665,6 +685,117 @@
             this.NameEditWidget.Size = new System.Drawing.Size(752, 30);
             this.NameEditWidget.TabIndex = 1;
             // 
+            // LocationCenterXLabel
+            // 
+            this.LocationCenterXLabel.AutoSize = true;
+            this.LocationCenterXLabel.Location = new System.Drawing.Point(3, 225);
+            this.LocationCenterXLabel.Name = "LocationCenterXLabel";
+            this.LocationCenterXLabel.Size = new System.Drawing.Size(51, 13);
+            this.LocationCenterXLabel.TabIndex = 2;
+            this.LocationCenterXLabel.Text = "Center X:";
+            // 
+            // LocationCenterX
+            // 
+            this.LocationCenterX.DecimalPlaces = 3;
+            this.LocationCenterX.Location = new System.Drawing.Point(6, 241);
+            this.LocationCenterX.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.LocationCenterX.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.LocationCenterX.Name = "LocationCenterX";
+            this.LocationCenterX.Size = new System.Drawing.Size(97, 20);
+            this.LocationCenterX.TabIndex = 3;
+            // 
+            // LocationCenterYLabel
+            // 
+            this.LocationCenterYLabel.AutoSize = true;
+            this.LocationCenterYLabel.Location = new System.Drawing.Point(106, 225);
+            this.LocationCenterYLabel.Name = "LocationCenterYLabel";
+            this.LocationCenterYLabel.Size = new System.Drawing.Size(51, 13);
+            this.LocationCenterYLabel.TabIndex = 4;
+            this.LocationCenterYLabel.Text = "Center Y:";
+            // 
+            // LocationCenterY
+            // 
+            this.LocationCenterY.DecimalPlaces = 3;
+            this.LocationCenterY.Location = new System.Drawing.Point(109, 241);
+            this.LocationCenterY.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.LocationCenterY.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.LocationCenterY.Name = "LocationCenterY";
+            this.LocationCenterY.Size = new System.Drawing.Size(97, 20);
+            this.LocationCenterY.TabIndex = 5;
+            // 
+            // LocationRadiusLabel
+            // 
+            this.LocationRadiusLabel.AutoSize = true;
+            this.LocationRadiusLabel.Location = new System.Drawing.Point(209, 225);
+            this.LocationRadiusLabel.Name = "LocationRadiusLabel";
+            this.LocationRadiusLabel.Size = new System.Drawing.Size(43, 13);
+            this.LocationRadiusLabel.TabIndex = 6;
+            this.LocationRadiusLabel.Text = "Radius:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 3;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(212, 241);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(98, 20);
+            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // LocationPropertyGrid
+            // 
+            this.LocationPropertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LocationPropertyGrid.Location = new System.Drawing.Point(316, 228);
+            this.LocationPropertyGrid.Name = "LocationPropertyGrid";
+            this.LocationPropertyGrid.Size = new System.Drawing.Size(317, 196);
+            this.LocationPropertyGrid.TabIndex = 8;
+            this.LocationPropertyGrid.ToolbarVisible = false;
+            // 
+            // DeleteLocationButton
+            // 
+            this.DeleteLocationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteLocationButton.ImageIndex = 1;
+            this.DeleteLocationButton.ImageList = this.IconImageList;
+            this.DeleteLocationButton.Location = new System.Drawing.Point(639, 33);
+            this.DeleteLocationButton.Name = "DeleteLocationButton";
+            this.DeleteLocationButton.Size = new System.Drawing.Size(96, 27);
+            this.DeleteLocationButton.TabIndex = 9;
+            this.DeleteLocationButton.Text = "Delete";
+            this.DeleteLocationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteLocationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DeleteLocationButton.UseVisualStyleBackColor = true;
+            // 
             // EditWidgetScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,11 +814,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.AgentYUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AgentXUpDown)).EndInit();
             this.LocationsTab.ResumeLayout(false);
+            this.LocationsTab.PerformLayout();
             this.SimulationTab.ResumeLayout(false);
             this.SimulationTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScenarioRenderingBox)).EndInit();
             this.LogsTab.ResumeLayout(false);
             this.LogsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationCenterX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LocationCenterY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -742,5 +877,13 @@
         private System.Windows.Forms.ComboBox AgentStartLocationCombo;
         private System.Windows.Forms.CheckBox AgentRandomStartPositionCheckBox;
         private System.Windows.Forms.ToolTip ScenariosToolTip;
+        private System.Windows.Forms.Label LocationCenterXLabel;
+        private System.Windows.Forms.NumericUpDown LocationCenterX;
+        private System.Windows.Forms.Label LocationCenterYLabel;
+        private System.Windows.Forms.NumericUpDown LocationCenterY;
+        private System.Windows.Forms.Label LocationRadiusLabel;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.PropertyGrid LocationPropertyGrid;
+        private System.Windows.Forms.Button DeleteLocationButton;
     }
 }
