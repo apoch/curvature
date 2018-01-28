@@ -23,6 +23,7 @@ namespace Curvature
 
         public class Score
         {
+            public double InputRawValue;
             public double InputValue;
             public double FinalScore;
         }
@@ -38,7 +39,7 @@ namespace Curvature
                 string ret = $"Initial weight: {InitialWeight:f3}\r\nFinal score: {FinalScore:f3}\r\n\r\n";
                 foreach (var pair in Considerations)
                 {
-                    ret += $"{pair.Key.ReadableName}\r\nInput \"{pair.Key.Input.ReadableName}\" = {pair.Value.InputValue:f3}, score = {pair.Value.FinalScore:f3}\r\n\r\n";
+                    ret += $"{pair.Key.ReadableName}\r\nInput \"{pair.Key.Input.ReadableName}\" = {pair.Value.InputRawValue:f3} -> {pair.Value.InputValue:f3}, score = {pair.Value.FinalScore:f3}\r\n\r\n";
                 }
 
                 return ret;

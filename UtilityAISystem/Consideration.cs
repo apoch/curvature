@@ -75,8 +75,8 @@ namespace Curvature
         internal Scenario.Score Score(IInputBroker broker, Scenario.Context context)
         {
             var score = new Scenario.Score();
-            score.InputValue = broker.GetInputValue(Input, context);
-            score.InputValue = NormalizeInput(score.InputValue);
+            score.InputRawValue = broker.GetInputValue(Input, context);
+            score.InputValue = NormalizeInput(score.InputRawValue);
             score.FinalScore = Curve.ComputeValue(score.InputValue);
             return score;
         }
