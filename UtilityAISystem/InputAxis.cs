@@ -177,7 +177,7 @@ namespace Curvature
                     break;
 
                 case KnowledgeBase.Record.Parameterization.FixedRange:
-                    Parameters.Add(new InputParameter("Maximum", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
+                    Parameters.Add(new InputParameter("Ceiling", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
                     break;
             }
 

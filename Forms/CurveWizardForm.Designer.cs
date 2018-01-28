@@ -37,6 +37,8 @@
             this.InputDescriptionLabel = new System.Windows.Forms.Label();
             this.InputComboBox = new System.Windows.Forms.ComboBox();
             this.ConfigureParametersTab = new System.Windows.Forms.TabPage();
+            this.ParameterHintSpecificsLabel = new System.Windows.Forms.Label();
+            this.ParametersHintLabel = new System.Windows.Forms.Label();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveTab = new System.Windows.Forms.TabPage();
             this.ResponseCurveDescriptionLabel = new System.Windows.Forms.Label();
@@ -47,8 +49,8 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelWizardButton = new System.Windows.Forms.Button();
             this.NextButton = new System.Windows.Forms.Button();
-            this.ParametersHintLabel = new System.Windows.Forms.Label();
-            this.ParameterHintSpecificsLabel = new System.Windows.Forms.Label();
+            this.NameHintLabel = new System.Windows.Forms.Label();
+            this.NamingWikiLinkLabel = new System.Windows.Forms.LinkLabel();
             this.WizardTabs.SuspendLayout();
             this.GettingStartedTab.SuspendLayout();
             this.SelectInputTab.SuspendLayout();
@@ -153,6 +155,27 @@
             this.ConfigureParametersTab.Text = "Configure Parameters";
             this.ConfigureParametersTab.UseVisualStyleBackColor = true;
             // 
+            // ParameterHintSpecificsLabel
+            // 
+            this.ParameterHintSpecificsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParameterHintSpecificsLabel.Location = new System.Drawing.Point(3, 38);
+            this.ParameterHintSpecificsLabel.Name = "ParameterHintSpecificsLabel";
+            this.ParameterHintSpecificsLabel.Size = new System.Drawing.Size(551, 40);
+            this.ParameterHintSpecificsLabel.TabIndex = 3;
+            this.ParameterHintSpecificsLabel.Text = "Select an input on the previous tab to see what its parameters do.";
+            // 
+            // ParametersHintLabel
+            // 
+            this.ParametersHintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametersHintLabel.Location = new System.Drawing.Point(3, 3);
+            this.ParametersHintLabel.Name = "ParametersHintLabel";
+            this.ParametersHintLabel.Size = new System.Drawing.Size(551, 35);
+            this.ParametersHintLabel.TabIndex = 1;
+            this.ParametersHintLabel.Text = "Some inputs can be parameterized, allowing a specific consideration to control th" +
+    "e values at which the input is considered 0 or 1.";
+            // 
             // ParamFlowPanel
             // 
             this.ParamFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -195,6 +218,8 @@
             // 
             // NameConsiderationTab
             // 
+            this.NameConsiderationTab.Controls.Add(this.NamingWikiLinkLabel);
+            this.NameConsiderationTab.Controls.Add(this.NameHintLabel);
             this.NameConsiderationTab.Controls.Add(this.ConsiderationNameEditBox);
             this.NameConsiderationTab.Controls.Add(this.NameLabel);
             this.NameConsiderationTab.Location = new System.Drawing.Point(4, 22);
@@ -208,20 +233,20 @@
             // 
             this.ConsiderationNameEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 67);
+            this.ConsiderationNameEditBox.Location = new System.Drawing.Point(3, 145);
             this.ConsiderationNameEditBox.Name = "ConsiderationNameEditBox";
             this.ConsiderationNameEditBox.Size = new System.Drawing.Size(551, 20);
             this.ConsiderationNameEditBox.TabIndex = 1;
             // 
             // NameLabel
             // 
-            this.NameLabel.AutoSize = true;
+            this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLabel.Location = new System.Drawing.Point(3, 3);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(319, 39);
+            this.NameLabel.Size = new System.Drawing.Size(551, 70);
             this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "Almost done! Your consideration just needs a name.\r\n\r\nInsert generic prose about " +
-    "how to name considerations effectively.";
+            this.NameLabel.Text = resources.GetString("NameLabel.Text");
             // 
             // OKButton
             // 
@@ -256,26 +281,25 @@
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
-            // ParametersHintLabel
+            // NameHintLabel
             // 
-            this.ParametersHintLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ParametersHintLabel.Location = new System.Drawing.Point(3, 3);
-            this.ParametersHintLabel.Name = "ParametersHintLabel";
-            this.ParametersHintLabel.Size = new System.Drawing.Size(551, 35);
-            this.ParametersHintLabel.TabIndex = 1;
-            this.ParametersHintLabel.Text = "Some inputs can be parameterized, allowing a specific consideration to control th" +
-    "e values at which the input is considered 0 or 1.";
+            this.NameHintLabel.AutoSize = true;
+            this.NameHintLabel.Location = new System.Drawing.Point(3, 129);
+            this.NameHintLabel.Name = "NameHintLabel";
+            this.NameHintLabel.Size = new System.Drawing.Size(38, 13);
+            this.NameHintLabel.TabIndex = 2;
+            this.NameHintLabel.Text = "Name:";
             // 
-            // ParameterHintSpecificsLabel
+            // NamingWikiLinkLabel
             // 
-            this.ParameterHintSpecificsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ParameterHintSpecificsLabel.Location = new System.Drawing.Point(3, 38);
-            this.ParameterHintSpecificsLabel.Name = "ParameterHintSpecificsLabel";
-            this.ParameterHintSpecificsLabel.Size = new System.Drawing.Size(551, 40);
-            this.ParameterHintSpecificsLabel.TabIndex = 3;
-            this.ParameterHintSpecificsLabel.Text = "Select an input on the previous tab to see what its parameters do.";
+            this.NamingWikiLinkLabel.AutoSize = true;
+            this.NamingWikiLinkLabel.Location = new System.Drawing.Point(3, 93);
+            this.NamingWikiLinkLabel.Name = "NamingWikiLinkLabel";
+            this.NamingWikiLinkLabel.Size = new System.Drawing.Size(291, 13);
+            this.NamingWikiLinkLabel.TabIndex = 3;
+            this.NamingWikiLinkLabel.TabStop = true;
+            this.NamingWikiLinkLabel.Text = "View the Consideration Naming Guide on the Curvature Wiki";
+            this.NamingWikiLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NamingWikiLinkLabel_LinkClicked);
             // 
             // CurveWizardForm
             // 
@@ -325,5 +349,7 @@
         private System.Windows.Forms.FlowLayoutPanel ParamFlowPanel;
         private System.Windows.Forms.Label ParametersHintLabel;
         private System.Windows.Forms.Label ParameterHintSpecificsLabel;
+        private System.Windows.Forms.Label NameHintLabel;
+        private System.Windows.Forms.LinkLabel NamingWikiLinkLabel;
     }
 }

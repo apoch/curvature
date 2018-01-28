@@ -117,6 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NameLabel.Text" xml:space="preserve">
+    <value>Almost done! Your consideration just needs a name.
+
+Naming considerations is an art form. Try to capture the behavior of the consideration's score as it relates to the input axis. For example, a consideration may score "higher as target health drops" or "lower as my mana increases". The shape of the consideration's response curve is a good guide for how to name the consideration itself.
+
+</value>
+  </data>
   <data name="WizardDescriptionLabel.Text" xml:space="preserve">
     <value>Considerations rate the attractiveness of a specific behavior from 0 to 1, based on a particular single input factor. Multiple considerations can be attached to a behavior in order to reflect the importance of different input factors. Consideration scores are multiplied together to yield the final score of a behavior; see the Behavior editor in the main Curvature Studio.
 

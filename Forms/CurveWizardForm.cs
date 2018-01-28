@@ -82,5 +82,10 @@ namespace Curvature
             else
                 ParameterHintSpecificsLabel.Text = "This input has multiple parameters. Nobody knows what they do.";
         }
+
+        private void NamingWikiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+        }
     }
 }
