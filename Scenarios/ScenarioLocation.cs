@@ -21,7 +21,10 @@ namespace Curvature
         public float Radius;
 
         [DataMember]
-        public HashSet<string> Tags;
+        public Dictionary<KnowledgeBase.Record, double> Properties;
+
+        [DataMember]
+        public Dictionary<KnowledgeBase.Record, double> StartProperties;
 
 
         public override string ToString()
@@ -37,7 +40,7 @@ namespace Curvature
             Position = new PointF(0.0f, 0.0f);
             Radius = 2.5f;
 
-            Tags = new HashSet<string>();
+            Properties = new Dictionary<KnowledgeBase.Record, double>();
         }
 
 
@@ -53,12 +56,35 @@ namespace Curvature
 
         public double GetProperty(KnowledgeBase.Record kbrec)
         {
-            return 0.0;
+            if (Properties == null || !Properties.ContainsKey(kbrec))
+                return 0.0;
+
+            return Properties[kbrec];
         }
 
         public float GetRadius()
         {
             return Radius;
+        }
+
+        public void GenerateStartProperties(KnowledgeBase kb)
+        {
+            var oldstarts = StartProperties;
+            if (oldstarts == null)
+                oldstarts = new Dictionary<KnowledgeBase.Record, double>();
+
+            StartProperties = new Dictionary<KnowledgeBase.Record, double>();
+
+            foreach (var rec in kb.Records)
+            {
+                if (rec.Computed)
+                    continue;
+
+                if (oldstarts.ContainsKey(rec))
+                    StartProperties.Add(rec, oldstarts[rec]);
+                else
+                    StartProperties.Add(rec, rec.MinimumValue);
+            }
         }
     }
 }

@@ -136,6 +136,14 @@ namespace Curvature
                 foreach (var kvp in agent.StartProperties)
                     agent.Properties.Add(kvp.Key, kvp.Value);
             }
+
+            foreach (var location in Locations)
+            {
+                location.GenerateStartProperties(kb);
+                location.Properties = new Dictionary<KnowledgeBase.Record, double>();
+                foreach (var kvp in location.StartProperties)
+                    location.Properties.Add(kvp.Key, kvp.Value);
+            }
         }
 
         public void Advance(float dt)

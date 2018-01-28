@@ -388,7 +388,9 @@ namespace Curvature
             LocationCenterY.Value = (decimal)(location.Position.Y);
             LocationRadius.Value = (decimal)(location.Radius);
 
-            // TODO - add properties to locations
+            location.GenerateStartProperties(EditProject.KB);
+
+            LocationPropertyGrid.SelectedObject = new AgentPropertyAdapter(location.StartProperties);
         }
 
         private void AutoAdvanceButton_Click(object sender, EventArgs e)
