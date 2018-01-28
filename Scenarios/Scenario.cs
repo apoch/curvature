@@ -253,6 +253,12 @@ namespace Curvature
                     graphics.DrawRectangle(Pens.Red, displayRect);
 
 
+                using (var pen = new Pen(agent.Color))
+                {
+                    graphics.DrawEllipse(pen, displayRect);
+                }
+
+
                 // Intention indicator
                 if (agent.Intent != null)
                 {

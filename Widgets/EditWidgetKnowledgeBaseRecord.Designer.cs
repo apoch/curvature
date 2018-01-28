@@ -223,12 +223,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PrefabPanel);
             this.Controls.Add(this.RangeValidValuesLabel);
-            this.Controls.Add(this.RangeConfigurationPanel);
             this.Controls.Add(this.ClampingBehaviorComboBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.OriginComboBox);
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
+            this.Controls.Add(this.RangeConfigurationPanel);
             this.Controls.Add(this.EnumerationPanel);
             this.Name = "EditWidgetKnowledgeBaseRecord";
             this.Size = new System.Drawing.Size(753, 69);
