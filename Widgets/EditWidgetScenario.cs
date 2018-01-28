@@ -272,13 +272,16 @@ namespace Curvature
         private void AgentArchetypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var archetype = AgentArchetypeComboBox.SelectedItem as Archetype;
+            string archetypename = "(unassigned)";
+            if (archetype != null)
+                archetypename = archetype.ReadableName;
 
             foreach (var item in AgentsListView.SelectedItems)
             {
                 var lvi = (item as ListViewItem);
                 var agent = lvi.Tag as ScenarioAgent;
                 agent.AgentArchetype = archetype;
-                lvi.SubItems[2].Text = agent.AgentArchetype.ReadableName;
+                lvi.SubItems[2].Text = archetypename;
             }
         }
 

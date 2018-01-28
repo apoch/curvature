@@ -169,8 +169,8 @@ namespace Curvature
 
             if (StartFuzzed)
             {
-                startPos.X += (0.5f - (float)rand.NextDouble()) * fuzzRadius;
-                startPos.Y += (0.5f - (float)rand.NextDouble()) * fuzzRadius;
+                startPos.X += (0.5f - (float)rand.NextDouble()) * fuzzRadius * 2.0f;
+                startPos.Y += (0.5f - (float)rand.NextDouble()) * fuzzRadius * 2.0f;
             }
 
             Position = startPos;

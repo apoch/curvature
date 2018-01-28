@@ -92,12 +92,22 @@ namespace Curvature
         {
             if (ParameterValues.Count == 1)
             {
+                if (raw < 0.0)
+                    raw = 0.0;
+                else if (raw > ParameterValues[0].Value)
+                    raw = ParameterValues[0].Value;
+
                 return raw / ParameterValues[0].Value;
             }
             else if (ParameterValues.Count == 2)
             {
                 double min = ParameterValues[0].Value;
                 double max = ParameterValues[1].Value;
+
+                if (raw < min)
+                    raw = min;
+                else if (raw > max)
+                    raw = max;
 
                 return (raw - min) / (max - min);
             }

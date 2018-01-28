@@ -41,11 +41,11 @@
             this.KnowledgeBaseEntriesLabel = new System.Windows.Forms.Label();
             this.UtilityCrashCourseLinkLabel = new System.Windows.Forms.LinkLabel();
             this.WizardsGroupBox = new System.Windows.Forms.GroupBox();
+            this.GuidedTourButton = new System.Windows.Forms.Button();
             this.ScenariosButton = new System.Windows.Forms.Button();
             this.SpecifyBehaviorsButton = new System.Windows.Forms.Button();
             this.DefineInputsButton = new System.Windows.Forms.Button();
             this.CreateKnowledgeButton = new System.Windows.Forms.Button();
-            this.GuidedTourButton = new System.Windows.Forms.Button();
             this.StatsGroupBox.SuspendLayout();
             this.WizardsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -186,6 +186,16 @@
             this.WizardsGroupBox.TabStop = false;
             this.WizardsGroupBox.Text = "Guidance";
             // 
+            // GuidedTourButton
+            // 
+            this.GuidedTourButton.Location = new System.Drawing.Point(6, 21);
+            this.GuidedTourButton.Name = "GuidedTourButton";
+            this.GuidedTourButton.Size = new System.Drawing.Size(194, 26);
+            this.GuidedTourButton.TabIndex = 4;
+            this.GuidedTourButton.Text = "Guided Introduction";
+            this.GuidedTourButton.UseVisualStyleBackColor = true;
+            this.GuidedTourButton.Click += new System.EventHandler(this.GuidedTourButton_Click);
+            // 
             // ScenariosButton
             // 
             this.ScenariosButton.Location = new System.Drawing.Point(6, 150);
@@ -225,16 +235,6 @@
             this.CreateKnowledgeButton.Text = "Create Knowledge";
             this.CreateKnowledgeButton.UseVisualStyleBackColor = true;
             this.CreateKnowledgeButton.Click += new System.EventHandler(this.CreateKnowledgeButton_Click);
-            // 
-            // GuidedTourButton
-            // 
-            this.GuidedTourButton.Location = new System.Drawing.Point(7, 21);
-            this.GuidedTourButton.Name = "GuidedTourButton";
-            this.GuidedTourButton.Size = new System.Drawing.Size(193, 26);
-            this.GuidedTourButton.TabIndex = 4;
-            this.GuidedTourButton.Text = "Guided Introduction";
-            this.GuidedTourButton.UseVisualStyleBackColor = true;
-            this.GuidedTourButton.Click += new System.EventHandler(this.GuidedTourButton_Click);
             // 
             // EditWidgetProject
             // 
