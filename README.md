@@ -1,9 +1,9 @@
 # Curvature
 Curvature is a full-featured Utility-based AI editor and sandbox tool.
 
-The project is intended to provide a complete playground for creating, editing, and testing decision-making AI. Under the hood, Curvature uses *Utility Theory* to model the appeal of various behaviors. Specifically, Curvature is based on the Infinite Axis Utility System by Dave Mark. Curvature builds on the IAUS approach and includes enhancements and refinements developed during work on *Guild Wars 2: Heart of Thorns* as well as *Guild Wars 2: Path of Fire*.
+The project provides a complete playground for creating, editing, and testing decision-making AI. Under the hood, Curvature uses *Utility Theory* to model the appeal of various behaviors. Specifically, Curvature is based on the Infinite Axis Utility System by Dave Mark. Curvature builds on the IAUS approach and includes enhancements and refinements developed during work on *Guild Wars 2: Heart of Thorns* as well as *Guild Wars 2: Path of Fire*.
 
-Curvature is fully data-driven and supports the creation of a complete AI pipeline, from the core knowledge-base accessed by agents, to the specific *considerations* that drive the scoring of individual behaviors. The goal is to deliver an end-to-end solution for modeling and testing AI, including a simple world representation that allows designers or AI programmers to place agents in a virtual space and see how they would choose to behave.
+Curvature is fully data-driven and supports the creation of a complete AI pipeline, from the core knowledge-base accessed by agents, to the specific *considerations* that drive the scoring of individual behaviors. The result is an end-to-end solution for modeling and testing AI, including a simple world representation that allows designers or AI programmers to place agents in a virtual space and see how they would choose to behave.
 
 For complete project documentation, please see [the Curvature wiki](https://github.com/apoch/curvature/wiki).
 
@@ -12,7 +12,7 @@ For complete project documentation, please see [the Curvature wiki](https://gith
 ![A scenario set up to demonstrate basic chase AI in Curvature](https://raw.githubusercontent.com/apoch/curvature/master/Images/Screenshots/Tabs-Scenarios-Simulation.png)
 
 # Project Status
-Curvature recently released [Preview 1 - Core](https://github.com/apoch/curvature/releases/tag/Preview1Core). This release contains the bare minimum functionality of the tool and should be considered pre-release quality. Check back frequently for new features and enhancements.
+Curvature is currently in an open beta testing phase. Check the [project releases page](https://github.com/apoch/curvature/releases) for the latest version of the tool suite.
 
 Existing features of Curvature:
  * Design a *knowledge-base* to contain your world representation and data
@@ -24,11 +24,6 @@ Existing features of Curvature:
  * Place AI agents in a sandbox world and watch them make decisions using *scenarios*
  * Response curves and considerations can be constructed with a simple wizard-style helper
  * Running scenarios will log the decisions made by each agent at each "tick" so you can review how things came about
-
-Some things I'm hoping to add:
- * Richer knowledge-base implementation
- * Better parameterization of input axes
- * Experimentation UI for agent archetypes
  
 More fine-grained information on project plans can be found in the [issue tracker](https://github.com/apoch/curvature/issues).
 
