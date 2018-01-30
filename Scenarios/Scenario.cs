@@ -59,6 +59,13 @@ namespace Curvature
             }
         }
 
+        public class InspectionText
+        {
+            public string Caption;
+            public string Description;
+            public ToolTipIcon Icon;
+        }
+
         [DataMember]
         public string ReadableName;
 
@@ -610,7 +617,7 @@ namespace Curvature
         }
 
 
-        public string GetInspectionText(Rectangle rect, Point pt)
+        public InspectionText GetInspectionText(Rectangle rect, Point pt)
         {
             var simpt = DisplayPointToCoordinates(pt, rect);
 
@@ -618,16 +625,20 @@ namespace Curvature
             {
                 if (HitTest(agent, simpt))
                 {
+                    ToolTipIcon icon = ToolTipIcon.Warning;
                     string positiontext = $"{agent.GetPosition()} R:{agent.GetRadius()}";
 
                     string decisiontext = "[Stalled]";
                     if (AgentDecisions != null && AgentDecisions.ContainsKey(agent))
                     {
                         if (AgentDecisions[agent].WinningContext != null)
+                        {
                             decisiontext = AgentDecisions[agent].WinningContext.ToString();
+                            icon = ToolTipIcon.Info;
+                        }
                     }
 
-                    return $"Agent: {agent.GetName()}\r\n\r\n{positiontext}\r\n{decisiontext}";
+                    return new InspectionText { Caption = $"Agent: {agent.GetName()}", Description = $"{positiontext}\r\n{decisiontext}", Icon = icon };
                 }
             }
 
@@ -636,7 +647,7 @@ namespace Curvature
                 if (HitTest(loc, simpt))
                 {
                     string positiontext = $"{loc.GetPosition()} R:{loc.GetRadius()}";
-                    return $"Location: {loc.GetName()}\r\n{positiontext}";
+                    return new InspectionText { Caption = $"Location: {loc.GetName()}", Description = $"{positiontext}", Icon = ToolTipIcon.Info };
                 }
             }
 

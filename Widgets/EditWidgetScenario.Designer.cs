@@ -779,10 +779,6 @@
             // 
             this.AutoAdvanceTimer.Tick += new System.EventHandler(this.AutoAdvanceTimer_Tick);
             // 
-            // SimulationInspectionTooltip
-            // 
-            this.SimulationInspectionTooltip.ShowAlways = true;
-            // 
             // ColorPicker
             // 
             this.ColorPicker.AnyColor = true;

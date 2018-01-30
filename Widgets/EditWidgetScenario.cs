@@ -39,8 +39,15 @@ namespace Curvature
                 Simulation.Render(args.Graphics, ScenarioRenderingBox.ClientRectangle);
             };
 
+            ScenarioRenderingBox.LostFocus += (obj, args) =>
+            {
+                SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
+            };
+
             ScenarioRenderingBox.MouseClick += (obj, args) =>
             {
+                ScenarioRenderingBox.Focus();
+
                 if (args.Button != MouseButtons.Right)
                 {
                     SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
@@ -54,17 +61,21 @@ namespace Curvature
                 }
 
                 var text = Simulation.GetInspectionText(ScenarioRenderingBox.ClientRectangle, args.Location);
-                if (string.IsNullOrEmpty(text))
+                if (text == null || string.IsNullOrEmpty(text.Caption))
                 {
                     SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
                     return;
                 }
 
-                SimulationInspectionTooltip.Show(text, ScenarioRenderingBox, args.X + 18, args.Y + 18);
+                SimulationInspectionTooltip.ToolTipIcon = text.Icon;
+                SimulationInspectionTooltip.ToolTipTitle = text.Caption;
+                SimulationInspectionTooltip.Show(text.Description, ScenarioRenderingBox, args.X + 18, args.Y + 18);
             };
 
             ScenarioRenderingBox.MouseDoubleClick += (obj, args) =>
             {
+                ScenarioRenderingBox.Focus();
+
                 if (Simulation == null)
                     return;
 
