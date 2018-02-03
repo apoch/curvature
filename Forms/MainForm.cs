@@ -44,13 +44,13 @@ namespace Curvature
             ProjectEditWidget.GuidanceBehaviors += (obj, args) =>
             {
                 MainTabs.SelectTab(BehaviorsTab);
-                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");                        // TODO - #45 - wiki documentation
             };
 
             ProjectEditWidget.GuidanceInputs += (obj, args) =>
             {
                 MainTabs.SelectTab(InputsTab);
-                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");                        // TODO - #45 - wiki documentation
             };
 
             ProjectEditWidget.GuidanceKnowledgeBase += (obj, args) =>
@@ -62,12 +62,12 @@ namespace Curvature
             ProjectEditWidget.GuidanceScenarios += (obj, args) =>
             {
                 MainTabs.SelectTab(ScenariosTab);
-                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");                        // TODO - #45 - wiki documentation
             };
 
             ProjectEditWidget.GuidanceTour += (obj, args) =>
             {
-                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+                System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");                        // TODO - #45 - wiki documentation
             };
 
             ProjectEditWidget.DialogRebuildNeeded += () => { RefreshControls(); };

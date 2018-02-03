@@ -25,7 +25,7 @@ namespace Curvature
 
         public EditWidgetScenario()
         {
-            // TODO - hook up to project and mark dirty as appropriate
+            // TODO - #40 - hook up to project and mark dirty as appropriate
 
             InitializeComponent();
 

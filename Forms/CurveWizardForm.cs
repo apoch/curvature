@@ -85,7 +85,7 @@ namespace Curvature
 
         private void NamingWikiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");
+            System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");            // TODO - #45 - wiki documentation
         }
     }
 }

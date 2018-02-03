@@ -173,7 +173,7 @@ namespace Curvature
                     break;
 
                 case KnowledgeBase.Record.Parameterization.Enumeration:
-                    // TODO - implement enumerated parameters
+                    // TODO - #46 - implement enumerated parameters
                     break;
 
                 case KnowledgeBase.Record.Parameterization.FixedRange:

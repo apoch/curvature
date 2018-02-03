@@ -32,7 +32,7 @@ namespace Curvature
 
             if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
             {
-                // TODO - finish enumeration support
+                // TODO - #46 - finish enumeration support
             }
             else
             {
