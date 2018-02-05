@@ -42,7 +42,7 @@ namespace Curvature
             public double MaximumValue;
 
             [DataMember]
-            public List<string> EnumerationValues;
+            public HashSet<string> EnumerationValues;
 
             [DataMember]
             public Prefabs Prefab;
@@ -79,6 +79,8 @@ namespace Curvature
 
                 MinimumValue = 0.0;
                 MaximumValue = 1.0;
+
+                EnumerationValues = new HashSet<string>();
             }
 
             public override string ToString()

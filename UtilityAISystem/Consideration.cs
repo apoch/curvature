@@ -57,14 +57,24 @@ namespace Curvature
                 int i = 0;
                 foreach (var p in Input.Parameters)
                 {
-                    if (oldparams != null && oldparams.Count > i && oldparams[i].ControllingParameter == p)
+                    if (oldparams != null && oldparams.Count > i && oldparams[i].GetControllingParameter() == p)
                     {
                         ParameterValues.Add(oldparams[i]);
                     }
                     else
                     {
-                        var v = new InputParameterValue(p, ParameterValues.Count > 0 ? p.MaximumValue : p.MinimumValue);
-                        ParameterValues.Add(v);
+                        if (p is InputParameterNumeric)
+                        {
+                            var pnum = p as InputParameterNumeric;
+                            var v = new InputParameterValueNumeric(pnum, ParameterValues.Count > 0 ? pnum.MaximumValue : pnum.MinimumValue);
+                            ParameterValues.Add(v);
+                        }
+                        else if (p is InputParameterEnumeration)
+                        {
+                            var penum = p as InputParameterEnumeration;
+                            var v = new InputParameterValueEnumeration(penum, null);
+                            ParameterValues.Add(v);
+                        }
                     }
 
                     ++i;
@@ -96,26 +106,39 @@ namespace Curvature
         {
             if (ParameterValues.Count == 1)
             {
-                double max = ParameterValues[0].Value;
-
-                if (WrapInput)
+                if (ParameterValues[0] is InputParameterValueEnumeration)
                 {
-                    raw %= max;
+                    if (raw < 0.0)
+                        return 0.0;
+
+                    if (raw > 1.0)
+                        return 1.0;
+
+                    return raw;
                 }
                 else
                 {
-                    if (raw < 0.0)
-                        raw = 0.0;
-                    else if (raw > max)
-                        raw = max;
-                }
+                    double max = ParameterValues[0].GetValue();
 
-                return raw / max;
+                    if (WrapInput)
+                    {
+                        raw %= max;
+                    }
+                    else
+                    {
+                        if (raw < 0.0)
+                            raw = 0.0;
+                        else if (raw > max)
+                            raw = max;
+                    }
+
+                    return raw / max;
+                }
             }
             else if (ParameterValues.Count == 2)
             {
-                double min = ParameterValues[0].Value;
-                double max = ParameterValues[1].Value;
+                double min = ParameterValues[0].GetValue();
+                double max = ParameterValues[1].GetValue();
 
                 if (WrapInput)
                 {

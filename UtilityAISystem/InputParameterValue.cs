@@ -8,23 +8,37 @@ using System.Threading.Tasks;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
-    public class InputParameterValue
+    public abstract class InputParameterValue
+    {
+        public abstract float GetValue();
+        public abstract InputParameter GetControllingParameter();
+    }
+
+
+    [DataContract(Namespace = "")]
+    public class InputParameterValueNumeric : InputParameterValue
     {
         [DataMember]
-        public InputParameter ControllingParameter;
+        public InputParameterNumeric ControllingParameter;
 
         [DataMember]
         public float Value;
 
 
-        internal InputParameterValue()
-        {
-        }
-
-        public InputParameterValue(InputParameter controller, float value)
+        public InputParameterValueNumeric(InputParameterNumeric controller, float value)
         {
             ControllingParameter = controller;
             Value = value;
+        }
+
+        public override float GetValue()
+        {
+            return Value;
+        }
+
+        public override InputParameter GetControllingParameter()
+        {
+            return ControllingParameter;
         }
     }
 }

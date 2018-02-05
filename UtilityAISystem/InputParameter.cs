@@ -12,7 +12,11 @@ namespace Curvature
     {
         [DataMember]
         public string ReadableName;
+    }
 
+    [DataContract(Namespace = "")]
+    public class InputParameterNumeric : InputParameter
+    {
         [DataMember]
         public float MinimumValue;
 
@@ -20,11 +24,11 @@ namespace Curvature
         public float MaximumValue;
 
 
-        internal InputParameter()
+        internal InputParameterNumeric()
         {
         }
 
-        public InputParameter(string name, float min, float max)
+        public InputParameterNumeric(string name, float min, float max)
         {
             ReadableName = name;
             MinimumValue = min;

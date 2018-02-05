@@ -127,6 +127,7 @@ namespace Curvature.Widgets
             }
 
             RefreshConsiderationControls();
+            RefreshBehaviorControls();
         }
 
         private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)

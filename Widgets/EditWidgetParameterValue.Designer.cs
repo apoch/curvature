@@ -30,6 +30,7 @@
         {
             this.ParamNameLabel = new System.Windows.Forms.Label();
             this.ValueUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InputValueDropDown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,10 +58,22 @@
             this.ValueUpDown.TabIndex = 1;
             this.ValueUpDown.ValueChanged += new System.EventHandler(this.ValueUpDown_ValueChanged);
             // 
+            // InputValueDropDown
+            // 
+            this.InputValueDropDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InputValueDropDown.FormattingEnabled = true;
+            this.InputValueDropDown.Location = new System.Drawing.Point(125, 5);
+            this.InputValueDropDown.Name = "InputValueDropDown";
+            this.InputValueDropDown.Size = new System.Drawing.Size(137, 21);
+            this.InputValueDropDown.TabIndex = 2;
+            // 
             // EditWidgetParameterValue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.InputValueDropDown);
             this.Controls.Add(this.ValueUpDown);
             this.Controls.Add(this.ParamNameLabel);
             this.Name = "EditWidgetParameterValue";
@@ -75,5 +88,6 @@
 
         private System.Windows.Forms.Label ParamNameLabel;
         private System.Windows.Forms.NumericUpDown ValueUpDown;
+        private System.Windows.Forms.ComboBox InputValueDropDown;
     }
 }

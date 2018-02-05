@@ -30,6 +30,7 @@
         {
             this.InputValueTrackBar = new System.Windows.Forms.TrackBar();
             this.InputCaption = new System.Windows.Forms.Label();
+            this.InputValueDropDown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.InputValueTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,11 +56,23 @@
             this.InputCaption.Text = "(Input Name)";
             this.InputCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // InputValueDropDown
+            // 
+            this.InputValueDropDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InputValueDropDown.FormattingEnabled = true;
+            this.InputValueDropDown.Location = new System.Drawing.Point(6, 14);
+            this.InputValueDropDown.Name = "InputValueDropDown";
+            this.InputValueDropDown.Size = new System.Drawing.Size(302, 21);
+            this.InputValueDropDown.TabIndex = 2;
+            // 
             // EditWidgetConsiderationInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.InputValueDropDown);
             this.Controls.Add(this.InputCaption);
             this.Controls.Add(this.InputValueTrackBar);
             this.Name = "EditWidgetConsiderationInput";
@@ -74,5 +87,6 @@
 
         private System.Windows.Forms.TrackBar InputValueTrackBar;
         private System.Windows.Forms.Label InputCaption;
+        private System.Windows.Forms.ComboBox InputValueDropDown;
     }
 }

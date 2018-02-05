@@ -88,14 +88,17 @@ namespace Curvature
 
             if (parameters.Count == 1)
             {
+                if (parameters[0] is InputParameterValueEnumeration)
+                    return this;
+
                 var ret = new InputAxis(ReadableName, Origin);
                 ret.KBRecord = KBRecord;
                 ret.ReadableName = ReadableName;
 
-                float newmin = Parameters[0].MinimumValue;
-                float newmax = Math.Min(Parameters[0].MaximumValue, parameters[0].Value);
+                float newmin = (Parameters[0] as InputParameterNumeric).MinimumValue;
+                float newmax = Math.Min((Parameters[0] as InputParameterNumeric).MaximumValue, parameters[0].GetValue());
 
-                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
+                var param = new InputParameterNumeric(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);
 
                 return ret;
@@ -107,10 +110,10 @@ namespace Curvature
                 ret.KBRecord = KBRecord;
                 ret.ReadableName = ReadableName;
 
-                float newmin = Math.Max(Parameters[0].MinimumValue, parameters[0].Value);
-                float newmax = Math.Min(Parameters[1].MaximumValue, parameters[1].Value);
+                float newmin = Math.Max((Parameters[0] as InputParameterNumeric).MinimumValue, parameters[0].GetValue());
+                float newmax = Math.Min((Parameters[1] as InputParameterNumeric).MaximumValue, parameters[1].GetValue());
 
-                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
+                var param = new InputParameterNumeric(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);
 
                 return ret;
@@ -129,14 +132,17 @@ namespace Curvature
 
             if (other.Parameters.Count == 1)
             {
+                if (other.Parameters[0] is InputParameterEnumeration)
+                    return this;
+
                 var ret = new InputAxis(ReadableName, Origin);
                 ret.KBRecord = KBRecord;
                 ret.ReadableName = ReadableName;
 
-                float newmin = Math.Min(Parameters[0].MinimumValue, other.Parameters[0].MinimumValue);
-                float newmax = Math.Max(Parameters[0].MaximumValue, other.Parameters[0].MaximumValue);
+                float newmin = Math.Min((Parameters[0] as InputParameterNumeric).MinimumValue, (other.Parameters[0] as InputParameterNumeric).MinimumValue);
+                float newmax = Math.Max((Parameters[0] as InputParameterNumeric).MaximumValue, (other.Parameters[0] as InputParameterNumeric).MaximumValue);
 
-                var param = new InputParameter(Parameters[0].ReadableName, newmin, newmax);
+                var param = new InputParameterNumeric(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);
 
                 return ret;
@@ -168,16 +174,16 @@ namespace Curvature
             switch (KBRecord.Params)
             {
                 case KnowledgeBase.Record.Parameterization.ConfigurableRange:
-                    Parameters.Add(new InputParameter("Range lower bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
-                    Parameters.Add(new InputParameter("Range upper bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
+                    Parameters.Add(new InputParameterNumeric("Range lower bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
+                    Parameters.Add(new InputParameterNumeric("Range upper bound", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
                     break;
 
                 case KnowledgeBase.Record.Parameterization.Enumeration:
-                    // TODO - #46 - implement enumerated parameters
+                    Parameters.Add(new InputParameterEnumeration("Value", KBRecord.EnumerationValues));
                     break;
 
                 case KnowledgeBase.Record.Parameterization.FixedRange:
-                    Parameters.Add(new InputParameter("Ceiling", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
+                    Parameters.Add(new InputParameterNumeric("Ceiling", (float)KBRecord.MinimumValue, (float)KBRecord.MaximumValue));
                     break;
             }
 

@@ -23,19 +23,40 @@ namespace Curvature.Widgets
             EditingProject = project;
             Parameter = param;
 
-            ParamNameLabel.Text = Parameter.ControllingParameter.ReadableName;
-            ValueUpDown.Minimum = (decimal)Parameter.ControllingParameter.MinimumValue;
-            ValueUpDown.Maximum = (decimal)Parameter.ControllingParameter.MaximumValue;
-            ValueUpDown.Value = (decimal)Parameter.Value;
+            ParamNameLabel.Text = Parameter.GetControllingParameter().ReadableName;
+
+            if (param is InputParameterValueNumeric)
+            {
+                var pnum = param as InputParameterValueNumeric;
+
+                ValueUpDown.Minimum = (decimal)pnum.ControllingParameter.MinimumValue;
+                ValueUpDown.Maximum = (decimal)pnum.ControllingParameter.MaximumValue;
+                ValueUpDown.Value = (decimal)pnum.Value;
+
+                InputValueDropDown.Visible = false;
+            }
+            else if (param is InputParameterValueEnumeration)
+            {
+                var penum = param as InputParameterValueEnumeration;
+
+                foreach (var valid in penum.ControllingParameter.ValidValues)
+                    InputValueDropDown.Items.Add(valid);
+
+                ValueUpDown.Visible = false;
+            }
         }
 
         private void ValueUpDown_ValueChanged(object sender, EventArgs e)
         {
-            var prev = Parameter.Value;
+            if (!(Parameter is InputParameterValueNumeric))
+                return;
 
-            Parameter.Value = (float)ValueUpDown.Value;
+            var param = Parameter as InputParameterValueNumeric;
+            var prev = param.Value;
 
-            if (prev != Parameter.Value)
+            param.Value = (float)ValueUpDown.Value;
+
+            if (prev != param.Value)
                 EditingProject.MarkDirty();
         }
     }

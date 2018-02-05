@@ -25,30 +25,54 @@ namespace Curvature
 
             ParameterNameLabel.Text = EditParameter.ReadableName;
 
-            MinimumValue.Minimum = (decimal)EditParameter.MinimumValue;
-            MaximumValue.Maximum = (decimal)EditParameter.MaximumValue;
+            if (EditParameter is InputParameterNumeric)
+            {
+                var p = EditParameter as InputParameterNumeric;
 
-            MinimumValue.Value = (decimal)EditParameter.MinimumValue;
-            MaximumValue.Value = (decimal)EditParameter.MaximumValue;
+                MinimumValue.Minimum = (decimal)p.MinimumValue;
+                MaximumValue.Maximum = (decimal)p.MaximumValue;
+
+                MinimumValue.Value = (decimal)p.MinimumValue;
+                MaximumValue.Value = (decimal)p.MaximumValue;
+            }
+            else if (EditParameter is InputParameterEnumeration)
+            {
+                MinimumValue.Visible = false;
+                MaximumValue.Visible = false;
+
+                MinLabel.Visible = false;
+                MaxLabel.Visible = false;
+
+                // TODO - #46 - finish enumerations
+                // Add controls for "score 1 when value matches/doesn't match [dropdown]"
+            }
         }
 
         private void MinimumValue_ValueChanged(object sender, EventArgs e)
         {
-            var prev = EditParameter.MinimumValue;
+            var p = EditParameter as InputParameterNumeric;
+            if (p == null)
+                return;
 
-            EditParameter.MinimumValue = (float)MinimumValue.Value;
+            var prev = p.MinimumValue;
 
-            if (prev != EditParameter.MinimumValue)
+            p.MinimumValue = (float)MinimumValue.Value;
+
+            if (prev != p.MinimumValue)
                 EditProject.MarkDirty();
         }
 
         private void MaximumValue_ValueChanged(object sender, EventArgs e)
         {
-            var prev = EditParameter.MaximumValue;
+            var p = EditParameter as InputParameterNumeric;
+            if (p == null)
+                return;
 
-            EditParameter.MaximumValue = (float)MaximumValue.Value;
+            var prev = p.MaximumValue;
 
-            if (prev != EditParameter.MaximumValue)
+            p.MaximumValue = (float)MaximumValue.Value;
+
+            if (prev != p.MaximumValue)
                 EditProject.MarkDirty();
         }
     }

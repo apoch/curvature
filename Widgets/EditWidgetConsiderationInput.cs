@@ -24,17 +24,34 @@ namespace Curvature
             InputValueTrackBar.Minimum = 0;
             InputValueTrackBar.Maximum = 100;
 
+            InputValueDropDown.Visible = false;
+
             if ((EditingAxis != null) && (EditingAxis.Parameters != null))
             {
                 if (EditingAxis.Parameters.Count == 1)
                 {
-                    InputValueTrackBar.Minimum = (int)(EditingAxis.Parameters[0].MinimumValue * 100.0f);
-                    InputValueTrackBar.Maximum = (int)(EditingAxis.Parameters[0].MaximumValue * 100.0f);
+                    var rawparam = EditingAxis.Parameters[0];
+                    if (rawparam is InputParameterNumeric)
+                    {
+                        var numericparam = rawparam as InputParameterNumeric;
+                        InputValueTrackBar.Minimum = (int)(numericparam.MinimumValue * 100.0f);
+                        InputValueTrackBar.Maximum = (int)(numericparam.MaximumValue * 100.0f);
+                    }
+                    else if (rawparam is InputParameterEnumeration)
+                    {
+                        InputValueTrackBar.Visible = false;
+                        InputValueDropDown.Visible = true;
+                        InputValueDropDown.Items.Clear();
+
+                        var penum = rawparam as InputParameterEnumeration;
+                        foreach (var valid in penum.ValidValues)
+                            InputValueDropDown.Items.Add(valid);
+                    }
                 }
                 else if (EditingAxis.Parameters.Count == 2)
                 {
-                    InputValueTrackBar.Minimum = (int)(EditingAxis.Parameters[0].MinimumValue * 100.0f);
-                    InputValueTrackBar.Maximum = (int)(EditingAxis.Parameters[1].MaximumValue * 100.0f);
+                    InputValueTrackBar.Minimum = (int)((EditingAxis.Parameters[0] as InputParameterNumeric).MinimumValue * 100.0f);
+                    InputValueTrackBar.Maximum = (int)((EditingAxis.Parameters[1] as InputParameterNumeric).MaximumValue * 100.0f);
                 }
                 else
                 {
@@ -53,6 +70,14 @@ namespace Curvature
 
         public double GetRawValue()
         {
+            if (InputValueDropDown.Visible)
+            {
+                if (InputValueDropDown.SelectedIndex >= 0)
+                    return (new InputParameterValueEnumeration(EditingAxis.Parameters[0] as InputParameterEnumeration, InputValueDropDown.SelectedItem as string)).GetValue();
+
+                return 0.0;
+            }
+
             return (double)InputValueTrackBar.Value / 100.0;
         }
 
