@@ -44,9 +44,12 @@
             this.EnumerationPanel = new System.Windows.Forms.Panel();
             this.PrefabPanel = new System.Windows.Forms.Panel();
             this.PrefabComboBox = new System.Windows.Forms.ComboBox();
+            this.EnumerationValidComboBox = new System.Windows.Forms.ComboBox();
+            this.EditEnumerationButton = new System.Windows.Forms.Button();
             this.RangeConfigurationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).BeginInit();
+            this.EnumerationPanel.SuspendLayout();
             this.PrefabPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -189,6 +192,8 @@
             // 
             this.EnumerationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnumerationPanel.Controls.Add(this.EditEnumerationButton);
+            this.EnumerationPanel.Controls.Add(this.EnumerationValidComboBox);
             this.EnumerationPanel.Location = new System.Drawing.Point(270, 30);
             this.EnumerationPanel.Name = "EnumerationPanel";
             this.EnumerationPanel.Size = new System.Drawing.Size(396, 31);
@@ -217,6 +222,28 @@
             this.PrefabComboBox.TabIndex = 0;
             this.PrefabComboBox.SelectedIndexChanged += new System.EventHandler(this.PrefabComboBox_SelectedIndexChanged);
             // 
+            // EnumerationValidComboBox
+            // 
+            this.EnumerationValidComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnumerationValidComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EnumerationValidComboBox.FormattingEnabled = true;
+            this.EnumerationValidComboBox.Location = new System.Drawing.Point(0, 0);
+            this.EnumerationValidComboBox.Name = "EnumerationValidComboBox";
+            this.EnumerationValidComboBox.Size = new System.Drawing.Size(327, 21);
+            this.EnumerationValidComboBox.TabIndex = 0;
+            // 
+            // EditEnumerationButton
+            // 
+            this.EditEnumerationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditEnumerationButton.Location = new System.Drawing.Point(333, 0);
+            this.EditEnumerationButton.Name = "EditEnumerationButton";
+            this.EditEnumerationButton.Size = new System.Drawing.Size(62, 21);
+            this.EditEnumerationButton.TabIndex = 1;
+            this.EditEnumerationButton.Text = "Edit...";
+            this.EditEnumerationButton.UseVisualStyleBackColor = true;
+            this.EditEnumerationButton.Click += new System.EventHandler(this.EditEnumerationButton_Click);
+            // 
             // EditWidgetKnowledgeBaseRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,14 +255,15 @@
             this.Controls.Add(this.OriginComboBox);
             this.Controls.Add(this.TagLabel);
             this.Controls.Add(this.RecordTagEditBox);
-            this.Controls.Add(this.RangeConfigurationPanel);
             this.Controls.Add(this.EnumerationPanel);
+            this.Controls.Add(this.RangeConfigurationPanel);
             this.Name = "EditWidgetKnowledgeBaseRecord";
             this.Size = new System.Drawing.Size(753, 69);
             this.RangeConfigurationPanel.ResumeLayout(false);
             this.RangeConfigurationPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).EndInit();
+            this.EnumerationPanel.ResumeLayout(false);
             this.PrefabPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -258,5 +286,7 @@
         private System.Windows.Forms.Panel EnumerationPanel;
         private System.Windows.Forms.Panel PrefabPanel;
         private System.Windows.Forms.ComboBox PrefabComboBox;
+        private System.Windows.Forms.ComboBox EnumerationValidComboBox;
+        private System.Windows.Forms.Button EditEnumerationButton;
     }
 }

@@ -32,7 +32,7 @@ namespace Curvature
 
             if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
             {
-                // TODO - #46 - finish enumeration support
+                UpdateEnumeration();
             }
             else
             {
@@ -131,6 +131,23 @@ namespace Curvature
 
             if (prev != EditRec.Prefab)
                 EditProject.MarkDirty();
+        }
+
+        private void UpdateEnumeration()
+        {
+            EnumerationValidComboBox.Items.Clear();
+
+            foreach (var v in EditRec.EnumerationValues)
+                EnumerationValidComboBox.Items.Add(v);
+
+            if (EnumerationValidComboBox.Items.Count > 0)
+                EnumerationValidComboBox.SelectedIndex = 0;
+        }
+
+        private void EditEnumerationButton_Click(object sender, EventArgs e)
+        {
+            Forms.EnumerationEditorForm.ShowEditor(EditRec.EnumerationValues);
+            UpdateEnumeration();
         }
     }
 }

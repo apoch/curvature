@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\EnumerationEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EnumerationEditorForm.Designer.cs">
+      <DependentUpon>EnumerationEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scenarios\AgentPropertyAdapter.cs" />
     <Compile Include="UtilityAISystem\Archetype.cs" />
     <Compile Include="UtilityAISystem\Behavior.cs" />
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CurveWizardForm.resx">
       <DependentUpon>CurveWizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EnumerationEditorForm.resx">
+      <DependentUpon>EnumerationEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetArchetype.resx">
       <DependentUpon>EditWidgetArchetype.cs</DependentUpon>
