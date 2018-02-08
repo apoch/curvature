@@ -119,6 +119,8 @@ namespace Curvature
                 else
                 {
                     double max = ParameterValues[0].GetValue();
+                    if (max == 0.0)
+                        return 0.0;
 
                     if (WrapInput)
                     {

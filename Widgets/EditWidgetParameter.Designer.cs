@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.ParameterNameLabel = new System.Windows.Forms.Label();
-            this.MinimumValue = new System.Windows.Forms.NumericUpDown();
-            this.MinLabel = new System.Windows.Forms.Label();
-            this.MaxLabel = new System.Windows.Forms.Label();
+            this.EnumerationPanel = new System.Windows.Forms.Panel();
+            this.EnumerationDropDown = new System.Windows.Forms.ComboBox();
+            this.EnumerationLabel = new System.Windows.Forms.Label();
+            this.NumericPanel = new System.Windows.Forms.Panel();
             this.MaximumValue = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.MinimumValue)).BeginInit();
+            this.MinimumValue = new System.Windows.Forms.NumericUpDown();
+            this.MaxLabel = new System.Windows.Forms.Label();
+            this.MinLabel = new System.Windows.Forms.Label();
+            this.EnumerationPanel.SuspendLayout();
+            this.NumericPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaximumValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumValue)).BeginInit();
             this.SuspendLayout();
             // 
             // ParameterNameLabel
@@ -47,55 +53,103 @@
             this.ParameterNameLabel.TabIndex = 0;
             this.ParameterNameLabel.Text = "(Parameter Name)";
             // 
-            // MinimumValue
+            // EnumerationPanel
             // 
-            this.MinimumValue.DecimalPlaces = 3;
-            this.MinimumValue.Location = new System.Drawing.Point(60, 21);
-            this.MinimumValue.Name = "MinimumValue";
-            this.MinimumValue.Size = new System.Drawing.Size(94, 20);
-            this.MinimumValue.TabIndex = 2;
-            this.MinimumValue.ValueChanged += new System.EventHandler(this.MinimumValue_ValueChanged);
+            this.EnumerationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnumerationPanel.Controls.Add(this.EnumerationDropDown);
+            this.EnumerationPanel.Controls.Add(this.EnumerationLabel);
+            this.EnumerationPanel.Location = new System.Drawing.Point(0, 21);
+            this.EnumerationPanel.Name = "EnumerationPanel";
+            this.EnumerationPanel.Size = new System.Drawing.Size(318, 35);
+            this.EnumerationPanel.TabIndex = 5;
             // 
-            // MinLabel
+            // EnumerationDropDown
             // 
-            this.MinLabel.AutoSize = true;
-            this.MinLabel.Location = new System.Drawing.Point(3, 23);
-            this.MinLabel.Name = "MinLabel";
-            this.MinLabel.Size = new System.Drawing.Size(51, 13);
-            this.MinLabel.TabIndex = 1;
-            this.MinLabel.Text = "Minimum:";
+            this.EnumerationDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EnumerationDropDown.FormattingEnabled = true;
+            this.EnumerationDropDown.Items.AddRange(new object[] {
+            "match",
+            "don\'t match"});
+            this.EnumerationDropDown.Location = new System.Drawing.Point(107, 7);
+            this.EnumerationDropDown.Name = "EnumerationDropDown";
+            this.EnumerationDropDown.Size = new System.Drawing.Size(110, 21);
+            this.EnumerationDropDown.TabIndex = 5;
+            this.EnumerationDropDown.SelectedIndexChanged += new System.EventHandler(this.EnumerationDropDown_SelectedIndexChanged);
             // 
-            // MaxLabel
+            // EnumerationLabel
             // 
-            this.MaxLabel.AutoSize = true;
-            this.MaxLabel.Location = new System.Drawing.Point(160, 23);
-            this.MaxLabel.Name = "MaxLabel";
-            this.MaxLabel.Size = new System.Drawing.Size(54, 13);
-            this.MaxLabel.TabIndex = 3;
-            this.MaxLabel.Text = "Maximum:";
+            this.EnumerationLabel.AutoSize = true;
+            this.EnumerationLabel.Location = new System.Drawing.Point(6, 10);
+            this.EnumerationLabel.Name = "EnumerationLabel";
+            this.EnumerationLabel.Size = new System.Drawing.Size(95, 13);
+            this.EnumerationLabel.TabIndex = 4;
+            this.EnumerationLabel.Text = "Score 1.0 if values";
+            // 
+            // NumericPanel
+            // 
+            this.NumericPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumericPanel.Controls.Add(this.MaximumValue);
+            this.NumericPanel.Controls.Add(this.MinimumValue);
+            this.NumericPanel.Controls.Add(this.MaxLabel);
+            this.NumericPanel.Controls.Add(this.MinLabel);
+            this.NumericPanel.Location = new System.Drawing.Point(0, 21);
+            this.NumericPanel.Name = "NumericPanel";
+            this.NumericPanel.Size = new System.Drawing.Size(319, 36);
+            this.NumericPanel.TabIndex = 8;
             // 
             // MaximumValue
             // 
             this.MaximumValue.DecimalPlaces = 3;
-            this.MaximumValue.Location = new System.Drawing.Point(220, 21);
+            this.MaximumValue.Location = new System.Drawing.Point(219, 8);
             this.MaximumValue.Name = "MaximumValue";
             this.MaximumValue.Size = new System.Drawing.Size(94, 20);
-            this.MaximumValue.TabIndex = 4;
-            this.MaximumValue.ValueChanged += new System.EventHandler(this.MaximumValue_ValueChanged);
+            this.MaximumValue.TabIndex = 11;
+            // 
+            // MinimumValue
+            // 
+            this.MinimumValue.DecimalPlaces = 3;
+            this.MinimumValue.Location = new System.Drawing.Point(59, 8);
+            this.MinimumValue.Name = "MinimumValue";
+            this.MinimumValue.Size = new System.Drawing.Size(94, 20);
+            this.MinimumValue.TabIndex = 10;
+            // 
+            // MaxLabel
+            // 
+            this.MaxLabel.AutoSize = true;
+            this.MaxLabel.Location = new System.Drawing.Point(163, 10);
+            this.MaxLabel.Name = "MaxLabel";
+            this.MaxLabel.Size = new System.Drawing.Size(54, 13);
+            this.MaxLabel.TabIndex = 9;
+            this.MaxLabel.Text = "Maximum:";
+            // 
+            // MinLabel
+            // 
+            this.MinLabel.AutoSize = true;
+            this.MinLabel.Location = new System.Drawing.Point(6, 10);
+            this.MinLabel.Name = "MinLabel";
+            this.MinLabel.Size = new System.Drawing.Size(51, 13);
+            this.MinLabel.TabIndex = 8;
+            this.MinLabel.Text = "Minimum:";
             // 
             // EditWidgetParameter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.MaximumValue);
-            this.Controls.Add(this.MaxLabel);
-            this.Controls.Add(this.MinLabel);
-            this.Controls.Add(this.MinimumValue);
             this.Controls.Add(this.ParameterNameLabel);
+            this.Controls.Add(this.EnumerationPanel);
+            this.Controls.Add(this.NumericPanel);
             this.Name = "EditWidgetParameter";
-            this.Size = new System.Drawing.Size(319, 49);
-            ((System.ComponentModel.ISupportInitialize)(this.MinimumValue)).EndInit();
+            this.Size = new System.Drawing.Size(319, 57);
+            this.EnumerationPanel.ResumeLayout(false);
+            this.EnumerationPanel.PerformLayout();
+            this.NumericPanel.ResumeLayout(false);
+            this.NumericPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaximumValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinimumValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,9 +158,13 @@
         #endregion
 
         private System.Windows.Forms.Label ParameterNameLabel;
-        private System.Windows.Forms.NumericUpDown MinimumValue;
-        private System.Windows.Forms.Label MinLabel;
-        private System.Windows.Forms.Label MaxLabel;
+        private System.Windows.Forms.Panel EnumerationPanel;
+        private System.Windows.Forms.Label EnumerationLabel;
+        private System.Windows.Forms.ComboBox EnumerationDropDown;
+        private System.Windows.Forms.Panel NumericPanel;
         private System.Windows.Forms.NumericUpDown MaximumValue;
+        private System.Windows.Forms.NumericUpDown MinimumValue;
+        private System.Windows.Forms.Label MaxLabel;
+        private System.Windows.Forms.Label MinLabel;
     }
 }

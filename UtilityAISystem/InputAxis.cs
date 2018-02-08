@@ -179,7 +179,7 @@ namespace Curvature
                     break;
 
                 case KnowledgeBase.Record.Parameterization.Enumeration:
-                    Parameters.Add(new InputParameterEnumeration("Value", KBRecord.EnumerationValues));
+                    Parameters.Add(new InputParameterEnumeration("Enumeration", KBRecord.EnumerationValues));
                     break;
 
                 case KnowledgeBase.Record.Parameterization.FixedRange:

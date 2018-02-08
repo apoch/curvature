@@ -34,17 +34,21 @@ namespace Curvature
 
                 MinimumValue.Value = (decimal)p.MinimumValue;
                 MaximumValue.Value = (decimal)p.MaximumValue;
+
+                NumericPanel.Visible = true;
+                EnumerationPanel.Visible = false;
             }
             else if (EditParameter is InputParameterEnumeration)
             {
-                MinimumValue.Visible = false;
-                MaximumValue.Visible = false;
+                var p = EditParameter as InputParameterEnumeration;
 
-                MinLabel.Visible = false;
-                MaxLabel.Visible = false;
+                if (p.ScoreOnMatch)
+                    EnumerationDropDown.SelectedIndex = 0;
+                else
+                    EnumerationDropDown.SelectedIndex = 1;
 
-                // TODO - #46 - finish enumerations
-                // Add controls for "score 1 when value matches/doesn't match [dropdown]"
+                NumericPanel.Visible = false;
+                EnumerationPanel.Visible = true;
             }
         }
 
@@ -73,6 +77,20 @@ namespace Curvature
             p.MaximumValue = (float)MaximumValue.Value;
 
             if (prev != p.MaximumValue)
+                EditProject.MarkDirty();
+        }
+
+        private void EnumerationDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var p = EditParameter as InputParameterEnumeration;
+            if (p == null)
+                return;
+
+            var prev = p.ScoreOnMatch;
+
+            p.ScoreOnMatch = (EnumerationDropDown.SelectedIndex == 0);
+
+            if (prev != p.ScoreOnMatch)
                 EditProject.MarkDirty();
         }
     }
