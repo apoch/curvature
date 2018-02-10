@@ -71,21 +71,21 @@ namespace Curvature
             RefreshInputControls();
         }
 
-        public double GetInputValue(InputAxis axis)
+        public double GetInputValue(Consideration consideration)
         {
             foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
             {
-                if (input.Tag == axis)
+                if (input.Tag == consideration.Input)
                     return input.GetRawValue();
             }
 
             return 0.0;
         }
 
-        public double GetInputValue(InputAxis axis, Scenario.Context context)
+        public double GetInputValue(Consideration consideration, Scenario.Context context)
         {
             if (context == null)
-                return GetInputValue(axis);
+                return GetInputValue(consideration);
 
             throw new NotImplementedException();
         }

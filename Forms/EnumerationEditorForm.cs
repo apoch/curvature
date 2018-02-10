@@ -34,7 +34,27 @@ namespace Curvature.Forms
 
         private void AddNewEntryButton_Click(object sender, EventArgs e)
         {
-            EntriesListView.Items.Add("New enumerated value");
+            string newname = "New enumerated value";
+
+            int counter = 2;
+            while (HasMatchingEntry(newname))
+            {
+                newname = $"New enumerated value {counter}";
+                ++counter;
+            }
+
+            EntriesListView.Items.Add(newname);
+        }
+
+        private bool HasMatchingEntry(string entry)
+        {
+            foreach (ListViewItem item in EntriesListView.Items)
+            {
+                if (item.Text == entry)
+                    return true;
+            }
+
+            return false;
         }
 
         private void DeleteEntryButton_Click(object sender, EventArgs e)

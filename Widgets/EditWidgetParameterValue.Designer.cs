@@ -66,8 +66,9 @@
             this.InputValueDropDown.FormattingEnabled = true;
             this.InputValueDropDown.Location = new System.Drawing.Point(125, 5);
             this.InputValueDropDown.Name = "InputValueDropDown";
-            this.InputValueDropDown.Size = new System.Drawing.Size(137, 21);
+            this.InputValueDropDown.Size = new System.Drawing.Size(162, 21);
             this.InputValueDropDown.TabIndex = 2;
+            this.InputValueDropDown.SelectedIndexChanged += new System.EventHandler(this.InputValueDropDown_SelectedIndexChanged);
             // 
             // EditWidgetParameterValue
             // 
@@ -77,7 +78,7 @@
             this.Controls.Add(this.ValueUpDown);
             this.Controls.Add(this.ParamNameLabel);
             this.Name = "EditWidgetParameterValue";
-            this.Size = new System.Drawing.Size(270, 31);
+            this.Size = new System.Drawing.Size(295, 31);
             ((System.ComponentModel.ISupportInitialize)(this.ValueUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

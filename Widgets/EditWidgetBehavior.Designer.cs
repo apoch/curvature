@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Considerations", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Bonuses", System.Windows.Forms.HorizontalAlignment.Left);
             this.VerticalSplit = new System.Windows.Forms.SplitContainer();
             this.WhenActiveLabel = new System.Windows.Forms.Label();
             this.CustomPayload = new System.Windows.Forms.TextBox();
@@ -44,26 +44,26 @@
             this.DescriptionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MomentumBonusCheckBox = new System.Windows.Forms.CheckBox();
             this.CompensationCheckBox = new System.Windows.Forms.CheckBox();
-            this.WeightLabel = new System.Windows.Forms.Label();
-            this.BehaviorWeightEditBox = new System.Windows.Forms.NumericUpDown();
             this.BehaviorSplitContainer = new System.Windows.Forms.SplitContainer();
             this.InputGroupBox = new System.Windows.Forms.GroupBox();
             this.InputFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ConsiderationScoreGroupBox = new System.Windows.Forms.GroupBox();
             this.ScoreLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.NameEditWidget = new Curvature.EditWidgetName();
+            this.WeightLabel = new System.Windows.Forms.Label();
+            this.BehaviorWeightEditBox = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalSplit)).BeginInit();
             this.VerticalSplit.Panel1.SuspendLayout();
             this.VerticalSplit.Panel2.SuspendLayout();
             this.VerticalSplit.SuspendLayout();
             this.BreakdownGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BehaviorWeightEditBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BehaviorSplitContainer)).BeginInit();
             this.BehaviorSplitContainer.Panel1.SuspendLayout();
             this.BehaviorSplitContainer.Panel2.SuspendLayout();
             this.BehaviorSplitContainer.SuspendLayout();
             this.InputGroupBox.SuspendLayout();
             this.ConsiderationScoreGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BehaviorWeightEditBox)).BeginInit();
             this.SuspendLayout();
             // 
             // VerticalSplit
@@ -76,6 +76,7 @@
             // 
             // VerticalSplit.Panel1
             // 
+            this.VerticalSplit.Panel1.Controls.Add(this.WeightLabel);
             this.VerticalSplit.Panel1.Controls.Add(this.WhenActiveLabel);
             this.VerticalSplit.Panel1.Controls.Add(this.CustomPayload);
             this.VerticalSplit.Panel1.Controls.Add(this.CustomPayloadLabel);
@@ -83,6 +84,7 @@
             this.VerticalSplit.Panel1.Controls.Add(this.CanTargetSelfCheckBox);
             this.VerticalSplit.Panel1.Controls.Add(this.ActionComboBox);
             this.VerticalSplit.Panel1.Controls.Add(this.BreakdownGroupBox);
+            this.VerticalSplit.Panel1.Controls.Add(this.BehaviorWeightEditBox);
             // 
             // VerticalSplit.Panel2
             // 
@@ -122,7 +124,7 @@
             // CanTargetOthersCheckBox
             // 
             this.CanTargetOthersCheckBox.AutoSize = true;
-            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(147, 54);
+            this.CanTargetOthersCheckBox.Location = new System.Drawing.Point(151, 79);
             this.CanTargetOthersCheckBox.Name = "CanTargetOthersCheckBox";
             this.CanTargetOthersCheckBox.Size = new System.Drawing.Size(113, 17);
             this.CanTargetOthersCheckBox.TabIndex = 5;
@@ -133,7 +135,7 @@
             // CanTargetSelfCheckBox
             // 
             this.CanTargetSelfCheckBox.AutoSize = true;
-            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(41, 54);
+            this.CanTargetSelfCheckBox.Location = new System.Drawing.Point(36, 79);
             this.CanTargetSelfCheckBox.Name = "CanTargetSelfCheckBox";
             this.CanTargetSelfCheckBox.Size = new System.Drawing.Size(100, 17);
             this.CanTargetSelfCheckBox.TabIndex = 4;
@@ -162,21 +164,19 @@
             this.BreakdownGroupBox.Controls.Add(this.ScoreListView);
             this.BreakdownGroupBox.Controls.Add(this.MomentumBonusCheckBox);
             this.BreakdownGroupBox.Controls.Add(this.CompensationCheckBox);
-            this.BreakdownGroupBox.Controls.Add(this.WeightLabel);
-            this.BreakdownGroupBox.Controls.Add(this.BehaviorWeightEditBox);
-            this.BreakdownGroupBox.Location = new System.Drawing.Point(0, 77);
+            this.BreakdownGroupBox.Location = new System.Drawing.Point(0, 102);
             this.BreakdownGroupBox.Name = "BreakdownGroupBox";
-            this.BreakdownGroupBox.Size = new System.Drawing.Size(297, 302);
+            this.BreakdownGroupBox.Size = new System.Drawing.Size(297, 277);
             this.BreakdownGroupBox.TabIndex = 6;
             this.BreakdownGroupBox.TabStop = false;
-            this.BreakdownGroupBox.Text = "Scoring Breakdown";
+            this.BreakdownGroupBox.Text = "Scoring Preview";
             // 
             // FinalScoreLabel
             // 
             this.FinalScoreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FinalScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 260);
+            this.FinalScoreLabel.Location = new System.Drawing.Point(9, 235);
             this.FinalScoreLabel.Name = "FinalScoreLabel";
             this.FinalScoreLabel.Size = new System.Drawing.Size(282, 30);
             this.FinalScoreLabel.TabIndex = 5;
@@ -192,16 +192,16 @@
             this.ScoreColumnHeader,
             this.DescriptionColumnHeader});
             this.ScoreListView.FullRowSelect = true;
-            listViewGroup1.Header = "Considerations";
-            listViewGroup1.Name = "ConsiderationGroup";
-            listViewGroup2.Header = "Bonuses";
-            listViewGroup2.Name = "BonusGroup";
+            listViewGroup9.Header = "Considerations";
+            listViewGroup9.Name = "ConsiderationGroup";
+            listViewGroup10.Header = "Bonuses";
+            listViewGroup10.Name = "BonusGroup";
             this.ScoreListView.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
-            this.ScoreListView.Location = new System.Drawing.Point(6, 91);
+            listViewGroup9,
+            listViewGroup10});
+            this.ScoreListView.Location = new System.Drawing.Point(6, 65);
             this.ScoreListView.Name = "ScoreListView";
-            this.ScoreListView.Size = new System.Drawing.Size(285, 162);
+            this.ScoreListView.Size = new System.Drawing.Size(285, 163);
             this.ScoreListView.TabIndex = 4;
             this.ScoreListView.UseCompatibleStateImageBehavior = false;
             this.ScoreListView.View = System.Windows.Forms.View.Details;
@@ -218,11 +218,11 @@
             // MomentumBonusCheckBox
             // 
             this.MomentumBonusCheckBox.AutoSize = true;
-            this.MomentumBonusCheckBox.Location = new System.Drawing.Point(9, 68);
+            this.MomentumBonusCheckBox.Location = new System.Drawing.Point(6, 42);
             this.MomentumBonusCheckBox.Name = "MomentumBonusCheckBox";
-            this.MomentumBonusCheckBox.Size = new System.Drawing.Size(147, 17);
+            this.MomentumBonusCheckBox.Size = new System.Drawing.Size(204, 17);
             this.MomentumBonusCheckBox.TabIndex = 3;
-            this.MomentumBonusCheckBox.Text = "Include momentum bonus";
+            this.MomentumBonusCheckBox.Text = "Preview with momentum bonus active";
             this.MomentumBonusCheckBox.UseVisualStyleBackColor = true;
             this.MomentumBonusCheckBox.CheckedChanged += new System.EventHandler(this.MomentumBonusCheckBox_CheckedChanged);
             // 
@@ -231,38 +231,13 @@
             this.CompensationCheckBox.AutoSize = true;
             this.CompensationCheckBox.Checked = true;
             this.CompensationCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CompensationCheckBox.Location = new System.Drawing.Point(9, 45);
+            this.CompensationCheckBox.Location = new System.Drawing.Point(6, 19);
             this.CompensationCheckBox.Name = "CompensationCheckBox";
-            this.CompensationCheckBox.Size = new System.Drawing.Size(151, 17);
+            this.CompensationCheckBox.Size = new System.Drawing.Size(192, 17);
             this.CompensationCheckBox.TabIndex = 2;
-            this.CompensationCheckBox.Text = "Use compensation formula";
+            this.CompensationCheckBox.Text = "Preview with compensation formula";
             this.CompensationCheckBox.UseVisualStyleBackColor = true;
             this.CompensationCheckBox.CheckedChanged += new System.EventHandler(this.CompensationCheckBox_CheckedChanged);
-            // 
-            // WeightLabel
-            // 
-            this.WeightLabel.AutoSize = true;
-            this.WeightLabel.Location = new System.Drawing.Point(6, 22);
-            this.WeightLabel.Name = "WeightLabel";
-            this.WeightLabel.Size = new System.Drawing.Size(89, 13);
-            this.WeightLabel.TabIndex = 0;
-            this.WeightLabel.Text = "Behavior Weight:";
-            // 
-            // BehaviorWeightEditBox
-            // 
-            this.BehaviorWeightEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorWeightEditBox.DecimalPlaces = 3;
-            this.BehaviorWeightEditBox.Location = new System.Drawing.Point(101, 19);
-            this.BehaviorWeightEditBox.Name = "BehaviorWeightEditBox";
-            this.BehaviorWeightEditBox.Size = new System.Drawing.Size(190, 20);
-            this.BehaviorWeightEditBox.TabIndex = 1;
-            this.BehaviorWeightEditBox.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.BehaviorWeightEditBox.ValueChanged += new System.EventHandler(this.BehaviorWeightEditBox_ValueChanged);
             // 
             // BehaviorSplitContainer
             // 
@@ -342,6 +317,31 @@
             this.NameEditWidget.Size = new System.Drawing.Size(725, 30);
             this.NameEditWidget.TabIndex = 0;
             // 
+            // WeightLabel
+            // 
+            this.WeightLabel.AutoSize = true;
+            this.WeightLabel.Location = new System.Drawing.Point(28, 55);
+            this.WeightLabel.Name = "WeightLabel";
+            this.WeightLabel.Size = new System.Drawing.Size(44, 13);
+            this.WeightLabel.TabIndex = 7;
+            this.WeightLabel.Text = "Weight:";
+            // 
+            // BehaviorWeightEditBox
+            // 
+            this.BehaviorWeightEditBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorWeightEditBox.DecimalPlaces = 3;
+            this.BehaviorWeightEditBox.Location = new System.Drawing.Point(78, 53);
+            this.BehaviorWeightEditBox.Name = "BehaviorWeightEditBox";
+            this.BehaviorWeightEditBox.Size = new System.Drawing.Size(219, 20);
+            this.BehaviorWeightEditBox.TabIndex = 8;
+            this.BehaviorWeightEditBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BehaviorWeightEditBox.ValueChanged += new System.EventHandler(this.BehaviorWeightEditBox_ValueChanged);
+            // 
             // EditWidgetBehavior
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,13 +357,13 @@
             this.VerticalSplit.ResumeLayout(false);
             this.BreakdownGroupBox.ResumeLayout(false);
             this.BreakdownGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BehaviorWeightEditBox)).EndInit();
             this.BehaviorSplitContainer.Panel1.ResumeLayout(false);
             this.BehaviorSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BehaviorSplitContainer)).EndInit();
             this.BehaviorSplitContainer.ResumeLayout(false);
             this.InputGroupBox.ResumeLayout(false);
             this.ConsiderationScoreGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BehaviorWeightEditBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,8 +377,6 @@
         private System.Windows.Forms.ColumnHeader DescriptionColumnHeader;
         private System.Windows.Forms.CheckBox MomentumBonusCheckBox;
         private System.Windows.Forms.CheckBox CompensationCheckBox;
-        private System.Windows.Forms.Label WeightLabel;
-        private System.Windows.Forms.NumericUpDown BehaviorWeightEditBox;
         private System.Windows.Forms.SplitContainer BehaviorSplitContainer;
         private System.Windows.Forms.GroupBox InputGroupBox;
         private System.Windows.Forms.FlowLayoutPanel InputFlowPanel;
@@ -391,5 +389,7 @@
         private System.Windows.Forms.Label CustomPayloadLabel;
         private System.Windows.Forms.TextBox CustomPayload;
         private System.Windows.Forms.Label WhenActiveLabel;
+        private System.Windows.Forms.Label WeightLabel;
+        private System.Windows.Forms.NumericUpDown BehaviorWeightEditBox;
     }
 }

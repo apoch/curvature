@@ -96,7 +96,7 @@ namespace Curvature
                 ret.ReadableName = ReadableName;
 
                 float newmin = (Parameters[0] as InputParameterNumeric).MinimumValue;
-                float newmax = Math.Min((Parameters[0] as InputParameterNumeric).MaximumValue, parameters[0].GetValue());
+                float newmax = Math.Min((Parameters[0] as InputParameterNumeric).MaximumValue, (parameters[0] as InputParameterValueNumeric).Value);
 
                 var param = new InputParameterNumeric(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);
@@ -110,8 +110,8 @@ namespace Curvature
                 ret.KBRecord = KBRecord;
                 ret.ReadableName = ReadableName;
 
-                float newmin = Math.Max((Parameters[0] as InputParameterNumeric).MinimumValue, parameters[0].GetValue());
-                float newmax = Math.Min((Parameters[1] as InputParameterNumeric).MaximumValue, parameters[1].GetValue());
+                float newmin = Math.Max((Parameters[0] as InputParameterNumeric).MinimumValue, (parameters[0] as InputParameterValueNumeric).Value);
+                float newmax = Math.Min((Parameters[1] as InputParameterNumeric).MaximumValue, (parameters[1] as InputParameterValueNumeric).Value);
 
                 var param = new InputParameterNumeric(Parameters[0].ReadableName, newmin, newmax);
                 ret.Parameters.Add(param);

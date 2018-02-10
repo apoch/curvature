@@ -46,6 +46,9 @@ namespace Curvature
                         var penum = rawparam as InputParameterEnumeration;
                         foreach (var valid in penum.ValidValues)
                             InputValueDropDown.Items.Add(valid);
+
+                        if (penum.ValidValues.Count > 0)
+                            InputValueDropDown.SelectedIndex = 0;
                     }
                 }
                 else if (EditingAxis.Parameters.Count == 2)
@@ -59,33 +62,46 @@ namespace Curvature
                 }
             }
 
-            int range = InputValueTrackBar.Maximum - InputValueTrackBar.Minimum;
-            InputValueTrackBar.SmallChange = range / 10;
-            InputValueTrackBar.LargeChange = range / 4;
-            InputValueTrackBar.TickFrequency = range / 25;
+            if (InputValueTrackBar.Visible)
+            {
+                int range = InputValueTrackBar.Maximum - InputValueTrackBar.Minimum;
+                InputValueTrackBar.SmallChange = range / 10;
+                InputValueTrackBar.LargeChange = range / 4;
+                InputValueTrackBar.TickFrequency = range / 25;
 
-            InputValueTrackBar.Value = InputValueTrackBar.Minimum + (range / 2);
-            InputValueTrackBar_Scroll(null, null);
+                InputValueTrackBar.Value = InputValueTrackBar.Minimum + (range / 2);
+                InputValueTrackBar_Scroll(null, null);
+            }
         }
 
         public double GetRawValue()
         {
-            if (InputValueDropDown.Visible)
-            {
-                if (InputValueDropDown.SelectedIndex >= 0)
-                    return (new InputParameterValueEnumeration(EditingAxis.Parameters[0] as InputParameterEnumeration, InputValueDropDown.SelectedItem as string)).GetValue();
-
-                return 0.0;
-            }
+            if ((EditingAxis.Parameters.Count == 1) && (EditingAxis.Parameters[0] is InputParameterEnumeration))
+                throw new Exception();
 
             return (double)InputValueTrackBar.Value / 100.0;
         }
 
+        public string GetStringValue()
+        {
+            if ((EditingAxis.Parameters.Count != 1) || !(EditingAxis.Parameters[0] is InputParameterEnumeration))
+                return null;
+
+            if (InputValueDropDown.SelectedIndex < 0)
+                return null;
+
+            return InputValueDropDown.SelectedItem as string;
+        }
+
         private void InputValueTrackBar_Scroll(object sender, EventArgs e)
         {
-            string name = EditingAxis.ReadableName;
-            float value = (float)InputValueTrackBar.Value / 100.0f;
-            InputCaption.Text = $"{name} ({value:f3})";
+            InputCaption.Text = $"{EditingAxis.ReadableName} ({GetRawValue():f3})";
+            InputBroker.RefreshInputs();
+        }
+
+        private void InputValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InputCaption.Text = $"{EditingAxis.ReadableName}";
             InputBroker.RefreshInputs();
         }
     }

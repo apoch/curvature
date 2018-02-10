@@ -8,8 +8,8 @@ namespace Curvature
 {
     public interface IInputBroker
     {
-        double GetInputValue(InputAxis axis);
-        double GetInputValue(InputAxis axis, Scenario.Context context);
+        double GetInputValue(Consideration consideration);
+        double GetInputValue(Consideration consideration, Scenario.Context context);
         void RefreshInputs();
     }
 }

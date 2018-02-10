@@ -12,6 +12,10 @@ using System.Xml.Serialization;
 namespace Curvature
 {
     [DataContract(Namespace = "")]
+    [KnownType(typeof(InputParameterEnumeration))]
+    [KnownType(typeof(InputParameterNumeric))]
+    [KnownType(typeof(InputParameterValueEnumeration))]
+    [KnownType(typeof(InputParameterValueNumeric))]
     public class Project : INameable
     {
         [DataMember]

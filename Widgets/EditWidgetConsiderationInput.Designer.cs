@@ -38,9 +38,11 @@
             // 
             this.InputValueTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.InputValueTrackBar.BackColor = System.Drawing.SystemColors.Window;
             this.InputValueTrackBar.Location = new System.Drawing.Point(6, 3);
+            this.InputValueTrackBar.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.InputValueTrackBar.Name = "InputValueTrackBar";
-            this.InputValueTrackBar.Size = new System.Drawing.Size(293, 45);
+            this.InputValueTrackBar.Size = new System.Drawing.Size(258, 45);
             this.InputValueTrackBar.TabIndex = 0;
             this.InputValueTrackBar.Scroll += new System.EventHandler(this.InputValueTrackBar_Scroll);
             // 
@@ -51,7 +53,7 @@
             this.InputCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputCaption.Location = new System.Drawing.Point(3, 51);
             this.InputCaption.Name = "InputCaption";
-            this.InputCaption.Size = new System.Drawing.Size(296, 23);
+            this.InputCaption.Size = new System.Drawing.Size(261, 23);
             this.InputCaption.TabIndex = 1;
             this.InputCaption.Text = "(Input Name)";
             this.InputCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,9 +65,11 @@
             this.InputValueDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InputValueDropDown.FormattingEnabled = true;
             this.InputValueDropDown.Location = new System.Drawing.Point(6, 14);
+            this.InputValueDropDown.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.InputValueDropDown.Name = "InputValueDropDown";
-            this.InputValueDropDown.Size = new System.Drawing.Size(293, 21);
+            this.InputValueDropDown.Size = new System.Drawing.Size(258, 21);
             this.InputValueDropDown.TabIndex = 2;
+            this.InputValueDropDown.SelectedIndexChanged += new System.EventHandler(this.InputValueDropDown_SelectedIndexChanged);
             // 
             // EditWidgetConsiderationInput
             // 
@@ -76,7 +80,8 @@
             this.Controls.Add(this.InputCaption);
             this.Controls.Add(this.InputValueTrackBar);
             this.Name = "EditWidgetConsiderationInput";
-            this.Size = new System.Drawing.Size(302, 77);
+            this.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.Size = new System.Drawing.Size(277, 77);
             ((System.ComponentModel.ISupportInitialize)(this.InputValueTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

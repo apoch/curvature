@@ -391,21 +391,21 @@ namespace Curvature
         {
         }
 
-        public double GetInputValue(InputAxis axis)
+        public double GetInputValue(Consideration consideration)
         {
             return 0.0;
         }
 
-        public double GetInputValue(InputAxis axis, Context context)
+        public double GetInputValue(Consideration consideration, Context context)
         {
             double raw = 0.0;
-            if (axis == null)
+            if (consideration == null || consideration.Input == null)
                 return raw;
 
-            switch (axis.Origin)
+            switch (consideration.Input.Origin)
             {
                 case InputAxis.OriginType.ComputedValue:
-                    switch (axis.KBRec.Prefab)
+                    switch (consideration.Input.KBRec.Prefab)
                     {
                         case KnowledgeBase.Record.Prefabs.Distance:
                             raw = Distance(context.ThinkingAgent.GetPosition(), context.Target.GetPosition());
@@ -421,11 +421,11 @@ namespace Curvature
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
-                    raw = context.ThinkingAgent.GetProperty(axis.KBRec);
+                    raw = context.ThinkingAgent.GetProperty(consideration.Input.KBRec);
                     break;
 
                 case InputAxis.OriginType.PropertyOfTarget:
-                    raw = context.Target.GetProperty(axis.KBRec);
+                    raw = context.Target.GetProperty(consideration.Input.KBRec);
                     break;
             }
 

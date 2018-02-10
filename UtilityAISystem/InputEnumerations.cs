@@ -11,9 +11,6 @@ namespace Curvature
         public HashSet<string> ValidValues;
 
         [DataMember]
-        public string MatchString;
-
-        [DataMember]
         public bool ScoreOnMatch;
 
 
@@ -40,22 +37,6 @@ namespace Curvature
         {
             ControllingParameter = controller;
             Key = key;
-        }
-
-        public override float GetValue()
-        {
-            if (Key.Equals(ControllingParameter.MatchString, System.StringComparison.CurrentCultureIgnoreCase))
-            {
-                if (ControllingParameter.ScoreOnMatch)
-                    return 1.0f;
-
-                return 0.0f;
-            }
-
-            if (ControllingParameter.ScoreOnMatch)
-                return 0.0f;
-
-            return 1.0f;
         }
 
         public override InputParameter GetControllingParameter()

@@ -85,7 +85,7 @@ namespace Curvature
         internal Scenario.Score Score(IInputBroker broker, Scenario.Context context)
         {
             var score = new Scenario.Score();
-            score.InputRawValue = broker.GetInputValue(Input, context);
+            score.InputRawValue = broker.GetInputValue(this, context);
             score.InputValue = NormalizeInput(score.InputRawValue);
             score.FinalScore = Curve.ComputeValue(score.InputValue);
             return score;
@@ -118,7 +118,7 @@ namespace Curvature
                 }
                 else
                 {
-                    double max = ParameterValues[0].GetValue();
+                    double max = (ParameterValues[0] as InputParameterValueNumeric).Value;
                     if (max == 0.0)
                         return 0.0;
 
@@ -139,8 +139,8 @@ namespace Curvature
             }
             else if (ParameterValues.Count == 2)
             {
-                double min = ParameterValues[0].GetValue();
-                double max = ParameterValues[1].GetValue();
+                double min = (ParameterValues[0] as InputParameterValueNumeric).Value;
+                double max = (ParameterValues[1] as InputParameterValueNumeric).Value;
 
                 if (WrapInput)
                 {

@@ -10,7 +10,6 @@ namespace Curvature
     [DataContract(Namespace = "")]
     public abstract class InputParameterValue
     {
-        public abstract float GetValue();
         public abstract InputParameter GetControllingParameter();
     }
 
@@ -29,11 +28,6 @@ namespace Curvature
         {
             ControllingParameter = controller;
             Value = value;
-        }
-
-        public override float GetValue()
-        {
-            return Value;
         }
 
         public override InputParameter GetControllingParameter()

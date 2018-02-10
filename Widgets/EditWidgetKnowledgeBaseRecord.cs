@@ -87,19 +87,17 @@ namespace Curvature
             EditRec.Params = (KnowledgeBase.Record.Parameterization)ClampingBehaviorComboBox.SelectedIndex;
 
             if (prev != EditRec.Params)
-            {
                 EditProject.MarkDirty();
 
-                if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
-                {
-                    RangeConfigurationPanel.Visible = false;
-                    EnumerationPanel.Visible = true;
-                }
-                else
-                {
-                    RangeConfigurationPanel.Visible = true;
-                    EnumerationPanel.Visible = false;
-                }
+            if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+            {
+                RangeConfigurationPanel.Visible = false;
+                EnumerationPanel.Visible = true;
+            }
+            else
+            {
+                RangeConfigurationPanel.Visible = true;
+                EnumerationPanel.Visible = false;
             }
         }
 

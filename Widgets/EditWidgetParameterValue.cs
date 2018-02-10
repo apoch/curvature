@@ -59,5 +59,19 @@ namespace Curvature.Widgets
             if (prev != param.Value)
                 EditingProject.MarkDirty();
         }
+
+        private void InputValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(Parameter is InputParameterValueEnumeration))
+                return;
+
+            var param = Parameter as InputParameterValueEnumeration;
+            var prev = param.Key;
+
+            param.Key = InputValueDropDown.SelectedItem as string;
+
+            if (prev != param.Key)
+                EditingProject.MarkDirty();
+        }
     }
 }
