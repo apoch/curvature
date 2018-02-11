@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Curvature
 {
-    public partial class EditWidgetBehavior : UserControl, IInputBroker
+    public partial class EditWidgetBehavior : UserControl
     {
         private Behavior EditBehavior;
         private Project EditProject;
@@ -35,21 +35,8 @@ namespace Curvature
         internal void Attach(Behavior behavior, Project project)
         {
             EditProject = project;
-
-            foreach (Control ctl in ScoreLayoutPanel.Controls)
-                ctl.Dispose();
-
-            ScoreLayoutPanel.Controls.Clear();
-
-
-            foreach (Control ctl in InputFlowPanel.Controls)
-                ctl.Dispose();
-
-            InputFlowPanel.Controls.Clear();
-
-
             EditBehavior = behavior;
-            NameEditWidget.Attach("Behavior", EditBehavior, EditProject);
+
             if (!string.IsNullOrEmpty(EditBehavior.Payload))
                 CustomPayload.Text = EditBehavior.Payload;
             else
@@ -62,123 +49,16 @@ namespace Curvature
             ActionComboBox.SelectedIndex = (int)EditBehavior.Action;
             CanTargetSelfCheckBox.Checked = EditBehavior.CanTargetSelf;
             CanTargetOthersCheckBox.Checked = EditBehavior.CanTargetOthers;
-
-            var inputs = new Dictionary<InputAxis, List<InputAxis>>();
-            foreach (var consideration in EditBehavior.Considerations)
-            {
-                if (consideration.Input != null)
-                {
-                    if (!inputs.ContainsKey(consideration.Input))
-                        inputs.Add(consideration.Input, new List<InputAxis>());
-
-                    var clamped = consideration.Input.Clamp(consideration.ParameterValues);
-                    inputs[consideration.Input].Add(clamped);
-
-                    ScoreLayoutPanel.Controls.Add(new EditWidgetConsiderationScore(consideration, this));
-                }
-            }
-
-            foreach (var kvp in inputs)
-            {
-                InputAxis union = null;
-                foreach (var input in kvp.Value)
-                    union = input.Union(union);
-
-                if (union == null)
-                    continue;
-
-                var widget = new EditWidgetConsiderationInput(union, this);
-                widget.Tag = kvp.Key;
-                InputFlowPanel.Controls.Add(widget);
-            }
-
-            RefreshInputs();
         }
 
-        public double GetInputValue(Consideration consideration)
+
+        internal void Rebuild()
         {
-            foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
-            {
-                if (input.Tag == consideration.Input)
-                {
-                    if (consideration.Input.KBRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
-                    {
-                        var p = consideration.Input.Parameters[0] as InputParameterEnumeration;
-                        var v = consideration.ParameterValues[0] as InputParameterValueEnumeration;
-                        var comparison = string.Compare(v.Key, input.GetStringValue(), StringComparison.CurrentCultureIgnoreCase);
+            EditBehavior.DialogRebuildNeeded -= Rebuild;
+            Attach(EditBehavior, EditProject);
 
-                        if (p.ScoreOnMatch)
-                        {
-                            if (comparison == 0)
-                                return 1.0;
-
-                            return 0.0;
-                        }
-                        else
-                        {
-                            if (comparison != 0)
-                                return 1.0;
-
-                            return 0.0;
-                        }
-                    }
-
-                    return input.GetRawValue();
-                }
-            }
-
-            return 0.0;
+            DialogRebuildNeeded?.Invoke();
         }
-
-        public double GetInputValue(Consideration consideration, Scenario.Context context)
-        {
-            return 0.0;
-        }
-
-        public void RefreshInputs()
-        {
-            ScoreListView.Items.Clear();
-
-            double finalScore = (double)BehaviorWeightEditBox.Value;
-            double compensationFactor = 1.0 - (1.0 / (double)ScoreLayoutPanel.Controls.Count);
-
-            var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" });
-            weightItem.Group = ScoreListView.Groups[1];
-
-            ScoreListView.Items.Add(weightItem);
-     
-            foreach (EditWidgetConsiderationScore score in ScoreLayoutPanel.Controls)
-            {
-                score.Refresh();
-
-                string considerationName = score.GetName();
-                double considerationScore = score.GetValue();
-                double modification = (1.0 - considerationScore) * compensationFactor;
-
-                if (CompensationCheckBox.Checked)
-                    considerationScore = considerationScore + (modification * considerationScore);
-
-                var item = new ListViewItem(new string[] { $"{considerationScore:f3}", $"{considerationName}" });
-                item.Group = ScoreListView.Groups[0];
-
-                ScoreListView.Items.Add(item);
-                finalScore *= considerationScore;
-            }
-
-            if (MomentumBonusCheckBox.Checked)
-            {
-                finalScore *= 1.25;
-
-                var item = new ListViewItem(new string[] { "1.250", "Momentum bonus" });
-                item.Group = ScoreListView.Groups[1];
-
-                ScoreListView.Items.Add(item);
-            }
-
-            FinalScoreLabel.Text = $"Final Score = {finalScore:f3}";
-        }
-
-
 
 
 
@@ -193,6 +73,29 @@ namespace Curvature
                     EditProject.MarkDirty();
             }
         }
+
+        private void CustomPayload_TextChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+            {
+                var prev = EditBehavior.Payload;
+                EditBehavior.Payload = CustomPayload.Text;
+                if (prev != EditBehavior.Payload)
+                    EditProject.MarkDirty();
+            }
+        }
+
+        private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (EditBehavior != null)
+            {
+                var prev = EditBehavior.Weight;
+                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
+                if (prev != EditBehavior.Weight)
+                    EditProject.MarkDirty();
+            }
+        }
+
 
         private void CanTargetSelfCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -214,50 +117,6 @@ namespace Curvature
                 if (EditBehavior.CanTargetOthers != prev)
                     EditProject.MarkDirty();
             }
-        }
-
-        private void CustomPayload_TextChanged(object sender, EventArgs e)
-        {
-            if (EditBehavior != null)
-            {
-                var prev = EditBehavior.Payload;
-                EditBehavior.Payload = CustomPayload.Text;
-                if (prev != EditBehavior.Payload)
-                    EditProject.MarkDirty();
-            }
-        }
-
-        internal void Rebuild()
-        {
-            EditBehavior.DialogRebuildNeeded -= Rebuild;
-            Attach(EditBehavior, EditProject);
-
-            DialogRebuildNeeded?.Invoke();
-        }
-
-        private void MomentumBonusCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshInputs();
-        }
-
-
-        private void CompensationCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshInputs();
-        }
-
-
-        private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
-        {
-            if (EditBehavior != null)
-            {
-                var prev = EditBehavior.Weight;
-                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
-                if (prev != EditBehavior.Weight)
-                    EditProject.MarkDirty();
-            }
-
-            RefreshInputs();
         }
     }
 }

@@ -96,6 +96,12 @@
     <Compile Include="Widgets\EditWidgetBehaviors.Designer.cs">
       <DependentUpon>EditWidgetBehaviors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\EditWidgetBehaviorScoring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetBehaviorScoring.Designer.cs">
+      <DependentUpon>EditWidgetBehaviorScoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\EditWidgetBehaviorSet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetBehaviors.resx">
       <DependentUpon>EditWidgetBehaviors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetBehaviorScoring.resx">
+      <DependentUpon>EditWidgetBehaviorScoring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetBehaviorSet.resx">
       <DependentUpon>EditWidgetBehaviorSet.cs</DependentUpon>

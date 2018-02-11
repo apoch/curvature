@@ -57,6 +57,7 @@ namespace Curvature.Widgets
             }
 
             BehaviorTabs.Visible = false;
+            BehaviorNameEditWidget.Visible = false;
 
             if (BehaviorsListView.Items.Count <= 0)
                 return;
@@ -104,11 +105,16 @@ namespace Curvature.Widgets
             if (BehaviorsListView.SelectedItems.Count <= 0)
             {
                 BehaviorTabs.Visible = false;
+                BehaviorNameEditWidget.Visible = false;
                 return;
             }
 
-            BehaviorEditWidget.Attach(BehaviorsListView.SelectedItems[0].Tag as Behavior, EditingProject);
+            var b = BehaviorsListView.SelectedItems[0].Tag as Behavior;
+            BehaviorNameEditWidget.Attach("Behavior", b, EditingProject);
+            BehaviorEditWidget.Attach(b, EditingProject);
+            BehaviorScoringWidget.Attach(b, EditingProject);
             BehaviorTabs.Visible = true;
+            BehaviorNameEditWidget.Visible = true;
 
             RefreshConsiderationControls();
         }

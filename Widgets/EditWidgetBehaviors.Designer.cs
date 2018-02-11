@@ -36,7 +36,7 @@
             this.BehaviorNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CreateBehaviorButton = new System.Windows.Forms.Button();
             this.BehaviorTabs = new System.Windows.Forms.TabControl();
-            this.BehaviorOverviewTab = new System.Windows.Forms.TabPage();
+            this.BehaviorSettingsTab = new System.Windows.Forms.TabPage();
             this.BehaviorEditWidget = new Curvature.EditWidgetBehavior();
             this.BehaviorConsiderationsTab = new System.Windows.Forms.TabPage();
             this.DeleteConsiderationButton = new System.Windows.Forms.Button();
@@ -44,10 +44,14 @@
             this.ConsiderationEditWidget = new Curvature.EditWidgetConsideration();
             this.ConsiderationsListView = new System.Windows.Forms.ListView();
             this.ConsiderationNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BehaviorScoringTab = new System.Windows.Forms.TabPage();
+            this.BehaviorScoringWidget = new Curvature.Widgets.EditWidgetBehaviorScoring();
             this.HintLabel = new System.Windows.Forms.Label();
+            this.BehaviorNameEditWidget = new Curvature.EditWidgetName();
             this.BehaviorTabs.SuspendLayout();
-            this.BehaviorOverviewTab.SuspendLayout();
+            this.BehaviorSettingsTab.SuspendLayout();
             this.BehaviorConsiderationsTab.SuspendLayout();
+            this.BehaviorScoringTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // DeleteSelectedBehaviorsButton
@@ -113,25 +117,26 @@
             this.BehaviorTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BehaviorTabs.Controls.Add(this.BehaviorOverviewTab);
+            this.BehaviorTabs.Controls.Add(this.BehaviorSettingsTab);
             this.BehaviorTabs.Controls.Add(this.BehaviorConsiderationsTab);
-            this.BehaviorTabs.Location = new System.Drawing.Point(253, 3);
+            this.BehaviorTabs.Controls.Add(this.BehaviorScoringTab);
+            this.BehaviorTabs.Location = new System.Drawing.Point(253, 38);
             this.BehaviorTabs.Name = "BehaviorTabs";
             this.BehaviorTabs.SelectedIndex = 0;
-            this.BehaviorTabs.Size = new System.Drawing.Size(562, 583);
+            this.BehaviorTabs.Size = new System.Drawing.Size(562, 548);
             this.BehaviorTabs.TabIndex = 3;
             this.BehaviorTabs.Visible = false;
             // 
-            // BehaviorOverviewTab
+            // BehaviorSettingsTab
             // 
-            this.BehaviorOverviewTab.Controls.Add(this.BehaviorEditWidget);
-            this.BehaviorOverviewTab.Location = new System.Drawing.Point(4, 22);
-            this.BehaviorOverviewTab.Name = "BehaviorOverviewTab";
-            this.BehaviorOverviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BehaviorOverviewTab.Size = new System.Drawing.Size(554, 557);
-            this.BehaviorOverviewTab.TabIndex = 0;
-            this.BehaviorOverviewTab.Text = "Scoring Overview";
-            this.BehaviorOverviewTab.UseVisualStyleBackColor = true;
+            this.BehaviorSettingsTab.Controls.Add(this.BehaviorEditWidget);
+            this.BehaviorSettingsTab.Location = new System.Drawing.Point(4, 22);
+            this.BehaviorSettingsTab.Name = "BehaviorSettingsTab";
+            this.BehaviorSettingsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.BehaviorSettingsTab.Size = new System.Drawing.Size(554, 522);
+            this.BehaviorSettingsTab.TabIndex = 0;
+            this.BehaviorSettingsTab.Text = "Behavior";
+            this.BehaviorSettingsTab.UseVisualStyleBackColor = true;
             // 
             // BehaviorEditWidget
             // 
@@ -140,7 +145,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BehaviorEditWidget.Location = new System.Drawing.Point(6, 6);
             this.BehaviorEditWidget.Name = "BehaviorEditWidget";
-            this.BehaviorEditWidget.Size = new System.Drawing.Size(542, 545);
+            this.BehaviorEditWidget.Size = new System.Drawing.Size(542, 510);
             this.BehaviorEditWidget.TabIndex = 0;
             // 
             // BehaviorConsiderationsTab
@@ -152,7 +157,7 @@
             this.BehaviorConsiderationsTab.Location = new System.Drawing.Point(4, 22);
             this.BehaviorConsiderationsTab.Name = "BehaviorConsiderationsTab";
             this.BehaviorConsiderationsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.BehaviorConsiderationsTab.Size = new System.Drawing.Size(554, 557);
+            this.BehaviorConsiderationsTab.Size = new System.Drawing.Size(554, 522);
             this.BehaviorConsiderationsTab.TabIndex = 1;
             this.BehaviorConsiderationsTab.Text = "Edit Considerations";
             this.BehaviorConsiderationsTab.UseVisualStyleBackColor = true;
@@ -162,9 +167,9 @@
             this.DeleteConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteConsiderationButton.ImageIndex = 1;
             this.DeleteConsiderationButton.ImageList = this.IconImageList;
-            this.DeleteConsiderationButton.Location = new System.Drawing.Point(124, 529);
+            this.DeleteConsiderationButton.Location = new System.Drawing.Point(124, 474);
             this.DeleteConsiderationButton.Name = "DeleteConsiderationButton";
-            this.DeleteConsiderationButton.Size = new System.Drawing.Size(102, 25);
+            this.DeleteConsiderationButton.Size = new System.Drawing.Size(102, 42);
             this.DeleteConsiderationButton.TabIndex = 2;
             this.DeleteConsiderationButton.Text = "Delete";
             this.DeleteConsiderationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -177,9 +182,9 @@
             this.AddConsiderationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddConsiderationButton.ImageIndex = 0;
             this.AddConsiderationButton.ImageList = this.IconImageList;
-            this.AddConsiderationButton.Location = new System.Drawing.Point(6, 529);
+            this.AddConsiderationButton.Location = new System.Drawing.Point(6, 474);
             this.AddConsiderationButton.Name = "AddConsiderationButton";
-            this.AddConsiderationButton.Size = new System.Drawing.Size(112, 25);
+            this.AddConsiderationButton.Size = new System.Drawing.Size(112, 42);
             this.AddConsiderationButton.TabIndex = 1;
             this.AddConsiderationButton.Text = "Add...";
             this.AddConsiderationButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -194,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ConsiderationEditWidget.Location = new System.Drawing.Point(232, 6);
             this.ConsiderationEditWidget.Name = "ConsiderationEditWidget";
-            this.ConsiderationEditWidget.Size = new System.Drawing.Size(316, 545);
+            this.ConsiderationEditWidget.Size = new System.Drawing.Size(316, 510);
             this.ConsiderationEditWidget.TabIndex = 3;
             this.ConsiderationEditWidget.Visible = false;
             // 
@@ -208,7 +213,7 @@
             this.ConsiderationsListView.HideSelection = false;
             this.ConsiderationsListView.Location = new System.Drawing.Point(6, 6);
             this.ConsiderationsListView.Name = "ConsiderationsListView";
-            this.ConsiderationsListView.Size = new System.Drawing.Size(220, 517);
+            this.ConsiderationsListView.Size = new System.Drawing.Size(220, 462);
             this.ConsiderationsListView.TabIndex = 0;
             this.ConsiderationsListView.UseCompatibleStateImageBehavior = false;
             this.ConsiderationsListView.View = System.Windows.Forms.View.Details;
@@ -218,6 +223,26 @@
             // 
             this.ConsiderationNameHeader.Text = "Consideration Name";
             this.ConsiderationNameHeader.Width = 185;
+            // 
+            // BehaviorScoringTab
+            // 
+            this.BehaviorScoringTab.Controls.Add(this.BehaviorScoringWidget);
+            this.BehaviorScoringTab.Location = new System.Drawing.Point(4, 22);
+            this.BehaviorScoringTab.Name = "BehaviorScoringTab";
+            this.BehaviorScoringTab.Size = new System.Drawing.Size(554, 522);
+            this.BehaviorScoringTab.TabIndex = 2;
+            this.BehaviorScoringTab.Text = "Scoring Preview";
+            this.BehaviorScoringTab.UseVisualStyleBackColor = true;
+            // 
+            // BehaviorScoringWidget
+            // 
+            this.BehaviorScoringWidget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorScoringWidget.Location = new System.Drawing.Point(0, 0);
+            this.BehaviorScoringWidget.Name = "BehaviorScoringWidget";
+            this.BehaviorScoringWidget.Size = new System.Drawing.Size(554, 522);
+            this.BehaviorScoringWidget.TabIndex = 0;
             // 
             // HintLabel
             // 
@@ -232,10 +257,20 @@
             this.HintLabel.Text = "Select or create a behavior to begin editing.";
             this.HintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BehaviorNameEditWidget
+            // 
+            this.BehaviorNameEditWidget.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BehaviorNameEditWidget.Location = new System.Drawing.Point(253, 3);
+            this.BehaviorNameEditWidget.Name = "BehaviorNameEditWidget";
+            this.BehaviorNameEditWidget.Size = new System.Drawing.Size(558, 29);
+            this.BehaviorNameEditWidget.TabIndex = 10;
+            // 
             // EditWidgetBehaviors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BehaviorNameEditWidget);
             this.Controls.Add(this.BehaviorTabs);
             this.Controls.Add(this.DeleteSelectedBehaviorsButton);
             this.Controls.Add(this.BehaviorsListView);
@@ -244,8 +279,9 @@
             this.Name = "EditWidgetBehaviors";
             this.Size = new System.Drawing.Size(818, 589);
             this.BehaviorTabs.ResumeLayout(false);
-            this.BehaviorOverviewTab.ResumeLayout(false);
+            this.BehaviorSettingsTab.ResumeLayout(false);
             this.BehaviorConsiderationsTab.ResumeLayout(false);
+            this.BehaviorScoringTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -257,7 +293,7 @@
         private System.Windows.Forms.ColumnHeader BehaviorNameColumn;
         private System.Windows.Forms.Button CreateBehaviorButton;
         private System.Windows.Forms.TabControl BehaviorTabs;
-        private System.Windows.Forms.TabPage BehaviorOverviewTab;
+        private System.Windows.Forms.TabPage BehaviorSettingsTab;
         private EditWidgetBehavior BehaviorEditWidget;
         private System.Windows.Forms.TabPage BehaviorConsiderationsTab;
         private EditWidgetConsideration ConsiderationEditWidget;
@@ -267,5 +303,8 @@
         private System.Windows.Forms.ImageList IconImageList;
         private System.Windows.Forms.Button DeleteConsiderationButton;
         private System.Windows.Forms.Label HintLabel;
+        private EditWidgetName BehaviorNameEditWidget;
+        private System.Windows.Forms.TabPage BehaviorScoringTab;
+        private EditWidgetBehaviorScoring BehaviorScoringWidget;
     }
 }
