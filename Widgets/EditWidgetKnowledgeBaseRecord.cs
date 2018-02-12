@@ -44,6 +44,11 @@ namespace Curvature
                 PrefabComboBox.SelectedIndex = (int)(EditRec.Prefab) - 1;
             else
                 PrefabPanel.Visible = false;
+
+            Paint += (obj, args) =>
+            {
+                args.Graphics.DrawLine(SystemPens.ButtonShadow, 0, Height - 1, Width, Height - 1);
+            };
         }
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)

@@ -42,10 +42,10 @@
             this.RangeMinimum = new System.Windows.Forms.NumericUpDown();
             this.RangeValidValuesLabel = new System.Windows.Forms.Label();
             this.EnumerationPanel = new System.Windows.Forms.Panel();
+            this.EditEnumerationButton = new System.Windows.Forms.Button();
+            this.EnumerationValidComboBox = new System.Windows.Forms.ComboBox();
             this.PrefabPanel = new System.Windows.Forms.Panel();
             this.PrefabComboBox = new System.Windows.Forms.ComboBox();
-            this.EnumerationValidComboBox = new System.Windows.Forms.ComboBox();
-            this.EditEnumerationButton = new System.Windows.Forms.Button();
             this.RangeConfigurationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMinimum)).BeginInit();
@@ -127,15 +127,15 @@
             this.RangeConfigurationPanel.Controls.Add(this.RangeMaximum);
             this.RangeConfigurationPanel.Controls.Add(this.RangeToLabel);
             this.RangeConfigurationPanel.Controls.Add(this.RangeMinimum);
-            this.RangeConfigurationPanel.Location = new System.Drawing.Point(270, 30);
+            this.RangeConfigurationPanel.Location = new System.Drawing.Point(84, 29);
             this.RangeConfigurationPanel.Name = "RangeConfigurationPanel";
-            this.RangeConfigurationPanel.Size = new System.Drawing.Size(396, 31);
+            this.RangeConfigurationPanel.Size = new System.Drawing.Size(384, 31);
             this.RangeConfigurationPanel.TabIndex = 6;
             // 
             // RangeMaximum
             // 
             this.RangeMaximum.DecimalPlaces = 3;
-            this.RangeMaximum.Location = new System.Drawing.Point(215, 3);
+            this.RangeMaximum.Location = new System.Drawing.Point(208, 3);
             this.RangeMaximum.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -147,14 +147,14 @@
             0,
             -2147483648});
             this.RangeMaximum.Name = "RangeMaximum";
-            this.RangeMaximum.Size = new System.Drawing.Size(181, 20);
+            this.RangeMaximum.Size = new System.Drawing.Size(173, 20);
             this.RangeMaximum.TabIndex = 2;
             this.RangeMaximum.ValueChanged += new System.EventHandler(this.RangeMaximum_ValueChanged);
             // 
             // RangeToLabel
             // 
             this.RangeToLabel.AutoSize = true;
-            this.RangeToLabel.Location = new System.Drawing.Point(193, 5);
+            this.RangeToLabel.Location = new System.Drawing.Point(186, 5);
             this.RangeToLabel.Name = "RangeToLabel";
             this.RangeToLabel.Size = new System.Drawing.Size(16, 13);
             this.RangeToLabel.TabIndex = 1;
@@ -175,14 +175,14 @@
             0,
             -2147483648});
             this.RangeMinimum.Name = "RangeMinimum";
-            this.RangeMinimum.Size = new System.Drawing.Size(184, 20);
+            this.RangeMinimum.Size = new System.Drawing.Size(177, 20);
             this.RangeMinimum.TabIndex = 0;
             this.RangeMinimum.ValueChanged += new System.EventHandler(this.RangeMinimum_ValueChanged);
             // 
             // RangeValidValuesLabel
             // 
             this.RangeValidValuesLabel.AutoSize = true;
-            this.RangeValidValuesLabel.Location = new System.Drawing.Point(197, 35);
+            this.RangeValidValuesLabel.Location = new System.Drawing.Point(11, 35);
             this.RangeValidValuesLabel.Name = "RangeValidValuesLabel";
             this.RangeValidValuesLabel.Size = new System.Drawing.Size(67, 13);
             this.RangeValidValuesLabel.TabIndex = 5;
@@ -194,18 +194,40 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EnumerationPanel.Controls.Add(this.EditEnumerationButton);
             this.EnumerationPanel.Controls.Add(this.EnumerationValidComboBox);
-            this.EnumerationPanel.Location = new System.Drawing.Point(270, 30);
+            this.EnumerationPanel.Location = new System.Drawing.Point(84, 29);
             this.EnumerationPanel.Name = "EnumerationPanel";
-            this.EnumerationPanel.Size = new System.Drawing.Size(396, 31);
+            this.EnumerationPanel.Size = new System.Drawing.Size(384, 31);
             this.EnumerationPanel.TabIndex = 7;
             this.EnumerationPanel.Visible = false;
+            // 
+            // EditEnumerationButton
+            // 
+            this.EditEnumerationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditEnumerationButton.Location = new System.Drawing.Point(321, 3);
+            this.EditEnumerationButton.Name = "EditEnumerationButton";
+            this.EditEnumerationButton.Size = new System.Drawing.Size(63, 21);
+            this.EditEnumerationButton.TabIndex = 1;
+            this.EditEnumerationButton.Text = "Edit...";
+            this.EditEnumerationButton.UseVisualStyleBackColor = true;
+            this.EditEnumerationButton.Click += new System.EventHandler(this.EditEnumerationButton_Click);
+            // 
+            // EnumerationValidComboBox
+            // 
+            this.EnumerationValidComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnumerationValidComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EnumerationValidComboBox.FormattingEnabled = true;
+            this.EnumerationValidComboBox.Location = new System.Drawing.Point(0, 3);
+            this.EnumerationValidComboBox.Name = "EnumerationValidComboBox";
+            this.EnumerationValidComboBox.Size = new System.Drawing.Size(315, 21);
+            this.EnumerationValidComboBox.TabIndex = 0;
             // 
             // PrefabPanel
             // 
             this.PrefabPanel.Controls.Add(this.PrefabComboBox);
-            this.PrefabPanel.Location = new System.Drawing.Point(47, 30);
+            this.PrefabPanel.Location = new System.Drawing.Point(471, 29);
             this.PrefabPanel.Name = "PrefabPanel";
-            this.PrefabPanel.Size = new System.Drawing.Size(144, 36);
+            this.PrefabPanel.Size = new System.Drawing.Size(201, 31);
             this.PrefabPanel.TabIndex = 4;
             this.PrefabPanel.Visible = false;
             // 
@@ -216,33 +238,11 @@
             this.PrefabComboBox.Items.AddRange(new object[] {
             "Use distance prefab",
             "Use wall-clock prefab"});
-            this.PrefabComboBox.Location = new System.Drawing.Point(0, 2);
+            this.PrefabComboBox.Location = new System.Drawing.Point(3, 3);
             this.PrefabComboBox.Name = "PrefabComboBox";
-            this.PrefabComboBox.Size = new System.Drawing.Size(144, 21);
+            this.PrefabComboBox.Size = new System.Drawing.Size(192, 21);
             this.PrefabComboBox.TabIndex = 0;
             this.PrefabComboBox.SelectedIndexChanged += new System.EventHandler(this.PrefabComboBox_SelectedIndexChanged);
-            // 
-            // EnumerationValidComboBox
-            // 
-            this.EnumerationValidComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EnumerationValidComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EnumerationValidComboBox.FormattingEnabled = true;
-            this.EnumerationValidComboBox.Location = new System.Drawing.Point(0, 0);
-            this.EnumerationValidComboBox.Name = "EnumerationValidComboBox";
-            this.EnumerationValidComboBox.Size = new System.Drawing.Size(327, 21);
-            this.EnumerationValidComboBox.TabIndex = 0;
-            // 
-            // EditEnumerationButton
-            // 
-            this.EditEnumerationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditEnumerationButton.Location = new System.Drawing.Point(333, 0);
-            this.EditEnumerationButton.Name = "EditEnumerationButton";
-            this.EditEnumerationButton.Size = new System.Drawing.Size(62, 21);
-            this.EditEnumerationButton.TabIndex = 1;
-            this.EditEnumerationButton.Text = "Edit...";
-            this.EditEnumerationButton.UseVisualStyleBackColor = true;
-            this.EditEnumerationButton.Click += new System.EventHandler(this.EditEnumerationButton_Click);
             // 
             // EditWidgetKnowledgeBaseRecord
             // 
@@ -258,7 +258,7 @@
             this.Controls.Add(this.EnumerationPanel);
             this.Controls.Add(this.RangeConfigurationPanel);
             this.Name = "EditWidgetKnowledgeBaseRecord";
-            this.Size = new System.Drawing.Size(753, 69);
+            this.Size = new System.Drawing.Size(753, 63);
             this.RangeConfigurationPanel.ResumeLayout(false);
             this.RangeConfigurationPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RangeMaximum)).EndInit();
