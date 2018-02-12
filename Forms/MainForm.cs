@@ -167,7 +167,7 @@ namespace Curvature
             {
                 if (dirty)
                 {
-                    Text = "Curvature Studio - [Unsaved Project]";
+                    Text = "Curvature Studio - [Unsaved Project] (*)";
                 }
                 else
                 {

@@ -76,7 +76,17 @@ namespace Curvature
             if (EditConsideration.ParameterValues.Count == 0)
                 ParameterHintSpecificsLabel.Text = "This input has no parameters, so go ahead and click Next to move on.";
             else if (EditConsideration.ParameterValues.Count == 1)
-                ParameterHintSpecificsLabel.Text = "This input has one parameter. By default, input numbers are divided by this value before being processed through a response curve.";
+            {
+                if (EditConsideration.ParameterValues[0] is InputParameterValueNumeric)
+                    ParameterHintSpecificsLabel.Text = "This input has one parameter. By default, input numbers are divided by this value before being processed through a response curve.";
+                else
+                {
+                    if ((EditConsideration.Input.Parameters[0] as InputParameterEnumeration).ScoreOnMatch)
+                        ParameterHintSpecificsLabel.Text = "This input must have a predefined value; if the subject has the same value assigned, the input will score 1.0.";
+                    else
+                        ParameterHintSpecificsLabel.Text = "This input must have a predefined value; if the subject has any other value assigned, the input will score 1.0.";
+                }
+            }
             else if (EditConsideration.ParameterValues.Count == 2)
                 ParameterHintSpecificsLabel.Text = "This input controls a range. Input numbers will be normalized to 0-1 using this lower and upper bound.";
             else
