@@ -76,7 +76,31 @@ namespace Curvature
             foreach (EditWidgetConsiderationInput input in InputFlowPanel.Controls)
             {
                 if (input.Tag == consideration.Input)
+                {
+                    if (consideration.Input.KBRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                    {
+                        var p = consideration.Input.Parameters[0] as InputParameterEnumeration;
+                        var v = consideration.ParameterValues[0] as InputParameterValueEnumeration;
+                        var comparison = string.Compare(v.Key, input.GetStringValue(), StringComparison.CurrentCultureIgnoreCase);
+
+                        if (p.ScoreOnMatch)
+                        {
+                            if (comparison == 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                        else
+                        {
+                            if (comparison != 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                    }
+
                     return input.GetRawValue();
+                }
             }
 
             return 0.0;
