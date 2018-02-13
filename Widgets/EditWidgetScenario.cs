@@ -550,11 +550,17 @@ namespace Curvature
 
         private void AgentStartLocationCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            bool madechange = false;
+
             if (AgentStartLocationCombo.SelectedIndex <= 0)
             {
                 foreach (var selected in AgentsListView.SelectedItems)
                 {
                     var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+
+                    if (agent.StartLocation != null)
+                        madechange = true;
+
                     agent.StartLocation = null;
                     agent.StartPosition = new PointF { X = 0.0f, Y = 0.0f };
                 }
@@ -566,11 +572,15 @@ namespace Curvature
                 foreach (var selected in AgentsListView.SelectedItems)
                 {
                     var agent = (selected as ListViewItem).Tag as ScenarioAgent;
+
+                    if (agent.StartLocation != location)
+                        madechange = true;
+
                     agent.StartLocation = location;
                 }
             }
 
-            if (AgentsListView.SelectedItems.Count == 1)
+            if (madechange && AgentsListView.SelectedItems.Count == 1)
                 PopulateAgentTab((AgentsListView.SelectedItems[0] as ListViewItem).Tag as ScenarioAgent);
         }
     }
