@@ -367,6 +367,7 @@ namespace Curvature
             {
                 var agent = (item as ListViewItem).Tag as ScenarioAgent;
                 agent.StartPosition = agent.Position;
+                agent.StartLocation = null;
             }
 
             if (AgentsListView.SelectedItems.Count == 1)
@@ -555,6 +556,7 @@ namespace Curvature
                 {
                     var agent = (selected as ListViewItem).Tag as ScenarioAgent;
                     agent.StartLocation = null;
+                    agent.StartPosition = new PointF { X = 0.0f, Y = 0.0f };
                 }
             }
             else
@@ -567,6 +569,9 @@ namespace Curvature
                     agent.StartLocation = location;
                 }
             }
+
+            if (AgentsListView.SelectedItems.Count == 1)
+                PopulateAgentTab((AgentsListView.SelectedItems[0] as ListViewItem).Tag as ScenarioAgent);
         }
     }
 }
