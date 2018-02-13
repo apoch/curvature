@@ -24,10 +24,10 @@ namespace Curvature
         public float Radius;
 
         [DataMember]
-        public Dictionary<KnowledgeBase.Record, double> Properties;
+        public Dictionary<KnowledgeBase.Record, object> Properties;
 
         [DataMember]
-        public Dictionary<KnowledgeBase.Record, double> StartProperties;
+        public Dictionary<KnowledgeBase.Record, object> StartProperties;
         
         [DataMember]
         public Archetype AgentArchetype;
@@ -55,7 +55,7 @@ namespace Curvature
             Position = new PointF(0.0f, 0.0f);
             Radius = 1.0f;
 
-            Properties = new Dictionary<KnowledgeBase.Record, double>();
+            Properties = new Dictionary<KnowledgeBase.Record, object>();
 
             Color = Color.LightSteelBlue;
         }
@@ -129,7 +129,7 @@ namespace Curvature
             return null;
         }
 
-        public double GetProperty(KnowledgeBase.Record kbrec)
+        public object GetProperty(KnowledgeBase.Record kbrec)
         {
             if (Properties == null || !Properties.ContainsKey(kbrec))
                 return 0.0;
@@ -141,9 +141,9 @@ namespace Curvature
         {
             var oldstarts = StartProperties;
             if (oldstarts == null)
-                oldstarts = new Dictionary<KnowledgeBase.Record, double>();
+                oldstarts = new Dictionary<KnowledgeBase.Record, object>();
 
-            StartProperties = new Dictionary<KnowledgeBase.Record, double>();
+            StartProperties = new Dictionary<KnowledgeBase.Record, object>();
 
             foreach (var rec in kb.Records)
             {

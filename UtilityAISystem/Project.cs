@@ -156,6 +156,10 @@ namespace Curvature
 
             ret.Dirty = false;
             ret.ProjectDirtied?.Invoke(false);
+
+            foreach (Scenario s in ret.Scenarios)
+                s.ResetAgents(ret.KB);
+
             return ret;
         }
 

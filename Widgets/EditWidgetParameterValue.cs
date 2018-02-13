@@ -42,6 +42,9 @@ namespace Curvature.Widgets
                 foreach (var valid in penum.ControllingParameter.ValidValues)
                     InputValueDropDown.Items.Add(valid);
 
+
+                InputValueDropDown.SelectedItem = penum.Key;
+
                 ValueUpDown.Visible = false;
             }
         }

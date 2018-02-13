@@ -17,7 +17,7 @@ namespace Curvature
         {
             string GetName();
             PointF GetPosition();
-            double GetProperty(KnowledgeBase.Record kbrec);
+            object GetProperty(KnowledgeBase.Record kbrec);
             float GetRadius();
         }
 
@@ -139,7 +139,7 @@ namespace Curvature
                 agent.MoveToStartPosition(RandomNumbers);
 
                 agent.GenerateStartProperties(kb);
-                agent.Properties = new Dictionary<KnowledgeBase.Record, double>();
+                agent.Properties = new Dictionary<KnowledgeBase.Record, object>();
                 foreach (var kvp in agent.StartProperties)
                     agent.Properties.Add(kvp.Key, kvp.Value);
             }
@@ -147,7 +147,7 @@ namespace Curvature
             foreach (var location in Locations)
             {
                 location.GenerateStartProperties(kb);
-                location.Properties = new Dictionary<KnowledgeBase.Record, double>();
+                location.Properties = new Dictionary<KnowledgeBase.Record, object>();
                 foreach (var kvp in location.StartProperties)
                     location.Properties.Add(kvp.Key, kvp.Value);
             }
@@ -421,11 +421,52 @@ namespace Curvature
                     break;
 
                 case InputAxis.OriginType.PropertyOfSelf:
-                    raw = context.ThinkingAgent.GetProperty(consideration.Input.KBRec);
+                    if (consideration.Input.KBRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                    {
+                        int comparison = string.Compare((consideration.ParameterValues[0] as InputParameterValueEnumeration).Key, (string)context.ThinkingAgent.GetProperty(consideration.Input.KBRec));
+
+                        if ((consideration.Input.Parameters[0] as InputParameterEnumeration).ScoreOnMatch)
+                        {
+                            if (comparison == 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                        else
+                        {
+                            if (comparison != 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                    }
+                    else
+                        raw = (double)context.ThinkingAgent.GetProperty(consideration.Input.KBRec);
+
                     break;
 
                 case InputAxis.OriginType.PropertyOfTarget:
-                    raw = context.Target.GetProperty(consideration.Input.KBRec);
+                    if (consideration.Input.KBRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                    {
+                        int comparison = string.Compare((consideration.ParameterValues[0] as InputParameterValueEnumeration).Key, (string)context.Target.GetProperty(consideration.Input.KBRec));
+
+                        if ((consideration.Input.Parameters[0] as InputParameterEnumeration).ScoreOnMatch)
+                        {
+                            if (comparison == 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                        else
+                        {
+                            if (comparison != 0)
+                                return 1.0;
+
+                            return 0.0;
+                        }
+                    }
+                    else
+                        raw = (double)context.Target.GetProperty(consideration.Input.KBRec);
                     break;
             }
 

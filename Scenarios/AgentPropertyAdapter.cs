@@ -14,9 +14,9 @@ namespace Curvature
 
     class AgentPropertyAdapter : ICustomTypeDescriptor
     {
-        private Dictionary<KnowledgeBase.Record, double> PropertyDict;
+        private Dictionary<KnowledgeBase.Record, object> PropertyDict;
 
-        public AgentPropertyAdapter(Dictionary<KnowledgeBase.Record, double> propdict)
+        public AgentPropertyAdapter(Dictionary<KnowledgeBase.Record, object> propdict)
         {
             PropertyDict = propdict;
         }
@@ -80,7 +80,12 @@ namespace Curvature
         {
             var properties = new List<PropertyDescriptor>();
             foreach (var kvp in PropertyDict)
-                properties.Add(new DictionaryPropertyDescriptor(PropertyDict, kvp.Key));
+            {
+                if (kvp.Key.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                    properties.Add(new DictionaryPropertyDescriptor<string>(PropertyDict, kvp.Key));
+                else
+                    properties.Add(new DictionaryPropertyDescriptor<double>(PropertyDict, kvp.Key));
+            }
 
             return new PropertyDescriptorCollection(properties.ToArray());
         }
@@ -112,6 +117,8 @@ namespace Curvature
             {
                 if (double.TryParse(value as string, out double result))
                    return result;
+
+                return value;
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -126,32 +133,26 @@ namespace Curvature
         }
     }
 
-    class KBPropertyWrapper
+    class KBPropertyWrapper<T>
     {
-        Dictionary<KnowledgeBase.Record, double> PropertyDict;
+        Dictionary<KnowledgeBase.Record, object> PropertyDict;
         internal KnowledgeBase.Record Record;
 
 
-        internal KBPropertyWrapper(Dictionary<KnowledgeBase.Record, double> dict, KnowledgeBase.Record key)
+        internal KBPropertyWrapper(Dictionary<KnowledgeBase.Record, object> dict, KnowledgeBase.Record key)
         {
             PropertyDict = dict;
             Record = key;
         }
 
-        internal void SetProperty(double value)
+        internal void SetProperty(object value)
         {
-            if (value < Record.MinimumValue)
-                value = Record.MinimumValue;
-
-            if (value > Record.MaximumValue)
-                value = Record.MaximumValue;
-
             PropertyDict[Record] = value;
         }
 
-        internal double GetProperty()
+        internal T GetProperty()
         {
-            return PropertyDict[Record];
+            return (T)PropertyDict[Record];
         }
 
         public override string ToString()
@@ -177,9 +178,31 @@ namespace Curvature
             if (editorService == null)
                 return value;
 
-            var wrapper = value as KBPropertyWrapper;
+            var wrapper = value as KBPropertyWrapper<double>;
             if (wrapper == null)
+            {
+                var stringwrap = value as KBPropertyWrapper<string>;
+                if (stringwrap == null)
+                    return value;
+
+
+                var listcontrol = new System.Windows.Forms.ListBox();
+                foreach (var str in stringwrap.Record.EnumerationValues)
+                    listcontrol.Items.Add(str);
+
+                listcontrol.SelectedItem = stringwrap.GetProperty();
+                listcontrol.Click += (obj, args) =>
+                {
+                    editorService.CloseDropDown();
+                };
+
+                editorService.DropDownControl(listcontrol);
+
+                if (listcontrol.SelectedIndex >= 0)
+                    value = listcontrol.SelectedItem;
+
                 return value;
+            }
 
             var control = new EditWidgetKnowledgeBaseParameter(wrapper.GetProperty(), wrapper.Record.MinimumValue, wrapper.Record.MaximumValue);
 
@@ -193,14 +216,14 @@ namespace Curvature
     }
 
 
-    class DictionaryPropertyDescriptor : PropertyDescriptor
+    class DictionaryPropertyDescriptor<T> : PropertyDescriptor
     {
-        KBPropertyWrapper Wrap;
+        KBPropertyWrapper<T> Wrap;
 
-        internal DictionaryPropertyDescriptor(Dictionary<KnowledgeBase.Record, double> dict, KnowledgeBase.Record key)
+        internal DictionaryPropertyDescriptor(Dictionary<KnowledgeBase.Record, object> dict, KnowledgeBase.Record key)
             : base(key.ReadableName, null)
         {
-            Wrap = new KBPropertyWrapper(dict, key);
+            Wrap = new KBPropertyWrapper<T>(dict, key);
         }
 
         public override Type PropertyType
@@ -210,7 +233,7 @@ namespace Curvature
 
         public override void SetValue(object component, object value)
         {
-            Wrap.SetProperty((double)value);
+            Wrap.SetProperty(value);
         }
 
         public override object GetValue(object component)

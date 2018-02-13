@@ -33,13 +33,17 @@ namespace Curvature
                 if (EditSet != null)
                 {
                     var behavior = EnabledBehaviorsListBox.Items[args.Index] as Behavior;
+                    bool enabled = EditSet.EnabledBehaviors.Contains(behavior);
+                    bool makeEnabled = (args.NewValue == CheckState.Checked);
 
-                    if (args.NewValue == CheckState.Checked)
+                    if (makeEnabled)
                         EditSet.EnabledBehaviors.Add(behavior);
                     else
                         EditSet.EnabledBehaviors.Remove(behavior);
 
-                    EditProject.MarkDirty();
+
+                    if (enabled != makeEnabled)
+                        EditProject.MarkDirty();
                 }
             };
 
