@@ -83,7 +83,12 @@ namespace Curvature
                 if (oldstarts.ContainsKey(rec))
                     StartProperties.Add(rec, oldstarts[rec]);
                 else
-                    StartProperties.Add(rec, rec.MinimumValue);
+                {
+                    if (rec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+                        StartProperties.Add(rec, rec.EnumerationValues.First());
+                    else
+                        StartProperties.Add(rec, rec.MinimumValue);
+                }
             }
         }
     }
