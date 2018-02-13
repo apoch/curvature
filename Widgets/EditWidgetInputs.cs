@@ -18,6 +18,13 @@ namespace Curvature
         public EditWidgetInputs()
         {
             InitializeComponent();
+
+            NewInputButton.Click += (e, args) =>
+            {
+                Inputs.Add(new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf));
+                EditingProject.MarkDirty();
+                RefreshControls();
+            };
         }
 
         internal void Attach(Project project, List<InputAxis> inputs)
@@ -29,37 +36,24 @@ namespace Curvature
 
         private void RefreshControls()
         {
-            foreach (Control c in InputsFlowPanel.Controls)
+            foreach (Control c in InputsLayoutPanel.Controls)
                 c.Dispose();
 
-            InputsFlowPanel.Controls.Clear();
+            InputsLayoutPanel.Controls.Clear();
+            InputsLayoutPanel.RowCount = 0;
 
-
+            int i = 0;
             foreach (var input in Inputs)
             {
-                InputsFlowPanel.Controls.Add(new EditWidgetInputAxis(EditingProject, input));
+                var inputcontrol = new EditWidgetInputAxis(EditingProject, input);
+                inputcontrol.Dock = DockStyle.Fill;
+                inputcontrol.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+                ++InputsLayoutPanel.RowCount;
+                InputsLayoutPanel.Controls.Add(inputcontrol);
+                InputsLayoutPanel.SetRow(inputcontrol, i);
+                ++i;
             }
-
-            var newInputButton = new Button
-            {
-                ImageList = IconImageList,
-                ImageIndex = 0,
-                ImageAlign = ContentAlignment.MiddleRight,
-                TextImageRelation = TextImageRelation.ImageBeforeText,
-
-                Text = "Create Input Axis",
-                AutoSize = true
-            };
-
-            newInputButton.Click += (e, args) =>
-            {
-                Inputs.Add(new InputAxis("New input", InputAxis.OriginType.PropertyOfSelf));
-                EditingProject.MarkDirty();
-                RefreshControls();
-            };
-
-            InputsFlowPanel.Controls.Add(newInputButton);
-            InputsFlowPanel.ScrollControlIntoView(newInputButton);
         }
     }
 }

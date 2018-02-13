@@ -146,6 +146,7 @@
             this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.PropertiesGroupBox);
             this.Controls.Add(this.ParameterGroupBox);
+            this.MinimumSize = new System.Drawing.Size(485, 148);
             this.Name = "EditWidgetInputAxis";
             this.Size = new System.Drawing.Size(485, 148);
             this.ParameterGroupBox.ResumeLayout(false);
