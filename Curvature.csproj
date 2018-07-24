@@ -132,6 +132,18 @@
     <Compile Include="Widgets\EditWidgetConsiderationScore.Designer.cs">
       <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Widgets\EditWidgetCurveAdvanced.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetCurveAdvanced.Designer.cs">
+      <DependentUpon>EditWidgetCurveAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetCurvePresets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\EditWidgetCurvePresets.Designer.cs">
+      <DependentUpon>EditWidgetCurvePresets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\EditWidgetInputAxis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -260,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetConsiderationScore.resx">
       <DependentUpon>EditWidgetConsiderationScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetCurveAdvanced.resx">
+      <DependentUpon>EditWidgetCurveAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\EditWidgetCurvePresets.resx">
+      <DependentUpon>EditWidgetCurvePresets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\EditWidgetInputAxis.resx">
       <DependentUpon>EditWidgetInputAxis.cs</DependentUpon>

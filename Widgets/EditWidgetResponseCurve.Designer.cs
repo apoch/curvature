@@ -38,7 +38,6 @@
             this.ExponentEditBox = new System.Windows.Forms.NumericUpDown();
             this.HorizontalShiftEditBox = new System.Windows.Forms.NumericUpDown();
             this.VerticalShiftEditBox = new System.Windows.Forms.NumericUpDown();
-            this.PresetButton = new System.Windows.Forms.Button();
             this.ShiftLeftButton = new System.Windows.Forms.Button();
             this.ShiftRightButton = new System.Windows.Forms.Button();
             this.ShiftUpButton = new System.Windows.Forms.Button();
@@ -195,17 +194,6 @@
             this.VerticalShiftEditBox.Size = new System.Drawing.Size(69, 20);
             this.VerticalShiftEditBox.TabIndex = 8;
             // 
-            // PresetButton
-            // 
-            this.PresetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PresetButton.Location = new System.Drawing.Point(5, 170);
-            this.PresetButton.Name = "PresetButton";
-            this.PresetButton.Size = new System.Drawing.Size(126, 31);
-            this.PresetButton.TabIndex = 9;
-            this.PresetButton.Text = "Preset...";
-            this.PresetButton.UseVisualStyleBackColor = true;
-            this.PresetButton.Click += new System.EventHandler(this.PresetButton_Click);
-            // 
             // ShiftLeftButton
             // 
             this.ShiftLeftButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -266,7 +254,6 @@
             this.Controls.Add(this.ShiftUpButton);
             this.Controls.Add(this.ShiftRightButton);
             this.Controls.Add(this.ShiftLeftButton);
-            this.Controls.Add(this.PresetButton);
             this.Controls.Add(this.VerticalShiftEditBox);
             this.Controls.Add(this.HorizontalShiftEditBox);
             this.Controls.Add(this.ExponentEditBox);
@@ -300,7 +287,6 @@
         private System.Windows.Forms.NumericUpDown ExponentEditBox;
         private System.Windows.Forms.NumericUpDown HorizontalShiftEditBox;
         private System.Windows.Forms.NumericUpDown VerticalShiftEditBox;
-        private System.Windows.Forms.Button PresetButton;
         private System.Windows.Forms.Button ShiftLeftButton;
         private System.Windows.Forms.Button ShiftRightButton;
         private System.Windows.Forms.Button ShiftUpButton;

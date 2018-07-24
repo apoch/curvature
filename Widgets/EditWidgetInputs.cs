@@ -36,24 +36,22 @@ namespace Curvature
 
         private void RefreshControls()
         {
-            foreach (Control c in InputsLayoutPanel.Controls)
+            ScrollablePanel.SuspendLayout();
+
+            foreach (Control c in ScrollablePanel.Controls)
                 c.Dispose();
 
-            InputsLayoutPanel.Controls.Clear();
-            InputsLayoutPanel.RowCount = 0;
+            ScrollablePanel.Controls.Clear();
 
-            int i = 0;
             foreach (var input in Inputs)
             {
                 var inputcontrol = new EditWidgetInputAxis(EditingProject, input);
-                inputcontrol.Dock = DockStyle.Fill;
-                inputcontrol.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-
-                ++InputsLayoutPanel.RowCount;
-                InputsLayoutPanel.Controls.Add(inputcontrol);
-                InputsLayoutPanel.SetRow(inputcontrol, i);
-                ++i;
+                inputcontrol.Dock = DockStyle.Top;
+                ScrollablePanel.Controls.Add(inputcontrol);
             }
+
+            ScrollablePanel.ResumeLayout();
+            ScrollablePanel.PerformLayout();
         }
     }
 }

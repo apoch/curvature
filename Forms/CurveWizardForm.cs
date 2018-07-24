@@ -31,20 +31,7 @@ namespace Curvature
 
             ConsiderationNameEditBox.Text = EditConsideration.ReadableName;
 
-            ResponseCurveEditor.AttachCurve(EditConsideration.Curve, EditProject);
-        }
-
-        private void NextButton_Click(object sender, EventArgs e)
-        {
-            if (WizardTabs.SelectedIndex < WizardTabs.TabCount - 1)
-                WizardTabs.SelectedIndex++;
-            else
-            {
-                CopyControlsToConsideration();
-
-                DialogResult = DialogResult.OK;
-                Close();
-            }
+            AdvancedCurvesWidget.AttachCurve(EditConsideration.Curve, EditProject);
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -63,6 +50,8 @@ namespace Curvature
         {
             var axis = InputComboBox.SelectedItem as InputAxis;
             EditConsideration.Input = axis;
+
+            ParameterInputHintLabel.Text = "The input being configured is: " + axis.ReadableName;
 
             foreach (Control c in ParamFlowPanel.Controls)
                 c.Dispose();

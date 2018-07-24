@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWidgetInputs));
             this.IconImageList = new System.Windows.Forms.ImageList(this.components);
-            this.InputsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.NewInputButton = new System.Windows.Forms.Button();
+            this.ScrollablePanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // IconImageList
@@ -40,21 +40,6 @@
             this.IconImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("IconImageList.ImageStream")));
             this.IconImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.IconImageList.Images.SetKeyName(0, "CreateItemIcon.png");
-            // 
-            // InputsLayoutPanel
-            // 
-            this.InputsLayoutPanel.AutoScroll = true;
-            this.InputsLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.InputsLayoutPanel.ColumnCount = 1;
-            this.InputsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.InputsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InputsLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.InputsLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.InputsLayoutPanel.Name = "InputsLayoutPanel";
-            this.InputsLayoutPanel.RowCount = 1;
-            this.InputsLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.InputsLayoutPanel.Size = new System.Drawing.Size(426, 255);
-            this.InputsLayoutPanel.TabIndex = 0;
             // 
             // NewInputButton
             // 
@@ -70,12 +55,23 @@
             this.NewInputButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NewInputButton.UseVisualStyleBackColor = true;
             // 
+            // ScrollablePanel
+            // 
+            this.ScrollablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ScrollablePanel.AutoScroll = true;
+            this.ScrollablePanel.Location = new System.Drawing.Point(3, 3);
+            this.ScrollablePanel.Name = "ScrollablePanel";
+            this.ScrollablePanel.Size = new System.Drawing.Size(420, 216);
+            this.ScrollablePanel.TabIndex = 2;
+            // 
             // EditWidgetInputs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ScrollablePanel);
             this.Controls.Add(this.NewInputButton);
-            this.Controls.Add(this.InputsLayoutPanel);
             this.Name = "EditWidgetInputs";
             this.Size = new System.Drawing.Size(426, 255);
             this.ResumeLayout(false);
@@ -84,7 +80,7 @@
 
         #endregion
         private System.Windows.Forms.ImageList IconImageList;
-        private System.Windows.Forms.TableLayoutPanel InputsLayoutPanel;
         private System.Windows.Forms.Button NewInputButton;
+        private System.Windows.Forms.Panel ScrollablePanel;
     }
 }

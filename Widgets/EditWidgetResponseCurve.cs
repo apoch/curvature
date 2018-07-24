@@ -172,15 +172,6 @@ namespace Curvature
                 EditProject.MarkDirty();
         }
 
-        private void PresetButton_Click(object sender, EventArgs e)
-        {
-            var result = (new CurvePresetForm(EditCurve)).ShowDialog();
-            AttachCurve(EditCurve, EditProject);
-
-            if (result == DialogResult.OK)
-                EditProject.MarkDirty();
-        }
-
         private void ShiftLeftButton_Click(object sender, EventArgs e)
         {
             HorizontalShiftEditBox.Value -= HorizontalShiftEditBox.Increment;

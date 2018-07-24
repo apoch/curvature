@@ -117,30 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="IconImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="IconImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACU
-        AwAAAk1TRnQBSQFMAwEBAAE4AQABOAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARD/ACMAArcBAAH/Al8BAAH/AjUBAAH/Ag4BAAH/Ag4BAAH/AjUBAAH/Al8BAAH/
-        ArcBAAH/3AACkAEAAf8CEQEAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8CFAEAAf8CkAEAAf/UAAKQ
-        AQAB/wILAQAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/Ag0BAAH/ApABAAH/zAACtwEA
-        Af8CEQEAAf8DAAH/AwAB/wMAAf8DAAn/AwAB/wMAAf8DAAH/AwAB/wIUAQAB/wK3AQAB/8gAAl8BAAH/
-        AwAB/wMAAf8DAAH/AwAB/wMACf8DAAH/AwAB/wMAAf8DAAH/AwAB/wJfAQAB/8gAAjUBAAH/AwAB/wMA
-        Af8DAAH/AwAB/wMACf8DAAH/AwAB/wMAAf8DAAH/AwAB/wI1AQAB/8gAAg4BAAH/AwAB/wMAIf8DAAH/
-        AwAB/wIOAQAB/8gAAg4BAAH/AwAB/wMAIf8DAAH/AwAB/wIOAQAB/8gAAjUBAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMACf8DAAH/AwAB/wMAAf8DAAH/AwAB/wI1AQAB/8gAAl8BAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Cf8DAAH/AwAB/wMAAf8DAAH/AwAB/wJiAQAB/8gAArcBAAH/AhEBAAH/AwAB/wMAAf8DAAH/AwAJ/wMA
-        Af8DAAH/AwAB/wMAAf8CFwEAAf8CugEAAf/MAAKQAQAB/wILAQAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/
-        AwAB/wMAAf8DAAH/Ag0BAAH/ApYBAAH/1AACkAEAAf8CEQEAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMA
-        Af8CEQEAAf8CkAEAAf/cAAK3AQAB/wJfAQAB/wI1AQAB/wIOAQAB/wIOAQAB/wI1AQAB/wJfAQAB/wK3
-        AQAB//8A0QABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEAAv8GAAHwAQ8GAAHg
-        AQcGAAHAAQMGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAGAAQEGAAHA
-        AQMGAAHgAQcGAAHwAQ8GAAL/BgAL
-</value>
+  <data name="ResponseCurveDescriptionLabel.Text" xml:space="preserve">
+    <value>Response curves control the relationship between input values and the actual score of a consideration.
+
+Here you can set up the response curve for your consideration based on the input ranges specified.
+
+A consideration score (Y-axis) of 0 means that a behavior is invalid in the current circumstances. A score of 1 indicates that (as far as a single consideration goes) the behavior may be optimal.
+
+Keep in mind that all considerations for a behavior are multiplied together to obtain the behavior's final score.</value>
   </data>
 </root>
