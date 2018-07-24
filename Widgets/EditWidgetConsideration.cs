@@ -54,7 +54,10 @@ namespace Curvature
 
             var result = (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
             if (result == DialogResult.OK)
+            {
                 EditProject.MarkDirty();
+                Rebuild();
+            }
             else
                 EditConsideration.CopyFrom(prev);
         }

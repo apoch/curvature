@@ -44,6 +44,11 @@ namespace Curvature
         {
             EditConsideration.Rename(ConsiderationNameEditBox.Text);
             EditConsideration.Input = InputComboBox.SelectedItem as InputAxis;
+
+            if (ResponseCurveAdvancedTabs.SelectedTab == ResponseCurvePresetsTab)
+            {
+                PresetCurvesWidget.Apply(EditConsideration.Curve);
+            }
         }
 
         private void InputComboBox_SelectedIndexChanged(object sender, EventArgs e)
