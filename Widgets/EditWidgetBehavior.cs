@@ -16,7 +16,7 @@ namespace Curvature
         private Project EditProject;
 
 
-        internal delegate void DialogRebuildNeededHandler();
+        internal delegate void DialogRebuildNeededHandler(object editedContent);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
@@ -57,7 +57,7 @@ namespace Curvature
             EditBehavior.DialogRebuildNeeded -= Rebuild;
             Attach(EditBehavior, EditProject);
 
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(EditBehavior);
         }
 
 

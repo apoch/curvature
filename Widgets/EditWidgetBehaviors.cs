@@ -24,7 +24,7 @@ namespace Curvature.Widgets
         public void Attach(Project project)
         {
             EditingProject = project;
-            RefreshBehaviorControls();
+            RefreshBehaviorControls(null);
 
             BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
             ConsiderationEditWidget.DialogRebuildNeeded += RefreshConsiderationControls;
@@ -45,7 +45,7 @@ namespace Curvature.Widgets
         }
 
 
-        private void RefreshBehaviorControls()
+        private void RefreshBehaviorControls(object editedContent)
         {
             BehaviorsListView.Items.Clear();
 
@@ -62,7 +62,19 @@ namespace Curvature.Widgets
             if (BehaviorsListView.Items.Count <= 0)
                 return;
 
-            BehaviorsListView.SelectedIndices.Add(0);
+            if (editedContent is Behavior)
+            {
+                foreach (ListViewItem item in BehaviorsListView.Items)
+                {
+                    if (item.Tag == editedContent)
+                    {
+                        BehaviorsListView.SelectedIndices.Add(item.Index);
+                        break;
+                    }
+                }
+            }
+            else
+                BehaviorsListView.SelectedIndices.Add(0);
         }
 
         private void RefreshConsiderationControls()
@@ -95,9 +107,10 @@ namespace Curvature.Widgets
 
         private void CreateBehaviorButton_Click(object sender, EventArgs e)
         {
-            EditingProject.Behaviors.Add(new Behavior("New behavior"));
+            var newBehavior = new Behavior("New behavior");
+            EditingProject.Behaviors.Add(newBehavior);
             EditingProject.MarkDirty();
-            RefreshBehaviorControls();
+            RefreshBehaviorControls(newBehavior);
         }
 
         private void BehaviorsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,7 +146,7 @@ namespace Curvature.Widgets
             }
 
             RefreshConsiderationControls();
-            RefreshBehaviorControls();
+            RefreshBehaviorControls(behavior);
         }
 
         private void DeleteSelectedBehaviorsButton_Click(object sender, EventArgs e)
