@@ -83,9 +83,7 @@ namespace Curvature.Widgets
 
         internal void Rebuild()
         {
-            EditBehavior.DialogRebuildNeeded -= Rebuild;
             Attach(EditBehavior, EditProject);
-
             DialogRebuildNeeded?.Invoke();
         }
 

@@ -201,9 +201,7 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            EditSet.DialogRebuildNeeded -= Rebuild;
             Attach(EditSet, EditProject);
-
             DialogRebuildNeeded?.Invoke();
         }
     }

@@ -90,9 +90,7 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            EditedProject.DialogRebuildNeeded -= Rebuild;
             Attach(EditedProject);
-
             DialogRebuildNeeded?.Invoke();
         }
 

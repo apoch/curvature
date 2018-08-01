@@ -445,9 +445,7 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            Simulation.DialogRebuildNeeded -= Rebuild;
             Attach(Simulation, EditProject);
-
             DialogRebuildNeeded?.Invoke();
         }
 

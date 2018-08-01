@@ -20,14 +20,14 @@ namespace Curvature.Widgets
             InitializeComponent();
 
             BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
-            ConsiderationEditWidget.DialogRebuildNeeded += () =>
+            ConsiderationEditWidget.DialogRebuildNeeded += (editConsideration) =>
             {
                 Behavior b = null;
                 if (BehaviorsListView.SelectedItems.Count > 0)
                     b = BehaviorsListView.SelectedItems[0].Tag as Behavior;
 
                 RefreshBehaviorControls(b);
-                RefreshConsiderationControls();
+                RefreshConsiderationControls(editConsideration);
             };
         }
 
@@ -85,7 +85,7 @@ namespace Curvature.Widgets
                 BehaviorsListView.SelectedIndices.Add(0);
         }
 
-        private void RefreshConsiderationControls()
+        private void RefreshConsiderationControls(Consideration editedConsideration)
         {
             ConsiderationsListView.Items.Clear();
 
@@ -98,6 +98,18 @@ namespace Curvature.Widgets
                 var item = new ListViewItem(consideration.ReadableName);
                 item.Tag = consideration;
                 ConsiderationsListView.Items.Add(item);
+            }
+
+            if (editedConsideration != null)
+            {
+                foreach (ListViewItem item in ConsiderationsListView.Items)
+                {
+                    if (item.Tag == editedConsideration)
+                    {
+                        ConsiderationsListView.SelectedIndices.Add(item.Index);
+                        break;
+                    }
+                }
             }
         }
 
@@ -137,7 +149,7 @@ namespace Curvature.Widgets
             BehaviorTabs.Visible = true;
             BehaviorNameEditWidget.Visible = true;
 
-            RefreshConsiderationControls();
+            RefreshConsiderationControls(null);
         }
 
         private void AddConsiderationButton_Click(object sender, EventArgs e)
@@ -153,7 +165,7 @@ namespace Curvature.Widgets
                 EditingProject.MarkDirty();
             }
 
-            RefreshConsiderationControls();
+            RefreshConsiderationControls(consideration);
             RefreshBehaviorControls(behavior);
         }
 

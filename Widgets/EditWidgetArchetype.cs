@@ -65,9 +65,7 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            EditArchetype.DialogRebuildNeeded -= Rebuild;
             Attach(EditArchetype, EditProject);
-
             DialogRebuildNeeded?.Invoke();
         }
     }

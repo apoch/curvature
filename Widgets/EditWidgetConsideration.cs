@@ -17,7 +17,7 @@ namespace Curvature
         private Project EditProject;
 
 
-        internal delegate void DialogRebuildNeededHandler();
+        internal delegate void DialogRebuildNeededHandler(Consideration editedContent);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
@@ -87,10 +87,8 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            EditConsideration.DialogRebuildNeeded -= Rebuild;
             Attach(EditProject, EditConsideration);
-
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(EditConsideration);
         }
 
         private void WrapInputCheckBox_CheckedChanged(object sender, EventArgs e)
