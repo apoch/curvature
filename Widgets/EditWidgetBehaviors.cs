@@ -20,7 +20,15 @@ namespace Curvature.Widgets
             InitializeComponent();
 
             BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
-            ConsiderationEditWidget.DialogRebuildNeeded += RefreshConsiderationControls;
+            ConsiderationEditWidget.DialogRebuildNeeded += () =>
+            {
+                Behavior b = null;
+                if (BehaviorsListView.SelectedItems.Count > 0)
+                    b = BehaviorsListView.SelectedItems[0].Tag as Behavior;
+
+                RefreshBehaviorControls(b);
+                RefreshConsiderationControls();
+            };
         }
 
 
