@@ -18,6 +18,9 @@ namespace Curvature.Widgets
         public EditWidgetBehaviors()
         {
             InitializeComponent();
+
+            BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
+            ConsiderationEditWidget.DialogRebuildNeeded += RefreshConsiderationControls;
         }
 
 
@@ -25,9 +28,6 @@ namespace Curvature.Widgets
         {
             EditingProject = project;
             RefreshBehaviorControls(null);
-
-            BehaviorEditWidget.DialogRebuildNeeded += RefreshBehaviorControls;
-            ConsiderationEditWidget.DialogRebuildNeeded += RefreshConsiderationControls;
         }
 
 
@@ -45,7 +45,7 @@ namespace Curvature.Widgets
         }
 
 
-        private void RefreshBehaviorControls(object editedContent)
+        private void RefreshBehaviorControls(Behavior editedContent)
         {
             BehaviorsListView.Items.Clear();
 
@@ -62,7 +62,7 @@ namespace Curvature.Widgets
             if (BehaviorsListView.Items.Count <= 0)
                 return;
 
-            if (editedContent is Behavior)
+            if (editedContent != null)
             {
                 foreach (ListViewItem item in BehaviorsListView.Items)
                 {

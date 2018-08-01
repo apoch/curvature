@@ -143,6 +143,9 @@ namespace Curvature
 
         internal void Attach(Scenario scenario, Project project)
         {
+            if (Simulation != null)
+                Simulation.DialogRebuildNeeded -= Rebuild;
+
             Simulation = scenario;
             EditProject = project;
 

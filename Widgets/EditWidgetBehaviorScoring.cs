@@ -28,6 +28,9 @@ namespace Curvature.Widgets
 
         internal void Attach(Behavior behavior, Project project)
         {
+            if (EditBehavior != null)
+                EditBehavior.DialogRebuildNeeded -= Rebuild;
+
             EditProject = project;
 
             foreach (Control ctl in ScoreLayoutPanel.Controls)

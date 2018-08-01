@@ -59,6 +59,9 @@ namespace Curvature
 
         public void Attach(BehaviorSet set, Project project)
         {
+            if (EditSet != null)
+                EditSet.DialogRebuildNeeded -= Rebuild;
+
             EditSet = set;
             EditProject = project;
 

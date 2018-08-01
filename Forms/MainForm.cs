@@ -70,7 +70,7 @@ namespace Curvature
                 System.Diagnostics.Process.Start("https://github.com/apoch/curvature/wiki");                        // TODO - #45 - wiki documentation
             };
 
-            ProjectEditWidget.DialogRebuildNeeded += () => { RefreshControls(); };
+            ProjectEditWidget.DialogRebuildNeeded += RefreshControls;
 
 
             BehaviorSetsEditWidget.AutoNavigationRequested += AutoNavigationRequestedFromChild;

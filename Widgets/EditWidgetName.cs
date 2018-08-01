@@ -42,32 +42,37 @@ namespace Curvature
 
             edit.KeyPress += (o, args) =>
             {
+                if (ObjectNameLabel.Visible)
+                    return;
+
                 if (args.KeyChar == '\r' || args.KeyChar == '\n')
                 {
-                    EditedObject.Rename(edit.Text);
-                    EditedProject.MarkDirty();
                     ObjectNameLabel.Text = edit.Text;
-                    edit.Dispose();
                     ObjectNameLabel.Visible = true;
                     EditIcon.Visible = true;
+                    EditedObject.Rename(edit.Text);
+                    EditedProject.MarkDirty();
+                    edit.Dispose();
                 }
                 else if (args.KeyChar == '\u001b')        // Escape
                 {
-                    edit.Text = ObjectNameLabel.Text;
-                    edit.Dispose();
                     ObjectNameLabel.Visible = true;
                     EditIcon.Visible = true;
+                    edit.Dispose();
                 }
             };
 
             edit.LostFocus += (o, args) =>
             {
+                if (ObjectNameLabel.Visible)
+                    return;
+
                 EditedObject.Rename(edit.Text);
                 EditedProject.MarkDirty();
                 ObjectNameLabel.Text = edit.Text;
-                edit.Dispose();
                 ObjectNameLabel.Visible = true;
                 EditIcon.Visible = true;
+                edit.Dispose();
             };
 
             EditIcon.Parent = null;

@@ -28,6 +28,9 @@ namespace Curvature
 
         internal void Attach(Project project, Consideration editConsideration)
         {
+            if (EditConsideration != null)
+                EditConsideration.DialogRebuildNeeded -= Rebuild;
+
             EditConsideration = editConsideration;
             EditProject = project;
 

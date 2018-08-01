@@ -20,13 +20,13 @@ namespace Curvature.Widgets
         public EditWidgetScenarios()
         {
             InitializeComponent();
+            ScenarioEditWidget.DialogRebuildNeeded += RefreshScenarioControls;
         }
 
 
         public void Attach(Project project)
         {
             EditingProject = project;
-            ScenarioEditWidget.DialogRebuildNeeded += RefreshScenarioControls;
             RefreshScenarioControls();
         }
 

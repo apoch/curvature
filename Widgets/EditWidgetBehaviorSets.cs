@@ -24,14 +24,13 @@ namespace Curvature.Widgets
         {
             InitializeComponent();
             BehaviorSetEditWidget.AutoNavigationRequested += AutoNavigationRequestedFromChild;
+            BehaviorSetEditWidget.DialogRebuildNeeded += RefreshBehaviorSetControls;
         }
 
         public void Attach(Project project)
         {
             EditingProject = project;
             RefreshBehaviorSetControls();
-
-            BehaviorSetEditWidget.DialogRebuildNeeded += RefreshBehaviorSetControls;
         }
 
         private void RefreshBehaviorSetControls()

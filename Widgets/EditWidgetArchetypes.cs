@@ -18,14 +18,14 @@ namespace Curvature.Widgets
         public EditWidgetArchetypes()
         {
             InitializeComponent();
+
+            ArchetypeEditWidget.DialogRebuildNeeded += RefreshArchetypeControls;
         }
 
         public void Attach(Project project)
         {
             EditingProject = project;
             RefreshArchetypeControls();
-
-            ArchetypeEditWidget.DialogRebuildNeeded += RefreshArchetypeControls;
         }
 
         private void RefreshArchetypeControls()

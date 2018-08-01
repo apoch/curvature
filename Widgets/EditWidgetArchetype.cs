@@ -48,6 +48,9 @@ namespace Curvature
 
         internal void Attach(Archetype archetype, Project project)
         {
+            if (EditArchetype != null)
+                EditArchetype.DialogRebuildNeeded -= Rebuild;
+
             EditArchetype = archetype;
             NameEditWidget.Attach("Archetype", EditArchetype, project);
             EditArchetype.DialogRebuildNeeded += Rebuild;
