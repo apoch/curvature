@@ -25,10 +25,10 @@ namespace Curvature.Widgets
         public void Attach(Project project)
         {
             EditingProject = project;
-            RefreshArchetypeControls();
+            RefreshArchetypeControls(null);
         }
 
-        private void RefreshArchetypeControls()
+        private void RefreshArchetypeControls(Archetype editedContent)
         {
             ArchetypesListView.Items.Clear();
 
@@ -44,14 +44,27 @@ namespace Curvature.Widgets
             if (ArchetypesListView.Items.Count <= 0)
                 return;
 
-            ArchetypesListView.SelectedIndices.Add(0);
+            if (editedContent != null)
+            {
+                foreach (ListViewItem item in ArchetypesListView.Items)
+                {
+                    if (item.Tag == editedContent)
+                    {
+                        ArchetypesListView.SelectedIndices.Add(item.Index);
+                        break;
+                    }
+                }
+            }
+            else
+                ArchetypesListView.SelectedIndices.Add(0);
         }
 
         private void AddArchetypeButton_Click(object sender, EventArgs e)
         {
-            EditingProject.Archetypes.Add(new Archetype("Untitled Archetype"));
+            var archetype = new Archetype("Untitled Archetype");
+            EditingProject.Archetypes.Add(archetype);
             EditingProject.MarkDirty();
-            RefreshArchetypeControls();
+            RefreshArchetypeControls(archetype);
         }
 
         private void ArchetypesListView_SelectedIndexChanged(object sender, EventArgs e)

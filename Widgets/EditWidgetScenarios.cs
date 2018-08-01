@@ -27,11 +27,11 @@ namespace Curvature.Widgets
         public void Attach(Project project)
         {
             EditingProject = project;
-            RefreshScenarioControls();
+            RefreshScenarioControls(null);
         }
 
 
-        private void RefreshScenarioControls()
+        private void RefreshScenarioControls(Scenario editedScenario)
         {
             ScenariosListView.Items.Clear();
 
@@ -51,7 +51,19 @@ namespace Curvature.Widgets
 
             ScenarioEditWidget.Visible = true;
 
-            ScenariosListView.SelectedIndices.Add(0);
+            if (editedScenario != null)
+            {
+                foreach(ListViewItem item in ScenariosListView.Items)
+                {
+                    if (item.Tag == editedScenario)
+                    {
+                        ScenariosListView.SelectedIndices.Add(item.Index);
+                        break;
+                    }
+                }
+            }
+            else
+                ScenariosListView.SelectedIndices.Add(0);
         }
 
         private void ScenariosListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,9 +94,10 @@ namespace Curvature.Widgets
 
         private void CreateScenarioButton_Click(object sender, EventArgs e)
         {
-            EditingProject.Scenarios.Add(new Scenario("Untitled Scenario"));
+            var scenario = new Scenario("Untitled Scenario");
+            EditingProject.Scenarios.Add(scenario);
             EditingProject.MarkDirty();
-            RefreshScenarioControls();
+            RefreshScenarioControls(scenario);
         }
     }
 }

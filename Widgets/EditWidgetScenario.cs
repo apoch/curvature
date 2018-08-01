@@ -19,7 +19,7 @@ namespace Curvature
         private float AbsoluteTime;
 
 
-        internal delegate void DialogRebuildNeededHandler();
+        internal delegate void DialogRebuildNeededHandler(Scenario editedScenario);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
@@ -446,7 +446,7 @@ namespace Curvature
         internal void Rebuild()
         {
             Attach(Simulation, EditProject);
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(Simulation);
         }
 
         private void DeleteSelectedAgentsButton_Click(object sender, EventArgs e)
@@ -460,7 +460,7 @@ namespace Curvature
                 Simulation.Agents.Remove(agent);
             }
 
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(Simulation);
         }
 
         private void ColorSwatch_Click(object sender, EventArgs e)
@@ -546,7 +546,7 @@ namespace Curvature
                 Simulation.Locations.Remove(location);
             }
 
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(Simulation);
         }
 
         private void AgentStartLocationCombo_SelectedIndexChanged(object sender, EventArgs e)

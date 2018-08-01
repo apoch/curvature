@@ -15,7 +15,7 @@ namespace Curvature
         private BehaviorSet EditSet;
         private Project EditProject;
 
-        internal delegate void DialogRebuildNeededHandler();
+        internal delegate void DialogRebuildNeededHandler(BehaviorSet editedSet);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
@@ -202,7 +202,7 @@ namespace Curvature
         internal void Rebuild()
         {
             Attach(EditSet, EditProject);
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(EditSet);
         }
     }
 }

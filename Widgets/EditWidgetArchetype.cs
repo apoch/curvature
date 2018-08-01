@@ -15,7 +15,7 @@ namespace Curvature
         private Archetype EditArchetype;
         private Project EditProject;
 
-        internal delegate void DialogRebuildNeededHandler();
+        internal delegate void DialogRebuildNeededHandler(Archetype editedContent);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
 
 
@@ -66,7 +66,7 @@ namespace Curvature
         internal void Rebuild()
         {
             Attach(EditArchetype, EditProject);
-            DialogRebuildNeeded?.Invoke();
+            DialogRebuildNeeded?.Invoke(EditArchetype);
         }
     }
 }

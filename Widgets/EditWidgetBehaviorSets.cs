@@ -30,10 +30,10 @@ namespace Curvature.Widgets
         public void Attach(Project project)
         {
             EditingProject = project;
-            RefreshBehaviorSetControls();
+            RefreshBehaviorSetControls(null);
         }
 
-        private void RefreshBehaviorSetControls()
+        private void RefreshBehaviorSetControls(BehaviorSet editedSet)
         {
             BehaviorSetsListView.Items.Clear();
 
@@ -49,7 +49,19 @@ namespace Curvature.Widgets
             if (BehaviorSetsListView.Items.Count <= 0)
                 return;
 
-            BehaviorSetsListView.SelectedIndices.Add(0);
+            if (editedSet != null)
+            {
+                foreach (ListViewItem item in BehaviorSetsListView.Items)
+                {
+                    if (item.Tag == editedSet)
+                    {
+                        BehaviorSetsListView.SelectedIndices.Add(item.Index);
+                        break;
+                    }
+                }
+            }
+            else
+                BehaviorSetsListView.SelectedIndices.Add(0);
         }
 
         private void BehaviorSetsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,9 +92,10 @@ namespace Curvature.Widgets
 
         private void AddBehaviorSetButton_Click(object sender, EventArgs e)
         {
-            EditingProject.BehaviorSets.Add(new BehaviorSet("Untitled Behavior Set"));
+            var set = new BehaviorSet("Untitled Behavior Set");
+            EditingProject.BehaviorSets.Add(set);
             EditingProject.MarkDirty();
-            RefreshBehaviorSetControls();
+            RefreshBehaviorSetControls(set);
         }
 
         internal void AutoNavigationRequestedFromChild(Behavior behavior)
