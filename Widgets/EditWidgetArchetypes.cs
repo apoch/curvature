@@ -34,8 +34,10 @@ namespace Curvature.Widgets
 
             foreach (var archetype in EditingProject.Archetypes)
             {
-                var item = new ListViewItem(archetype.ReadableName);
-                item.Tag = archetype;
+                var item = new ListViewItem(archetype.ReadableName)
+                {
+                    Tag = archetype
+                };
                 ArchetypesListView.Items.Add(item);
             }
 

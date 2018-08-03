@@ -136,8 +136,10 @@ namespace Curvature
                     winbehavior = b;
                 }
 
-                var item = new ListViewItem(new string[] { b.ReadableName, $"{b.Weight:f3}", $"{score.FinalScore:f3}" });
-                item.Tag = b;
+                var item = new ListViewItem(new string[] { b.ReadableName, $"{b.Weight:f3}", $"{score.FinalScore:f3}" })
+                {
+                    Tag = b
+                };
                 BehaviorScoresListView.Items.Add(item);
             }
 
@@ -184,8 +186,10 @@ namespace Curvature
                 if (union == null)
                     continue;
 
-                var widget = new EditWidgetConsiderationInput(union, this);
-                widget.Tag = kvp.Key;
+                var widget = new EditWidgetConsiderationInput(union, this)
+                {
+                    Tag = kvp.Key
+                };
                 InputFlowPanel.Controls.Add(widget);
             }
 

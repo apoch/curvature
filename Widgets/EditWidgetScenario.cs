@@ -239,8 +239,10 @@ namespace Curvature
                 if (agent.AgentArchetype != null)
                     archetypename = agent.AgentArchetype.ReadableName;
 
-                var item = new ListViewItem(new string[] { agent.GetName(), agent.GetPosition().ToString(), archetypename });
-                item.Tag = agent;
+                var item = new ListViewItem(new string[] { agent.GetName(), agent.GetPosition().ToString(), archetypename })
+                {
+                    Tag = agent
+                };
                 AgentsListView.Items.Add(item);
             }
 
@@ -262,8 +264,10 @@ namespace Curvature
 
             foreach (var loc in Simulation.Locations)
             {
-                var item = new ListViewItem(new string[] { loc.GetName(), GetLocationCoordsDescription(loc) });
-                item.Tag = loc;
+                var item = new ListViewItem(new string[] { loc.GetName(), GetLocationCoordsDescription(loc) })
+                {
+                    Tag = loc
+                };
                 LocationsListView.Items.Add(item);
 
                 AgentStartLocationCombo.Items.Add(loc);

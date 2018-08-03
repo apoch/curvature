@@ -168,8 +168,10 @@ namespace Curvature
 
             foreach (var agent in Agents)
             {
-                var decisionhistory = new DecisionHistory();
-                decisionhistory.ScoredContexts = new List<Context>();
+                var decisionhistory = new DecisionHistory
+                {
+                    ScoredContexts = new List<Context>()
+                };
 
                 var context = agent.ChooseBehavior(this, targets, decisionhistory);
                 if (context != null)
@@ -188,9 +190,11 @@ namespace Curvature
 
         public void Render(Graphics graphics, Rectangle rect)
         {
-            var stringFormat = new StringFormat();
-            stringFormat.Alignment = StringAlignment.Center;
-            stringFormat.LineAlignment = StringAlignment.Center;
+            var stringFormat = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
 
             // Set up scaling
             PointF minCoordinate;
@@ -645,8 +649,10 @@ namespace Curvature
         {
             if (RenderPenDottedBlack == null)
             {
-                RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
-                RenderPenDottedBlack.DashStyle = DashStyle.Dot;
+                RenderPenDottedBlack = new Pen(Color.Black, 1.0f)
+                {
+                    DashStyle = DashStyle.Dot
+                };
             }
         }
 

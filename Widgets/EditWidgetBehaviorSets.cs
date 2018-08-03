@@ -39,8 +39,10 @@ namespace Curvature.Widgets
 
             foreach (var behaviorSet in EditingProject.BehaviorSets)
             {
-                var item = new ListViewItem(behaviorSet.ReadableName);
-                item.Tag = behaviorSet;
+                var item = new ListViewItem(behaviorSet.ReadableName)
+                {
+                    Tag = behaviorSet
+                };
                 BehaviorSetsListView.Items.Add(item);
             }
 

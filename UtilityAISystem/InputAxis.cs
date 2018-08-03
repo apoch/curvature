@@ -91,9 +91,11 @@ namespace Curvature
                 if (parameters[0] is InputParameterValueEnumeration)
                     return this;
 
-                var ret = new InputAxis(ReadableName, Origin);
-                ret.KBRecord = KBRecord;
-                ret.ReadableName = ReadableName;
+                var ret = new InputAxis(ReadableName, Origin)
+                {
+                    KBRecord = KBRecord,
+                    ReadableName = ReadableName
+                };
 
                 float newmin = (Parameters[0] as InputParameterNumeric).MinimumValue;
                 float newmax = Math.Min((Parameters[0] as InputParameterNumeric).MaximumValue, (parameters[0] as InputParameterValueNumeric).Value);
@@ -106,9 +108,11 @@ namespace Curvature
 
             if (parameters.Count == 2)
             {
-                var ret = new InputAxis(ReadableName, Origin);
-                ret.KBRecord = KBRecord;
-                ret.ReadableName = ReadableName;
+                var ret = new InputAxis(ReadableName, Origin)
+                {
+                    KBRecord = KBRecord,
+                    ReadableName = ReadableName
+                };
 
                 float newmin = Math.Max((Parameters[0] as InputParameterNumeric).MinimumValue, (parameters[0] as InputParameterValueNumeric).Value);
                 float newmax = Math.Min((Parameters[1] as InputParameterNumeric).MaximumValue, (parameters[1] as InputParameterValueNumeric).Value);
@@ -135,9 +139,11 @@ namespace Curvature
                 if (other.Parameters[0] is InputParameterEnumeration)
                     return this;
 
-                var ret = new InputAxis(ReadableName, Origin);
-                ret.KBRecord = KBRecord;
-                ret.ReadableName = ReadableName;
+                var ret = new InputAxis(ReadableName, Origin)
+                {
+                    KBRecord = KBRecord,
+                    ReadableName = ReadableName
+                };
 
                 float newmin = Math.Min((Parameters[0] as InputParameterNumeric).MinimumValue, (other.Parameters[0] as InputParameterNumeric).MinimumValue);
                 float newmax = Math.Max((Parameters[0] as InputParameterNumeric).MaximumValue, (other.Parameters[0] as InputParameterNumeric).MaximumValue);

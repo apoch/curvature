@@ -102,10 +102,12 @@ namespace Curvature
                             if (!behavior.CanTargetSelf && (scenarioTarget == this))
                                 continue;
 
-                            var context = new Scenario.Context();
-                            context.ChosenBehavior = behavior;
-                            context.Target = scenarioTarget;
-                            context.ThinkingAgent = this;
+                            var context = new Scenario.Context
+                            {
+                                ChosenBehavior = behavior,
+                                Target = scenarioTarget,
+                                ThinkingAgent = this
+                            };
 
                             scores.ScoredContexts.Add(context);
                         }

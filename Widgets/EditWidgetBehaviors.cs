@@ -59,8 +59,10 @@ namespace Curvature.Widgets
 
             foreach (var behavior in EditingProject.Behaviors)
             {
-                var item = new ListViewItem(behavior.ReadableName);
-                item.Tag = behavior;
+                var item = new ListViewItem(behavior.ReadableName)
+                {
+                    Tag = behavior
+                };
                 BehaviorsListView.Items.Add(item);
             }
 
@@ -95,8 +97,10 @@ namespace Curvature.Widgets
             var behavior = BehaviorsListView.SelectedItems[0].Tag as Behavior;
             foreach (var consideration in behavior.Considerations)
             {
-                var item = new ListViewItem(consideration.ReadableName);
-                item.Tag = consideration;
+                var item = new ListViewItem(consideration.ReadableName)
+                {
+                    Tag = consideration
+                };
                 ConsiderationsListView.Items.Add(item);
             }
 

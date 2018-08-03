@@ -45,8 +45,10 @@ namespace Curvature
 
             foreach (var input in Inputs)
             {
-                var inputcontrol = new EditWidgetInputAxis(EditingProject, input);
-                inputcontrol.Dock = DockStyle.Top;
+                var inputcontrol = new EditWidgetInputAxis(EditingProject, input)
+                {
+                    Dock = DockStyle.Top
+                };
                 ScrollablePanel.Controls.Add(inputcontrol);
             }
 

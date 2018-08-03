@@ -73,8 +73,10 @@ namespace Curvature.Widgets
                 if (union == null)
                     continue;
 
-                var widget = new EditWidgetConsiderationInput(union, this);
-                widget.Tag = kvp.Key;
+                var widget = new EditWidgetConsiderationInput(union, this)
+                {
+                    Tag = kvp.Key
+                };
                 InputFlowPanel.Controls.Add(widget);
             }
 
@@ -95,8 +97,10 @@ namespace Curvature.Widgets
             double finalScore = EditingBehavior.Weight;
             double compensationFactor = 1.0 - (1.0 / (double)ScoreLayoutPanel.Controls.Count);
 
-            var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" });
-            weightItem.Group = ScoreListView.Groups[1];
+            var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" })
+            {
+                Group = ScoreListView.Groups[1]
+            };
 
             ScoreListView.Items.Add(weightItem);
 
@@ -111,8 +115,10 @@ namespace Curvature.Widgets
                 if (CompensationCheckBox.Checked)
                     considerationScore = considerationScore + (modification * considerationScore);
 
-                var item = new ListViewItem(new string[] { $"{considerationScore:f3}", $"{considerationName}" });
-                item.Group = ScoreListView.Groups[0];
+                var item = new ListViewItem(new string[] { $"{considerationScore:f3}", $"{considerationName}" })
+                {
+                    Group = ScoreListView.Groups[0]
+                };
 
                 ScoreListView.Items.Add(item);
                 finalScore *= considerationScore;
@@ -122,8 +128,10 @@ namespace Curvature.Widgets
             {
                 finalScore *= 1.25;
 
-                var item = new ListViewItem(new string[] { "1.250", "Momentum bonus" });
-                item.Group = ScoreListView.Groups[1];
+                var item = new ListViewItem(new string[] { "1.250", "Momentum bonus" })
+                {
+                    Group = ScoreListView.Groups[1]
+                };
 
                 ScoreListView.Items.Add(item);
             }

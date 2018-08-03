@@ -37,8 +37,10 @@ namespace Curvature.Widgets
 
             foreach (var scenario in EditingProject.Scenarios)
             {
-                var item = new ListViewItem(scenario.ReadableName);
-                item.Tag = scenario;
+                var item = new ListViewItem(scenario.ReadableName)
+                {
+                    Tag = scenario
+                };
                 ScenariosListView.Items.Add(item);
             }
 

@@ -84,8 +84,10 @@ namespace Curvature
 
         internal Scenario.ConsiderationScores Score(IInputBroker broker, Scenario.Context context)
         {
-            var ret = new Scenario.ConsiderationScores();
-            ret.Considerations = new Dictionary<Consideration, Scenario.Score>();
+            var ret = new Scenario.ConsiderationScores
+            {
+                Considerations = new Dictionary<Consideration, Scenario.Score>()
+            };
 
             double compensationFactor = 1.0 - (1.0 / (double)Considerations.Count);
             double result = Weight;

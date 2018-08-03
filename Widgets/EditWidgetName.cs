@@ -34,11 +34,13 @@ namespace Curvature
             ObjectNameLabel.Visible = false;
             EditIcon.Visible = false;
 
-            var edit = new TextBox();
-            edit.MinimumSize = new Size(85, 0);
-            edit.Size = ObjectNameLabel.Size;
-            edit.Location = ObjectNameLabel.Location;
-            edit.Text = ObjectNameLabel.Text;
+            var edit = new TextBox
+            {
+                MinimumSize = new Size(85, 0),
+                Size = ObjectNameLabel.Size,
+                Location = ObjectNameLabel.Location,
+                Text = ObjectNameLabel.Text
+            };
 
             edit.KeyPress += (o, args) =>
             {

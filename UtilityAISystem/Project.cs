@@ -113,13 +113,17 @@ namespace Curvature
 
         public void SaveToFile(string filename)
         {
-            var settings = new DataContractSerializerSettings();
-            settings.PreserveObjectReferences = true;
+            var settings = new DataContractSerializerSettings
+            {
+                PreserveObjectReferences = true
+            };
 
             var serializer = new DataContractSerializer(typeof(Project), settings);
 
-            var xmlSettings = new XmlWriterSettings();
-            xmlSettings.Indent = true;
+            var xmlSettings = new XmlWriterSettings
+            {
+                Indent = true
+            };
 
             using (var file = XmlWriter.Create(new FileStream(filename, FileMode.Create), xmlSettings))
             {
@@ -132,8 +136,10 @@ namespace Curvature
 
         public static Project Deserialize(string filename)
         {
-            var settings = new DataContractSerializerSettings();
-            settings.PreserveObjectReferences = true;
+            var settings = new DataContractSerializerSettings
+            {
+                PreserveObjectReferences = true
+            };
 
             var deserializer = new DataContractSerializer(typeof(Project), settings);
 
