@@ -12,8 +12,8 @@ namespace Curvature
 {
     public partial class EditWidgetBehavior : UserControl
     {
-        private Behavior EditBehavior;
-        private Project EditProject;
+        private Behavior EditingBehavior;
+        private Project EditingProject;
 
 
         internal delegate void DialogRebuildNeededHandler(Behavior editedContent);
@@ -34,31 +34,31 @@ namespace Curvature
 
         internal void Attach(Behavior behavior, Project project)
         {
-            if (EditBehavior != null)
-                EditBehavior.DialogRebuildNeeded -= Rebuild;
+            if (EditingBehavior != null)
+                EditingBehavior.DialogRebuildNeeded -= Rebuild;
 
-            EditProject = project;
-            EditBehavior = behavior;
+            EditingProject = project;
+            EditingBehavior = behavior;
 
-            if (!string.IsNullOrEmpty(EditBehavior.Payload))
-                CustomPayload.Text = EditBehavior.Payload;
+            if (!string.IsNullOrEmpty(EditingBehavior.Payload))
+                CustomPayload.Text = EditingBehavior.Payload;
             else
                 CustomPayload.Text = "";
 
-            EditBehavior.DialogRebuildNeeded += Rebuild;
+            EditingBehavior.DialogRebuildNeeded += Rebuild;
 
-            BehaviorWeightEditBox.Value = (decimal)EditBehavior.Weight;
+            BehaviorWeightEditBox.Value = (decimal)EditingBehavior.Weight;
 
-            ActionComboBox.SelectedIndex = (int)EditBehavior.Action;
-            CanTargetSelfCheckBox.Checked = EditBehavior.CanTargetSelf;
-            CanTargetOthersCheckBox.Checked = EditBehavior.CanTargetOthers;
+            ActionComboBox.SelectedIndex = (int)EditingBehavior.Action;
+            CanTargetSelfCheckBox.Checked = EditingBehavior.CanTargetSelf;
+            CanTargetOthersCheckBox.Checked = EditingBehavior.CanTargetOthers;
         }
 
 
         internal void Rebuild()
         {
-            Attach(EditBehavior, EditProject);
-            DialogRebuildNeeded?.Invoke(EditBehavior);
+            Attach(EditingBehavior, EditingProject);
+            DialogRebuildNeeded?.Invoke(EditingBehavior);
         }
 
 
@@ -66,57 +66,57 @@ namespace Curvature
 
         private void ActionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (EditBehavior != null)
+            if (EditingBehavior != null)
             {
-                var prev = EditBehavior.Action;
-                EditBehavior.Action = (Behavior.ActionType)ActionComboBox.SelectedIndex;
-                if (prev != EditBehavior.Action)
-                    EditProject.MarkDirty();
+                var prev = EditingBehavior.Action;
+                EditingBehavior.Action = (Behavior.ActionType)ActionComboBox.SelectedIndex;
+                if (prev != EditingBehavior.Action)
+                    EditingProject.MarkDirty();
             }
         }
 
         private void CustomPayload_TextChanged(object sender, EventArgs e)
         {
-            if (EditBehavior != null)
+            if (EditingBehavior != null)
             {
-                var prev = EditBehavior.Payload;
-                EditBehavior.Payload = CustomPayload.Text;
-                if (prev != EditBehavior.Payload)
-                    EditProject.MarkDirty();
+                var prev = EditingBehavior.Payload;
+                EditingBehavior.Payload = CustomPayload.Text;
+                if (prev != EditingBehavior.Payload)
+                    EditingProject.MarkDirty();
             }
         }
 
         private void BehaviorWeightEditBox_ValueChanged(object sender, EventArgs e)
         {
-            if (EditBehavior != null)
+            if (EditingBehavior != null)
             {
-                var prev = EditBehavior.Weight;
-                EditBehavior.Weight = (double)BehaviorWeightEditBox.Value;
-                if (prev != EditBehavior.Weight)
-                    EditProject.MarkDirty();
+                var prev = EditingBehavior.Weight;
+                EditingBehavior.Weight = (double)BehaviorWeightEditBox.Value;
+                if (prev != EditingBehavior.Weight)
+                    EditingProject.MarkDirty();
             }
         }
 
 
         private void CanTargetSelfCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (EditBehavior != null)
+            if (EditingBehavior != null)
             {
-                var prev = EditBehavior.CanTargetSelf;
-                EditBehavior.CanTargetSelf = CanTargetSelfCheckBox.Checked;
-                if (prev != EditBehavior.CanTargetSelf)
-                    EditProject.MarkDirty();
+                var prev = EditingBehavior.CanTargetSelf;
+                EditingBehavior.CanTargetSelf = CanTargetSelfCheckBox.Checked;
+                if (prev != EditingBehavior.CanTargetSelf)
+                    EditingProject.MarkDirty();
             }
         }
 
         private void CanTargetOthersCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (EditBehavior != null)
+            if (EditingBehavior != null)
             {
-                var prev = EditBehavior.CanTargetOthers;
-                EditBehavior.CanTargetOthers = CanTargetOthersCheckBox.Checked;
-                if (EditBehavior.CanTargetOthers != prev)
-                    EditProject.MarkDirty();
+                var prev = EditingBehavior.CanTargetOthers;
+                EditingBehavior.CanTargetOthers = CanTargetOthersCheckBox.Checked;
+                if (EditingBehavior.CanTargetOthers != prev)
+                    EditingProject.MarkDirty();
             }
         }
     }

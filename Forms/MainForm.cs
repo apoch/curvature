@@ -35,7 +35,7 @@ namespace Curvature
                 }
 
                 if (response == DialogResult.Yes)
-                    saveProjectAsToolStripMenuItem_Click(null, null);
+                    SaveProjectAsToolStripMenuItem_Click(null, null);
             };
 
             EditingProject = new Project();
@@ -77,7 +77,7 @@ namespace Curvature
         }
 
 
-        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SaveFileDialogBox.ShowDialog() == DialogResult.OK)
             {
@@ -88,7 +88,7 @@ namespace Curvature
             }
         }
 
-        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (OpenFileDialogBox.ShowDialog() == DialogResult.OK)
             {
@@ -132,23 +132,23 @@ namespace Curvature
             SetWindowCaption(EditingProject.IsDirty);
         }
 
-        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(EditingFileName))
             {
-                saveProjectAsToolStripMenuItem_Click(null, null);
+                SaveProjectAsToolStripMenuItem_Click(null, null);
                 return;
             }
 
             EditingProject.SaveToFile(EditingFileName);
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditingProject = new Project();
             EditingFileName = null;

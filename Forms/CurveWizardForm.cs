@@ -13,25 +13,25 @@ namespace Curvature
 {
     public partial class CurveWizardForm : Form
     {
-        private Consideration EditConsideration;
-        private Project EditProject;
+        private Consideration EditingConsideration;
+        private Project EditingProject;
         
         public CurveWizardForm(Project project, Consideration consideration)
         {
             InitializeComponent();
-            EditConsideration = consideration;
-            EditProject = project;
+            EditingConsideration = consideration;
+            EditingProject = project;
 
-            foreach (InputAxis axis in EditProject.Inputs)
+            foreach (InputAxis axis in EditingProject.Inputs)
             {
                 InputComboBox.Items.Add(axis);
             }
 
-            InputComboBox.SelectedItem = EditConsideration.Input;
+            InputComboBox.SelectedItem = EditingConsideration.Input;
 
-            ConsiderationNameEditBox.Text = EditConsideration.ReadableName;
+            ConsiderationNameEditBox.Text = EditingConsideration.ReadableName;
 
-            AdvancedCurvesWidget.AttachCurve(EditConsideration.Curve, EditProject);
+            AdvancedCurvesWidget.AttachCurve(EditingConsideration.Curve, EditingProject);
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -42,19 +42,19 @@ namespace Curvature
 
         private void CopyControlsToConsideration()
         {
-            EditConsideration.Rename(ConsiderationNameEditBox.Text);
-            EditConsideration.Input = InputComboBox.SelectedItem as InputAxis;
+            EditingConsideration.Rename(ConsiderationNameEditBox.Text);
+            EditingConsideration.Input = InputComboBox.SelectedItem as InputAxis;
 
             if (ResponseCurveAdvancedTabs.SelectedTab == ResponseCurvePresetsTab)
             {
-                PresetCurvesWidget.Apply(EditConsideration.Curve);
+                PresetCurvesWidget.Apply(EditingConsideration.Curve);
             }
         }
 
         private void InputComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var axis = InputComboBox.SelectedItem as InputAxis;
-            EditConsideration.Input = axis;
+            EditingConsideration.Input = axis;
 
             ParameterInputHintLabel.Text = "The input being configured is: " + axis.ReadableName;
 
@@ -63,25 +63,25 @@ namespace Curvature
 
             ParamFlowPanel.Controls.Clear();
 
-            EditConsideration.GenerateParameterValuesFromInput();
-            foreach (var param in EditConsideration.ParameterValues)
-                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditProject));
+            EditingConsideration.GenerateParameterValuesFromInput();
+            foreach (var param in EditingConsideration.ParameterValues)
+                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditingProject));
 
-            if (EditConsideration.ParameterValues.Count == 0)
+            if (EditingConsideration.ParameterValues.Count == 0)
                 ParameterHintSpecificsLabel.Text = "This input has no parameters, so go ahead and click Next to move on.";
-            else if (EditConsideration.ParameterValues.Count == 1)
+            else if (EditingConsideration.ParameterValues.Count == 1)
             {
-                if (EditConsideration.ParameterValues[0] is InputParameterValueNumeric)
+                if (EditingConsideration.ParameterValues[0] is InputParameterValueNumeric)
                     ParameterHintSpecificsLabel.Text = "This input has one parameter. By default, input numbers are divided by this value before being processed through a response curve.";
                 else
                 {
-                    if ((EditConsideration.Input.Parameters[0] as InputParameterEnumeration).ScoreOnMatch)
+                    if ((EditingConsideration.Input.Parameters[0] as InputParameterEnumeration).ScoreOnMatch)
                         ParameterHintSpecificsLabel.Text = "This input must have a predefined value; if the subject has the same value assigned, the input will score 1.0.";
                     else
                         ParameterHintSpecificsLabel.Text = "This input must have a predefined value; if the subject has any other value assigned, the input will score 1.0.";
                 }
             }
-            else if (EditConsideration.ParameterValues.Count == 2)
+            else if (EditingConsideration.ParameterValues.Count == 2)
                 ParameterHintSpecificsLabel.Text = "This input controls a range. Input numbers will be normalized to 0-1 using this lower and upper bound.";
             else
                 ParameterHintSpecificsLabel.Text = "This input has multiple parameters. Nobody knows what they do.";

@@ -12,8 +12,8 @@ namespace Curvature
 {
     public partial class EditWidgetKnowledgeBase : UserControl
     {
-        private KnowledgeBase MyKB;
-        private Project EditProject;
+        private KnowledgeBase EditingKB;
+        private Project EditingProject;
 
         public EditWidgetKnowledgeBase()
         {
@@ -22,8 +22,8 @@ namespace Curvature
 
         internal void Attach(KnowledgeBase kb, Project project)
         {
-            MyKB = kb;
-            EditProject = project;
+            EditingKB = kb;
+            EditingProject = project;
             RefreshKBControls();
         }
 
@@ -36,9 +36,9 @@ namespace Curvature
             KnowledgeBaseFlowPanel.Controls.Clear();
 
 
-            foreach (var rec in MyKB.Records)
+            foreach (var rec in EditingKB.Records)
             {
-                KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec, EditProject));
+                KnowledgeBaseFlowPanel.Controls.Add(new EditWidgetKnowledgeBaseRecord(rec, EditingProject));
             }
 
             var newRecordButton = new Button
@@ -54,8 +54,8 @@ namespace Curvature
 
             newRecordButton.Click += (e, args) =>
             {
-                MyKB.Records.Add(new KnowledgeBase.Record("New knowledge", false, KnowledgeBase.Record.Parameterization.FixedRange));
-                EditProject.MarkDirty();
+                EditingKB.Records.Add(new KnowledgeBase.Record("New knowledge", false, KnowledgeBase.Record.Parameterization.FixedRange));
+                EditingProject.MarkDirty();
                 RefreshKBControls();
             };
 

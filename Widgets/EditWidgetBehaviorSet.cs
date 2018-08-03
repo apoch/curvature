@@ -12,8 +12,8 @@ namespace Curvature
 {
     public partial class EditWidgetBehaviorSet : UserControl, IInputBroker
     {
-        private BehaviorSet EditSet;
-        private Project EditProject;
+        private BehaviorSet EditingSet;
+        private Project EditingProject;
 
         internal delegate void DialogRebuildNeededHandler(BehaviorSet editedSet);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
@@ -30,20 +30,20 @@ namespace Curvature
             EnabledBehaviorsListBox.ItemCheck += (e, args) =>
             {
                 RefreshTimer.Enabled = true;
-                if (EditSet != null)
+                if (EditingSet != null)
                 {
                     var behavior = EnabledBehaviorsListBox.Items[args.Index] as Behavior;
-                    bool enabled = EditSet.EnabledBehaviors.Contains(behavior);
+                    bool enabled = EditingSet.EnabledBehaviors.Contains(behavior);
                     bool makeEnabled = (args.NewValue == CheckState.Checked);
 
                     if (makeEnabled)
-                        EditSet.EnabledBehaviors.Add(behavior);
+                        EditingSet.EnabledBehaviors.Add(behavior);
                     else
-                        EditSet.EnabledBehaviors.Remove(behavior);
+                        EditingSet.EnabledBehaviors.Remove(behavior);
 
 
                     if (enabled != makeEnabled)
-                        EditProject.MarkDirty();
+                        EditingProject.MarkDirty();
                 }
             };
 
@@ -59,20 +59,20 @@ namespace Curvature
 
         public void Attach(BehaviorSet set, Project project)
         {
-            if (EditSet != null)
-                EditSet.DialogRebuildNeeded -= Rebuild;
+            if (EditingSet != null)
+                EditingSet.DialogRebuildNeeded -= Rebuild;
 
-            EditSet = set;
-            EditProject = project;
+            EditingSet = set;
+            EditingProject = project;
 
-            EditSet.DialogRebuildNeeded += Rebuild;
+            EditingSet.DialogRebuildNeeded += Rebuild;
 
             NameEditWidget.Attach("Behavior Set", set, project);
 
             EnabledBehaviorsListBox.Items.Clear();
             foreach (Behavior b in project.Behaviors)
             {
-                EnabledBehaviorsListBox.Items.Add(b, EditSet.EnabledBehaviors.Contains(b));
+                EnabledBehaviorsListBox.Items.Add(b, EditingSet.EnabledBehaviors.Contains(b));
             }
 
             RefreshInputControls();
@@ -201,8 +201,8 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            Attach(EditSet, EditProject);
-            DialogRebuildNeeded?.Invoke(EditSet);
+            Attach(EditingSet, EditingProject);
+            DialogRebuildNeeded?.Invoke(EditingSet);
         }
     }
 }

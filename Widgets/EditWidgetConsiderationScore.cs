@@ -12,35 +12,35 @@ namespace Curvature
 {
     public partial class EditWidgetConsiderationScore : UserControl
     {
-        private Consideration EditConsideration;
+        private Consideration EditingConsideration;
         private IInputBroker InputBroker;
 
         internal EditWidgetConsiderationScore(Consideration consideration, IInputBroker broker)
         {
             InitializeComponent();
-            EditConsideration = consideration;
+            EditingConsideration = consideration;
             InputBroker = broker;
 
-            ConsiderationNameLabel.Text = EditConsideration.ReadableName + " (0.0) x";
+            ConsiderationNameLabel.Text = EditingConsideration.ReadableName + " (0.0) x";
 
             ResponseCurvePictureBox.Paint += (e, args) =>
             {
-                Point previousPoint = ConvertXYToPoint(0.0, EditConsideration.Curve.ComputeValue(0.0));
+                Point previousPoint = ConvertXYToPoint(0.0, EditingConsideration.Curve.ComputeValue(0.0));
 
                 for (double x = 0.0; x <= 1.0; x += 0.001)
                 {
-                    double y = EditConsideration.Curve.ComputeValue(x);
+                    double y = EditingConsideration.Curve.ComputeValue(x);
                     Point p = ConvertXYToPoint(x, y);
 
                     args.Graphics.DrawLine(Pens.Blue, previousPoint, p);
                     previousPoint = p;
                 }
 
-                double inputX = InputBroker.GetInputValue(EditConsideration);
-                inputX = EditConsideration.NormalizeInput(inputX);
-                double inputY = EditConsideration.Curve.ComputeValue(inputX);
+                double inputX = InputBroker.GetInputValue(EditingConsideration);
+                inputX = EditingConsideration.NormalizeInput(inputX);
+                double inputY = EditingConsideration.Curve.ComputeValue(inputX);
 
-                string name = EditConsideration.ReadableName;
+                string name = EditingConsideration.ReadableName;
                 ConsiderationNameLabel.Text = $"{name} ({inputX:f3}) x";
                 ScoreLabel.Text = $"= {inputY:f3}";
 
@@ -54,14 +54,14 @@ namespace Curvature
 
         public double GetValue()
         {
-            double inputX = InputBroker.GetInputValue(EditConsideration);
-            inputX = EditConsideration.NormalizeInput(inputX);
-            return EditConsideration.Curve.ComputeValue(inputX);
+            double inputX = InputBroker.GetInputValue(EditingConsideration);
+            inputX = EditingConsideration.NormalizeInput(inputX);
+            return EditingConsideration.Curve.ComputeValue(inputX);
         }
 
         public string GetName()
         {
-            return EditConsideration.ReadableName;
+            return EditingConsideration.ReadableName;
         }
 
         private Point ConvertXYToPoint(double x, double y)

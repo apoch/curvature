@@ -54,13 +54,7 @@ namespace Curvature
         internal delegate void ProjectDirtiedHandler(bool dirty);
         internal event ProjectDirtiedHandler ProjectDirtied;
 
-
-        private bool Dirty;
-
-        internal bool IsDirty
-        {
-            get { return Dirty; }
-        }
+        internal bool IsDirty { get; private set; }
 
         private Dictionary<string, InputAxis> InputLookupByName;
 
@@ -112,8 +106,8 @@ namespace Curvature
 
         public void MarkDirty()
         {
-            Dirty = true;
-            ProjectDirtied?.Invoke(Dirty);
+            IsDirty = true;
+            ProjectDirtied?.Invoke(IsDirty);
         }
 
 
@@ -137,8 +131,8 @@ namespace Curvature
             stream.Close();
             stream.Dispose();
 
-            Dirty = false;
-            ProjectDirtied?.Invoke(Dirty);
+            IsDirty = false;
+            ProjectDirtied?.Invoke(IsDirty);
         }
 
         public static Project Deserialize(string filename)
@@ -154,7 +148,7 @@ namespace Curvature
             file.Close();
             file.Dispose();
 
-            ret.Dirty = false;
+            ret.IsDirty = false;
             ret.ProjectDirtied?.Invoke(false);
 
             foreach (Scenario s in ret.Scenarios)

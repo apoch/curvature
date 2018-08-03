@@ -12,10 +12,6 @@ namespace Curvature.Widgets
 {
     public partial class EditWidgetCurveAdvanced : UserControl
     {
-        private ResponseCurve EditCurve = null;
-        private Project EditProject = null;
-
-
         public EditWidgetCurveAdvanced()
         {
             InitializeComponent();
@@ -23,9 +19,6 @@ namespace Curvature.Widgets
 
         internal void AttachCurve(ResponseCurve curve, Project project)
         {
-            EditCurve = curve;
-            EditProject = project;
-
             ResponseCurveEditor.AttachCurve(curve, project);
         }
     }

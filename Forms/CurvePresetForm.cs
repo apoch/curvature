@@ -14,10 +14,10 @@ namespace Curvature
     {
         private ResponseCurve EditingCurve;
 
-        public CurvePresetForm(ResponseCurve editcurve)
+        public CurvePresetForm(ResponseCurve editingcurve)
         {
             InitializeComponent();
-            EditingCurve = editcurve;
+            EditingCurve = editingcurve;
         }
 
 

@@ -12,8 +12,8 @@ namespace Curvature
 {
     public partial class EditWidgetName : UserControl
     {
-        private INameable EditedObject;
-        private Project EditedProject;
+        private INameable EditingObject;
+        private Project EditingProject;
 
         public EditWidgetName()
         {
@@ -22,11 +22,11 @@ namespace Curvature
 
         internal void Attach(string objectType, INameable editedObject, Project project)
         {
-            EditedObject = editedObject;
-            EditedProject = project;
+            EditingObject = editedObject;
+            EditingProject = project;
 
             ObjectTypeLabel.Text = $"{objectType}:";
-            ObjectNameLabel.Text = EditedObject.GetName();
+            ObjectNameLabel.Text = EditingObject.GetName();
         }
 
         private void EditIcon_Click(object sender, EventArgs e)
@@ -50,8 +50,8 @@ namespace Curvature
                     ObjectNameLabel.Text = edit.Text;
                     ObjectNameLabel.Visible = true;
                     EditIcon.Visible = true;
-                    EditedObject.Rename(edit.Text);
-                    EditedProject.MarkDirty();
+                    EditingObject.Rename(edit.Text);
+                    EditingProject.MarkDirty();
                     edit.Dispose();
                 }
                 else if (args.KeyChar == '\u001b')        // Escape
@@ -67,8 +67,8 @@ namespace Curvature
                 if (ObjectNameLabel.Visible)
                     return;
 
-                EditedObject.Rename(edit.Text);
-                EditedProject.MarkDirty();
+                EditingObject.Rename(edit.Text);
+                EditingProject.MarkDirty();
                 ObjectNameLabel.Text = edit.Text;
                 ObjectNameLabel.Visible = true;
                 EditIcon.Visible = true;

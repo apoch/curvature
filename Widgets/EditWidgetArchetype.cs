@@ -12,8 +12,8 @@ namespace Curvature
 {
     public partial class EditWidgetArchetype : UserControl
     {
-        private Archetype EditArchetype;
-        private Project EditProject;
+        private Archetype EditingArchetype;
+        private Project EditingProject;
 
         internal delegate void DialogRebuildNeededHandler(Archetype editedContent);
         internal event DialogRebuildNeededHandler DialogRebuildNeeded;
@@ -25,48 +25,48 @@ namespace Curvature
 
             EnabledBehaviorSetsListBox.ItemCheck += (e, args) =>
             {
-                if (EditArchetype == null)
+                if (EditingArchetype == null)
                     return;
 
                 var set = EnabledBehaviorSetsListBox.Items[args.Index] as BehaviorSet;
 
                 if (args.NewValue == CheckState.Checked)
                 {
-                    if (EditArchetype.BehaviorSets.Contains(set))
+                    if (EditingArchetype.BehaviorSets.Contains(set))
                         return;
 
-                    EditArchetype.BehaviorSets.Add(set);
+                    EditingArchetype.BehaviorSets.Add(set);
                 }
                 else
                 {
-                    EditArchetype.BehaviorSets.Remove(set);
+                    EditingArchetype.BehaviorSets.Remove(set);
                 }
 
-                EditProject.MarkDirty();
+                EditingProject.MarkDirty();
             };
         }
 
         internal void Attach(Archetype archetype, Project project)
         {
-            if (EditArchetype != null)
-                EditArchetype.DialogRebuildNeeded -= Rebuild;
+            if (EditingArchetype != null)
+                EditingArchetype.DialogRebuildNeeded -= Rebuild;
 
-            EditArchetype = archetype;
-            NameEditWidget.Attach("Archetype", EditArchetype, project);
-            EditArchetype.DialogRebuildNeeded += Rebuild;
-            EditProject = project;
+            EditingArchetype = archetype;
+            NameEditWidget.Attach("Archetype", EditingArchetype, project);
+            EditingArchetype.DialogRebuildNeeded += Rebuild;
+            EditingProject = project;
 
             EnabledBehaviorSetsListBox.Items.Clear();
             foreach (var behaviorSet in project.BehaviorSets)
             {
-                EnabledBehaviorSetsListBox.Items.Add(behaviorSet, EditArchetype.BehaviorSets.Contains(behaviorSet));
+                EnabledBehaviorSetsListBox.Items.Add(behaviorSet, EditingArchetype.BehaviorSets.Contains(behaviorSet));
             }
         }
 
         internal void Rebuild()
         {
-            Attach(EditArchetype, EditProject);
-            DialogRebuildNeeded?.Invoke(EditArchetype);
+            Attach(EditingArchetype, EditingProject);
+            DialogRebuildNeeded?.Invoke(EditingArchetype);
         }
     }
 }

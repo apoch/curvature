@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Curvature Studio")]
-[assembly: AssemblyDescription("A full-featured edit for working with Utility-based AI")]
+[assembly: AssemblyDescription("A full-featured editor for working with Utility-based AI")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Curvature")]

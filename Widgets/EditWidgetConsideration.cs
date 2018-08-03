@@ -13,8 +13,8 @@ namespace Curvature
 {
     public partial class EditWidgetConsideration : UserControl
     {
-        private Consideration EditConsideration;
-        private Project EditProject;
+        private Consideration EditingConsideration;
+        private Project EditingProject;
 
 
         internal delegate void DialogRebuildNeededHandler(Consideration editedContent);
@@ -28,15 +28,15 @@ namespace Curvature
 
         internal void Attach(Project project, Consideration editConsideration)
         {
-            if (EditConsideration != null)
-                EditConsideration.DialogRebuildNeeded -= Rebuild;
+            if (EditingConsideration != null)
+                EditingConsideration.DialogRebuildNeeded -= Rebuild;
 
-            EditConsideration = editConsideration;
-            EditProject = project;
+            EditingConsideration = editConsideration;
+            EditingProject = project;
 
-            EditConsideration.DialogRebuildNeeded += Rebuild;
+            EditingConsideration.DialogRebuildNeeded += Rebuild;
 
-            NameEditWidget.Attach("Consideration", EditConsideration, project);
+            NameEditWidget.Attach("Consideration", EditingConsideration, project);
 
             InputAxisDropdown.Items.Clear();
             foreach (InputAxis axis in project.Inputs)
@@ -44,61 +44,61 @@ namespace Curvature
                 InputAxisDropdown.Items.Add(axis);
             }
 
-            InputAxisDropdown.SelectedItem = EditConsideration.Input;
-            ResponseCurveEditor.AttachCurve(EditConsideration.Curve, EditProject);
+            InputAxisDropdown.SelectedItem = EditingConsideration.Input;
+            ResponseCurveEditor.AttachCurve(EditingConsideration.Curve, EditingProject);
 
-            WrapInputCheckBox.Checked = EditConsideration.WrapInput;
+            WrapInputCheckBox.Checked = EditingConsideration.WrapInput;
         }
 
         private void CurveWizardButton_Click(object sender, EventArgs e)
         {
-            var prev = new Consideration(EditConsideration.GetName());
-            prev.CopyFrom(EditConsideration);
+            var prev = new Consideration(EditingConsideration.GetName());
+            prev.CopyFrom(EditingConsideration);
 
-            var result = (new CurveWizardForm(EditProject, EditConsideration)).ShowDialog();
+            var result = (new CurveWizardForm(EditingProject, EditingConsideration)).ShowDialog();
             if (result == DialogResult.OK)
             {
-                EditProject.MarkDirty();
+                EditingProject.MarkDirty();
                 Rebuild();
             }
             else
-                EditConsideration.CopyFrom(prev);
+                EditingConsideration.CopyFrom(prev);
         }
 
         private void InputAxisDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var prev = EditConsideration.Input;
+            var prev = EditingConsideration.Input;
 
             var axis = InputAxisDropdown.SelectedItem as InputAxis;
-            EditConsideration.Input = axis;
+            EditingConsideration.Input = axis;
 
             foreach (Control c in ParamFlowPanel.Controls)
                 c.Dispose();
 
             ParamFlowPanel.Controls.Clear();
 
-            EditConsideration.GenerateParameterValuesFromInput();
-            foreach (var param in EditConsideration.ParameterValues)
-                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditProject));
+            EditingConsideration.GenerateParameterValuesFromInput();
+            foreach (var param in EditingConsideration.ParameterValues)
+                ParamFlowPanel.Controls.Add(new EditWidgetParameterValue(param, EditingProject));
 
-            if (prev != EditConsideration.Input)
-                EditProject.MarkDirty();
+            if (prev != EditingConsideration.Input)
+                EditingProject.MarkDirty();
         }
 
         internal void Rebuild()
         {
-            Attach(EditProject, EditConsideration);
-            DialogRebuildNeeded?.Invoke(EditConsideration);
+            Attach(EditingProject, EditingConsideration);
+            DialogRebuildNeeded?.Invoke(EditingConsideration);
         }
 
         private void WrapInputCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            var prev = EditConsideration.WrapInput;
+            var prev = EditingConsideration.WrapInput;
 
-            EditConsideration.WrapInput = WrapInputCheckBox.Checked;
+            EditingConsideration.WrapInput = WrapInputCheckBox.Checked;
 
-            if (prev != EditConsideration.WrapInput)
-                EditProject.MarkDirty();
+            if (prev != EditingConsideration.WrapInput)
+                EditingProject.MarkDirty();
         }
     }
 }

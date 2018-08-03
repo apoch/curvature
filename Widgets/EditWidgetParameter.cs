@@ -12,22 +12,22 @@ namespace Curvature
 {
     public partial class EditWidgetParameter : UserControl
     {
-        private InputParameter EditParameter;
-        private Project EditProject;
+        private InputParameter EditingParameter;
+        private Project EditingProject;
 
 
         internal EditWidgetParameter(InputParameter param, Project project)
         {
             InitializeComponent();
 
-            EditProject = project;
-            EditParameter = param;
+            EditingProject = project;
+            EditingParameter = param;
 
-            ParameterNameLabel.Text = EditParameter.ReadableName;
+            ParameterNameLabel.Text = EditingParameter.ReadableName;
 
-            if (EditParameter is InputParameterNumeric)
+            if (EditingParameter is InputParameterNumeric)
             {
-                var p = EditParameter as InputParameterNumeric;
+                var p = EditingParameter as InputParameterNumeric;
 
                 MinimumValue.Minimum = (decimal)p.MinimumValue;
                 MaximumValue.Maximum = (decimal)p.MaximumValue;
@@ -38,9 +38,9 @@ namespace Curvature
                 NumericPanel.Visible = true;
                 EnumerationPanel.Visible = false;
             }
-            else if (EditParameter is InputParameterEnumeration)
+            else if (EditingParameter is InputParameterEnumeration)
             {
-                var p = EditParameter as InputParameterEnumeration;
+                var p = EditingParameter as InputParameterEnumeration;
 
                 if (p.ScoreOnMatch)
                     EnumerationDropDown.SelectedIndex = 0;
@@ -54,7 +54,7 @@ namespace Curvature
 
         private void MinimumValue_ValueChanged(object sender, EventArgs e)
         {
-            var p = EditParameter as InputParameterNumeric;
+            var p = EditingParameter as InputParameterNumeric;
             if (p == null)
                 return;
 
@@ -63,12 +63,12 @@ namespace Curvature
             p.MinimumValue = (float)MinimumValue.Value;
 
             if (prev != p.MinimumValue)
-                EditProject.MarkDirty();
+                EditingProject.MarkDirty();
         }
 
         private void MaximumValue_ValueChanged(object sender, EventArgs e)
         {
-            var p = EditParameter as InputParameterNumeric;
+            var p = EditingParameter as InputParameterNumeric;
             if (p == null)
                 return;
 
@@ -77,12 +77,12 @@ namespace Curvature
             p.MaximumValue = (float)MaximumValue.Value;
 
             if (prev != p.MaximumValue)
-                EditProject.MarkDirty();
+                EditingProject.MarkDirty();
         }
 
         private void EnumerationDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var p = EditParameter as InputParameterEnumeration;
+            var p = EditingParameter as InputParameterEnumeration;
             if (p == null)
                 return;
 
@@ -91,7 +91,7 @@ namespace Curvature
             p.ScoreOnMatch = (EnumerationDropDown.SelectedIndex == 0);
 
             if (prev != p.ScoreOnMatch)
-                EditProject.MarkDirty();
+                EditingProject.MarkDirty();
         }
     }
 }

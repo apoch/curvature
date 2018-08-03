@@ -12,8 +12,8 @@ namespace Curvature.Widgets
 {
     public partial class EditWidgetBehaviorScoring : UserControl, IInputBroker
     {
-        private Behavior EditBehavior;
-        private Project EditProject;
+        private Behavior EditingBehavior;
+        private Project EditingProject;
 
 
         internal delegate void DialogRebuildNeededHandler();
@@ -28,10 +28,10 @@ namespace Curvature.Widgets
 
         internal void Attach(Behavior behavior, Project project)
         {
-            if (EditBehavior != null)
-                EditBehavior.DialogRebuildNeeded -= Rebuild;
+            if (EditingBehavior != null)
+                EditingBehavior.DialogRebuildNeeded -= Rebuild;
 
-            EditProject = project;
+            EditingProject = project;
 
             foreach (Control ctl in ScoreLayoutPanel.Controls)
                 ctl.Dispose();
@@ -45,12 +45,12 @@ namespace Curvature.Widgets
             InputFlowPanel.Controls.Clear();
 
 
-            EditBehavior = behavior;
-            EditBehavior.DialogRebuildNeeded += Rebuild;
+            EditingBehavior = behavior;
+            EditingBehavior.DialogRebuildNeeded += Rebuild;
 
 
             var inputs = new Dictionary<InputAxis, List<InputAxis>>();
-            foreach (var consideration in EditBehavior.Considerations)
+            foreach (var consideration in EditingBehavior.Considerations)
             {
                 if (consideration.Input != null)
                 {
@@ -83,7 +83,7 @@ namespace Curvature.Widgets
 
         internal void Rebuild()
         {
-            Attach(EditBehavior, EditProject);
+            Attach(EditingBehavior, EditingProject);
             DialogRebuildNeeded?.Invoke();
         }
 
@@ -92,7 +92,7 @@ namespace Curvature.Widgets
         {
             ScoreListView.Items.Clear();
 
-            double finalScore = EditBehavior.Weight;
+            double finalScore = EditingBehavior.Weight;
             double compensationFactor = 1.0 - (1.0 / (double)ScoreLayoutPanel.Controls.Count);
 
             var weightItem = new ListViewItem(new string[] { $"{finalScore:f3}", "Behavior weight" });

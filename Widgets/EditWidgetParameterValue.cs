@@ -12,7 +12,7 @@ namespace Curvature.Widgets
 {
     public partial class EditWidgetParameterValue : UserControl
     {
-        private InputParameterValue Parameter;
+        private InputParameterValue EditingParameter;
         private Project EditingProject;
 
 
@@ -21,9 +21,9 @@ namespace Curvature.Widgets
             InitializeComponent();
 
             EditingProject = project;
-            Parameter = param;
+            EditingParameter = param;
 
-            ParamNameLabel.Text = Parameter.GetControllingParameter().ReadableName;
+            ParamNameLabel.Text = EditingParameter.GetControllingParameter().ReadableName;
 
             if (param is InputParameterValueNumeric)
             {
@@ -51,10 +51,10 @@ namespace Curvature.Widgets
 
         private void ValueUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (!(Parameter is InputParameterValueNumeric))
+            if (!(EditingParameter is InputParameterValueNumeric))
                 return;
 
-            var param = Parameter as InputParameterValueNumeric;
+            var param = EditingParameter as InputParameterValueNumeric;
             var prev = param.Value;
 
             param.Value = (float)ValueUpDown.Value;
@@ -65,10 +65,10 @@ namespace Curvature.Widgets
 
         private void InputValueDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!(Parameter is InputParameterValueEnumeration))
+            if (!(EditingParameter is InputParameterValueEnumeration))
                 return;
 
-            var param = Parameter as InputParameterValueEnumeration;
+            var param = EditingParameter as InputParameterValueEnumeration;
             var prev = param.Key;
 
             param.Key = InputValueDropDown.SelectedItem as string;

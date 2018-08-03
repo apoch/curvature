@@ -12,10 +12,10 @@ namespace Curvature
 {
     public partial class EditWidgetResponseCurve : UserControl
     {
-        private ResponseCurve EditCurve = null;
-        private Project EditProject = null;
+        private ResponseCurve EditingCurve = null;
+        private Project EditingProject = null;
 
-        private Pen ThickBlackArrowPen = new Pen(Color.Black, 2.0f);
+        private static Pen ThickBlackArrowPen = new Pen(Color.Black, 2.0f);
 
 
 
@@ -44,14 +44,14 @@ namespace Curvature
                 args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(0.5, -0.04), ConvertXYToPoint(0.5, 0.04));
                 args.Graphics.DrawLine(Pens.Black, ConvertXYToPoint(0.75, -0.035), ConvertXYToPoint(0.75, 0.035));
 
-                if (EditCurve == null)
+                if (EditingCurve == null)
                     return;
 
-                Point previousPoint = ConvertXYToPoint(0.0, EditCurve.ComputeValue(0.0));
+                Point previousPoint = ConvertXYToPoint(0.0, EditingCurve.ComputeValue(0.0));
 
                 for (double x = 0.0; x <= 1.0; x += 0.001)
                 {
-                    double y = EditCurve.ComputeValue(x);
+                    double y = EditingCurve.ComputeValue(x);
                     Point p = ConvertXYToPoint(x, y);
 
                     args.Graphics.DrawLine(Pens.Blue, previousPoint, p);
@@ -61,31 +61,31 @@ namespace Curvature
 
             SlopeEditBox.ValueChanged += (e, args) =>
             {
-                if (EditCurve == null)
+                if (EditingCurve == null)
                     return;
 
-                var prev = EditCurve.Slope;
+                var prev = EditingCurve.Slope;
 
-                EditCurve.Slope = (double)SlopeEditBox.Value;
+                EditingCurve.Slope = (double)SlopeEditBox.Value;
 
-                if (prev != EditCurve.Slope)
-                    EditProject.MarkDirty();
+                if (prev != EditingCurve.Slope)
+                    EditingProject.MarkDirty();
 
                 CurvePictureBox.Refresh();
             };
 
             ExponentEditBox.ValueChanged += (e, args) =>
             {
-                if (EditCurve == null)
+                if (EditingCurve == null)
                     return;
 
 
-                var prev = EditCurve.Exponent;
+                var prev = EditingCurve.Exponent;
 
-                EditCurve.Exponent = (double)ExponentEditBox.Value;
+                EditingCurve.Exponent = (double)ExponentEditBox.Value;
 
-                if (prev != EditCurve.Exponent)
-                    EditProject.MarkDirty();
+                if (prev != EditingCurve.Exponent)
+                    EditingProject.MarkDirty();
 
 
                 CurvePictureBox.Refresh();
@@ -93,16 +93,16 @@ namespace Curvature
 
             HorizontalShiftEditBox.ValueChanged += (e, args) =>
             {
-                if (EditCurve == null)
+                if (EditingCurve == null)
                     return;
 
 
-                var prev = EditCurve.XShift;
+                var prev = EditingCurve.XShift;
 
-                EditCurve.XShift = (double)HorizontalShiftEditBox.Value;
+                EditingCurve.XShift = (double)HorizontalShiftEditBox.Value;
 
-                if (prev != EditCurve.XShift)
-                    EditProject.MarkDirty();
+                if (prev != EditingCurve.XShift)
+                    EditingProject.MarkDirty();
 
 
                 CurvePictureBox.Refresh();
@@ -110,15 +110,15 @@ namespace Curvature
 
             VerticalShiftEditBox.ValueChanged += (e, args) =>
             {
-                if (EditCurve == null)
+                if (EditingCurve == null)
                     return;
 
-                var prev = EditCurve.YShift;
+                var prev = EditingCurve.YShift;
 
-                EditCurve.YShift = (double)VerticalShiftEditBox.Value;
+                EditingCurve.YShift = (double)VerticalShiftEditBox.Value;
 
-                if (prev != EditCurve.YShift)
-                    EditProject.MarkDirty();
+                if (prev != EditingCurve.YShift)
+                    EditingProject.MarkDirty();
 
                 CurvePictureBox.Refresh();
             };
@@ -126,8 +126,8 @@ namespace Curvature
 
         internal void AttachCurve(ResponseCurve curve, Project project)
         {
-            EditProject = project;
-            EditCurve = curve;
+            EditingProject = project;
+            EditingCurve = curve;
 
             CurveTypeDropdown.SelectedIndex = (int)curve.Type;
             SlopeEditBox.Value = (decimal)curve.Slope;
@@ -160,16 +160,16 @@ namespace Curvature
 
         private void CurveTypeDropdown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (EditCurve == null)
+            if (EditingCurve == null)
                 return;
 
-            var prev = EditCurve.Type;
+            var prev = EditingCurve.Type;
 
-            EditCurve.Type = (ResponseCurve.CurveType)CurveTypeDropdown.SelectedIndex;
+            EditingCurve.Type = (ResponseCurve.CurveType)CurveTypeDropdown.SelectedIndex;
             CurvePictureBox.Refresh();
 
-            if (EditCurve.Type != prev)
-                EditProject.MarkDirty();
+            if (EditingCurve.Type != prev)
+                EditingProject.MarkDirty();
         }
 
         private void ShiftLeftButton_Click(object sender, EventArgs e)

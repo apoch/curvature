@@ -12,36 +12,36 @@ namespace Curvature
 {
     public partial class EditWidgetKnowledgeBaseRecord : UserControl
     {
-        private KnowledgeBase.Record EditRec;
-        private Project EditProject;
+        private KnowledgeBase.Record EditingRec;
+        private Project EditingProject;
 
         internal EditWidgetKnowledgeBaseRecord(KnowledgeBase.Record rec, Project project)
         {
             InitializeComponent();
-            EditRec = rec;
-            EditProject = project;
+            EditingRec = rec;
+            EditingProject = project;
 
-            RecordTagEditBox.Text = EditRec.ReadableName;
+            RecordTagEditBox.Text = EditingRec.ReadableName;
 
-            if (EditRec.Computed)
+            if (EditingRec.Computed)
                 OriginComboBox.SelectedIndex = 1;
             else
                 OriginComboBox.SelectedIndex = 0;
 
-            ClampingBehaviorComboBox.SelectedIndex = (int)EditRec.Params;
+            ClampingBehaviorComboBox.SelectedIndex = (int)EditingRec.Params;
 
-            if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+            if (EditingRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
             {
                 UpdateEnumeration();
             }
             else
             {
-                RangeMinimum.Value = (decimal)EditRec.MinimumValue;
-                RangeMaximum.Value = (decimal)EditRec.MaximumValue;
+                RangeMinimum.Value = (decimal)EditingRec.MinimumValue;
+                RangeMaximum.Value = (decimal)EditingRec.MaximumValue;
             }
 
-            if (EditRec.Prefab != KnowledgeBase.Record.Prefabs.NoPrefab)
-                PrefabComboBox.SelectedIndex = (int)(EditRec.Prefab) - 1;
+            if (EditingRec.Prefab != KnowledgeBase.Record.Prefabs.NoPrefab)
+                PrefabComboBox.SelectedIndex = (int)(EditingRec.Prefab) - 1;
             else
                 PrefabPanel.Visible = false;
 
@@ -53,26 +53,26 @@ namespace Curvature
 
         private void RecordTagEditBox_TextChanged(object sender, EventArgs e)
         {
-            if (EditRec.ReadableName.Equals(RecordTagEditBox.Text))
+            if (EditingRec.ReadableName.Equals(RecordTagEditBox.Text))
                 return;
 
-            EditRec.ReadableName = RecordTagEditBox.Text;
-            EditProject.MarkDirty();
+            EditingRec.ReadableName = RecordTagEditBox.Text;
+            EditingProject.MarkDirty();
         }
 
         private void UpdateComputedMode()
         {
-            var prev = EditRec.Computed;
+            var prev = EditingRec.Computed;
 
             if (OriginComboBox.SelectedIndex == 1)
-                EditRec.Computed = true;
+                EditingRec.Computed = true;
             else
-                EditRec.Computed = false;
+                EditingRec.Computed = false;
 
-            if (prev != EditRec.Computed)
-                EditProject.MarkDirty();
+            if (prev != EditingRec.Computed)
+                EditingProject.MarkDirty();
 
-            PrefabPanel.Visible = EditRec.Computed;
+            PrefabPanel.Visible = EditingRec.Computed;
         }
 
         private void OriginComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,19 +82,19 @@ namespace Curvature
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            EditProject.Delete(EditRec);
+            EditingProject.Delete(EditingRec);
         }
 
         private void ClampingBehaviorComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var prev = EditRec.Params;
+            var prev = EditingRec.Params;
 
-            EditRec.Params = (KnowledgeBase.Record.Parameterization)ClampingBehaviorComboBox.SelectedIndex;
+            EditingRec.Params = (KnowledgeBase.Record.Parameterization)ClampingBehaviorComboBox.SelectedIndex;
 
-            if (prev != EditRec.Params)
-                EditProject.MarkDirty();
+            if (prev != EditingRec.Params)
+                EditingProject.MarkDirty();
 
-            if (EditRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
+            if (EditingRec.Params == KnowledgeBase.Record.Parameterization.Enumeration)
             {
                 RangeConfigurationPanel.Visible = false;
                 EnumerationPanel.Visible = true;
@@ -108,39 +108,39 @@ namespace Curvature
 
         private void RangeMinimum_ValueChanged(object sender, EventArgs e)
         {
-            var prev = EditRec.MinimumValue;
+            var prev = EditingRec.MinimumValue;
 
-            EditRec.MinimumValue = (double)RangeMinimum.Value;
+            EditingRec.MinimumValue = (double)RangeMinimum.Value;
 
-            if (prev != EditRec.MinimumValue)
-                EditProject.MarkDirty();
+            if (prev != EditingRec.MinimumValue)
+                EditingProject.MarkDirty();
         }
 
         private void RangeMaximum_ValueChanged(object sender, EventArgs e)
         {
-            var prev = EditRec.MaximumValue;
+            var prev = EditingRec.MaximumValue;
 
-            EditRec.MaximumValue = (double)RangeMaximum.Value;
+            EditingRec.MaximumValue = (double)RangeMaximum.Value;
 
-            if (prev != EditRec.MaximumValue)
-                EditProject.MarkDirty();
+            if (prev != EditingRec.MaximumValue)
+                EditingProject.MarkDirty();
         }
 
         private void PrefabComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var prev = EditRec.Prefab;
+            var prev = EditingRec.Prefab;
 
-            EditRec.Prefab = (KnowledgeBase.Record.Prefabs)(PrefabComboBox.SelectedIndex + 1);
+            EditingRec.Prefab = (KnowledgeBase.Record.Prefabs)(PrefabComboBox.SelectedIndex + 1);
 
-            if (prev != EditRec.Prefab)
-                EditProject.MarkDirty();
+            if (prev != EditingRec.Prefab)
+                EditingProject.MarkDirty();
         }
 
         private void UpdateEnumeration()
         {
             EnumerationValidComboBox.Items.Clear();
 
-            foreach (var v in EditRec.EnumerationValues)
+            foreach (var v in EditingRec.EnumerationValues)
                 EnumerationValidComboBox.Items.Add(v);
 
             if (EnumerationValidComboBox.Items.Count > 0)
@@ -149,7 +149,7 @@ namespace Curvature
 
         private void EditEnumerationButton_Click(object sender, EventArgs e)
         {
-            Forms.EnumerationEditorForm.ShowEditor(EditRec.EnumerationValues);
+            Forms.EnumerationEditorForm.ShowEditor(EditingRec.EnumerationValues);
             UpdateEnumeration();
         }
     }

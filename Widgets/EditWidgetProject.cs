@@ -12,7 +12,7 @@ namespace Curvature
 {
     public partial class EditWidgetProject : UserControl
     {
-        private Project EditedProject;
+        private Project EditingProject;
 
 
         internal delegate void GuidanceEventHandler(object sender, EventArgs args);
@@ -35,27 +35,27 @@ namespace Curvature
 
         internal void Attach(Project editedProject)
         {
-            if (EditedProject != null)
-                EditedProject.DialogRebuildNeeded -= Rebuild;
+            if (EditingProject != null)
+                EditingProject.DialogRebuildNeeded -= Rebuild;
 
-            EditedProject = editedProject;
-            NameEditWidget.Attach("Project", EditedProject, EditedProject);
+            EditingProject = editedProject;
+            NameEditWidget.Attach("Project", EditingProject, EditingProject);
 
-            EditedProject.DialogRebuildNeeded += Rebuild;
+            EditingProject.DialogRebuildNeeded += Rebuild;
 
             int considerationCount = 0;
-            foreach (var behavior in EditedProject.Behaviors)
+            foreach (var behavior in EditingProject.Behaviors)
             {
                 considerationCount += behavior.Considerations.Count;
             }
 
-            KnowledgeBaseEntriesLabel.Text = $"Knowledge Base Entries: {EditedProject.KB.Records.Count}";
-            InputAxesLabel.Text = $"Input Axes: {EditedProject.Inputs.Count}";
+            KnowledgeBaseEntriesLabel.Text = $"Knowledge Base Entries: {EditingProject.KB.Records.Count}";
+            InputAxesLabel.Text = $"Input Axes: {EditingProject.Inputs.Count}";
             ConsiderationsLabel.Text = $"Considerations: {considerationCount}";
-            BehaviorsLabel.Text = $"Behaviors: {EditedProject.Behaviors.Count}";
-            BehaviorSetsLabel.Text = $"Behavior Sets: {EditedProject.BehaviorSets.Count}";
-            ArchetypesLabel.Text = $"Archetypes: {EditedProject.Archetypes.Count}";
-            ScenariosLabel.Text = $"Scenarios: {EditedProject.Scenarios.Count}";
+            BehaviorsLabel.Text = $"Behaviors: {EditingProject.Behaviors.Count}";
+            BehaviorSetsLabel.Text = $"Behavior Sets: {EditingProject.BehaviorSets.Count}";
+            ArchetypesLabel.Text = $"Archetypes: {EditingProject.Archetypes.Count}";
+            ScenariosLabel.Text = $"Scenarios: {EditingProject.Scenarios.Count}";
         }
 
         private void WikiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -90,7 +90,7 @@ namespace Curvature
 
         internal void Rebuild()
         {
-            Attach(EditedProject);
+            Attach(EditingProject);
             DialogRebuildNeeded?.Invoke();
         }
 
