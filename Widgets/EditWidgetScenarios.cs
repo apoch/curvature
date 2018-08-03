@@ -100,8 +100,6 @@ namespace Curvature.Widgets
             EditingProject.Scenarios.Add(scenario);
             EditingProject.MarkDirty();
             RefreshScenarioControls(scenario);
-
-            EditingProject.MarkDirty();
         }
     }
 }
