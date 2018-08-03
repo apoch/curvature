@@ -25,8 +25,6 @@ namespace Curvature
 
         public EditWidgetScenario()
         {
-            // TODO - #40 - hook up to project and mark dirty as appropriate
-
             InitializeComponent();
 
             AbsoluteTime = 0.0f;
@@ -106,6 +104,7 @@ namespace Curvature
                 agent.Name = args.Label;
 
                 RefreshAgentTab();
+                EditProject.MarkDirty();
             };
 
             LocationsListView.AfterLabelEdit += (obj, args) =>
@@ -117,6 +116,7 @@ namespace Curvature
                 location.Name = args.Label;
 
                 RefreshLocationTab();
+                EditProject.MarkDirty();
             };
 
             LogsTreeView.NodeMouseClick += (obj, args) =>
@@ -277,6 +277,7 @@ namespace Curvature
 
             Simulation.Agents.Add(new ScenarioAgent("Untitled Agent", null));
             RefreshAgentTab();
+            EditProject.MarkDirty();
         }
 
         private void AddLocationButton_Click(object sender, EventArgs e)
@@ -286,6 +287,7 @@ namespace Curvature
 
             Simulation.Locations.Add(new ScenarioLocation("Untitled Location"));
             RefreshLocationTab();
+            EditProject.MarkDirty();
         }
 
         private void AgentXUpDown_ValueChanged(object sender, EventArgs e)
@@ -297,6 +299,8 @@ namespace Curvature
                 agent.Position.X = (float)AgentXUpDown.Value;
                 lvi.SubItems[1].Text = agent.GetPosition().ToString();
             }
+
+            EditProject.MarkDirty();
         }
 
         private void AgentYUpDown_ValueChanged(object sender, EventArgs e)
@@ -308,6 +312,8 @@ namespace Curvature
                 agent.Position.Y = (float)AgentYUpDown.Value;
                 lvi.SubItems[1].Text = agent.GetPosition().ToString();
             }
+
+            EditProject.MarkDirty();
         }
 
         private void AgentRadiusUpDown_ValueChanged(object sender, EventArgs e)
@@ -317,6 +323,8 @@ namespace Curvature
                 var agent = (item as ListViewItem).Tag as ScenarioAgent;
                 agent.Radius = (float)AgentRadiusUpDown.Value;
             }
+
+            EditProject.MarkDirty();
         }
 
         private void AgentsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -342,12 +350,16 @@ namespace Curvature
                 agent.AgentArchetype = archetype;
                 lvi.SubItems[2].Text = archetypename;
             }
+
+            EditProject.MarkDirty();
         }
 
         private void AgentResetButton_Click(object sender, EventArgs e)
         {
             AgentXUpDown.Value = AgentStartXUpDown.Value;
             AgentYUpDown.Value = AgentStartYUpDown.Value;
+
+            EditProject.MarkDirty();
         }
 
         private void AgentStartXUpDown_ValueChanged(object sender, EventArgs e)
@@ -357,6 +369,8 @@ namespace Curvature
                 var agent = (item as ListViewItem).Tag as ScenarioAgent;
                 agent.StartPosition.X = (float)AgentStartXUpDown.Value;
             }
+
+            EditProject.MarkDirty();
         }
 
         private void AgentStartYUpDown_ValueChanged(object sender, EventArgs e)
@@ -366,6 +380,8 @@ namespace Curvature
                 var agent = (item as ListViewItem).Tag as ScenarioAgent;
                 agent.StartPosition.Y = (float)AgentStartYUpDown.Value;
             }
+
+            EditProject.MarkDirty();
         }
 
         private void CopyCurrentAgentPositionButton_Click(object sender, EventArgs e)
@@ -379,6 +395,8 @@ namespace Curvature
 
             if (AgentsListView.SelectedItems.Count == 1)
                 PopulateAgentTab((AgentsListView.SelectedItems[0] as ListViewItem).Tag as ScenarioAgent);
+
+            EditProject.MarkDirty();
         }
 
         private void PopulateAgentTab(ScenarioAgent agent)
@@ -464,6 +482,7 @@ namespace Curvature
                 Simulation.Agents.Remove(agent);
             }
 
+            EditProject.MarkDirty();
             DialogRebuildNeeded?.Invoke(Simulation);
         }
 
@@ -490,6 +509,8 @@ namespace Curvature
                 var agent = (selected as ListViewItem).Tag as ScenarioAgent;
                 agent.StartFuzzed = AgentRandomStartPositionCheckBox.Checked;
             }
+
+            EditProject.MarkDirty();
         }
 
         private string GetLocationCoordsDescription(ScenarioLocation loc)
@@ -506,6 +527,8 @@ namespace Curvature
                 location.Position.X = (float)LocationCenterX.Value;
                 lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
             }
+
+            EditProject.MarkDirty();
         }
 
         private void LocationCenterY_ValueChanged(object sender, EventArgs e)
@@ -517,6 +540,8 @@ namespace Curvature
                 location.Position.Y = (float)LocationCenterY.Value;
                 lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
             }
+
+            EditProject.MarkDirty();
         }
 
         private void LocationRadius_ValueChanged(object sender, EventArgs e)
@@ -528,6 +553,8 @@ namespace Curvature
                 location.Radius = (float)LocationRadius.Value;
                 lvi.SubItems[1].Text = GetLocationCoordsDescription(location);
             }
+
+            EditProject.MarkDirty();
         }
 
         private void LocationsListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -550,6 +577,7 @@ namespace Curvature
                 Simulation.Locations.Remove(location);
             }
 
+            EditProject.MarkDirty();
             DialogRebuildNeeded?.Invoke(Simulation);
         }
 
@@ -587,6 +615,8 @@ namespace Curvature
 
             if (madechange && AgentsListView.SelectedItems.Count == 1)
                 PopulateAgentTab((AgentsListView.SelectedItems[0] as ListViewItem).Tag as ScenarioAgent);
+
+            EditProject.MarkDirty();
         }
     }
 }
