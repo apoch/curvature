@@ -90,6 +90,8 @@ namespace Curvature.Widgets
             {
                 EditingProject.Delete(scenario);
             }
+
+            EditingProject.MarkDirty();
         }
 
         private void CreateScenarioButton_Click(object sender, EventArgs e)
@@ -98,6 +100,8 @@ namespace Curvature.Widgets
             EditingProject.Scenarios.Add(scenario);
             EditingProject.MarkDirty();
             RefreshScenarioControls(scenario);
+
+            EditingProject.MarkDirty();
         }
     }
 }
