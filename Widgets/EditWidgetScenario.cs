@@ -144,12 +144,16 @@ namespace Curvature
         internal void Attach(Scenario scenario, Project project)
         {
             if (Simulation != null)
+            {
                 Simulation.DialogRebuildNeeded -= Rebuild;
+                Simulation.SimulationAdvance -= ScenarioAdvance;
+            }
 
             Simulation = scenario;
             EditProject = project;
 
             Simulation.DialogRebuildNeeded += Rebuild;
+            Simulation.SimulationAdvance += ScenarioAdvance;
 
             NameEditWidget.Attach("Scenario", Simulation, EditProject);
 
@@ -157,13 +161,13 @@ namespace Curvature
             RefreshLocationTab();
 
             AbsoluteTime = 0.0f;
+        }
 
-            Simulation.SimulationAdvance += (e, args) =>
-            {
-                RefreshAgentTab();
-                CreateLogDetails(args);
-                AbsoluteTime += args.DeltaTime;
-            };
+        private void ScenarioAdvance(object sender, Scenario.ScenarioEventArgs args)
+        {
+            RefreshAgentTab();
+            CreateLogDetails(args);
+            AbsoluteTime += args.DeltaTime;
         }
 
         private void CreateLogDetails(Scenario.ScenarioEventArgs args)
