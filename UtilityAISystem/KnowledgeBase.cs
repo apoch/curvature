@@ -62,7 +62,7 @@ namespace Curvature
             }
 
 
-            public delegate void PropertyChangedHandler(object o, EventArgs a);
+            public delegate void PropertyChangedHandler(object sender, EventArgs e);
             public event PropertyChangedHandler PropertyChanged;
 
 

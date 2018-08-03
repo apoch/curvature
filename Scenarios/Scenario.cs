@@ -78,7 +78,7 @@ namespace Curvature
         [DataMember]
         public List<ScenarioLocation> Locations;
 
-        private Pen RenderPenDottedBlack;
+        private static Pen RenderPenDottedBlack;
         private float HorizontalUnitsVisible = 2.0f;
         private float VerticalUnitsVisible = 2.0f;
 
@@ -643,8 +643,11 @@ namespace Curvature
 
         private void InitializeDrawingResources()
         {
-            RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
-            RenderPenDottedBlack.DashStyle = DashStyle.Dot;
+            if (RenderPenDottedBlack == null)
+            {
+                RenderPenDottedBlack = new Pen(Color.Black, 1.0f);
+                RenderPenDottedBlack.DashStyle = DashStyle.Dot;
+            }
         }
 
 

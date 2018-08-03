@@ -121,15 +121,10 @@ namespace Curvature
             var xmlSettings = new XmlWriterSettings();
             xmlSettings.Indent = true;
 
-            var stream = new FileStream(filename, FileMode.Create);
-            var file = XmlWriter.Create(stream, xmlSettings);
-
-            serializer.WriteObject(file, this);
-            file.Close();
-            file.Dispose();
-
-            stream.Close();
-            stream.Dispose();
+            using (var file = XmlWriter.Create(new FileStream(filename, FileMode.Create), xmlSettings))
+            {
+                serializer.WriteObject(file, this);
+            }
 
             IsDirty = false;
             ProjectDirtied?.Invoke(IsDirty);
@@ -142,11 +137,11 @@ namespace Curvature
 
             var deserializer = new DataContractSerializer(typeof(Project), settings);
 
-            var file = new FileStream(filename, FileMode.Open);
-            var ret = deserializer.ReadObject(file) as Project;
-
-            file.Close();
-            file.Dispose();
+            Project ret = null;
+            using (var file = new FileStream(filename, FileMode.Open))
+            {
+                ret = deserializer.ReadObject(file) as Project;
+            }
 
             ret.IsDirty = false;
             ret.ProjectDirtied?.Invoke(false);

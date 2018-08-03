@@ -55,7 +55,7 @@ namespace Curvature
         }
 
 
-        public delegate void ParametersChangedHandler(object o, EventArgs a);
+        public delegate void ParametersChangedHandler(object sender, EventArgs e);
         public event ParametersChangedHandler ParametersChanged;
 
         internal delegate void DialogRebuildNeededHandler();
