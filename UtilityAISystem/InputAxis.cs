@@ -93,8 +93,7 @@ namespace Curvature
 
                 var ret = new InputAxis(ReadableName, Origin)
                 {
-                    KBRecord = KBRecord,
-                    ReadableName = ReadableName
+                    KBRecord = KBRecord
                 };
 
                 float newmin = (Parameters[0] as InputParameterNumeric).MinimumValue;
@@ -110,8 +109,7 @@ namespace Curvature
             {
                 var ret = new InputAxis(ReadableName, Origin)
                 {
-                    KBRecord = KBRecord,
-                    ReadableName = ReadableName
+                    KBRecord = KBRecord
                 };
 
                 float newmin = Math.Max((Parameters[0] as InputParameterNumeric).MinimumValue, (parameters[0] as InputParameterValueNumeric).Value);
@@ -141,8 +139,7 @@ namespace Curvature
 
                 var ret = new InputAxis(ReadableName, Origin)
                 {
-                    KBRecord = KBRecord,
-                    ReadableName = ReadableName
+                    KBRecord = KBRecord
                 };
 
                 float newmin = Math.Min((Parameters[0] as InputParameterNumeric).MinimumValue, (other.Parameters[0] as InputParameterNumeric).MinimumValue);
