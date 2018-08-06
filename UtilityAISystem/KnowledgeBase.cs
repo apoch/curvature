@@ -57,13 +57,13 @@ namespace Curvature
                 set
                 {
                     Parameters = value;
-                    PropertyChanged?.Invoke(this, null);
+                    PropertyChanged?.Invoke();
                 }
             }
 
 
-            public delegate void PropertyChangedHandler(object sender, EventArgs e);
-            public event PropertyChangedHandler PropertyChanged;
+            internal delegate void PropertyChangedHandler();
+            internal event PropertyChangedHandler PropertyChanged;
 
 
             internal Record()

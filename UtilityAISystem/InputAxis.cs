@@ -43,12 +43,12 @@ namespace Curvature
                     return;
 
                 if(KBRecord != null)
-                    KBRecord.PropertyChanged -= KBChanged;
+                    KBRecord.PropertyChanged -= GenerateParametersFromKBRecord;
 
                 KBRecord = value;
 
                 if (KBRecord != null)
-                    KBRecord.PropertyChanged += KBChanged;          // TODO - clean up this event and fix all the unsubscription bugs (again)
+                    KBRecord.PropertyChanged += GenerateParametersFromKBRecord;
 
                 GenerateParametersFromKBRecord();
             }
@@ -191,11 +191,6 @@ namespace Curvature
             }
 
             ParametersChanged?.Invoke(this, null);
-        }
-
-        private void KBChanged(object kbrec, EventArgs args)
-        {
-            GenerateParametersFromKBRecord();
         }
     }
 }
