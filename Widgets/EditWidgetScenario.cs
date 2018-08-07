@@ -14,6 +14,7 @@ namespace Curvature
     {
 
         private Scenario Simulation;
+        private Scenarios.ScenarioRenderer Renderer = new Scenarios.ScenarioRenderer();
         private Project EditingProject;
 
         private float AbsoluteTime;
@@ -34,7 +35,7 @@ namespace Curvature
                 if (Simulation == null)
                     return;
 
-                Simulation.Render(args.Graphics, ScenarioRenderingBox.ClientRectangle);
+                Renderer.Render(Simulation, args.Graphics, ScenarioRenderingBox.ClientRectangle);
             };
 
             ScenarioRenderingBox.LostFocus += (obj, args) =>
@@ -58,7 +59,7 @@ namespace Curvature
                     return;
                 }
 
-                var text = Simulation.GetInspectionText(ScenarioRenderingBox.ClientRectangle, args.Location);
+                var text = Renderer.GetInspectionText(Simulation, ScenarioRenderingBox.ClientRectangle, args.Location);
                 if (text == null || string.IsNullOrEmpty(text.Caption))
                 {
                     SimulationInspectionTooltip.Hide(ScenarioRenderingBox);
@@ -77,7 +78,7 @@ namespace Curvature
                 if (Simulation == null)
                     return;
 
-                var agent = Simulation.GetAgentAtLocation(ScenarioRenderingBox.ClientRectangle, args.Location);
+                var agent = Renderer.GetAgentAtLocation(Simulation, ScenarioRenderingBox.ClientRectangle, args.Location);
                 if (agent == null)
                     return;
 

@@ -55,6 +55,8 @@
       <DependentUpon>EnumerationEditorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\AgentPropertyAdapter.cs" />
+    <Compile Include="Scenarios\ScenarioMath.cs" />
+    <Compile Include="Scenarios\ScenarioRenderer.cs" />
     <Compile Include="UtilityAISystem\Archetype.cs" />
     <Compile Include="UtilityAISystem\Behavior.cs" />
     <Compile Include="UtilityAISystem\BehaviorSet.cs" />
