@@ -61,122 +61,11 @@ namespace Curvature.Scenarios
             // Locations
             DrawLocations(scenario, graphics, rect);
 
-
-            // TODO - finish cleaning up this code (#55)
-
             // Agents
-            foreach (var agent in scenario.Agents)
-            {
-                var displayRect = ToDisplayRect(agent, rect);
-                if (agent.Stalled)
-                    graphics.DrawRectangle(Pens.Red, displayRect);
-
-
-                using (var pen = new Pen(agent.Color))
-                {
-                    graphics.DrawEllipse(pen, displayRect);
-                }
-
-
-                // Intention indicator
-                if (agent.Intent != null)
-                {
-                    var intentVec = new PointF() { X = agent.GetPosition().X - agent.Intent.GetPosition().X, Y = agent.GetPosition().Y - agent.Intent.GetPosition().Y };
-                    var intentLength = Magnitude(intentVec);
-
-                    if (intentLength > 0.05f)
-                    {
-                        intentVec.X /= intentLength;
-                        intentVec.Y /= intentLength;
-
-                        if (!agent.IntentAttractive)
-                        {
-                            intentVec.X = -intentVec.X;
-                            intentVec.Y = -intentVec.Y;
-                        }
-
-                        var tip = CoordinatesToDisplayPoint(agent.GetPosition().X - intentVec.X * agent.Radius, agent.GetPosition().Y - intentVec.Y * agent.Radius, rect);
-                        var bottomCenter = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius, agent.GetPosition().Y + intentVec.Y * agent.Radius);
-
-                        var intentOrthogonalVec = Normalize(new PointF(-intentVec.Y, intentVec.X));
-
-                        var bottomL = CoordinatesToDisplayPoint(bottomCenter.X - intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y - intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
-                        var bottomR = CoordinatesToDisplayPoint(bottomCenter.X + intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y + intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
-
-                        var bcExtended = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius * 1.2f, agent.GetPosition().Y + intentVec.Y * agent.Radius * 1.2f);
-                        var bc = CoordinatesToDisplayPoint(bcExtended.X, bcExtended.Y, rect);
-
-                        Color darker = GetDarkerColor(agent.Color);
-                        Color lighter = GetLighterColor(agent.Color);
-
-                        using (var gradient = new LinearGradientBrush(tip, bc, lighter, darker))
-                        {
-                            var poly = new Point[] { tip, bottomL, bottomR, tip };
-
-                            graphics.DrawLines(Pens.Black, poly);
-                            graphics.FillPolygon(gradient, poly);
-
-                            using (var dashPen = new Pen(agent.Color))
-                            {
-                                var agentCenter = CoordinatesToDisplayPoint(agent.GetPosition().X, agent.GetPosition().Y, rect);
-
-                                dashPen.DashStyle = DashStyle.Dash;
-                                graphics.DrawLine(dashPen, agentCenter, CoordinatesToDisplayPoint(agent.Intent.GetPosition().X, agent.Intent.GetPosition().Y, rect));
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    using (var ellipse = new GraphicsPath())
-                    {
-                        var insetRect = ToDisplayRect(agent, rect, 0.35f);
-                        ellipse.AddEllipse(insetRect);
-
-                        using (var gradient = new PathGradientBrush(ellipse))
-                        {
-                            gradient.CenterColor = GetDarkerColor(agent.Color);
-                            gradient.SurroundColors = new[] { GetLighterColor(agent.Color) };
-
-                            graphics.FillRectangle(gradient, insetRect);
-                        }
-                    }
-                }
-
-
-                int pad = 20;
-                var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
-                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.DarkRed, textRect, MyStringFormat);
-
-                textRect.Offset(-1, -1);
-                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Black, textRect, MyStringFormat);
-            }
+            DrawAgents(scenario, graphics, rect);
 
             // Custom action balloons
-            if (scenario.CustomActions != null)
-            {
-                foreach (var ctx in scenario.CustomActions)
-                {
-                    if (ctx.Target != null)
-                    {
-                        var targetCenter = CoordinatesToDisplayPoint(ctx.Target.GetPosition().X, ctx.Target.GetPosition().Y, rect);
-                        var agentCenter = CoordinatesToDisplayPoint(ctx.ThinkingAgent.GetPosition().X, ctx.ThinkingAgent.GetPosition().Y, rect);
-                        graphics.DrawLine(Pens.Blue, targetCenter, agentCenter);
-
-                        var midpoint = new Point((agentCenter.X + targetCenter.X) / 2, (agentCenter.Y + targetCenter.Y) / 2);
-                        var textRect = new Rectangle(midpoint.X - 60, midpoint.Y - 15, 120, 30);
-                        graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, MyStringFormat);
-                    }
-                    else
-                    {
-                        int pad = 20;
-                        var displayRect = ToDisplayRect(ctx.ThinkingAgent, rect);
-                        var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, pad * 3);
-                        graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, MyStringFormat);
-                    }
-
-                }
-            }
+            DrawCustomActionBalloons(scenario, graphics, rect);
         }
 
 
@@ -250,6 +139,132 @@ namespace Curvature.Scenarios
             }
         }
 
+
+        private void DrawAgents(Scenario scenario, Graphics graphics, Rectangle rect)
+        {
+            foreach (var agent in scenario.Agents)
+            {
+                var displayRect = ToDisplayRect(agent, rect);
+                if (agent.Stalled)
+                    graphics.DrawRectangle(Pens.Red, displayRect);
+
+
+                using (var pen = new Pen(agent.Color))
+                {
+                    graphics.DrawEllipse(pen, displayRect);
+                }
+
+
+                // Intention indicator
+                DrawAgentIntent(agent, graphics, rect);
+
+
+                int pad = 20;
+                var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, displayRect.Height + pad * 2);
+                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.DarkRed, textRect, MyStringFormat);
+
+                textRect.Offset(-1, -1);
+                graphics.DrawString(agent.GetName(), SystemFonts.IconTitleFont, Brushes.Black, textRect, MyStringFormat);
+            }
+        }
+
+
+        private void DrawAgentIntent(ScenarioAgent agent, Graphics graphics, Rectangle rect)
+        {
+            if (agent.Intent != null)
+            {
+                var intentVec = new PointF() { X = agent.GetPosition().X - agent.Intent.GetPosition().X, Y = agent.GetPosition().Y - agent.Intent.GetPosition().Y };
+                var intentLength = Magnitude(intentVec);
+
+                if (intentLength > 0.05f)
+                {
+                    intentVec.X /= intentLength;
+                    intentVec.Y /= intentLength;
+
+                    if (!agent.IntentAttractive)
+                    {
+                        intentVec.X = -intentVec.X;
+                        intentVec.Y = -intentVec.Y;
+                    }
+
+                    var tip = CoordinatesToDisplayPoint(agent.GetPosition().X - intentVec.X * agent.Radius, agent.GetPosition().Y - intentVec.Y * agent.Radius, rect);
+                    var bottomCenter = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius, agent.GetPosition().Y + intentVec.Y * agent.Radius);
+
+                    var intentOrthogonalVec = Normalize(new PointF(-intentVec.Y, intentVec.X));
+
+                    var bottomL = CoordinatesToDisplayPoint(bottomCenter.X - intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y - intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+                    var bottomR = CoordinatesToDisplayPoint(bottomCenter.X + intentOrthogonalVec.X * agent.Radius * 0.3f, bottomCenter.Y + intentOrthogonalVec.Y * agent.Radius * 0.3f, rect);
+
+                    var bcExtended = new PointF(agent.GetPosition().X + intentVec.X * agent.Radius * 1.2f, agent.GetPosition().Y + intentVec.Y * agent.Radius * 1.2f);
+                    var bc = CoordinatesToDisplayPoint(bcExtended.X, bcExtended.Y, rect);
+
+                    Color darker = GetDarkerColor(agent.Color);
+                    Color lighter = GetLighterColor(agent.Color);
+
+                    using (var gradient = new LinearGradientBrush(tip, bc, lighter, darker))
+                    {
+                        var poly = new Point[] { tip, bottomL, bottomR, tip };
+
+                        graphics.DrawLines(Pens.Black, poly);
+                        graphics.FillPolygon(gradient, poly);
+
+                        using (var dashPen = new Pen(agent.Color))
+                        {
+                            var agentCenter = CoordinatesToDisplayPoint(agent.GetPosition().X, agent.GetPosition().Y, rect);
+
+                            dashPen.DashStyle = DashStyle.Dash;
+                            graphics.DrawLine(dashPen, agentCenter, CoordinatesToDisplayPoint(agent.Intent.GetPosition().X, agent.Intent.GetPosition().Y, rect));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                using (var ellipse = new GraphicsPath())
+                {
+                    var insetRect = ToDisplayRect(agent, rect, 0.35f);
+                    ellipse.AddEllipse(insetRect);
+
+                    using (var gradient = new PathGradientBrush(ellipse))
+                    {
+                        gradient.CenterColor = GetDarkerColor(agent.Color);
+                        gradient.SurroundColors = new[] { GetLighterColor(agent.Color) };
+
+                        graphics.FillRectangle(gradient, insetRect);
+                    }
+                }
+            }
+        }
+
+
+        private void DrawCustomActionBalloons(Scenario scenario, Graphics graphics, Rectangle rect)
+        {
+            if (scenario.CustomActions == null)
+                return;
+
+
+            foreach (var ctx in scenario.CustomActions)
+            {
+                if (ctx.Target != null)
+                {
+                    var targetCenter = CoordinatesToDisplayPoint(ctx.Target.GetPosition().X, ctx.Target.GetPosition().Y, rect);
+                    var agentCenter = CoordinatesToDisplayPoint(ctx.ThinkingAgent.GetPosition().X, ctx.ThinkingAgent.GetPosition().Y, rect);
+                    graphics.DrawLine(Pens.Blue, targetCenter, agentCenter);
+
+                    var midpoint = new Point((agentCenter.X + targetCenter.X) / 2, (agentCenter.Y + targetCenter.Y) / 2);
+                    var textRect = new Rectangle(midpoint.X - 60, midpoint.Y - 15, 120, 30);
+                    graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, MyStringFormat);
+                }
+                else
+                {
+                    int pad = 20;
+                    var displayRect = ToDisplayRect(ctx.ThinkingAgent, rect);
+                    var textRect = new Rectangle(displayRect.Left - pad, displayRect.Top - pad, displayRect.Width + pad * 2, pad * 3);
+                    graphics.DrawString(ctx.ChosenBehavior.Payload, SystemFonts.IconTitleFont, Brushes.Blue, textRect, MyStringFormat);
+                }
+
+            }
+        }
 
 
         private PointF DisplayPointToCoordinates(Point display, Rectangle viewrect)
