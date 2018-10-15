@@ -54,6 +54,8 @@
             this.ArchetypesEditWidget = new Curvature.Widgets.EditWidgetArchetypes();
             this.ScenariosTab = new System.Windows.Forms.TabPage();
             this.ScenariosEditWidget = new Curvature.Widgets.EditWidgetScenarios();
+            this.tempToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uIDiagnosticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrimaryMenuStrip.SuspendLayout();
             this.MainTabs.SuspendLayout();
             this.ProjectTab.SuspendLayout();
@@ -68,7 +70,8 @@
             // PrimaryMenuStrip
             // 
             this.PrimaryMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.tempToolStripMenuItem});
             this.PrimaryMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.PrimaryMenuStrip.Name = "PrimaryMenuStrip";
             this.PrimaryMenuStrip.Size = new System.Drawing.Size(987, 24);
@@ -295,6 +298,21 @@
             this.ScenariosEditWidget.Size = new System.Drawing.Size(955, 597);
             this.ScenariosEditWidget.TabIndex = 0;
             // 
+            // tempToolStripMenuItem
+            // 
+            this.tempToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uIDiagnosticsToolStripMenuItem});
+            this.tempToolStripMenuItem.Name = "tempToolStripMenuItem";
+            this.tempToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.tempToolStripMenuItem.Text = "Temp";
+            // 
+            // uIDiagnosticsToolStripMenuItem
+            // 
+            this.uIDiagnosticsToolStripMenuItem.Name = "uIDiagnosticsToolStripMenuItem";
+            this.uIDiagnosticsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.uIDiagnosticsToolStripMenuItem.Text = "UI diagnostics";
+            this.uIDiagnosticsToolStripMenuItem.Click += new System.EventHandler(this.UIDiagnosticsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +366,8 @@
         private Widgets.EditWidgetBehaviorSets BehaviorSetsEditWidget;
         private Widgets.EditWidgetArchetypes ArchetypesEditWidget;
         private Widgets.EditWidgetScenarios ScenariosEditWidget;
+        private System.Windows.Forms.ToolStripMenuItem tempToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uIDiagnosticsToolStripMenuItem;
     }
 }
 

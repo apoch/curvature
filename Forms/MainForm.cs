@@ -182,5 +182,31 @@ namespace Curvature
                     Text = $"Curvature Studio - [{EditingFileName}]";
             }
         }
+
+        private void UIDiagnosticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var output = new StringBuilder();
+
+            output.AppendLine($"Window font face: {Font.Name}");
+            output.AppendLine($"Window font size: {Font.Size}");
+
+            output.AppendLine($"Autoscale factor X: {AutoScaleFactor.Width}");
+            output.AppendLine($"Autoscale factor Y: {AutoScaleFactor.Height}");
+
+            output.AppendLine($"Autoscale basis X: {AutoScaleDimensions.Width}");
+            output.AppendLine($"Autoscale basis Y: {AutoScaleDimensions.Height}");
+
+            output.AppendLine($"Autoscale current X: {CurrentAutoScaleDimensions.Width}");
+            output.AppendLine($"Autoscale current Y: {CurrentAutoScaleDimensions.Height}");
+
+            output.AppendLine($"Scenarios Autoscale basis X: {ScenariosEditWidget.AutoScaleDimensions.Width}");
+            output.AppendLine($"Scenarios Autoscale basis Y: {ScenariosEditWidget.AutoScaleDimensions.Height}");
+
+            output.AppendLine($"Scenarios Autoscale current X: {ScenariosEditWidget.CurrentAutoScaleDimensions.Width}");
+            output.AppendLine($"Scenarios Autoscale current Y: {ScenariosEditWidget.CurrentAutoScaleDimensions.Height}");
+
+            Clipboard.SetText(output.ToString());
+            MessageBox.Show("Copied diagnostic data to clipboard");
+        }
     }
 }
