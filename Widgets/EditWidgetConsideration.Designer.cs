@@ -32,12 +32,12 @@
             this.InputAxisLabel = new System.Windows.Forms.Label();
             this.HorizontalSplitter = new System.Windows.Forms.SplitContainer();
             this.ParametersGroupBox = new System.Windows.Forms.GroupBox();
+            this.WrapInputCheckBox = new System.Windows.Forms.CheckBox();
             this.ParamFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ResponseCurveGroupBox = new System.Windows.Forms.GroupBox();
             this.ResponseCurveEditor = new Curvature.EditWidgetResponseCurve();
             this.CurveWizardButton = new System.Windows.Forms.Button();
             this.NameEditWidget = new Curvature.EditWidgetName();
-            this.WrapInputCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.HorizontalSplitter)).BeginInit();
             this.HorizontalSplitter.Panel1.SuspendLayout();
             this.HorizontalSplitter.Panel2.SuspendLayout();
@@ -101,6 +101,18 @@
             this.ParametersGroupBox.TabStop = false;
             this.ParametersGroupBox.Text = "Parameters";
             // 
+            // WrapInputCheckBox
+            // 
+            this.WrapInputCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.WrapInputCheckBox.AutoSize = true;
+            this.WrapInputCheckBox.Location = new System.Drawing.Point(648, 16);
+            this.WrapInputCheckBox.Name = "WrapInputCheckBox";
+            this.WrapInputCheckBox.Size = new System.Drawing.Size(84, 17);
+            this.WrapInputCheckBox.TabIndex = 1;
+            this.WrapInputCheckBox.Text = "Wrap Inputs";
+            this.WrapInputCheckBox.UseVisualStyleBackColor = true;
+            this.WrapInputCheckBox.CheckedChanged += new System.EventHandler(this.WrapInputCheckBox_CheckedChanged);
+            // 
             // ParamFlowPanel
             // 
             this.ParamFlowPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -153,22 +165,9 @@
             this.NameEditWidget.Size = new System.Drawing.Size(768, 30);
             this.NameEditWidget.TabIndex = 0;
             // 
-            // WrapInputCheckBox
-            // 
-            this.WrapInputCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.WrapInputCheckBox.AutoSize = true;
-            this.WrapInputCheckBox.Location = new System.Drawing.Point(648, 16);
-            this.WrapInputCheckBox.Name = "WrapInputCheckBox";
-            this.WrapInputCheckBox.Size = new System.Drawing.Size(84, 17);
-            this.WrapInputCheckBox.TabIndex = 1;
-            this.WrapInputCheckBox.Text = "Wrap Inputs";
-            this.WrapInputCheckBox.UseVisualStyleBackColor = true;
-            this.WrapInputCheckBox.CheckedChanged += new System.EventHandler(this.WrapInputCheckBox_CheckedChanged);
-            // 
             // EditWidgetConsideration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.NameEditWidget);
             this.Controls.Add(this.CurveWizardButton);
             this.Controls.Add(this.HorizontalSplitter);
