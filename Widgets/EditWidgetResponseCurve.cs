@@ -122,6 +122,19 @@ namespace Curvature
 
                 CurvePictureBox.Refresh();
             };
+
+            Resize += (e, args) =>
+            {
+                SuspendLayout();
+                CurvePictureBox.Height = Height - (CurvePictureBox.Top * 2);
+                ShiftDownButton.Width = CurvePictureBox.Width - (2 * ShiftLeftButton.Width) - 3;
+                ShiftDownButton.Top = CurvePictureBox.Bottom - ShiftDownButton.Height - 1;
+                ShiftUpButton.Width = ShiftDownButton.Width;
+                ShiftRightButton.Left = ShiftUpButton.Right;
+                ShiftRightButton.Height = CurvePictureBox.Height - (2 * ShiftUpButton.Height) - 3;
+                ShiftLeftButton.Height = ShiftRightButton.Height;
+                ResumeLayout(false);
+            };
         }
 
         internal void AttachCurve(ResponseCurve curve, Project project)
