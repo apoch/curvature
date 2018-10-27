@@ -106,7 +106,8 @@
             // 
             // CurvePictureBox
             // 
-            this.CurvePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CurvePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CurvePictureBox.BackColor = System.Drawing.Color.White;
             this.CurvePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -195,6 +196,8 @@
             // 
             // ShiftLeftButton
             // 
+            this.ShiftLeftButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ShiftLeftButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.ShiftLeftButton.Location = new System.Drawing.Point(140, 25);
             this.ShiftLeftButton.Name = "ShiftLeftButton";
@@ -206,7 +209,8 @@
             // 
             // ShiftRightButton
             // 
-            this.ShiftRightButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ShiftRightButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ShiftRightButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.ShiftRightButton.Location = new System.Drawing.Point(335, 25);
             this.ShiftRightButton.Name = "ShiftRightButton";
@@ -218,6 +222,8 @@
             // 
             // ShiftUpButton
             // 
+            this.ShiftUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ShiftUpButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.ShiftUpButton.Location = new System.Drawing.Point(159, 5);
             this.ShiftUpButton.Name = "ShiftUpButton";
@@ -229,7 +235,8 @@
             // 
             // ShiftDownButton
             // 
-            this.ShiftDownButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShiftDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ShiftDownButton.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.ShiftDownButton.Location = new System.Drawing.Point(159, 181);
             this.ShiftDownButton.Name = "ShiftDownButton";
