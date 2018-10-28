@@ -72,6 +72,7 @@
             this.HorizontalSplitter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HorizontalSplitter.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.HorizontalSplitter.Location = new System.Drawing.Point(7, 65);
             this.HorizontalSplitter.Name = "HorizontalSplitter";
             this.HorizontalSplitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
